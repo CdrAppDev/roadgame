@@ -3,6 +3,49 @@
 (function() {
   'use strict';
 
+  // ============================================
+  // PASSWORD PROTECTION
+  // Change this password to whatever you want
+  // ============================================
+  const SITE_PASSWORD = 'roadgame2024';
+  const AUTH_KEY = 'roadgame-auth';
+
+  function checkAuth() {
+    return sessionStorage.getItem(AUTH_KEY) === 'authenticated';
+  }
+
+  function initAuth() {
+    const overlay = document.getElementById('authOverlay');
+    const form = document.getElementById('authForm');
+    const input = document.getElementById('passwordInput');
+    const error = document.getElementById('authError');
+
+    if (checkAuth()) {
+      overlay.classList.add('hidden');
+      return;
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (input.value === SITE_PASSWORD) {
+        sessionStorage.setItem(AUTH_KEY, 'authenticated');
+        overlay.classList.add('hidden');
+      } else {
+        error.textContent = 'Incorrect password';
+        input.value = '';
+        input.focus();
+      }
+    });
+  }
+
+  // Run auth check immediately
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAuth);
+  } else {
+    initAuth();
+  }
+  // ============================================
+
   // Storage key
   const STORAGE_KEY = 'roadgame-canvas-data';
 

@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Password Protection Overlay -->
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-modal">
+      <h2>RoadGame</h2>
+      <p>Enter password to continue</p>
+      <form id="authForm">
+        <input type="password" id="passwordInput" placeholder="Password" autocomplete="off" autofocus>
+        <button type="submit" class="btn btn-primary">Enter</button>
+      </form>
+      <p id="authError" class="auth-error"></p>
+    </div>
+  </div>
+
   <header>
     <div class="header-content">
       <h1>RoadGame</h1>
