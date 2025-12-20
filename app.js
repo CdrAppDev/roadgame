@@ -22,6 +22,7 @@
 
     if (checkAuth()) {
       overlay.classList.add('hidden');
+      document.body.classList.add('authenticated');
       return;
     }
 
@@ -30,6 +31,7 @@
       if (input.value === SITE_PASSWORD) {
         sessionStorage.setItem(AUTH_KEY, 'authenticated');
         overlay.classList.add('hidden');
+        document.body.classList.add('authenticated');
       } else {
         error.textContent = 'Incorrect password';
         input.value = '';
