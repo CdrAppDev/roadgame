@@ -135,29 +135,15 @@
   // Initialize data from localStorage or use defaults
   let canvasData = loadData();
 
-  // Load data from localStorage or use defaults
+  // Load data - always start with defaults, merge any saved additions
   function loadData() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        return JSON.parse(saved);
-      } else {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_DATA));
-        return { ...DEFAULT_DATA };
-      }
-    } catch (e) {
-      console.error('Error loading data:', e);
-      return { ...DEFAULT_DATA };
-    }
+    // Always use default data as the base
+    return { ...DEFAULT_DATA };
   }
 
-  // Save data to localStorage
+  // Save data (no-op for now - use Export to save work)
   function saveData() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(canvasData));
-    } catch (e) {
-      console.error('Error saving data:', e);
-    }
+    // Data is session-only; use Export button to save
   }
 
   // Get items for a specific list
@@ -465,10 +451,9 @@
 
   // Reset all data
   function resetData() {
-    const choice = confirm('Reset to default content? Your changes will be lost.');
+    const choice = confirm('Reset to default content? Your session changes will be lost.');
     if (choice) {
       canvasData = { ...DEFAULT_DATA };
-      saveData();
       document.querySelectorAll('.item-list').forEach(list => {
         const container = list.closest('.editable-list');
         const key = container.dataset.key;
