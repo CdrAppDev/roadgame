@@ -112,6 +112,30 @@
       { id: 84, text: 'CON: Dependency on partner priorities' },
       { id: 85, text: 'APPROACH: Embed in tournament registration flow' }
     ],
+    'friction-low': [
+      { id: 200, text: 'Free to list (no upfront cost)' },
+      { id: 201, text: 'Simple listing creation (name, address, description)' },
+      { id: 202, text: 'No integration required (just a directory listing)' },
+      { id: 203, text: 'No exclusivity required' },
+      { id: 204, text: 'We create the listing FOR them (zero effort)' }
+    ],
+    'friction-high': [
+      { id: 210, text: 'Time to create quality listing (photos, descriptions)' },
+      { id: 211, text: 'Trust barrier - "is this legit? will it actually work?"' },
+      { id: 212, text: 'Ongoing management burden (updating availability, responding)' },
+      { id: 213, text: 'Real-time inventory integration (if we want live booking)' },
+      { id: 214, text: 'Commission on bookings (providers hate giving up margin)' },
+      { id: 215, text: 'Yet another platform to manage' }
+    ],
+    'friction-claim': [
+      { id: 220, text: 'Phase 1: We curate listings from public data (Google, Yelp, etc.)' },
+      { id: 221, text: 'Phase 2: Providers see traffic/leads → motivated to claim' },
+      { id: 222, text: 'Phase 3: Claimed listings unlock premium features' },
+      { id: 223, text: 'KEY: Provider sees value BEFORE we ask for anything' },
+      { id: 224, text: 'Like Yelp/Google Business - listing exists, owner claims it' },
+      { id: 225, text: 'Claiming = verify ownership + enhance listing + respond to leads' },
+      { id: 226, text: 'Revenue: Charge for premium placement AFTER proving traffic' }
+    ],
     'target-who': [],
     'target-why': [],
     'target-reach': [],
