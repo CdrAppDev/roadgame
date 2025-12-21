@@ -466,10 +466,6 @@
   // Initialize app
   function init() {
     initializeLists();
-
-    document.getElementById('exportBtn').addEventListener('click', showExportModal);
-    document.getElementById('resetBtn').addEventListener('click', resetData);
-
     console.log('RoadGame Art of the Start initialized');
   }
 
