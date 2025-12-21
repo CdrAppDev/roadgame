@@ -193,6 +193,13 @@ header {
   color: var(--color-white);
 }
 
+/* Link as button */
+a.btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
 .btn-add {
   background: var(--color-primary);
   color: var(--color-white);

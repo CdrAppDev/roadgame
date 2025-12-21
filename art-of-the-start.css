@@ -1,0 +1,60 @@
+/* Art of the Start - Additional Styles */
+
+/* Challenge statement box */
+.challenge-statement {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-left: 4px solid #f59e0b;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.challenge-statement strong {
+  color: #b45309;
+}
+
+/* Card accent colors for this page */
+.card-challenge .card-header { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #b45309; }
+.card-questions-strat .card-header { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); color: #4338ca; }
+.card-strategies .card-header { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #047857; }
+.card-target .card-header { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #be185d; }
+.card-mvp-features .card-header { background: linear-gradient(135deg, #ffedd5, #fed7aa); color: #c2410c; }
+.card-revenue .card-header { background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #0e7490; }
+.card-validation .card-header { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #15803d; }
+.card-decisions .card-header { background: linear-gradient(135deg, #f3e8ff, #e9d5ff); color: #7c3aed; }
+
+/* Card-specific accent colors for items */
+.card-challenge .item-list li:not(.category-header) { border-left-color: #f59e0b; }
+.card-questions-strat .item-list li:not(.category-header) { border-left-color: #4338ca; }
+.card-strategies .item-list li:not(.category-header) { border-left-color: #047857; }
+.card-target .item-list li:not(.category-header) { border-left-color: #be185d; }
+.card-mvp-features .item-list li:not(.category-header) { border-left-color: #c2410c; }
+.card-revenue .item-list li:not(.category-header) { border-left-color: #0e7490; }
+.card-validation .item-list li:not(.category-header) { border-left-color: #15803d; }
+.card-decisions .item-list li:not(.category-header) { border-left-color: #7c3aed; }
+
+/* Navigation link styling */
+.header-actions a.btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* PRO/CON/APPROACH item styling */
+.item-list li.item-pro {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5) !important;
+  border-left-color: #10b981 !important;
+}
+
+.item-list li.item-con {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2) !important;
+  border-left-color: #ef4444 !important;
+}
+
+.item-list li.item-approach {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe) !important;
+  border-left-color: #3b82f6 !important;
+  font-weight: 500;
+}

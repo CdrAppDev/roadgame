@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoadGame - Art of the Start</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="art-of-the-start.css">
+</head>
+<body>
+  <!-- Password Protection Overlay -->
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-modal">
+      <h2>RoadGame</h2>
+      <p>Enter password to continue</p>
+      <form id="authForm">
+        <input type="password" id="passwordInput" placeholder="Password" autocomplete="off" autofocus>
+        <button type="submit" class="btn btn-primary">Enter</button>
+      </form>
+      <p id="authError" class="auth-error"></p>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <h1>RoadGame</h1>
+      <p class="tagline">Art of the Start - MVP Strategy</p>
+    </div>
+    <div class="header-actions">
+      <a href="index.html" class="btn btn-secondary">Business Canvas</a>
+      <button id="exportBtn" class="btn btn-secondary">Export</button>
+      <button id="resetBtn" class="btn btn-danger">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="canvas">
+
+      <!-- The Core Challenge -->
+      <section class="card card-challenge card-wide" data-section="challenge">
+        <div class="card-header">
+          <h2>The Core Challenge</h2>
+          <span class="card-icon">&#x1F3AF;</span>
+        </div>
+        <div class="card-content">
+          <div class="challenge-statement">
+            <p>Marketplaces face the <strong>chicken-and-egg problem</strong>: you need supply to attract demand, but need demand to attract supply. The "art of the start" is finding the right wedge to break this cycle.</p>
+          </div>
+          <div class="subsection">
+            <h3>Key Constraints</h3>
+            <div class="editable-list" data-key="challenge-constraints">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add constraint...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Strategic Questions -->
+      <section class="card card-questions-strat" data-section="questions">
+        <div class="card-header">
+          <h2>Strategic Questions</h2>
+          <span class="card-icon">&#x2753;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>Which side can you bootstrap/fake?</h3>
+            <div class="editable-list" data-key="questions-bootstrap">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add thought...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>What's your distribution advantage?</h3>
+            <div class="editable-list" data-key="questions-distribution">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add thought...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>What would users pay for today?</h3>
+            <div class="editable-list" data-key="questions-pay">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add thought...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Where's the sharpest pain?</h3>
+            <div class="editable-list" data-key="questions-pain">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add thought...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Potential Strategies -->
+      <section class="card card-strategies" data-section="strategies">
+        <div class="card-header">
+          <h2>Potential Strategies</h2>
+          <span class="card-icon">&#x1F9ED;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>Demand-First (Build for families, add providers later)</h3>
+            <div class="editable-list" data-key="strategy-demand">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add pro/con/note...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Supply-First (Sign up providers, then attract families)</h3>
+            <div class="editable-list" data-key="strategy-supply">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add pro/con/note...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Coordinator-First (Team coordinators as the wedge)</h3>
+            <div class="editable-list" data-key="strategy-coordinator">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add pro/con/note...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Tournament-First (Partner with organizers for distribution)</h3>
+            <div class="editable-list" data-key="strategy-tournament">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add pro/con/note...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Target User -->
+      <section class="card card-target" data-section="target">
+        <div class="card-header">
+          <h2>Target User for V1</h2>
+          <span class="card-icon">&#x1F464;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>Who is the ideal first user?</h3>
+            <div class="editable-list" data-key="target-who">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add characteristic...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Why them?</h3>
+            <div class="editable-list" data-key="target-why">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add reason...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>How do we reach them?</h3>
+            <div class="editable-list" data-key="target-reach">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add channel...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MVP Feature Set -->
+      <section class="card card-mvp-features" data-section="mvp-features">
+        <div class="card-header">
+          <h2>MVP Feature Set</h2>
+          <span class="card-icon">&#x1F680;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>Core Features (Must ship)</h3>
+            <div class="editable-list" data-key="mvp-core">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add feature...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Value Created</h3>
+            <div class="editable-list" data-key="mvp-value">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add value point...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Explicitly NOT building (yet)</h3>
+            <div class="editable-list" data-key="mvp-not">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add excluded feature...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Path to Revenue -->
+      <section class="card card-revenue" data-section="revenue">
+        <div class="card-header">
+          <h2>Path to Revenue</h2>
+          <span class="card-icon">&#x1F4B5;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>First Revenue Model</h3>
+            <div class="editable-list" data-key="revenue-first">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add revenue idea...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Who pays and why?</h3>
+            <div class="editable-list" data-key="revenue-who">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add thought...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Revenue Milestones</h3>
+            <div class="editable-list" data-key="revenue-milestones">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add milestone...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Validation Plan -->
+      <section class="card card-validation" data-section="validation">
+        <div class="card-header">
+          <h2>Validation Plan</h2>
+          <span class="card-icon">&#x2705;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>Hypotheses to Test</h3>
+            <div class="editable-list" data-key="validation-hypotheses">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add hypothesis...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Success Metrics</h3>
+            <div class="editable-list" data-key="validation-metrics">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add metric...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Kill Criteria (When to pivot)</h3>
+            <div class="editable-list" data-key="validation-kill">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add criteria...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Decisions Made -->
+      <section class="card card-decisions card-wide" data-section="decisions">
+        <div class="card-header">
+          <h2>Decisions Made</h2>
+          <span class="card-icon">&#x1F3C1;</span>
+        </div>
+        <div class="card-content">
+          <div class="subsection">
+            <h3>Strategic Decisions</h3>
+            <div class="editable-list" data-key="decisions-strategic">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add decision...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="subsection">
+            <h3>Open Questions</h3>
+            <div class="editable-list" data-key="decisions-open">
+              <ul class="item-list"></ul>
+              <div class="add-item">
+                <input type="text" placeholder="Add question...">
+                <button class="btn btn-add">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>RoadGame - Art of the Start</p>
+  </footer>
+
+  <script src="art-of-the-start.js"></script>
+</body>
+</html>
