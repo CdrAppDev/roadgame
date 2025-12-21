@@ -68,7 +68,7 @@
     'questions-distribution': [
       { id: 20, text: 'Do we have access to tournament organizers?' },
       { id: 21, text: 'Any connection to TeamSnap, SportsEngine, or similar?' },
-      { id: 22, text: 'Are we embedded in the baseball parent community?' },
+      { id: 22, text: 'Are we embedded in any youth sports parent community?' },
       { id: 23, text: 'Can we reach team coordinators directly?' }
     ],
     'questions-pay': [

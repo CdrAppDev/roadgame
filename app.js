@@ -315,7 +315,7 @@
     ],
     'mvp-out': [
       { id: 100, text: 'Native mobile apps (iOS/Android)' },
-      { id: 101, text: 'Multi-sport support (start with baseball only)' },
+      { id: 101, text: 'Multi-sport support (start with one sport, expand later)' },
       { id: 102, text: 'White-label for tournament organizers' },
       { id: 103, text: 'Provider self-service portal' },
       { id: 104, text: 'Payment processing' }
@@ -341,14 +341,14 @@
       { id: 134, text: 'Net Promoter Score (NPS)' }
     ],
     'roadmap-phase1': [
-      { id: 140, text: 'Focus: Single sport (baseball) + single region (TX/FL/AZ)' },
+      { id: 140, text: 'Focus: Single sport + single region (TBD based on validation)' },
       { id: 141, text: 'Partner with 2-3 major tournament organizers' },
       { id: 142, text: 'Manually curate initial provider listings' },
       { id: 143, text: 'Launch MVP web app' },
       { id: 144, text: 'Validate demand with real users' }
     ],
     'roadmap-phase2': [
-      { id: 150, text: 'Expand to additional regions within baseball' },
+      { id: 150, text: 'Expand to additional regions within initial sport' },
       { id: 151, text: 'Add direct booking integrations' },
       { id: 152, text: 'Build review/rating system' },
       { id: 153, text: 'Launch team coordination features' },
