@@ -1,6 +1,70 @@
 /* Art of the Start - Additional Styles */
 
-/* Challenge statement box */
+/* Challenge narrative - expanded explanation */
+.challenge-narrative {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.challenge-narrative h3 {
+  color: #92400e;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.challenge-narrative h3:first-child {
+  margin-top: 0;
+}
+
+.challenge-narrative p {
+  margin-bottom: 0.75rem;
+  color: #78350f;
+}
+
+.challenge-narrative p:last-child {
+  margin-bottom: 0;
+}
+
+.challenge-narrative strong {
+  color: #92400e;
+  background: rgba(251, 191, 36, 0.2);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+.challenge-narrative ul.narrative-examples {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+}
+
+.challenge-narrative ul.narrative-examples li {
+  background: rgba(255, 255, 255, 0.6);
+  border-left: 3px solid #f59e0b;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: #78350f;
+}
+
+.challenge-narrative ul.narrative-examples li strong {
+  color: #b45309;
+  background: none;
+  padding: 0;
+}
+
+/* Legacy challenge statement box (keeping for compatibility) */
 .challenge-statement {
   background: linear-gradient(135deg, #fef3c7, #fde68a);
   border-left: 4px solid #f59e0b;
