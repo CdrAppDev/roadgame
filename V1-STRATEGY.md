@@ -2,47 +2,97 @@
 
 ## The Thesis
 
-Youth sports travel is a $52 billion market where families are a captive, frustrated audience. They spend 10-15 weekends per year at tournaments, paying inflated hotel rates through mandatory booking portals, eating at random restaurants because no one coordinates the team, and watching siblings stare at iPads during 3-hour gaps between games.
+Youth sports travel is a $52 billion market where families spend 10-15 weekends per year at tournaments. The pain isn't the games—it's the **unpredictable downtime between games**.
 
-**The opportunity:** No one owns the family experience layer. Tournament platforms serve organizers. Team apps serve coaches. Booking sites serve hotels. But no one helps the family answer: "What do we do with the next 4 hours?"
+In bracket-style tournaments, families only know their first game time. Win or lose, their schedule changes. They can't plan excursions because they don't know when they'll be free. The result: families sit around, kids stare at iPads, and everyone's frustrated.
 
-**Our approach:** Build the Yelp for tournament weekends. Scrape providers first (restaurants, activities, entertainment). Let families browse and express interest. Use that engagement data to prove demand to providers. Let providers claim their listings once we show them traffic.
+**The opportunity:** Build a platform that knows the bracket, calculates downtime for win/lose scenarios, and lets families book excursions with **automatic cancellation if they win**—no fees.
 
-This avoids the classic marketplace chicken-and-egg problem. We don't need provider partnerships to launch—we need families using the product.
+**Our approach:** Partner with excursion vendors who agree to no-cancellation-fee terms. They accept this because tournament weekends are high-demand—cancelled slots get resold. We take commission on completed bookings.
+
+This isn't a discovery app. It's a **bracket-aware booking platform**.
 
 ---
 
 ## V1 Scope
 
-V1 is a **single-tournament pilot** designed to validate one hypothesis: *Will families engage with local recommendations when presented in the context of their tournament schedule?*
+V1 is a **single-tournament pilot** designed to validate the hypothesis: *Will families book excursions when they can plan for both win/lose scenarios without cancellation risk?*
 
 ### What's In V1
 
+#### Tournament Management Layer (Critical Foundation)
+
 | Feature | Purpose |
 |---------|---------|
-| **Tournament Director Roster Upload** | TD uploads CSV of families (name, email). This is our distribution mechanism. |
-| **Email Invitations** | Families receive magic link (no password). One click to join. |
-| **Family Confirmation** | Family lands on tournament page, confirms participation. |
-| **Schedule View** | Shows game times + downtime windows. "You have 3 hours free Saturday 2-5pm." |
-| **Provider Listings** | Restaurants, activities, attractions near venue. Scraped from Google Places. |
-| **Interest Button** | Families tap "Interested" on listings. No booking, no payment—just signal. |
-| **Social Proof** | "3 teammates also interested" shown on listings. |
+| **Tournament Creation** | TD creates tournament with dates, venue, team list |
+| **Bracket Builder** | Define bracket structure (single elimination, double, pool play → bracket) |
+| **Game Scheduling** | Assign game times, fields, matchups |
+| **Results Entry** | Coaches/TDs update scores after each game |
+| **Auto-Schedule Calculation** | System calculates next game times based on bracket progression |
+| **Downtime Windows** | Show families: "If you win: free 2-5pm. If you lose: free 1-6pm." |
+
+#### Family Experience
+
+| Feature | Purpose |
+|---------|---------|
+| **Tournament Join** | Family receives invite, joins via magic link |
+| **Schedule View** | See current game + both win/lose scenarios for next round |
+| **Downtime Display** | Clear visualization of free time windows for each scenario |
+| **Vendor Browse** | Browse partnered excursion vendors near venue |
+| **Conditional Booking** | Book for "lose" scenario. If win → auto-cancel, no fee. |
+| **Itinerary View** | See booked excursions and their status |
+
+#### Vendor Integration
+
+| Feature | Purpose |
+|---------|---------|
+| **Vendor Onboarding** | Partner agreement: no-cancellation-fee terms |
+| **Availability Calendar** | Vendor sets available time slots |
+| **Booking Receipt** | Vendor receives booking with conditional status |
+| **Auto-Cancellation** | System cancels booking when family wins |
+| **Commission Tracking** | Track completed bookings for commission |
 
 ### What's NOT in V1
 
-- Provider-side features (claiming, responding, offers)
-- Booking or reservations
-- Payment processing
-- Multiple tournaments
+- Multiple simultaneous tournaments
+- Payment processing (manual invoicing for V1)
+- Vendor self-service portal (we onboard manually)
 - Mobile app (web-only)
-- Real-time schedule updates from tournament software
+- Real-time bracket sync with external tournament software
+- Family-to-family social features
 
 ### Technical Stack
 
-- Vanilla JS frontend (consistent with existing codebase)
-- No backend for V1—use Firebase or Supabase for auth + data
-- Google Places API for provider scraping
-- SendGrid or Resend for transactional email
+- Frontend: React or Next.js (need real app state management)
+- Backend: Node/Express or Next.js API routes
+- Database: PostgreSQL via Supabase
+- Auth: Magic links (Supabase Auth)
+- Email: Resend or SendGrid
+
+---
+
+## The Three-Sided Marketplace
+
+V1 requires coordination across three parties:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    ROADGAME PLATFORM                     │
+├──────────────────┬──────────────────┬───────────────────┤
+│  TOURNAMENT      │     FAMILIES     │     VENDORS       │
+│  DIRECTORS       │                  │                   │
+├──────────────────┼──────────────────┼───────────────────┤
+│ • Create bracket │ • View schedule  │ • List offerings  │
+│ • Update results │ • See downtime   │ • Set availability│
+│ • Manage teams   │ • Book excursions│ • Receive bookings│
+│                  │ • Auto-cancel    │ • Accept terms    │
+└──────────────────┴──────────────────┴───────────────────┘
+```
+
+**Value exchange:**
+- **TDs get:** Modern bracket management tool, happy families
+- **Families get:** Usable downtime, stress-free booking
+- **Vendors get:** Guaranteed traffic, predictable cancellation patterns
 
 ---
 
@@ -50,81 +100,132 @@ V1 is a **single-tournament pilot** designed to validate one hypothesis: *Will f
 
 ### Criteria
 
-1. **Size:** 80-150 teams (large enough to matter, small enough to serve)
-2. **Sport:** Basketball, soccer, or baseball (highest travel frequency)
-3. **Access:** We have a connection to the tournament director or a coach
-4. **Timing:** 8-12 weeks out (enough time to build, close enough to stay focused)
-5. **Location:** City with decent restaurant/activity density near venue
+1. **Format:** Must have bracket component (not pure round-robin)
+2. **Size:** 40-80 teams (manageable for V1)
+3. **Access:** Direct relationship with TD
+4. **Location:** Area with 5+ potential excursion vendors
+5. **Timing:** 10-14 weeks out (need time to build + recruit vendors)
 
-### Selection Process
+### Vendor Recruitment (Before Launch)
 
-1. List tournaments meeting criteria in next 3 months
-2. Identify any existing relationships (coach, parent, TD)
-3. Prioritize by access > timing > size
-4. Reach out to TD with pitch: "Free tool for your families. We handle everything."
+For V1, we need **3-5 excursion vendors** near the venue:
+- Family-friendly activities (mini golf, bowling, arcades)
+- Restaurants that take reservations
+- Local attractions (museums, parks with rentals)
 
-**Action required:** The founding team needs to identify 3-5 candidate tournaments and rank by access. Pick one within the next week.
+**Pitch to vendors:**
+> "150 families will be in town for [Tournament]. We'll send them to you with confirmed bookings. Some will cancel last-minute when their team wins—but it's a tournament weekend, you'll fill those slots. No platform fees until we prove it works."
+
+---
+
+## Data Model
+
+```
+Tournament
+  - name, dates, venue_address, bracket_type
+  - has_many: Teams, Rounds, Vendors
+
+Team
+  - name, tournament_id
+  - has_many: Families, Games
+
+Family
+  - email, name, team_id
+  - has_many: Bookings
+
+Round
+  - tournament_id, round_number, scheduled_time
+  - has_many: Games
+
+Game
+  - round_id, team_a_id, team_b_id
+  - scheduled_time, field/location
+  - score_a, score_b, status (scheduled/in_progress/completed)
+  - winner_id, loser_id
+
+Vendor
+  - name, address, category, description
+  - tournament_id (scoped to tournament area)
+  - has_many: TimeSlots, Bookings
+
+TimeSlot
+  - vendor_id, start_time, end_time, capacity
+
+Booking
+  - family_id, vendor_id, time_slot_id
+  - scenario: "lose" (always—you book for lose scenario)
+  - status: pending/confirmed/auto_cancelled/completed
+  - game_id (the game this booking depends on)
+```
 
 ---
 
 ## Success Metrics
 
-These are the numbers we'll measure after the tournament:
-
 | Metric | Target | What It Tells Us |
 |--------|--------|------------------|
-| **Confirmation Rate** | >50% | Of families invited, what % actually joined? Measures: Is the value prop clear? Is the onboarding frictionless? |
-| **Browse Rate** | >70% | Of confirmed families, what % viewed at least one provider listing? Measures: Is the UI discoverable? |
-| **Interest Rate** | >30% | Of confirmed families, what % expressed interest in at least one listing? Measures: Are the recommendations relevant? |
-| **Social Engagement** | >15% | Of interests expressed, what % were on listings where teammates also expressed interest? Measures: Does the social component drive behavior? |
-| **Provider Views** | Track all | Total views per listing. This becomes our proof point for provider outreach post-V1. |
+| **TD Adoption** | 1 (pilot) | Can we get a TD to use bracket management? |
+| **Vendor Partners** | 3-5 | Can we recruit vendors with no-fee terms? |
+| **Family Confirmation** | >50% | Of invited families, how many join? |
+| **Booking Rate** | >20% | Of confirmed families, how many book at least one excursion? |
+| **Completion Rate** | Track | Of bookings, how many result in completed visits? |
+| **Vendor Satisfaction** | Qualitative | Would vendors do this again? |
 
 ---
 
 ## Go / No-Go Criteria
 
-After V1, we make a decision:
-
 ### Continue Building If:
-- Confirmation rate >50% AND interest rate >30%
-- Qualitative feedback indicates families found it useful
-- At least one "aha" moment observed (e.g., team actually coordinated dinner through the app)
+- Booking rate >20% (families actually book, not just browse)
+- At least 2 vendors say "I'd do this again"
+- TD found bracket management useful
+- At least one "aha" moment (family raves about the experience)
 
 ### Pivot If:
-- Confirmation rate <30% (families don't care enough to join)
-- Interest rate <15% (recommendations aren't compelling)
-- Families say "I'd just use Yelp" in feedback
+- Families browse but don't book (<10% booking rate)
+- Vendors reject the no-fee cancellation model
+- Families say they'd rather "figure it out after the game"
 
 ### Stop If:
-- Can't get tournament director to participate
-- Can't reach families through email (spam filters, ignored)
-- Fundamental assumption wrong (families don't want coordination—they want to escape the team)
+- Can't recruit 3 vendors
+- TD won't adopt bracket management
+- Fundamental assumption wrong (families don't plan ahead)
 
 ---
 
-## Execution Sequence
+## Execution Phases
 
-```
-Phase 1: Setup (Issues #2, #3, #4)
-├── Data model & architecture
-├── Tournament director admin (CSV upload)
-└── Email invitation system
+### Phase 1: Tournament Management Core
+Build the bracket engine—this is the foundation everything else depends on.
+- Tournament creation
+- Bracket structure definition
+- Game scheduling
+- Results entry
+- Auto-calculation of next games
+- Downtime window calculation (win/lose scenarios)
 
-Phase 2: Family Experience (Issues #5, #6, #7, #8)
-├── Family confirmation flow
-├── Schedule view
-├── Provider listings
-└── Interest & social component
+### Phase 2: Family Experience
+Build the family-facing booking flow.
+- Magic link auth
+- Tournament join flow
+- Schedule + downtime view
+- Vendor browsing
+- Conditional booking flow
+- Itinerary management
 
-Phase 3: Data (Issues #9, #10)
-├── Provider scraping (Google Places)
-└── Schedule data entry (manual for V1)
+### Phase 3: Vendor Integration
+Build minimal vendor tooling.
+- Vendor onboarding (manual for V1)
+- Availability management
+- Booking notifications
+- Auto-cancellation notifications
 
-Phase 4: Launch (Issues #11, #12, #13)
-├── Select target tournament
-├── Analytics setup
-└── Deploy & launch
-```
+### Phase 4: Launch Prep
+- Select tournament
+- Recruit 3-5 vendors
+- Onboard TD
+- Test end-to-end flow
+- Launch
 
 ---
 
@@ -132,39 +233,52 @@ Phase 4: Launch (Issues #11, #12, #13)
 
 | Role | Responsibility |
 |------|----------------|
-| **Technical Lead (You)** | Architecture decisions, all coding, deployment |
-| **Tournament Liaison** | Relationship with TD, roster collection, day-of support |
-| **Research & Analysis** | Monitor metrics, conduct post-tournament interviews, synthesize learnings |
+| **Technical Lead** | Architecture, all coding, deployment |
+| **Tournament Liaison** | TD relationship, vendor recruitment, day-of support |
+| **Operations** | Manual vendor onboarding, booking support, issue resolution |
 
 ---
 
-## The Ask to Co-Founders
+## The Ask
 
-1. **Agree on thesis:** Do we believe the family experience gap is real and worth pursuing?
-2. **Commit to V1 scope:** This is what we're building, nothing more.
-3. **Identify tournament candidates:** Each founder lists any tournaments they have access to.
-4. **Assign roles:** Who owns TD relationship? Who owns post-tournament research?
-5. **Set a launch target:** Pick a tournament and work backward.
+1. **Agree on pivot:** This is no longer a discovery app—it's a booking platform with tournament management. Are we aligned?
+2. **Commit to scope:** Tournament management is critical. We build that first.
+3. **Identify tournament:** Who has a TD relationship we can leverage?
+4. **Identify vendors:** Who can recruit 3-5 local excursion vendors?
+5. **Assign roles:** Who owns what?
 
 ---
 
 ## Why This Will Work
 
-1. **No chicken-and-egg:** We scrape providers, so we launch with inventory on day one.
-2. **Built-in distribution:** Tournament director sends the invite, not us. We piggyback on existing trust.
-3. **Social proof drives engagement:** "Your teammates are interested" is more compelling than any marketing.
-4. **Low-risk validation:** One tournament, 100-200 families, a few weeks of effort. We learn fast.
-5. **Clear next step:** If V1 works, we approach providers with data: "150 families viewed your listing. Want to claim it?"
+1. **Real value prop:** Families can actually plan, not just browse.
+2. **Win-win for vendors:** They get guaranteed bookings; cancellations resell on busy weekends.
+3. **TD gets value:** Modern bracket management tool (potential standalone value).
+4. **Clear revenue model:** Commission on completed bookings.
+5. **Defensible:** Tournament management + vendor relationships = hard to replicate.
 
 ---
 
-## Appendix: Key Research Findings
+## Key Risk: The Booking Cold Start
 
-From our market research synthesis:
+The new challenge: vendors won't partner without families, families won't book without vendors.
+
+**Mitigation:**
+1. Recruit vendors BEFORE families see the platform
+2. Lead with TD value (bracket management) to get tournament buy-in
+3. Offer vendors zero-risk trial: "No fees until we prove it works"
+4. Start with vendors who are already hungry for tournament traffic
+
+---
+
+## Appendix: Research Findings
+
+From market research:
 
 - **Market size:** $52.2B direct spending, $128B total economic impact
-- **Pain points (ranked):** Stay-to-Play mandates > Schedule chaos > App fatigue > Group dining > Sibling neglect > Burnout
-- **Bootstrap precedents:** OpenTable (single-player mode), Airbnb (event-based launch), Yelp (claim listing model)
-- **The gap:** No platform connects bracket/schedule to real-time local recommendations
+- **Tournament frequency:** 10-15 weekends per year for serious travel teams
+- **Downtime pain:** 8-10 hours at venue per day, much of it waiting
+- **Spending per trip:** $830 average ($330 lodging, $250 transport, $250 food)
+- **Key insight:** "Dead time gaps" ranked #2 pain point after lodging costs
 
-Full research available at: [Research Dashboard](https://cdrappdev.github.io/roadgame/research-dashboard.html)
+Full research: [Research Dashboard](https://cdrappdev.github.io/roadgame/research-dashboard.html)
