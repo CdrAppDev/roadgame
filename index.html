@@ -1,386 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RoadGame - Business Canvas</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .hero .thesis {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .narrative-section {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+        /* Cards */
+        .card-link {
+            display: block;
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .card-link:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card-link h3 {
+            font-size: 1.25rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-link h3::after {
+            content: "→";
+            color: var(--primary);
+            font-weight: normal;
+        }
+
+        .card-link p {
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 60px 0;
+        }
+
+        /* Internal Tools Section */
+        .internal-section {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .internal-section h2 {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .internal-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .internal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+            border: 1px solid var(--gray-200);
+            transition: all 0.2s;
+        }
+
+        .internal-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .internal-link .icon {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-  <!-- Password Protection Overlay -->
-  <div id="authOverlay" class="auth-overlay">
-    <div class="auth-modal">
-      <h2>RoadGame</h2>
-      <p>Enter password to continue</p>
-      <form id="authForm">
-        <input type="password" id="passwordInput" placeholder="Password" autocomplete="off" autofocus>
-        <button type="submit" class="btn btn-primary">Enter</button>
-      </form>
-      <p id="authError" class="auth-error"></p>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>RoadGame</h1>
+        <p class="tagline">The Tournament Weekend Companion</p>
+        <p class="thesis">
+            Youth sports families spend 10-15 weekends per year at tournaments,
+            but no one helps them with the 16 hours they spend <em>away</em> from the field.
+            We're building the platform that owns that experience.
+        </p>
     </div>
-  </div>
 
-  <header>
-    <div class="header-content">
-      <h1>RoadGame</h1>
-      <p class="tagline">Youth Sports Travel Marketplace</p>
+    <div class="container">
+        <!-- The Opportunity -->
+        <div class="narrative-section">
+            <p class="section-label">Step 1</p>
+            <h2 class="section-title">The Opportunity</h2>
+            <p class="section-description">
+                A $52 billion market where families are captive, frustrated, and underserved.
+                Here's what the research shows.
+            </p>
+            <a href="research-dashboard.html" class="card-link">
+                <h3>Market Research Dashboard</h3>
+                <p>Market size, pain points, spending data, and bootstrap strategies from successful marketplaces.</p>
+            </a>
+        </div>
+
+        <!-- The Plan -->
+        <div class="narrative-section">
+            <p class="section-label">Step 2</p>
+            <h2 class="section-title">The Plan</h2>
+            <p class="section-description">
+                A single-tournament pilot to validate whether families will engage with local recommendations
+                in the context of their schedule.
+            </p>
+            <a href="strategy.html" class="card-link">
+                <h3>V1 Strategy</h3>
+                <p>Thesis, scope, success metrics, go/no-go criteria, and the asks for the founding team.</p>
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Internal Tools -->
+        <div class="internal-section">
+            <h2>Internal Working Documents</h2>
+            <div class="internal-links">
+                <a href="canvas.html" class="internal-link">
+                    <span class="icon">📋</span>
+                    Business Canvas
+                </a>
+                <a href="art-of-the-start.html" class="internal-link">
+                    <span class="icon">🎯</span>
+                    Art of the Start
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="header-actions">
-      <a href="art-of-the-start.html" class="btn btn-secondary">Art of the Start</a>
-      <button id="exportBtn" class="btn btn-secondary">Export</button>
-      <button id="resetBtn" class="btn btn-danger">Reset</button>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>View project on <a href="https://github.com/CdrAppDev/roadgame">GitHub</a></p>
     </div>
-  </header>
-
-  <main>
-    <div class="canvas">
-
-      <!-- Problem Statement -->
-      <section class="card card-problem" data-section="problem">
-        <div class="card-header">
-          <h2>Problem Statement</h2>
-          <span class="card-icon">&#x26A0;</span>
-        </div>
-        <div class="card-content">
-          <div class="editable-list" data-key="problem-points">
-            <ul class="item-list"></ul>
-            <div class="add-item">
-              <input type="text" placeholder="Add a pain point...">
-              <button class="btn btn-add">+</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- User Segments -->
-      <section class="card card-users card-wide" data-section="users">
-        <div class="card-header">
-          <h2>User Segments</h2>
-          <span class="card-icon">&#x1F465;</span>
-        </div>
-        <div class="card-content card-content-columns">
-          <div class="subsection">
-            <h3>Demand Side (Travelers)</h3>
-            <div class="editable-list" data-key="users-demand">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add user segment...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Supply Side (Service Providers)</h3>
-            <div class="editable-list" data-key="users-supply">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add provider type...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Partners & Ecosystem</h3>
-            <div class="editable-list" data-key="users-partners">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add partner type...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- User Experiences -->
-      <section class="card card-experiences card-wide" data-section="experiences">
-        <div class="card-header">
-          <h2>User Experiences</h2>
-          <span class="card-icon">&#x1F9ED;</span>
-        </div>
-        <div class="card-content card-content-columns">
-          <div class="subsection">
-            <h3>Tournament Parent</h3>
-            <div class="editable-list" data-key="ux-parent">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add experience detail...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Team Coordinator</h3>
-            <div class="editable-list" data-key="ux-coordinator">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add experience detail...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Service Provider</h3>
-            <div class="editable-list" data-key="ux-provider">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add experience detail...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Tournament Organizer</h3>
-            <div class="editable-list" data-key="ux-organizer">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add experience detail...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>CVB / Destination</h3>
-            <div class="editable-list" data-key="ux-destination">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add experience detail...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Value Propositions -->
-      <section class="card card-value" data-section="value">
-        <div class="card-header">
-          <h2>Value Propositions</h2>
-          <span class="card-icon">&#x2728;</span>
-        </div>
-        <div class="card-content">
-          <div class="subsection">
-            <h3>For Families</h3>
-            <div class="editable-list" data-key="value-families">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add value prop...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>For Providers</h3>
-            <div class="editable-list" data-key="value-providers">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add value prop...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Feature Set -->
-      <section class="card card-features" data-section="features">
-        <div class="card-header">
-          <h2>Feature Set</h2>
-          <span class="card-icon">&#x2699;</span>
-        </div>
-        <div class="card-content">
-          <div class="feature-categories">
-            <div class="subsection">
-              <h3>Trip Planning</h3>
-              <div class="editable-list" data-key="features-planning">
-                <ul class="item-list"></ul>
-                <div class="add-item">
-                  <input type="text" placeholder="Add feature...">
-                  <button class="btn btn-add">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="subsection">
-              <h3>Booking & Logistics</h3>
-              <div class="editable-list" data-key="features-booking">
-                <ul class="item-list"></ul>
-                <div class="add-item">
-                  <input type="text" placeholder="Add feature...">
-                  <button class="btn btn-add">+</button>
-                </div>
-              </div>
-            </div>
-            <div class="subsection">
-              <h3>Community & Social</h3>
-              <div class="editable-list" data-key="features-social">
-                <ul class="item-list"></ul>
-                <div class="add-item">
-                  <input type="text" placeholder="Add feature...">
-                  <button class="btn btn-add">+</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MVP Scope -->
-      <section class="card card-mvp" data-section="mvp">
-        <div class="card-header">
-          <h2>MVP Scope</h2>
-          <span class="card-icon">&#x1F680;</span>
-        </div>
-        <div class="card-content">
-          <div class="subsection">
-            <h3>Must Have</h3>
-            <div class="editable-list" data-key="mvp-must">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add must-have...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Nice to Have</h3>
-            <div class="editable-list" data-key="mvp-nice">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add nice-to-have...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Out of Scope (for now)</h3>
-            <div class="editable-list" data-key="mvp-out">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add out-of-scope item...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Business Model -->
-      <section class="card card-business" data-section="business">
-        <div class="card-header">
-          <h2>Business Model</h2>
-          <span class="card-icon">&#x1F4B0;</span>
-        </div>
-        <div class="card-content">
-          <div class="subsection">
-            <h3>Revenue Streams</h3>
-            <div class="editable-list" data-key="business-revenue">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add revenue stream...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Cost Structure</h3>
-            <div class="editable-list" data-key="business-costs">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add cost item...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Key Metrics</h3>
-            <div class="editable-list" data-key="business-metrics">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add metric...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Roadmap -->
-      <section class="card card-roadmap" data-section="roadmap">
-        <div class="card-header">
-          <h2>Roadmap</h2>
-          <span class="card-icon">&#x1F5FA;</span>
-        </div>
-        <div class="card-content">
-          <div class="subsection">
-            <h3>Phase 1: Foundation</h3>
-            <div class="editable-list" data-key="roadmap-phase1">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add milestone...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Phase 2: Growth</h3>
-            <div class="editable-list" data-key="roadmap-phase2">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add milestone...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Phase 3: Scale</h3>
-            <div class="editable-list" data-key="roadmap-phase3">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add milestone...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Open Questions -->
-      <section class="card card-questions" data-section="questions">
-        <div class="card-header">
-          <h2>Open Questions</h2>
-          <span class="card-icon">&#x2753;</span>
-        </div>
-        <div class="card-content">
-          <div class="subsection">
-            <h3>Assumptions to Validate</h3>
-            <div class="editable-list" data-key="questions-assumptions">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add assumption...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-          <div class="subsection">
-            <h3>Unknowns & Risks</h3>
-            <div class="editable-list" data-key="questions-risks">
-              <ul class="item-list"></ul>
-              <div class="add-item">
-                <input type="text" placeholder="Add question or risk...">
-                <button class="btn btn-add">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <footer>
-    <p>RoadGame Business Canvas</p>
-  </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

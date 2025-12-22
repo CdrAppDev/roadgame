@@ -55,6 +55,43 @@
             font-size: 1.1rem;
         }
 
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .dashboard-footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+            margin-top: 2rem;
+        }
+
+        .dashboard-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .dashboard-footer a:hover {
+            text-decoration: underline;
+        }
+
         .section {
             margin-bottom: 2.5rem;
         }
@@ -394,6 +431,10 @@
         <header>
             <h1>RoadGame Market Research Dashboard</h1>
             <p>Understanding the Youth Sports Travel Market — Who are our customers, what do they struggle with, and why is this a big opportunity?</p>
+            <div class="nav-bar">
+                <a href="index.html">← Home</a>
+                <a href="strategy.html">V1 Strategy →</a>
+            </div>
         </header>
 
         <!-- What Is This Market -->
@@ -802,6 +843,10 @@
                 </p>
             </div>
         </section>
+
+        <div class="dashboard-footer">
+            <p><a href="index.html">← Back to Home</a> · <a href="strategy.html">View V1 Strategy →</a></p>
+        </div>
     </div>
 
     <script>
