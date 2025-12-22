@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame Market Research Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-radius: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section-description {
+            color: #6b7280;
+            font-size: 1rem;
+            max-width: 900px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .metric-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .metric-card .label {
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .metric-card .explanation {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .metric-card .change {
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            display: inline-block;
+        }
+
+        .metric-card .change.positive {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .metric-card .change.negative {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .chart-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .chart-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .chart-card .chart-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .pain-points {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .pain-point {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--danger);
+        }
+
+        .pain-point h4 {
+            color: var(--danger);
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .pain-point .what-it-means {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .pain-point .stat {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .pain-point .description {
+            color: #4b5563;
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .pain-point .why-matters {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.75rem;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--danger);
+            border-radius: 4px;
+        }
+
+        .quote-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .quote-card blockquote {
+            font-style: italic;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .quote-card .source {
+            color: #6b7280;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .quote-card .insight {
+            background: #ede9fe;
+            color: #5b21b6;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .competitors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .competitor-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .competitor-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .competitor-card .what-they-do {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .competitor-card .gap {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .competitor-card .gap strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .strategy-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--success);
+        }
+
+        .strategy-card h4 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-card .explanation {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .strategy-card .example {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .strategy-card .example strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .strategy-card .roadgame-application {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .thesis-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .thesis-box h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .thesis-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 1rem auto;
+            line-height: 1.7;
+        }
+
+        .callout-box {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .callout-box p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .highlight-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: #fef3c7;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #92400e;
+        }
+
+        .highlight-stat .text {
+            color: #92400e;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>RoadGame Market Research Dashboard</h1>
+            <p>Understanding the Youth Sports Travel Market — Who are our customers, what do they struggle with, and why is this a big opportunity?</p>
+        </header>
+
+        <!-- What Is This Market -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">What Is This Market?</h2>
+                <p class="section-description">
+                    Youth sports has transformed from kids playing at local parks into a massive travel industry. Millions of families now spend their weekends driving to tournaments in other cities, booking hotels, eating at restaurants, and filling time between games. This is the "youth sports travel market" — all the money families spend when they travel for their kids' tournaments.
+                </p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">$52.2B</div>
+                    <div class="label">What Families Spend Each Year on Tournament Travel</div>
+                    <div class="explanation">
+                        This is the total amount American families spent in 2023 on hotels, gas, food, and tournament fees when traveling for youth sports. To put it in perspective, that's more than the entire movie theater industry.
+                    </div>
+                    <div class="change positive">Growing 32% since 2021</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="value">$128B</div>
+                    <div class="label">Total Money This Pumps Into the Economy</div>
+                    <div class="explanation">
+                        Beyond what families spend directly, this money ripples through local economies — hotels hire more staff, restaurants buy more food, gas stations sell more fuel. This "ripple effect" more than doubles the economic impact.
+                    </div>
+                    <div class="change positive">Growing 39% since 2021</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="value">204.9M</div>
+                    <div class="label">Number of Sports Trips Taken Per Year</div>
+                    <div class="explanation">
+                        Americans took nearly 205 million trips for youth and amateur sports in 2023. That's more than one trip for every adult in the country. Most of these are weekend tournament trips within a few hours' drive.
+                    </div>
+                    <div class="change positive">Up 7% from last year</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="value">73.5M</div>
+                    <div class="label">Hotel Rooms Booked Per Year</div>
+                    <div class="explanation">
+                        Youth sports fills 73.5 million hotel room nights each year. Hotels in cities near sports complexes depend heavily on this business — it's often their most reliable revenue source, more predictable than business travel or vacations.
+                    </div>
+                    <div class="change positive">Up 10% since 2021</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="value">$1,016</div>
+                    <div class="label">What the Average Family Spends Per Year on Their Kid's Main Sport</div>
+                    <div class="explanation">
+                        This covers registration fees, equipment, training, and travel. But this is just the average — families in competitive travel leagues often spend $3,000 to $10,000+ per year, especially in expensive sports like hockey or competitive gymnastics.
+                    </div>
+                    <div class="change negative">Up 46% in just 5 years — costs are rising fast</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="value">$113.6B</div>
+                    <div class="label">Where This Market Is Headed by 2033</div>
+                    <div class="explanation">
+                        Industry analysts project the market will more than double over the next decade. Youth sports is becoming more professionalized, with more travel, more tournaments, and more spending. This is a growth market.
+                    </div>
+                    <div class="change positive">9.8% annual growth expected</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Does a Typical Trip Look Like -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">What Does a Typical Tournament Trip Look Like?</h2>
+                <p class="section-description">
+                    Understanding the rhythm of a tournament weekend helps explain where the frustrations come from. These aren't relaxing vacations — they're logistically intense, exhausting experiences for the whole family.
+                </p>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Where the Money Goes (Per Trip)</h3>
+                    <div class="chart-description">
+                        Each tournament weekend costs families around $800-$1,000 when you add up hotels, gas, food, and fees. Here's how that typically breaks down. Notice that lodging and food are the biggest chunks — these are the areas where families feel the most pain.
+                    </div>
+                    <canvas id="spendingChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Which Sports Drive the Most Travel?</h3>
+                    <div class="chart-description">
+                        Basketball is the most popular youth sport, but baseball and soccer families often travel the most miles. "Travel ball" culture is especially intense in baseball, where teams may play 40-60 games per season, most of them requiring overnight trips.
+                    </div>
+                    <canvas id="sportsChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Where Do These Families Live?</h3>
+                    <div class="chart-description">
+                        Travel sports families are concentrated in suburban and urban areas. Rural families participate less because they have fewer travel team options nearby and longer drives to reach tournament venues. This tells us where our early users likely are.
+                    </div>
+                    <canvas id="geoChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>How Fast Is This Market Growing?</h3>
+                    <div class="chart-description">
+                        The dip in 2021 was COVID. Notice how fast it bounced back and then exceeded pre-pandemic levels. Youth sports travel is seen as "non-negotiable" by families — even in tough economic times, parents prioritize their kids' sports.
+                    </div>
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+
+            <div class="callout-box">
+                <h4>The Typical Tournament Weekend</h4>
+                <p>
+                    <strong>Friday:</strong> Leave work early, drive 2-4 hours, check into hotel, find dinner for the family<br>
+                    <strong>Saturday:</strong> Wake up at 6am, games at 8am, noon, and 4pm with long gaps in between. Fill 8-10 hours at the venue or nearby. Team dinner somewhere that can seat 25 people.<br>
+                    <strong>Sunday:</strong> Bracket play, could end at 10am (if you lose) or 5pm (if you win). Drive home exhausted.<br><br>
+                    This happens 10-15 weekends per year for serious travel teams. That's a lot of hotels, a lot of meals, and a lot of "what do we do for the next 3 hours?"
+                </p>
+            </div>
+        </section>
+
+        <!-- Pain Points -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">What Makes Families Frustrated?</h2>
+                <p class="section-description">
+                    Through research into parent forums, Reddit discussions, and industry reports, we identified the biggest sources of frustration. These are ranked by how intensely parents complain about them — the higher the bar, the more anger we found.
+                </p>
+            </div>
+
+            <div class="pain-points">
+                <div class="pain-point">
+                    <h4>#1: "Stay to Play" Hotel Mandates — The Biggest Source of Anger</h4>
+                    <div class="what-it-means">What is this? Many tournaments require teams to book hotels through an "official" booking portal to be eligible to play. You can't just book on Expedia or use your hotel points.</div>
+                    <div class="stat">Families pay $80-$100 MORE per night than public rates</div>
+                    <div class="description">
+                        The "discounted" portal rate is often higher than what you'd find on Booking.com or the hotel's own website. Parents can't use their loyalty points or status. Cancellation policies are rigid — if your kid gets sick, you still pay. Hidden kickbacks of $10-20 per room night go back to tournament organizers.
+                    </div>
+                    <div class="why-matters">
+                        <strong>Why this matters for RoadGame:</strong> This is a captive audience with no good options. If we can add value to this mandatory experience (better info, group coordination, local recommendations), families will love us for making a frustrating requirement actually useful.
+                    </div>
+                    <div class="progress-bar"><div class="fill" style="width: 95%"></div></div>
+                </div>
+
+                <div class="pain-point">
+                    <h4>#2: Chaotic Schedules and Exhausting Days</h4>
+                    <div class="what-it-means">What is this? Tournament schedules are often poorly designed, leaving families stuck at venues for 8-10 hours with long gaps between games and little rest time.</div>
+                    <div class="stat">Families spend 8-10 hours per day at the venue</div>
+                    <div class="description">
+                        Games might be at 8am, then 1pm, then 6pm — leaving huge "dead time" gaps where you're stuck near the fields with nothing to do. Game times change at the last minute. Kids are sleep-deprived (8pm game Friday, 8am game Saturday). Parents often learn about schedule changes "through the kid."
+                    </div>
+                    <div class="why-matters">
+                        <strong>Why this matters for RoadGame:</strong> These "gaps" are exactly the time families need help. "We have 3 hours — where can we eat? What can the siblings do? Is there anywhere with air conditioning?" This is the problem we're solving.
+                    </div>
+                    <div class="progress-bar"><div class="fill" style="width: 85%"></div></div>
+                </div>
+
+                <div class="pain-point">
+                    <h4>#3: Too Many Apps, None of Them Talk to Each Other</h4>
+                    <div class="what-it-means">What is this? Families juggle 4-5 different apps for different purposes — one for game schedules, one for team chat, one for stats, one for registration — and none of them integrate.</div>
+                    <div class="stat">4-5 apps per family, with different apps for each sport/team</div>
+                    <div class="description">
+                        GameChanger for scores, TeamSnap for team communication, GroupMe for quick messages, SportsEngine for registration, plus the tournament's own website. If you have two kids in different sports, double everything. Parents describe "app fatigue" and wish there was one place for everything.
+                    </div>
+                    <div class="why-matters">
+                        <strong>Why this matters for RoadGame:</strong> There's no single "tournament weekend companion" that handles the travel experience. We're not competing with TeamSnap (they do communication) — we're filling a gap no one addresses.
+                    </div>
+                    <div class="progress-bar"><div class="fill" style="width: 75%"></div></div>
+                </div>
+
+                <div class="pain-point">
+                    <h4>#4: Finding Restaurants That Can Handle 25 People</h4>
+                    <div class="what-it-means">What is this? Teams want to eat together, but finding a restaurant that can seat a group of 20-30 people (kids plus parents) on short notice is nearly impossible.</div>
+                    <div class="stat">Need to seat 20-30 people with only 90 minutes between games</div>
+                    <div class="description">
+                        Most restaurants can't handle a group this size without a reservation. Splitting the check is a nightmare. You need somewhere fast (limited time), kid-friendly (picky eaters), and affordable (families are already spending so much). Yelp doesn't help because it doesn't tell you "can this place handle a baseball team?"
+                    </div>
+                    <div class="why-matters">
+                        <strong>Why this matters for RoadGame:</strong> "Where should the team eat?" is asked dozens of times per weekend. A curated list of "tournament-ready" restaurants near the venue — with info about group capacity and speed of service — would be incredibly valuable.
+                    </div>
+                    <div class="progress-bar"><div class="fill" style="width: 70%"></div></div>
+                </div>
+
+                <div class="pain-point">
+                    <h4>#5: Burnout — Kids and Parents Are Exhausted</h4>
+                    <div class="what-it-means">What is this? The intensity of travel sports — every weekend, all season — leads to physical and emotional exhaustion. Many kids quit, and parents question if it's worth it.</div>
+                    <div class="stat">70% of kids quit organized sports by age 13</div>
+                    <div class="description">
+                        Parents spend 20+ hours per week on sports logistics. Siblings get dragged along and neglected. Family time disappears. The sport becomes a "chore" instead of fun. Parents describe feeling trapped — they've invested so much money and time, but they're not enjoying it.
+                    </div>
+                    <div class="why-matters">
+                        <strong>Why this matters for RoadGame:</strong> We can't solve burnout entirely, but we can reduce the logistical burden. If the tournament weekend is less stressful to plan and navigate, families might actually enjoy parts of it.
+                    </div>
+                    <div class="progress-bar"><div class="fill" style="width: 65%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice of Customer -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">What Parents Actually Say (In Their Own Words)</h2>
+                <p class="section-description">
+                    These quotes come directly from Reddit, parent forums, and sports blogs. They show the emotional intensity of these frustrations — this isn't mild annoyance, it's genuine anger and exhaustion.
+                </p>
+            </div>
+
+            <div class="quote-card">
+                <blockquote>"The 'discounted' rate through the portal? $249. Same hotel, same dates, same room—$169 online. But book direct and you're out of compliance."</blockquote>
+                <div class="source">— Youth Soccer Parent, Reddit r/youthsoccer</div>
+                <div class="insight">
+                    <strong>What this tells us:</strong> Parents feel forced into overpaying. They've done the research, they know they're getting a bad deal, and they resent it. Any tool that provides transparency or value in this process will earn trust.
+                </div>
+            </div>
+
+            <div class="quote-card">
+                <blockquote>"It's a ruthless, blood-sucking money-game and parents are the victims because we want so badly for our kids to be successful."</blockquote>
+                <div class="source">— Travel Baseball Parent, Reddit r/Parenting</div>
+                <div class="insight">
+                    <strong>What this tells us:</strong> Parents feel exploited by the system. They're paying because they love their kids, not because they see value. A platform that genuinely helps them (rather than extracting money) will stand out.
+                </div>
+            </div>
+
+            <div class="quote-card">
+                <blockquote>"It robs time away from your other kids. It's horrible."</blockquote>
+                <div class="source">— Gymnastics Mom, Reddit r/Parenting</div>
+                <div class="insight">
+                    <strong>What this tells us:</strong> The non-athlete siblings are an underserved part of the experience. What do they do during the 8 hours at the venue? Features that help the whole family (not just the athlete) would resonate.
+                </div>
+            </div>
+
+            <div class="quote-card">
+                <blockquote>"Too many different group chats for one trip."</blockquote>
+                <div class="source">— Team Coordinator, Parent Forum</div>
+                <div class="insight">
+                    <strong>What this tells us:</strong> Communication is fragmented across tools. A single place for "this tournament, this weekend, this team" would reduce chaos.
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitors -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Who Else Is Trying to Solve This Problem?</h2>
+                <p class="section-description">
+                    Several companies operate in this space, but each focuses on a specific slice of the experience. No one owns the full "tournament weekend" — especially the family experience between games.
+                </p>
+            </div>
+
+            <div class="competitors-grid">
+                <div class="competitor-card">
+                    <h4>Lucid Travel</h4>
+                    <div class="what-they-do">
+                        Lucid helps teams book hotels with automated tools. They return 5% of the hotel commission as cashback to the club. They've grown fast by making hotel booking less painful for team coordinators.
+                    </div>
+                    <div class="gap">
+                        <strong>What they don't do:</strong> They only handle hotels. No restaurant recommendations, no activity suggestions, no help with "what do we do for the next 3 hours?" They're a booking tool, not a trip companion.
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <h4>Coordle</h4>
+                    <div class="what-they-do">
+                        The closest thing to what we're building. Coordle offers itinerary management, local restaurant ads, and group meal ordering. They're specifically targeting the "chaos" of tournament weekends.
+                    </div>
+                    <div class="gap">
+                        <strong>What they don't do:</strong> They sell to organizations (B2B), not directly to families. You can only use it if your club has adopted it. Limited market footprint so far. Invite-only access.
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <h4>TeamSnap</h4>
+                    <div class="what-they-do">
+                        The dominant app for youth sports team management. 24+ million users. Handles schedules, team chat, availability tracking, and registration. Almost every travel team uses it.
+                    </div>
+                    <div class="gap">
+                        <strong>What they don't do:</strong> No travel features. No hotel booking, no local recommendations, no tournament-specific tools. They've partnered with restaurant chains for advertising, but there's no actual discovery or booking functionality.
+                    </div>
+                </div>
+
+                <div class="competitor-card">
+                    <h4>Team Travel Source / HBC Event Services</h4>
+                    <div class="what-they-do">
+                        These are the traditional "housing agencies" that work with tournaments to manage hotel blocks. They're the ones running the "Stay to Play" portals that families complain about.
+                    </div>
+                    <div class="gap">
+                        <strong>What they don't do:</strong> Their customer is the tournament director, not the family. They're seen as the "enforcers" of unpopular policies. No incentive to make the family experience better — they just need rooms booked.
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-stat">
+                <div class="number">The Big Gap No One Fills</div>
+                <div class="text">
+                    <strong>"Bracket-to-Table" Connection:</strong> No platform connects the live tournament schedule (when are your games, when are your gaps) to real-time recommendations for what to do during those gaps. This is the white space RoadGame can own.
+                </div>
+            </div>
+        </section>
+
+        <!-- Bootstrap Strategies -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">How Do You Start a Marketplace From Zero?</h2>
+                <p class="section-description">
+                    RoadGame is a "two-sided marketplace" — we need families (demand) AND local businesses like restaurants and hotels (supply). The classic problem: families won't come if there are no listings, but businesses won't list if there are no families. Here's how successful companies solved this "chicken and egg" problem.
+                </p>
+            </div>
+
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h4>1. Build Something Useful for One Side First</h4>
+                    <div class="explanation">
+                        Don't try to attract both sides at once. Build a tool that's valuable to one side even if the other side doesn't exist yet. This gives you a "foot in the door."
+                    </div>
+                    <div class="example">
+                        <strong>How OpenTable did it:</strong> They built reservation management software that restaurants could use internally. Restaurants signed up for the software benefit — then OpenTable turned on the consumer booking site once they had enough restaurants.
+                    </div>
+                    <div class="roadgame-application">
+                        <strong>For RoadGame:</strong> We can provide value to families by showing scraped listings (from Google) and helping with group coordination — even before any businesses have "signed up."
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>2. Go Where Your Users Already Are</h4>
+                    <div class="explanation">
+                        Don't try to build a new audience from scratch. Find where your target users are already hanging out and meet them there. Redirect their attention to your platform.
+                    </div>
+                    <div class="example">
+                        <strong>How Airbnb did it:</strong> They built a tool that let hosts cross-post their listings to Craigslist automatically. This "parasitized" Craigslist's existing audience and funneled them to Airbnb.
+                    </div>
+                    <div class="roadgame-application">
+                        <strong>For RoadGame:</strong> Target Facebook groups where sports parents discuss travel, team coordinator group chats, and tournament websites. Meet families where they already are.
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>3. Focus on One Event to Start</h4>
+                    <div class="explanation">
+                        Instead of launching everywhere at once, pick ONE event or location and achieve 100% density there. It's better to be complete in one place than thin everywhere.
+                    </div>
+                    <div class="example">
+                        <strong>How Airbnb did it:</strong> They launched at the Democratic National Convention in Denver — a temporary spike in demand that they could fully serve. It proved the model worked before expanding.
+                    </div>
+                    <div class="roadgame-application">
+                        <strong>For RoadGame:</strong> Pick ONE tournament from an existing relationship. Serve it completely. Have every nearby restaurant and hotel listed. Then use that success story to expand.
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>4. Do Things That Don't Scale (At First)</h4>
+                    <div class="explanation">
+                        In the early days, do things manually that you'll eventually automate. This builds quality and trust that wouldn't be possible otherwise.
+                    </div>
+                    <div class="example">
+                        <strong>How Airbnb did it:</strong> The founders personally traveled to New York and took professional photos of listings. This made listings look trustworthy and increased bookings 2.5x.
+                    </div>
+                    <div class="roadgame-application">
+                        <strong>For RoadGame:</strong> Manually curate the first set of listings. Call hotels to check on team amenities. Visit restaurants to verify they can handle large groups. Build quality that can't be scraped.
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>5. Create Listings Without Asking (Then Let Them Claim)</h4>
+                    <div class="explanation">
+                        Don't wait for businesses to sign up. Scrape public data to create listings, drive traffic to those listings, then reach out and say "you already have 50 views, want to claim this?"
+                    </div>
+                    <div class="example">
+                        <strong>How Yelp did it:</strong> They scraped business listings from the Yellow Pages so users could find any business. Businesses then "claimed" their listing to update it, respond to reviews, etc.
+                    </div>
+                    <div class="roadgame-application">
+                        <strong>For RoadGame:</strong> Use Google Places to create initial listings near tournament venues. Track views and interest. Then reach out to businesses with proof: "Tournament families looked at your listing 47 times last weekend. Want to claim it?"
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>6. Build Authority Through Local Partnerships</h4>
+                    <div class="explanation">
+                        Partner with local businesses or media to build credibility and drive traffic. Offer something valuable in exchange for visibility.
+                    </div>
+                    <div class="example">
+                        <strong>How GrubHub did it:</strong> They offered $10 discounts to local newspaper readers. This earned them backlinks (good for SEO) and introduced their service to local audiences.
+                    </div>
+                    <div class="roadgame-application">
+                        <strong>For RoadGame:</strong> Partner with local restaurants to offer "Team Meal Deals" (10% off for groups in jerseys). Get listed on the tournament's official website. Build local authority.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thesis -->
+        <section class="section">
+            <div class="thesis-box">
+                <h3>The RoadGame Opportunity — Summarized</h3>
+                <p>
+                    Youth sports travel is a <strong>$52 billion market</strong> where families are systematically frustrated. They're forced into overpriced hotels, stuck at venues for 10 hours with nothing to do, and juggling 5 apps just to manage a weekend.
+                </p>
+                <p>
+                    Current solutions focus on the <strong>tournament organizer</strong> (housing mandates, registration) or the <strong>athlete</strong> (scores, brackets, stats). <strong>No one is solving for the family.</strong>
+                </p>
+                <p>
+                    RoadGame will own the <strong>"in-between moments"</strong>: the 3-hour gap between games, the team dinner coordination, the sibling entertainment, the "where do we eat?" question asked 10 times per weekend.
+                </p>
+                <p>
+                    We'll start by scraping provider data, serving one tournament completely, and proving demand. Then we'll show businesses: "You already have traffic. Want to claim your listing?" This is how Yelp, Airbnb, and OpenTable all got started.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Spending Chart
+        new Chart(document.getElementById('spendingChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Hotels & Lodging ($330)', 'Gas & Transportation ($250)', 'Food & Restaurants ($250)'],
+                datasets: [{
+                    data: [330, 250, 250],
+                    backgroundColor: ['#2563eb', '#7c3aed', '#10b981'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Sports Participation Chart
+        new Chart(document.getElementById('sportsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Basketball', 'Soccer', 'Baseball', 'Football', 'Volleyball'],
+                datasets: [{
+                    label: '% of Youth Who Play',
+                    data: [41.9, 24.1, 23.1, 18.5, 12.3],
+                    backgroundColor: '#2563eb'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        title: { display: true, text: '% of Youth Participating' }
+                    }
+                }
+            }
+        });
+
+        // Geographic Chart
+        new Chart(document.getElementById('geoChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Suburban Families (43.1%)', 'Urban Families (42.0%)', 'Rural Families (14.9%)'],
+                datasets: [{
+                    data: [43.1, 42.0, 14.9],
+                    backgroundColor: ['#2563eb', '#7c3aed', '#10b981'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Growth Chart
+        new Chart(document.getElementById('growthChart'), {
+            type: 'line',
+            data: {
+                labels: ['2019', '2021 (COVID)', '2023', '2025', '2030', '2033'],
+                datasets: [{
+                    label: 'Total Economic Impact ($ Billions)',
+                    data: [103.3, 91.8, 128, 145, 195, 230],
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: { display: true, text: '$ Billions' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
