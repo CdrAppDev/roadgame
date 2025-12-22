@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame V1 Strategy</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --danger: #dc2626;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero .market-size {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        .hero .market-size strong {
+            font-size: 1.5rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            font-size: 1.75rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        section h3 {
+            font-size: 1.25rem;
+            color: var(--gray-800);
+            margin: 24px 0 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--gray-700);
+        }
+
+        /* Thesis Section */
+        .thesis-statement {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            padding: 24px;
+            margin: 24px 0;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .approach-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .approach-box h4 {
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        /* Scope Table */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 700px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scope-in, .scope-out {
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .scope-in {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+        }
+
+        .scope-out {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .scope-in h4 {
+            color: var(--success);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scope-out h4 {
+            color: var(--danger);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scope-in ul, .scope-out ul {
+            list-style: none;
+        }
+
+        .scope-in li, .scope-out li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            gap: 12px;
+        }
+
+        .scope-in li:last-child, .scope-out li:last-child {
+            border-bottom: none;
+        }
+
+        .scope-in li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .scope-out li::before {
+            content: "✗";
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .feature-purpose {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Tournament Criteria */
+        .criteria-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .criteria-item {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .criteria-item .number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 12px;
+        }
+
+        .criteria-item .label {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 4px;
+        }
+
+        .criteria-item .detail {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        /* Metrics Table */
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+
+        .metrics-table th {
+            background: var(--gray-100);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .metrics-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--gray-200);
+            vertical-align: top;
+        }
+
+        .metrics-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .metric-name {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .metric-target {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .metric-meaning {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Decision Cards */
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 800px) {
+            .decision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .decision-card {
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .decision-card.continue {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+        }
+
+        .decision-card.pivot {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+        }
+
+        .decision-card.stop {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .decision-card h4 {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .decision-card.continue h4 { color: var(--success); }
+        .decision-card.pivot h4 { color: var(--warning); }
+        .decision-card.stop h4 { color: var(--danger); }
+
+        .decision-card ul {
+            list-style: none;
+        }
+
+        .decision-card li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .decision-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Execution Timeline */
+        .timeline {
+            position: relative;
+            margin: 32px 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-200);
+        }
+
+        .timeline-phase {
+            position: relative;
+            padding-left: 64px;
+            padding-bottom: 32px;
+        }
+
+        .timeline-phase:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-phase::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .phase-title {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .phase-issues {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .issue-tag {
+            background: var(--gray-100);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+        }
+
+        /* Team Roles */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .role-card {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .role-card h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .role-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Ask Section */
+        .ask-list {
+            counter-reset: ask-counter;
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .ask-list li {
+            counter-increment: ask-counter;
+            padding: 20px;
+            padding-left: 70px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .ask-list li::before {
+            content: counter(ask-counter);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .ask-list li strong {
+            color: var(--gray-800);
+        }
+
+        /* Why This Works */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .reason-card {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .reason-card .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .reason-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .reason-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-600);
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Action Required Banner */
+        .action-banner {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .action-banner .icon {
+            font-size: 1.5rem;
+        }
+
+        .action-banner h4 {
+            color: var(--warning);
+            margin-bottom: 8px;
+        }
+
+        .action-banner p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>RoadGame V1 Strategy</h1>
+        <p class="subtitle">A plan to validate the youth sports travel opportunity with a single-tournament pilot</p>
+        <div class="market-size">
+            Target Market: <strong>$52.2 Billion</strong>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#thesis">Thesis</a>
+            <a href="#scope">V1 Scope</a>
+            <a href="#tournament">Tournament</a>
+            <a href="#metrics">Metrics</a>
+            <a href="#decisions">Go/No-Go</a>
+            <a href="#execution">Execution</a>
+            <a href="#roles">Team</a>
+            <a href="#ask">The Ask</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Thesis -->
+        <section id="thesis">
+            <h2>The Thesis</h2>
+
+            <p>Youth sports travel is a <strong>$52 billion market</strong> where families are a captive, frustrated audience. They spend 10-15 weekends per year at tournaments, paying inflated hotel rates through mandatory booking portals, eating at random restaurants because no one coordinates the team, and watching siblings stare at iPads during 3-hour gaps between games.</p>
+
+            <div class="thesis-statement">
+                <strong>The opportunity:</strong> No one owns the family experience layer. Tournament platforms serve organizers. Team apps serve coaches. Booking sites serve hotels. But no one helps the family answer: "What do we do with the next 4 hours?"
+            </div>
+
+            <div class="approach-box">
+                <h4>Our Approach: The Yelp Playbook</h4>
+                <p style="margin-bottom: 0;">Build the Yelp for tournament weekends. <strong>Scrape providers first</strong> (restaurants, activities, entertainment). <strong>Let families browse and express interest.</strong> Use that engagement data to prove demand to providers. <strong>Let providers claim their listings</strong> once we show them traffic.</p>
+            </div>
+
+            <p>This avoids the classic marketplace chicken-and-egg problem. We don't need provider partnerships to launch—we need families using the product.</p>
+        </section>
+
+        <!-- Scope -->
+        <section id="scope">
+            <h2>V1 Scope</h2>
+
+            <p>V1 is a <strong>single-tournament pilot</strong> designed to validate one hypothesis:</p>
+
+            <div class="thesis-statement">
+                Will families engage with local recommendations when presented in the context of their tournament schedule?
+            </div>
+
+            <div class="scope-grid">
+                <div class="scope-in">
+                    <h4>✓ What's IN V1</h4>
+                    <ul>
+                        <li>
+                            <div>
+                                <strong>Tournament Director Roster Upload</strong>
+                                <span class="feature-purpose">TD uploads CSV of families. This is our distribution mechanism.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Email Invitations</strong>
+                                <span class="feature-purpose">Families receive magic link (no password). One click to join.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Family Confirmation</strong>
+                                <span class="feature-purpose">Family lands on tournament page, confirms participation.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Schedule View</strong>
+                                <span class="feature-purpose">Shows game times + downtime windows. "You have 3 hours free Saturday 2-5pm."</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Provider Listings</strong>
+                                <span class="feature-purpose">Restaurants, activities, attractions near venue. Scraped from Google Places.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Interest Button</strong>
+                                <span class="feature-purpose">Families tap "Interested" on listings. No booking, no payment—just signal.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Social Proof</strong>
+                                <span class="feature-purpose">"3 teammates also interested" shown on listings.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="scope-out">
+                    <h4>✗ What's NOT in V1</h4>
+                    <ul>
+                        <li>Provider-side features (claiming, responding, offers)</li>
+                        <li>Booking or reservations</li>
+                        <li>Payment processing</li>
+                        <li>Multiple tournaments</li>
+                        <li>Mobile app (web-only)</li>
+                        <li>Real-time schedule updates from tournament software</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Technical Stack</h3>
+            <p>Vanilla JS frontend • Firebase/Supabase for auth + data • Google Places API for scraping • SendGrid/Resend for email</p>
+        </section>
+
+        <!-- Tournament Selection -->
+        <section id="tournament">
+            <h2>Target Tournament Selection</h2>
+
+            <h3>Selection Criteria</h3>
+            <div class="criteria-list">
+                <div class="criteria-item">
+                    <div class="number">1</div>
+                    <div class="label">Size</div>
+                    <div class="detail">80-150 teams</div>
+                </div>
+                <div class="criteria-item">
+                    <div class="number">2</div>
+                    <div class="label">Sport</div>
+                    <div class="detail">Basketball, soccer, or baseball</div>
+                </div>
+                <div class="criteria-item">
+                    <div class="number">3</div>
+                    <div class="label">Access</div>
+                    <div class="detail">Connection to TD or coach</div>
+                </div>
+                <div class="criteria-item">
+                    <div class="number">4</div>
+                    <div class="label">Timing</div>
+                    <div class="detail">8-12 weeks out</div>
+                </div>
+                <div class="criteria-item">
+                    <div class="number">5</div>
+                    <div class="label">Location</div>
+                    <div class="detail">Good restaurant/activity density</div>
+                </div>
+            </div>
+
+            <div class="action-banner">
+                <div class="icon">⚡</div>
+                <div>
+                    <h4>Action Required</h4>
+                    <p>The founding team needs to <strong>identify 3-5 candidate tournaments</strong> and rank by access. Pick one within the next week. Reach out to TD with pitch: "Free tool for your families. We handle everything."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrics -->
+        <section id="metrics">
+            <h2>Success Metrics</h2>
+
+            <p>These are the numbers we'll measure after the tournament:</p>
+
+            <table class="metrics-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Target</th>
+                        <th>What It Tells Us</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="metric-name">Confirmation Rate</span></td>
+                        <td><span class="metric-target">&gt;50%</span></td>
+                        <td><span class="metric-meaning">Of families invited, what % actually joined? Measures: Is the value prop clear? Is onboarding frictionless?</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="metric-name">Browse Rate</span></td>
+                        <td><span class="metric-target">&gt;70%</span></td>
+                        <td><span class="metric-meaning">Of confirmed families, what % viewed at least one provider listing? Measures: Is the UI discoverable?</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="metric-name">Interest Rate</span></td>
+                        <td><span class="metric-target">&gt;30%</span></td>
+                        <td><span class="metric-meaning">Of confirmed families, what % expressed interest in at least one listing? Measures: Are the recommendations relevant?</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="metric-name">Social Engagement</span></td>
+                        <td><span class="metric-target">&gt;15%</span></td>
+                        <td><span class="metric-meaning">Of interests expressed, what % were on listings where teammates also expressed interest? Measures: Does social proof drive behavior?</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="metric-name">Provider Views</span></td>
+                        <td><span class="metric-target">Track all</span></td>
+                        <td><span class="metric-meaning">Total views per listing. This becomes our proof point for provider outreach post-V1.</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Go/No-Go -->
+        <section id="decisions">
+            <h2>Go / No-Go Criteria</h2>
+
+            <p>After V1, we make a decision based on results:</p>
+
+            <div class="decision-grid">
+                <div class="decision-card continue">
+                    <h4>✓ Continue Building</h4>
+                    <ul>
+                        <li>Confirmation rate &gt;50% AND interest rate &gt;30%</li>
+                        <li>Qualitative feedback indicates families found it useful</li>
+                        <li>At least one "aha" moment observed (e.g., team actually coordinated dinner)</li>
+                    </ul>
+                </div>
+                <div class="decision-card pivot">
+                    <h4>⟲ Pivot</h4>
+                    <ul>
+                        <li>Confirmation rate &lt;30% (families don't care enough to join)</li>
+                        <li>Interest rate &lt;15% (recommendations aren't compelling)</li>
+                        <li>Families say "I'd just use Yelp" in feedback</li>
+                    </ul>
+                </div>
+                <div class="decision-card stop">
+                    <h4>✗ Stop</h4>
+                    <ul>
+                        <li>Can't get tournament director to participate</li>
+                        <li>Can't reach families through email (spam, ignored)</li>
+                        <li>Fundamental assumption wrong (families don't want coordination)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Execution -->
+        <section id="execution">
+            <h2>Execution Sequence</h2>
+
+            <div class="timeline">
+                <div class="timeline-phase">
+                    <div class="phase-title">Phase 1: Setup</div>
+                    <div class="phase-issues">
+                        <span class="issue-tag">#2 Data Model</span>
+                        <span class="issue-tag">#3 TD Roster Upload</span>
+                        <span class="issue-tag">#4 Email Invitations</span>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="phase-title">Phase 2: Family Experience</div>
+                    <div class="phase-issues">
+                        <span class="issue-tag">#5 Confirmation Flow</span>
+                        <span class="issue-tag">#6 Schedule View</span>
+                        <span class="issue-tag">#7 Provider Listings</span>
+                        <span class="issue-tag">#8 Interest & Social</span>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="phase-title">Phase 3: Data</div>
+                    <div class="phase-issues">
+                        <span class="issue-tag">#9 Provider Scraping</span>
+                        <span class="issue-tag">#10 Schedule Entry</span>
+                    </div>
+                </div>
+                <div class="timeline-phase">
+                    <div class="phase-title">Phase 4: Launch</div>
+                    <div class="phase-issues">
+                        <span class="issue-tag">#11 Select Tournament</span>
+                        <span class="issue-tag">#12 Analytics</span>
+                        <span class="issue-tag">#13 Deploy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roles -->
+        <section id="roles">
+            <h2>Team Roles</h2>
+
+            <div class="roles-grid">
+                <div class="role-card">
+                    <h4>Technical Lead</h4>
+                    <p>Architecture decisions, all coding, deployment. Owns the product build from start to finish.</p>
+                </div>
+                <div class="role-card">
+                    <h4>Tournament Liaison</h4>
+                    <p>Relationship with tournament director, roster collection, day-of support at the event.</p>
+                </div>
+                <div class="role-card">
+                    <h4>Research & Analysis</h4>
+                    <p>Monitor metrics during tournament, conduct post-tournament interviews, synthesize learnings.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Ask -->
+        <section id="ask">
+            <h2>The Ask</h2>
+
+            <p>To move forward, the founding team needs to align on these 5 decisions:</p>
+
+            <ol class="ask-list">
+                <li><strong>Agree on thesis:</strong> Do we believe the family experience gap is real and worth pursuing?</li>
+                <li><strong>Commit to V1 scope:</strong> This is what we're building, nothing more. Are we aligned?</li>
+                <li><strong>Identify tournament candidates:</strong> Each founder lists any tournaments they have access to.</li>
+                <li><strong>Assign roles:</strong> Who owns TD relationship? Who owns post-tournament research?</li>
+                <li><strong>Set a launch target:</strong> Pick a tournament and work backward from that date.</li>
+            </ol>
+        </section>
+
+        <!-- Why This Works -->
+        <section id="why">
+            <h2>Why This Will Work</h2>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="icon">🥚</div>
+                    <h4>No Chicken-and-Egg</h4>
+                    <p>We scrape providers, so we launch with inventory on day one. No cold-start problem.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="icon">📧</div>
+                    <h4>Built-in Distribution</h4>
+                    <p>Tournament director sends the invite, not us. We piggyback on existing trust.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="icon">👥</div>
+                    <h4>Social Proof Drives Engagement</h4>
+                    <p>"Your teammates are interested" is more compelling than any marketing copy.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="icon">🎯</div>
+                    <h4>Low-Risk Validation</h4>
+                    <p>One tournament, 100-200 families, a few weeks of effort. We learn fast.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="icon">📊</div>
+                    <h4>Clear Next Step</h4>
+                    <p>If V1 works, we approach providers with data: "150 families viewed your listing. Want to claim it?"</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Full market research: <a href="research-dashboard.html">Research Dashboard</a></p>
+        <p style="margin-top: 8px; font-size: 0.85rem;">RoadGame V1 Strategy • December 2024</p>
+    </div>
+</body>
+</html>
