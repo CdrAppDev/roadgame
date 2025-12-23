@@ -585,17 +585,23 @@
                         <td><a href="https://hoopsking.com/blogs/hoopsking-com/how-long-is-a-volleyball-game-understanding-duration" target="_blank">HoopsKing</a></td>
                     </tr>
                     <tr>
-                        <td rowspan="2"><strong>Softball</strong></td>
-                        <td>8U-12U</td>
-                        <td>60-90 min</td>
-                        <td>6 innings or time limit</td>
-                        <td><a href="https://gamedayusasoftball.com/rules/" target="_blank">Game Day USA</a></td>
+                        <td rowspan="3"><strong>Baseball</strong></td>
+                        <td>10U-12U</td>
+                        <td>90-105 min</td>
+                        <td>6 innings, 1:45 time limit</td>
+                        <td><a href="https://643athletics.com/pages/youth-baseball-tournament-rules" target="_blank">6-4-3 Athletics</a></td>
                     </tr>
                     <tr>
-                        <td>14U+</td>
-                        <td>90-120 min</td>
-                        <td>7 innings or time limit</td>
-                        <td><a href="https://www.primetimetournaments.org/softball-rules/" target="_blank">Primetime Tournaments</a></td>
+                        <td>13U-14U</td>
+                        <td>100-115 min</td>
+                        <td>7 innings, 1:55 time limit</td>
+                        <td><a href="https://youthbaseballnetwork.com/about/rules/" target="_blank">Youth Baseball Network</a></td>
+                    </tr>
+                    <tr>
+                        <td>14U-18U</td>
+                        <td>105-120 min</td>
+                        <td>7 innings, 2:00 time limit</td>
+                        <td><a href="https://play9sports.com/about/youth-baseball-rules/" target="_blank">Play9Sports</a></td>
                     </tr>
                     <tr>
                         <td rowspan="2"><strong>Lacrosse</strong></td>
@@ -650,6 +656,8 @@
                         <option value="basketball">Basketball - 45 min games</option>
                         <option value="volleyball">Volleyball - 55 min games</option>
                         <option value="lacrosse">Lacrosse - 40 min games</option>
+                        <option value="baseball-12u">Baseball (12U) - 95 min games</option>
+                        <option value="baseball-14u">Baseball (14U) - 110 min games</option>
                     </select>
                 </div>
                 <div class="control-group">
@@ -792,7 +800,9 @@
             'soccer-u14': { base: 75, variance: [-10, 15], buffer: 25 },
             'basketball': { base: 45, variance: [-5, 10], buffer: 15 },
             'volleyball': { base: 55, variance: [-10, 20], buffer: 15 },
-            'lacrosse': { base: 40, variance: [-5, 10], buffer: 15 }
+            'lacrosse': { base: 40, variance: [-5, 10], buffer: 15 },
+            'baseball-12u': { base: 95, variance: [-15, 20], buffer: 25 },
+            'baseball-14u': { base: 110, variance: [-15, 25], buffer: 30 }
         };
 
         // Tournament start times
