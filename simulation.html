@@ -632,7 +632,7 @@
                         <ul>
                             <li><strong>Optimized for field utilization</strong> — Pack as many games as possible into available field time</li>
                             <li><strong>Games can start early</strong> — If previous games finish quickly, next games may start up to 15 minutes early</li>
-                            <li><strong>Minimal buffers</strong> — Just enough time for teams to swap on/off fields</li>
+                            <li><strong>Tight scheduling</strong> — ~85 min between bracket rounds (no time for activities)</li>
                             <li><strong>No activity windows</strong> — Families squeeze activities into unpredictable gaps</li>
                             <li><strong>Bracket times shift</strong> — Day 2 game times depend on how Day 1 games ran</li>
                         </ul>
@@ -649,7 +649,7 @@
                             <li><strong>Optimized for family experience</strong> — Tournament is part of a vacation, not the whole weekend</li>
                             <li><strong>Games never start early</strong> — Scheduled time is the earliest a game can start</li>
                             <li><strong>Guaranteed activity blocks</strong> — 3-hour protected windows for team activities</li>
-                            <li><strong>Longer buffers</strong> — Extra time between games reduces stress</li>
+                            <li><strong>2-hour gaps between rounds</strong> — Built-in time for team lunch, activities</li>
                             <li><strong>Fixed bracket windows</strong> — Day 2 times are protected, not fluid</li>
                         </ul>
                     </div>
@@ -657,9 +657,10 @@
             </div>
 
             <div class="key-difference">
-                <h4>The Key Difference</h4>
-                <p><strong>Traditional:</strong> Games can start early if there's an opening → unpredictable timing → booking conflicts.</p>
-                <p><strong>RoadGame:</strong> Games start at scheduled time or later, never early → predictable timing → safe bookings.</p>
+                <h4>The Key Structural Difference</h4>
+                <p><strong>Traditional:</strong> ~85 min between bracket rounds. No time for activities. Games can start early.</p>
+                <p><strong>RoadGame:</strong> 2+ hours between rounds. Guaranteed 3-hour morning block. Games never start early.</p>
+                <p style="margin-top: 8px; font-weight: 600;">The tournament is designed AROUND the family experience, not the other way around.</p>
             </div>
         </section>
 
@@ -687,9 +688,9 @@
                         <td class="roadgame-cell">Never starts early—scheduled time is the floor</td>
                     </tr>
                     <tr>
-                        <td><strong>Buffer Between Games</strong></td>
-                        <td class="traditional">10-15 minutes (minimum for team swap)</td>
-                        <td class="roadgame-cell">25-30 minutes (comfortable transition)</td>
+                        <td><strong>Gap Between Bracket Rounds</strong></td>
+                        <td class="traditional">~85 minutes (game + minimal buffer)</td>
+                        <td class="roadgame-cell">~2 hours (designed for activities)</td>
                     </tr>
                     <tr>
                         <td><strong>Activity Windows</strong></td>
@@ -986,7 +987,17 @@
         function simulateFormat(sportConfig, numTeams, simRuns, isRoadgame) {
             const DAY2_START = 8 * 60; // 8 AM
             const buffer = sportConfig.buffer + (isRoadgame ? ROADGAME_BUFFER_BONUS : 0);
-            const gameSlot = sportConfig.base + buffer + 10;
+
+            // KEY DIFFERENCE: RoadGame format has MUCH longer gaps between bracket rounds
+            // Traditional: Pack games as efficiently as possible
+            // RoadGame: Design schedule around 90-minute activity windows between rounds
+            const tradGameSlot = sportConfig.base + sportConfig.buffer + 10;
+
+            // RoadGame slot includes: game + buffer + 2-hour activity window
+            // This is the core structural difference - tournaments designed FOR activities
+            const rgGameSlot = sportConfig.base + buffer + 120; // 2-hour gap between rounds
+
+            const gameSlot = isRoadgame ? rgGameSlot : tradGameSlot;
 
             // In RoadGame format, there's a 3-hour activity block before bracket play
             const activityBlockEnd = isRoadgame ? DAY2_START + 180 : DAY2_START; // 11 AM
@@ -997,7 +1008,16 @@
             let qfBookings = 0, qfConflicts = 0;
             let sfBookings = 0, sfConflicts = 0;
 
+            // Also track activity block bookings (RoadGame only)
+            let activityBlockBookings = 0;
+
             for (let run = 0; run < simRuns; run++) {
+                // For RoadGame: Count the guaranteed safe activity block bookings
+                if (isRoadgame) {
+                    // Every team can safely book during the 3-hour morning block
+                    activityBlockBookings += 4; // 4 teams that will play QF
+                }
+
                 // Quarterfinals: 4 games, 4 winners advance
                 for (let i = 0; i < 4; i++) {
                     qfBookings++;
@@ -1008,8 +1028,9 @@
                     const qfVariance = randomInRange(sportConfig.variance[0], sportConfig.variance[1]);
                     const qfActualEnd = qfScheduledTime + sportConfig.base + qfVariance;
 
-                    // Family books activity 2 hours after game ends
-                    const bookingStart = qfActualEnd + 120;
+                    // Family books activity 1 hour after game ends (shorter wait in RoadGame since schedule is predictable)
+                    const waitTime = isRoadgame ? 60 : 120; // RoadGame families trust the schedule more
+                    const bookingStart = qfActualEnd + waitTime;
                     const bookingEnd = bookingStart + 90; // 90 min activity
 
                     // SF scheduled time
@@ -1043,7 +1064,8 @@
                     const sfVariance = randomInRange(sportConfig.variance[0], sportConfig.variance[1]);
                     const sfActualEnd = sfScheduledTime + sportConfig.base + sfVariance;
 
-                    const bookingStart = sfActualEnd + 120;
+                    const waitTime = isRoadgame ? 60 : 120;
+                    const bookingStart = sfActualEnd + waitTime;
                     const bookingEnd = bookingStart + 90;
 
                     const finalScheduledTime = bracketStart + (gameSlot * 4);
@@ -1069,7 +1091,11 @@
                 totalConflicts,
                 overallRate: totalBookings > 0 ? (totalConflicts / totalBookings * 100) : 0,
                 qfRate: qfBookings > 0 ? (qfConflicts / qfBookings * 100) : 0,
-                sfRate: sfBookings > 0 ? (sfConflicts / sfBookings * 100) : 0
+                sfRate: sfBookings > 0 ? (sfConflicts / sfBookings * 100) : 0,
+                activityBlockBookings,
+                safeBookingRate: isRoadgame ?
+                    ((activityBlockBookings + (totalBookings - totalConflicts)) / (activityBlockBookings + totalBookings) * 100) :
+                    ((totalBookings - totalConflicts) / totalBookings * 100)
             };
         }
 
@@ -1135,9 +1161,9 @@
 
         function updateTimelines(sportConfig) {
             const buffer = sportConfig.buffer;
-            const gameSlot = sportConfig.base + buffer + 10;
+            const tradGameSlot = sportConfig.base + buffer + 10;
             const rgBuffer = buffer + ROADGAME_BUFFER_BONUS;
-            const rgGameSlot = sportConfig.base + rgBuffer + 10;
+            const rgGameSlot = sportConfig.base + rgBuffer + 120; // 2-hour activity window
 
             // Traditional timeline
             const tradStart = 8 * 60; // 8 AM
@@ -1146,28 +1172,35 @@
                     <span class="timeline-time">${formatTime(tradStart)}</span>
                     <div class="timeline-content">
                         <div class="title">Quarterfinal</div>
-                        <div class="desc">First bracket game</div>
+                        <div class="desc">First bracket game (~${sportConfig.base} min)</div>
                     </div>
                 </div>
                 <div class="timeline-event event-conflict">
-                    <span class="timeline-time">${formatTime(tradStart + sportConfig.base + 120)}</span>
+                    <span class="timeline-time">${formatTime(tradStart + sportConfig.base + 15)}</span>
                     <div class="timeline-content">
-                        <div class="title">Team Books Activity</div>
-                        <div class="desc">2 hrs after game—but SF might start early!</div>
+                        <div class="title">Only ~${tradGameSlot - sportConfig.base} min gap</div>
+                        <div class="desc">No time for activities—barely time to eat</div>
                     </div>
                 </div>
                 <div class="timeline-event event-game">
-                    <span class="timeline-time">${formatTime(tradStart + gameSlot * 2)}</span>
+                    <span class="timeline-time">${formatTime(tradStart + tradGameSlot * 2)}</span>
                     <div class="timeline-content">
                         <div class="title">Semifinal (if won QF)</div>
-                        <div class="desc">Could start 15 min early → CONFLICT</div>
+                        <div class="desc">Could start 15 min early</div>
                     </div>
                 </div>
                 <div class="timeline-event event-game">
-                    <span class="timeline-time">${formatTime(tradStart + gameSlot * 4)}</span>
+                    <span class="timeline-time">${formatTime(tradStart + tradGameSlot * 4)}</span>
                     <div class="timeline-content">
                         <div class="title">Finals (if won SF)</div>
                         <div class="desc">Championship game</div>
+                    </div>
+                </div>
+                <div class="timeline-event" style="border-left: 4px solid var(--gray-400); padding-left: 12px; margin-left: -12px;">
+                    <span class="timeline-time">${formatTime(tradStart + tradGameSlot * 4 + sportConfig.base + 15)}</span>
+                    <div class="timeline-content">
+                        <div class="title">Done by ${formatTime(tradStart + tradGameSlot * 4 + sportConfig.base + 15)}</div>
+                        <div class="desc">Efficient but exhausting—no breaks</div>
                     </div>
                 </div>
             `;
@@ -1181,22 +1214,22 @@
                 <div class="timeline-event event-activity-block">
                     <span class="timeline-time">${formatTime(rgActivityStart)}</span>
                     <div class="timeline-content">
-                        <div class="title">Guaranteed Activity Block</div>
-                        <div class="desc">3 hours for team activities—no games scheduled</div>
+                        <div class="title">Morning Activity Block</div>
+                        <div class="desc">3 hours guaranteed—team breakfast, pool, activities</div>
                     </div>
                 </div>
                 <div class="timeline-event event-game">
                     <span class="timeline-time">${formatTime(rgBracketStart)}</span>
                     <div class="timeline-content">
                         <div class="title">Quarterfinal</div>
-                        <div class="desc">First bracket game</div>
+                        <div class="desc">First bracket game (~${sportConfig.base} min)</div>
                     </div>
                 </div>
                 <div class="timeline-event event-activity">
-                    <span class="timeline-time">${formatTime(rgBracketStart + sportConfig.base + 120)}</span>
+                    <span class="timeline-time">${formatTime(rgBracketStart + sportConfig.base + 30)}</span>
                     <div class="timeline-content">
-                        <div class="title">Team Books Activity</div>
-                        <div class="desc">Safe—SF won't start early</div>
+                        <div class="title">~2 hour gap for lunch</div>
+                        <div class="desc">Time for team lunch at nearby restaurant</div>
                     </div>
                 </div>
                 <div class="timeline-event event-game">
@@ -1204,6 +1237,13 @@
                     <div class="timeline-content">
                         <div class="title">Semifinal (if won QF)</div>
                         <div class="desc">Starts at scheduled time, never early</div>
+                    </div>
+                </div>
+                <div class="timeline-event event-activity">
+                    <span class="timeline-time">${formatTime(rgBracketStart + rgGameSlot * 2 + sportConfig.base + 30)}</span>
+                    <div class="timeline-content">
+                        <div class="title">Another activity window</div>
+                        <div class="desc">Quick snack, team bonding before finals</div>
                     </div>
                 </div>
                 <div class="timeline-event event-game">
