@@ -2,289 +2,338 @@
 
 ## Executive Summary
 
-RoadGame is a **smart tournament scheduling platform** that gives Tournament Directors a powerful tool to manage complex scheduling, enables teams to purchase VIP scheduling for clustered games, and helps teams book group experiences during their free time.
+RoadGame is a **smart tournament scheduling system** that delivers **100% field utilization AND 6-8 hours of guaranteed family activity time**—without compromise.
 
-The core insight: **Players want to stay together with their teammates. Parents follow their lead. Keeping teams together is what everyone already wants—and it's also where the highest margins are.**
+**The insight:** In a 32-team tournament, only 8 teams play at any moment. The other 24 teams are always "free"—but their free time is scattered unpredictably across the day, making it impossible to plan activities. RoadGame solves this by clustering each team's games together, so every team gets a continuous block of guaranteed free time while fields stay full.
+
+**The result:** Max revenue for Tournament Directors. Max experience for families. No trade-off required.
 
 ---
 
-## The Problem, Solution & Value Proposition by Stakeholder
+## The Actual Problem
 
-### Tournament Directors (TDs)
+### It's Not "No Free Time"—It's Scattered Free Time
 
-#### The Problem
+Families already have free time during tournaments. The problem is that free time is **scattered and unpredictable**.
 
-Tournament scheduling is a nightmare. TDs juggle a massive matrix of constraints:
-- 40-100+ teams across multiple age groups and skill levels
-- Limited fields with specific availability windows
-- Referee schedules and assignments
-- Travel time between fields at multi-venue tournaments
-- Pool play matchups that must avoid repeat opponents in brackets
+**A typical tournament day:**
 
-On top of this complexity, **coaches constantly request special scheduling:**
-- "We can't play before 10am—families are driving in Friday night."
-- "Can we have our games back-to-back so we're done early?"
-- "We have a player in two age groups—don't schedule conflicts."
+| Time | What's Happening |
+|------|------------------|
+| 8:00 AM | Game 1 |
+| 9:30 AM | Done. Next game at... when? |
+| 10:00 AM | Check schedule. Next game is 2:00 PM. |
+| 10:15 AM | "Should we do something? We have 4 hours..." |
+| 10:30 AM | Start researching activities nearby |
+| 11:00 AM | Find bowling alley. "But what if the game runs late?" |
+| 11:30 AM | Decide it's too risky. Sit at the field. |
+| 12:00 PM | Kids are bored. Buy overpriced concessions. |
+| 2:00 PM | Game 2 |
+| 3:30 PM | Done. Next game is 6:00 PM. Another 2.5 hour gap. |
+| 4:00 PM | Too short for real activity. Too long to just wait. |
+| 6:00 PM | Game 3. Finally done at 7:30 PM. |
 
-**TDs say no to these requests** because:
-1. It's too much manual work to accommodate
-2. They don't get compensated for the extra effort
-3. Existing tools (spreadsheets, legacy software) don't help
+**Total free time:** 6+ hours
+**Usable free time:** 0 hours
 
-The result: TDs are stressed, coaches are frustrated, and families have bad experiences.
+The free time exists. It's just scattered into 2-3 unpredictable chunks that feel too risky to book around.
 
-#### The Solution
+### Why Traditional Scheduling Creates This Problem
 
-RoadGame provides a **smart scheduling engine** that handles the complexity algorithmically:
+Traditional tournament scheduling optimizes for **field efficiency**:
+- Pack games as tightly as possible
+- Minimize gaps between games on each field
+- Fill every time slot
 
-1. **Constraint-based scheduling:** TD inputs teams, fields, time slots, and constraints. The system generates an optimized schedule automatically.
+This keeps fields running 8 AM to 8 PM with 10-15 minute buffers. Great for field utilization. Terrible for family experience.
 
-2. **VIP scheduling built-in:** Teams can purchase "VIP scheduling" for clustered games (e.g., 8am, 9:30am, done by 11am). The algorithm handles the optimization—TD doesn't manually juggle.
+But here's what traditional scheduling **doesn't consider**:
 
-3. **Approval workflow:** TD reviews and approves the generated schedule. Adjustments are easy—change one thing, system re-optimizes around it.
+> In a 32-team tournament on 4 fields, only 8 teams are playing at any given moment. 24 teams are always free. The question isn't whether families have free time—it's whether that free time is **clustered and predictable** enough to use.
 
-4. **Results & bracket management:** Live bracket updates, score entry, automatic advancement.
+---
 
-#### The Value Proposition
+## The RoadGame Solution
 
-| Value | What It Means for TDs |
-|-------|----------------------|
-| **Hours saved** | Algorithm does the hard work. TD reviews and approves instead of building from scratch. |
-| **Say yes to requests** | Coaches want clustered games? Offer it as VIP—system handles the complexity. |
-| **New revenue stream** | VIP fees split with TD. 20 VIP teams × $150 × 70% = $2,100+ per tournament. |
-| **Happier coaches** | Fewer complaints. Special requests are now a paid option, not a favor. |
-| **Competitive differentiation** | "Our tournament offers VIP scheduling" attracts teams over competitors. |
+### Clustered Scheduling: Same Games, Different Organization
 
-**The pitch to TDs:**
-> "We solve your scheduling nightmare. The tool does the hard work. And you make money from VIP upsells you couldn't offer before."
+RoadGame doesn't reduce games or leave fields empty. It reorganizes **who plays when** so that each team's games are clustered together.
+
+**Traditional scheduling:**
+- Team A: Game at 8am, 2pm, 6pm (games scattered across 10 hours)
+- Free time: Three 2-3 hour chunks, unpredictable, unusable
+
+**RoadGame scheduling:**
+- Team A: Games at 8am, 10am, 12pm (games clustered in morning)
+- Free time: 1pm - 8pm (7 continuous hours, predictable, bookable)
+
+**Fields stay full** because while Team A is free in the afternoon, Teams B through P are playing their clustered games.
+
+---
+
+## The RoadGame Format: A Concrete Example
+
+### Tournament Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Teams | 32 |
+| Fields | 4 |
+| Days | 2 (Saturday-Sunday) |
+| Format | Pool Play → Single Elimination Bracket |
+| Games guaranteed | 3 pool games per team |
+
+### Day 1 (Saturday): Pool Play
+
+**Structure:** Split teams into Morning Wave and Afternoon Wave. Each team's 3 pool games are scheduled back-to-back.
+
+| Wave | Teams | Time Block | Guaranteed Free Time |
+|------|-------|------------|---------------------|
+| Morning Wave | 16 teams (Pools A & B) | 8 AM - 1 PM | **1 PM - 9 PM (8 hours)** |
+| Afternoon Wave | 16 teams (Pools C & D) | 2 PM - 7 PM | **8 AM - 2 PM (6 hours)** |
+
+**Field utilization:** 8 AM - 7 PM = 11 hours × 4 fields = **100% utilized**
+
+**Game math:**
+- 32 teams × 3 games each = 96 team-game slots = 48 actual games needed
+- Morning wave: 4 fields × 6 games = 24 games
+- Afternoon wave: 4 fields × 6 games = 24 games
+- Total: 48 games ✓
+
+**Family experience:**
+- Morning Wave families know before the tournament: "Your games are 8 AM - 1 PM. You're free 1 PM onwards. Book activities for 2 PM."
+- Afternoon Wave families know before the tournament: "You're free until 2 PM. Book brunch and mini-golf for 9 AM - 12 PM."
+
+### Day 2 (Sunday): Bracket Play
+
+**Structure:** Top 2 from each pool advance (8 teams). Bracket games have intentional breaks built in.
+
+| Round | Time | Teams Playing | What Others Do |
+|-------|------|---------------|----------------|
+| Quarterfinals | 8 AM - 10 AM | 8 advancing teams | 24 eliminated teams: free day or consolation games |
+| **Activity Window** | 10 AM - 1 PM | Fields run consolation bracket | **8 advancing teams: guaranteed 3-hour break** |
+| Semifinals | 1 PM - 3 PM | 4 teams | 4 teams wait for finals/3rd place |
+| Finals | 4 PM - 6 PM | 2-4 teams | Tournament concludes |
+
+**Field utilization:** Consolation bracket games fill the 10 AM - 1 PM window while advancing teams have their activity break. **Fields stay full.**
+
+**The insight:** The "gap" for advancing teams isn't wasted field time—it's filled by consolation games for non-advancing teams. Everyone's free time is predictable, and fields never sit empty.
+
+### The Result: No Trade-Offs
+
+| Metric | Traditional Format | RoadGame Format |
+|--------|-------------------|-----------------|
+| Field utilization | 100% | 100% |
+| Total games played | 48 pool + 7 bracket | 48 pool + 7 bracket |
+| Teams accommodated | 32 | 32 |
+| TD revenue | Entry fees only | Entry fees + VIP upsells |
+| Guaranteed free time per team | 0 hours (scattered) | **6-8 hours (continuous)** |
+| Booking confidence | 0% (too risky) | **100% (published in advance)** |
+
+---
+
+## Why This Works
+
+### The Math Behind Clustered Scheduling
+
+In any tournament:
+- **N teams** competing
+- **F fields** available
+- At any moment, only **2F teams** are playing (2 teams per field)
+- **N - 2F teams** are always free
+
+For a 32-team, 4-field tournament:
+- 8 teams playing at any moment
+- 24 teams free at any moment
+
+Traditional scheduling scatters those 24 teams' free time randomly. RoadGame clustering organizes it into predictable blocks.
+
+**The magic:** We're not creating free time. We're not reducing games. We're reorganizing the same games so that each team's free time is continuous instead of fragmented.
+
+### Wave Assignment Makes It Simple
+
+Teams are assigned to waves at registration:
+- **Morning Wave:** All your pool games are 8 AM - 1 PM
+- **Afternoon Wave:** All your pool games are 2 PM - 7 PM
+
+This is published **before the tournament**. Families can book activities with 100% confidence because they know their wave assignment days in advance.
+
+---
+
+## Value Proposition by Stakeholder
+
+### Tournament Directors
+
+**The Problem:**
+Tournament scheduling is complex. TDs juggle constraints (fields, refs, brackets) while fielding requests from coaches who want clustered games. Current tools don't support intelligent clustering, so TDs say no to requests and families have bad experiences.
+
+**The Solution:**
+RoadGame's scheduling engine handles clustering automatically. TD inputs teams, fields, and constraints. System outputs a schedule where every team's games are clustered and every team has predictable free time—while fields stay 100% utilized.
+
+**The Value:**
+
+| Benefit | What It Means |
+|---------|---------------|
+| Same revenue | Same number of teams, same entry fees, 100% field utilization |
+| New revenue stream | VIP wave selection: teams pay extra to choose Morning or Afternoon wave |
+| Less manual work | Algorithm handles clustering complexity |
+| Happier families | Predictable schedules = fewer complaints |
+| Competitive advantage | "RoadGame Format" tournaments attract teams over traditional tournaments |
+
+**The pitch:**
+> "Same games, same fields, same revenue—but now every family gets 6-8 hours of guaranteed free time. And teams will pay extra to pick their wave."
 
 ---
 
 ### Teams (Coaches & Team Moms)
 
-#### The Problem
+**The Problem:**
+Tournament weekends are exhausting. Games are scattered across the day. Kids are bored between games. Parents are frustrated. Team moms can't coordinate group activities because no one knows when they'll actually be free.
 
-Tournament weekends are exhausting and wasteful. A typical experience:
+**The Solution:**
+In RoadGame Format tournaments, every team's games are clustered. Morning Wave teams play 8-1, free after. Afternoon Wave teams are free until 2, then play. Published in advance. 100% predictable.
 
-- **Game at 10am.** Family arrives at 9am to warm up.
-- **Game ends at 11am.** Next game isn't until 4pm.
-- **5-hour gap.** Too short to go back to the hotel, too long to sit at the field.
-- **Kids are bored.** Glued to iPads, wandering around, getting into trouble.
-- **Parents are frustrated.** "We're paying $3,000 for this?"
-- **No coordination.** Each family fends for themselves. Team scatters.
-- **Game at 4pm.** Everyone reconvenes tired and cranky.
-- **Day wasted.** Could have been a great experience. Instead, it was a slog.
+**The Value:**
 
-And coaches/team moms hear about it:
-- "Why is our schedule so spread out?"
-- "Can't you request better times?"
-- "Other teams seem to be done by noon..."
+| Benefit | What It Means |
+|---------|---------------|
+| Games clustered | Done by 1 PM or start at 2 PM. Not scattered across 10 hours. |
+| 6-8 hours free | Continuous block. Enough time for real activities. |
+| Published in advance | Know your wave before the tournament. Book activities with confidence. |
+| Team coordination | Everyone on the team has the same free window. Do activities together. |
 
-**Teams have no power over the schedule.** They take what they're given.
-
-#### The Solution
-
-RoadGame offers **VIP Scheduling** as a team-level purchase:
-
-1. **Clustered games:** Team's games are scheduled back-to-back (e.g., 8am, 9:30am → done by 11am). Real, usable free time.
-
-2. **Team buys VIP:** Coach or team mom purchases VIP from team budget ($100-200). Or families split the cost.
-
-3. **Predictable downtime:** Team knows exactly when they're free—not a fragmented, wasted day.
-
-4. **Group experiences:** With predictable free time, the team can book activities TOGETHER. Kids stay with their friends. Parents relax.
-
-#### The Value Proposition
-
-| Value | What It Means for Teams |
-|-------|------------------------|
-| **Games clustered** | Done by noon OR start at 2pm. Not spread across the entire day. |
-| **Usable free time** | 5-hour block to do something real, not awkward 90-minute gaps. |
-| **Kids stay together** | Team does activities as a group. Kids are with their friends. |
-| **Parents happier** | Actual time to relax, explore, or handle life maintenance. |
-| **Worth the cost** | $100-200 is nothing when you're already paying $3K+ for the season. |
-
-**The pitch to teams:**
-> "Pay a little extra, get your games clustered, and actually enjoy the weekend. Your kids stay with their friends. You get real free time. It's a no-brainer."
+**The pitch:**
+> "Your team plays 8-1, done. Everyone's free 1-8 PM. Book the team bowling outing at 3 PM. It's guaranteed."
 
 ---
 
 ### Families & Players
 
-#### The Problem
+**The Problem:**
+Kids spend tournament days bored between games. Too risky to book activities because "what if our next game conflicts?" They end up on iPads at the field instead of having fun with their teammates.
 
-Tournament weekends should be fun. Instead, they're often:
+**The Solution:**
+RoadGame Format means predictable free time. Players know before the weekend: "We're Morning Wave. Saturday we're free after 1 PM. The team is going bowling at 3."
 
-- **Boring:** Hours of sitting around between games with nothing to do.
-- **Fragmented:** Family splits up—one parent stays with player, other takes siblings elsewhere.
-- **Unfamiliar:** In a strange city with no idea what's nearby or good.
-- **Uncoordinated:** "Where should we eat?" becomes a 30-minute group text debate.
-- **Isolating:** Kids end up on devices instead of with their teammates.
+**The Value:**
 
-Players especially feel this. They **want to be with their friends**—not stuck with just their family or alone with an iPad.
+| Benefit | What It Means |
+|---------|---------------|
+| Kids with teammates | Team does activities together during their shared free window |
+| Memorable weekends | These become trips kids remember—not just games, but adventures |
+| Parents relax | Know exactly when kids are free. Plan accordingly. No uncertainty. |
+| Actually use the city | 6-8 hours is enough time to explore, not just sit at the field |
 
-#### The Solution
-
-When the team has VIP scheduling:
-
-1. **Predictable free time:** Player knows "we're done by 11am, next thing is team bowling at 1pm."
-
-2. **Group activities:** Team does things together. Bowling, mini golf, escape room, pool time—whatever it is, they do it as a team.
-
-3. **Easy booking:** Team mom books one reservation for the whole group through RoadGame. No coordination chaos.
-
-4. **Kids with friends:** Players spend the day with their teammates, not isolated with their family.
-
-#### The Value Proposition
-
-| Value | What It Means for Families |
-|-------|---------------------------|
-| **Kids are happy** | With their friends, doing fun things, not bored. |
-| **Parents relax** | Know where kids are (with the team). Can actually enjoy the trip. |
-| **Memorable weekends** | These become the trips kids remember—not just the games, but the adventures. |
-| **Less stress** | No "where should we go?" debates. It's planned. |
-
-**The pitch to families:**
-> "Your kid gets to spend the weekend with their best friends—not just at games, but at lunch, at the pool, at the arcade. And you get to actually relax."
+**The pitch:**
+> "Tournament weekends become actual vacations. Your kid spends the day with their best friends—at games AND at the pool, the arcade, the restaurant."
 
 ---
 
 ### Vendors (Restaurants, Activities, Services)
 
-#### The Problem
+**The Problem:**
+Tournament weekends bring hundreds of families to town, but vendors can't capitalize. Families have unpredictable schedules, so they wander in randomly or don't come at all.
 
-Tournament weekends bring hundreds of families to town, but vendors can't capitalize:
+**The Solution:**
+RoadGame Format creates predictable waves. Morning Wave teams (16 teams, ~200 people) are all free 1-8 PM. Vendors can market specifically to them.
 
-- **Unpredictable traffic:** Families wander in randomly. Hard to staff for.
-- **Small groups:** Individual families of 4-5. Not worth special attention.
-- **No reservations:** Families don't know the area, don't plan ahead. Show up and hope.
-- **Missed opportunity:** $250/family spent on food/activities, but it's scattered across random places.
+**The Value:**
 
-#### The Solution
+| Benefit | What It Means |
+|---------|---------------|
+| Predictable traffic | "16 teams are free starting at 1 PM on Saturday" |
+| Group bookings | Teams book together. 20-30 people at once. |
+| Advance notice | Bookings made days before. Staff accordingly. |
+| Repeat business | Same tournament, same waves, every year |
 
-RoadGame delivers **group bookings from entire teams:**
+**The pitch:**
+> "200 people are guaranteed to be free at 1 PM Saturday. Want to be the activity they book?"
 
-1. **Predictable traffic:** "Team Lightning (22 people) booked for 12:30pm Saturday."
+---
 
-2. **Large groups:** 15-30 people per booking. Worth prioritizing.
+## Revenue Model
 
-3. **Advance notice:** Bookings made days ahead. Vendor can staff and prepare.
+### Tournament Director Revenue
 
-4. **Repeat business:** Same teams, same tournaments, year after year.
+| Source | How It Works | Example |
+|--------|--------------|---------|
+| Entry fees | Same as traditional (no reduction in teams) | 32 teams × $500 = $16,000 |
+| VIP Wave Selection | Teams pay premium to choose Morning or Afternoon wave | 10 teams × $100 = $1,000 |
+| **Total** | | **$17,000** (+6% over traditional) |
 
-#### The Value Proposition
+### RoadGame Revenue
 
-| Value | What It Means for Vendors |
-|-------|--------------------------|
-| **Group bookings** | 20-30 people at once, not individuals trickling in. |
-| **Predictable** | Know exactly when to expect them. Staff accordingly. |
-| **Higher revenue per visit** | Groups spend more than individual families. |
-| **Tournament weekend goldmine** | Capture the spending that's already happening in your area. |
+| Source | How It Works | Example |
+|--------|--------------|---------|
+| Platform fee | Per-team fee from TD | 32 teams × $10 = $320 |
+| Booking commission | 10-15% on group experience bookings | $2,000 bookings × 12% = $240 |
+| **Total per tournament** | | **$560** |
 
-**The pitch to vendors:**
-> "Tournament weekends bring 500 families to town. We'll send you 25 of them at once, with a reservation, on Saturday at noon. You in?"
+**Scale math:**
+- 50 tournaments/month × $560 = $28,000/month
+- 200 tournaments/month × $560 = $112,000/month
 
 ---
 
 ## How It Works Together
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                           ROADGAME                                   │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  ┌──────────────────┐     ┌──────────────────┐     ┌──────────────┐ │
-│  │  TOURNAMENT      │     │      TEAMS       │     │   VENDORS    │ │
-│  │  DIRECTORS       │     │                  │     │              │ │
-│  ├──────────────────┤     ├──────────────────┤     ├──────────────┤ │
-│  │ Smart scheduling │ ──► │ Buy VIP ($150)   │ ──► │ Group        │ │
-│  │ algorithm        │     │                  │     │ bookings     │ │
-│  │                  │     │ Clustered games  │     │              │ │
-│  │ VIP revenue      │ ◄── │                  │     │ 20-30 people │ │
-│  │ (70% of fee)     │     │ Predictable      │     │ at once      │ │
-│  │                  │     │ free time        │ ──► │              │ │
-│  │ Less work        │     │                  │     │ Commission   │ │
-│  │ Happier coaches  │     │ Book group       │     │ to RoadGame  │ │
-│  │                  │     │ experiences      │     │              │ │
-│  └──────────────────┘     └──────────────────┘     └──────────────┘ │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          THE ROADGAME FORMAT                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   SAME GAMES          CLUSTERED SCHEDULE         PREDICTABLE FREE TIME      │
+│   ───────────────     ──────────────────         ─────────────────────      │
+│                                                                              │
+│   32 teams            Morning Wave: 8am-1pm      Morning teams: Free 1-8pm  │
+│   4 fields       →    Afternoon Wave: 2pm-7pm →  Afternoon teams: Free 8-2  │
+│   48 pool games       Fields: 100% utilized      Everyone: 6-8 hrs free     │
+│   7 bracket games                                                            │
+│                                                                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   TD GETS:            TEAMS GET:                 VENDORS GET:                │
+│   • Same revenue      • Clustered games          • Predictable waves         │
+│   • VIP upsells       • 6-8 hrs free time        • Group bookings            │
+│   • Happier families  • Book with confidence     • Advance notice            │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 **The Flywheel:**
 
-1. TD adopts RoadGame (solves scheduling pain)
-2. TD offers VIP scheduling to teams (new revenue)
-3. Teams buy VIP (clustered games, better experience)
-4. Teams book group experiences (activities, dining)
-5. Vendors get group traffic (commit to platform)
-6. Better experience → word spreads → more TDs want RoadGame
+1. TD adopts RoadGame Format (same revenue, better experience)
+2. Teams get predictable free time (can actually book activities)
+3. Teams book group experiences (bowling, dining, activities)
+4. Vendors get reliable group traffic (commit to platform)
+5. Better experience → word spreads → more TDs adopt RoadGame Format
 
 ---
 
 ## V1 Scope
 
-V1 is a **single-tournament pilot** to validate the full loop:
-- TD uses scheduling tool
-- Teams buy VIP
-- Families see improved schedule
-- Teams book at least one group experience
+V1 is a **single-tournament pilot** to validate that:
+- Clustered scheduling works operationally
+- Families notice and value the predictable free time
+- Teams actually book activities during their free windows
+- Vendors value the predictable group traffic
 
 ### Core Features for V1
 
-#### Tournament Management (Phase 1)
-
 | Feature | Purpose |
 |---------|---------|
-| Tournament creation | TD sets up tournament with teams, fields, time slots |
-| Constraint input | TD specifies field availability, scheduling rules |
-| VIP designation | Mark which teams purchased VIP scheduling |
-| Schedule generation | Algorithm creates optimized schedule with VIP clustering |
-| Schedule adjustment | TD can tweak and re-optimize |
-| Bracket management | Standard bracket/pool play with results entry |
-| Downtime calculation | System knows each team's free time windows |
-
-#### Team Experience (Phase 2)
-
-| Feature | Purpose |
-|---------|---------|
-| Team portal | Team mom/coach sees schedule and free time |
-| VIP purchase flow | Team can buy VIP scheduling (payment to TD) |
-| Group booking | Browse and book activities/restaurants for the whole team |
-| Itinerary view | See all booked experiences for the team |
-| Notifications | Updates on schedule changes, booking confirmations |
-
-#### Vendor Integration (Phase 3)
-
-| Feature | Purpose |
-|---------|---------|
-| Vendor onboarding | Manual for V1 (we recruit and enter vendor info) |
-| Availability | Vendor time slots and group capacity |
-| Booking receipt | Vendor receives booking with group size and time |
-| Confirmation flow | Vendor confirms or modifies booking |
+| Wave assignment | Assign teams to Morning or Afternoon wave |
+| Clustered schedule generation | Algorithm creates schedule where each team's games are back-to-back |
+| Published free windows | Communicate to teams: "You're Morning Wave. Free 1 PM - 8 PM." |
+| Group booking | Teams can browse and book activities for their free window |
+| Vendor notification | Vendors receive bookings with group size and time |
 
 ### Not in V1
 
 - Multiple simultaneous tournaments
-- Self-service vendor portal
+- Self-service vendor portal (manual onboarding for V1)
 - Online payment processing (manual invoicing for V1)
 - Mobile app (web only)
-- Individual family bookings (group only for V1)
-- On-site services (future: bring services to hotel)
-
----
-
-## Revenue Model
-
-| Source | How It Works | Example |
-|--------|--------------|---------|
-| **VIP Scheduling** | Team pays $100-200. RoadGame takes 30%, TD keeps 70%. | 20 teams × $150 × 30% = $900 |
-| **Booking Commission** | Vendor pays 10-15% on completed group bookings. | $2,000 in bookings × 12% = $240 |
-| **Tournament Total** | Combined revenue per tournament. | $1,000-2,000+ per tournament |
-
-**Scale math:**
-- 10 tournaments/month × $1,500 avg = $15,000/month
-- 50 tournaments/month × $1,500 avg = $75,000/month
 
 ---
 
@@ -292,95 +341,31 @@ V1 is a **single-tournament pilot** to validate the full loop:
 
 | Metric | Target | What It Validates |
 |--------|--------|-------------------|
-| TD adoption | 1 pilot | Will TDs use the scheduling tool? |
-| VIP purchase rate | >25% of teams | Will teams pay for clustered scheduling? |
-| Family satisfaction | Qualitative | Do families notice the better experience? |
-| Group booking rate | >50% of VIP teams book 1+ experience | Will teams book together? |
-| Vendor satisfaction | Qualitative | Do vendors value group bookings? |
-| TD revenue | Track | Did TD make meaningful money from VIP? |
+| Field utilization | 100% | Clustered scheduling doesn't waste field time |
+| Games played | Same as traditional | No reduction in tournament size |
+| Family satisfaction | >80% positive | Families notice the better experience |
+| Activity booking rate | >30% of teams book 1+ activity | Predictable free time leads to bookings |
+| TD satisfaction | Would use again | Format works operationally |
 
 ---
 
 ## Go / No-Go Criteria
 
 ### Continue Building If:
-- TD finds scheduling tool genuinely useful
-- >25% of teams purchase VIP
-- At least half of VIP teams book a group experience
-- Vendors say "I'd do this again"
-- Families/players report better experience
+- 100% field utilization maintained
+- Families report significantly better experience than traditional tournaments
+- >30% of teams book at least one group activity
+- TD would use RoadGame Format again
 
 ### Pivot If:
-- Teams won't pay for VIP (<10% purchase rate)
-- Families don't book experiences even with good schedules
-- Vendors don't see value in group bookings
+- Clustering creates operational problems we can't solve
+- Families don't book activities even with predictable free time
+- Vendors don't see value in the predictable traffic
 
 ### Stop If:
-- Can't build scheduling algorithm that works
-- TDs won't adopt the tool (prefer existing solutions)
-- Fundamental assumption wrong (teams don't want to do things together)
-
----
-
-## Execution Phases
-
-### Phase 1: Tournament Management Core
-The scheduling engine is the foundation. Without it, nothing else works.
-
-- Tournament setup (teams, fields, time slots, constraints)
-- Scheduling algorithm with VIP clustering
-- Schedule optimization and adjustment tools
-- Bracket/pool play management
-- Results entry and bracket advancement
-
-### Phase 2: Team Experience
-Enable teams to benefit from VIP and book together.
-
-- Team portal with schedule and downtime view
-- VIP purchase flow
-- Group experience browsing
-- Group booking flow
-- Itinerary management
-
-### Phase 3: Vendor Integration
-Connect vendors to receive group bookings.
-
-- Manual vendor onboarding
-- Availability management
-- Booking notifications
-- Confirmation workflow
-
-### Phase 4: Launch Prep
-Execute the pilot.
-
-- Select target tournament
-- Recruit 3-5 vendors near venue
-- Onboard TD with training
-- Test full flow end-to-end
-- Launch and monitor
-
----
-
-## Target Tournament Criteria
-
-| Criterion | Requirement |
-|-----------|-------------|
-| Format | Pool play + bracket (not pure round-robin) |
-| Size | 40-80 teams (manageable for V1) |
-| Access | Direct relationship with TD |
-| Location | Area with group-friendly venues |
-| Timing | 12-16 weeks out (need time to build) |
-
----
-
-## Team Roles
-
-| Role | Responsibility |
-|------|----------------|
-| **Technical Lead** | Build the platform: scheduling engine, team portal, vendor integration |
-| **TD Liaison** | Recruit pilot TD, manage relationship, gather feedback |
-| **Vendor Recruiter** | Sign up 3-5 local vendors for pilot |
-| **Operations** | Manual vendor onboarding, booking support during pilot |
+- Can't achieve 100% field utilization with clustered scheduling
+- TDs won't adopt the format (prefer traditional scattered scheduling)
+- Fundamental assumption wrong (families don't actually want to do activities)
 
 ---
 
@@ -388,46 +373,26 @@ Execute the pilot.
 
 | Risk | Mitigation |
 |------|------------|
-| Scheduling algorithm is hard | Start simple (greedy algorithm), iterate. Manual override as fallback. |
-| TDs prefer existing tools | Offer free pilot. Let value prove itself. |
-| Teams won't pay for VIP | Test pricing. Start at $100. Adjust based on feedback. |
-| Vendors won't accept group bookings | Start with venues already group-friendly (bowling, restaurants). |
-
----
-
-## Open Question: Pool Play vs Bracket Play Booking
-
-VIP scheduling works cleanly for **pool play**—games are fixed in advance, so teams know their exact free time windows and can book with confidence.
-
-**Bracket play introduces uncertainty.** Even with VIP scheduling, bracket game times depend on:
-- When your opponent's previous game finishes
-- Tournament progression (winners advance, losers may have consolation games)
-- Field availability as brackets collapse
-
-**The conflict scenario:** A team books bowling at 5pm. They win their 2pm bracket game. Their next bracket game gets scheduled for 4:30pm—now they have a conflict.
-
-### Options to Discuss
-
-| Option | How It Works | Trade-offs |
-|--------|--------------|------------|
-| **Safe windows only** | Only allow bookings during guaranteed free time (pool play days, post-elimination) | Conservative. Misses booking opportunities during bracket play. |
-| **Conditional booking** | Book excursions for "if we lose" scenarios. Win = auto-cancel, no fee. Vendors accept because tournament weekends are high-demand. | Requires vendor buy-in on no-fee cancellation. More complex UX. |
-| **Conflict detection + warning** | System calculates potential bracket scenarios and warns: "If you win, your next game could conflict with this booking." User decides. | Puts risk on family. May reduce booking confidence. |
-| **Hybrid approach** | Safe booking for pool play. Conditional booking for bracket play. Clear UX distinction between "confirmed" and "conditional" reservations. | More complexity, but maps to reality. |
-
-**Decision needed:** Which approach best balances booking confidence, vendor relationships, and product complexity?
+| Clustering algorithm is complex | Start with simple wave assignment. Iterate from there. |
+| TDs resist new format | Show the math: same revenue, better experience. Pilot proves it. |
+| Families don't book activities | Reduce friction. Team mom books for whole team. Curated options. |
+| Weather disrupts schedule | Buffer time between waves handles delays without cascade. |
 
 ---
 
 ## The Core Insight
 
-> **Players want to stay together with their teammates. Parents follow their lead. Keeping teams together is what everyone already wants—and it's also where the highest margins are.**
+> **The free time already exists. It's just scattered. RoadGame clusters it.**
 
-This means:
-- Don't optimize for individual families
-- Optimize for team coordination
-- Group dining, group activities, group experiences
-- "What is the TEAM doing?" not "What can MY family do?"
+Traditional tournaments accidentally create 6-8 hours of free time per team—but scatter it into unusable fragments. RoadGame Format deliberately organizes that same time into predictable, continuous blocks.
+
+**No trade-off required:**
+- Fields stay 100% utilized
+- Same number of games played
+- Same revenue for TDs
+- Families get 6-8 hours of guaranteed, bookable free time
+
+That's the RoadGame Format: **Max revenue AND max experience.**
 
 ---
 
@@ -435,7 +400,7 @@ This means:
 
 - **Market size:** $52.2B direct spending on youth sports travel
 - **Tournament frequency:** 10-15 weekends per year for travel teams
-- **Pain points:** Scheduling chaos, wasted downtime, fragmented experiences
 - **Spending per trip:** $830 average ($330 lodging, $250 transport, $250 food)
+- **The opportunity:** Families are spending $250/weekend on food and activities with no coordination. RoadGame captures that spend by making it bookable.
 
-Full research: [Research Dashboard](https://cdrappdev.github.io/roadgame/research-dashboard.html)
+Full research: [Research Dashboard](research-dashboard.html)
