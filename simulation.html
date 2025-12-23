@@ -55,7 +55,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -81,6 +81,35 @@
             font-size: 1.1rem;
             color: var(--gray-800);
             margin: 20px 0 12px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Explainer boxes */
+        .explainer {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .explainer h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .explainer p {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .explainer p:last-child {
+            margin-bottom: 0;
         }
 
         /* Data Tables */
@@ -128,8 +157,7 @@
             font-size: 0.9rem;
         }
 
-        .control-group select,
-        .control-group input {
+        .control-group select {
             padding: 10px 12px;
             border: 1px solid var(--gray-300);
             border-radius: 6px;
@@ -137,8 +165,7 @@
             background: white;
         }
 
-        .control-group select:focus,
-        .control-group input:focus {
+        .control-group select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
@@ -171,7 +198,7 @@
         /* Results */
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin: 24px 0;
         }
@@ -190,9 +217,17 @@
         }
 
         .result-card .label {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .result-card .explanation {
+            font-size: 0.85rem;
             color: var(--gray-600);
             margin-top: 8px;
+            line-height: 1.4;
         }
 
         .result-card.danger .value {
@@ -205,6 +240,51 @@
 
         .result-card.warning .value {
             color: var(--warning);
+        }
+
+        /* Scenario comparison */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .scenario-card {
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .scenario-card h4 {
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .scenario-card .description {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+
+        .scenario-card .stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .scenario-card .stat:last-child {
+            border-bottom: none;
+        }
+
+        .scenario-card .stat-value {
+            font-weight: 600;
+        }
+
+        .scenario-card.recommended {
+            border-color: var(--success);
+            background: #f0fdf4;
         }
 
         /* Timeline */
@@ -227,7 +307,7 @@
 
         .timeline-row {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             padding: 8px 0;
         }
@@ -237,6 +317,7 @@
             font-weight: 600;
             font-size: 0.9rem;
             color: var(--gray-600);
+            flex-shrink: 0;
         }
 
         .timeline-event {
@@ -246,12 +327,22 @@
             font-size: 0.9rem;
         }
 
+        .timeline-event .event-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-event .event-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
         .timeline-event.game {
             background: #dbeafe;
             border-left: 4px solid var(--primary);
         }
 
-        .timeline-event.booking {
+        .timeline-event.free {
             background: #dcfce7;
             border-left: 4px solid var(--success);
         }
@@ -266,64 +357,21 @@
             border-left: 4px solid var(--warning);
         }
 
-        /* Bracket Visualization */
-        .bracket-container {
-            overflow-x: auto;
-            padding: 20px 0;
-        }
-
-        .bracket {
-            display: flex;
-            gap: 40px;
-            min-width: max-content;
-        }
-
-        .bracket-round {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-        .bracket-round-title {
-            text-align: center;
-            font-weight: 600;
-            color: var(--gray-600);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-        }
-
-        .bracket-match {
-            background: var(--gray-100);
-            border-radius: 6px;
-            padding: 8px 12px;
-            min-width: 140px;
-            font-size: 0.85rem;
-        }
-
-        .bracket-team {
-            padding: 4px 0;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .bracket-team:last-child {
-            border-bottom: none;
-        }
-
-        .bracket-team.winner {
-            font-weight: 600;
-            color: var(--success);
-        }
-
-        .bracket-team.vip {
-            background: #fef3c7;
-        }
-
-        /* Insights */
+        /* Insight boxes */
         .insight-box {
             padding: 20px;
             border-radius: 8px;
             margin: 16px 0;
+        }
+
+        .insight-box h4 {
+            margin-bottom: 8px;
+            color: var(--gray-800);
+        }
+
+        .insight-box p {
+            color: var(--gray-700);
+            font-size: 0.95rem;
         }
 
         .insight-box.info {
@@ -346,17 +394,7 @@
             border-left: 4px solid var(--danger);
         }
 
-        .insight-box h4 {
-            margin-bottom: 8px;
-            color: var(--gray-800);
-        }
-
-        .insight-box p {
-            color: var(--gray-700);
-            font-size: 0.95rem;
-        }
-
-        /* Assumptions */
+        /* Assumption list */
         .assumption-list {
             list-style: none;
         }
@@ -376,50 +414,14 @@
             font-weight: bold;
         }
 
-        /* Progress Bar */
-        .progress-bar {
-            width: 100%;
-            height: 24px;
-            background: var(--gray-200);
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 16px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 12px;
-            transition: width 0.3s;
-        }
-
-        .progress-fill.success {
-            background: var(--success);
-        }
-
-        .progress-fill.danger {
-            background: var(--danger);
-        }
-
-        .progress-fill.warning {
-            background: var(--warning);
-        }
-
-        /* Chart placeholder */
-        .chart-container {
-            background: var(--gray-100);
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
+        /* Bar Chart */
         .bar-chart {
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            height: 200px;
+            height: 220px;
             padding: 20px;
-            background: white;
+            background: var(--gray-50);
             border-radius: 8px;
             margin: 20px 0;
         }
@@ -429,39 +431,37 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            flex: 1;
+            max-width: 120px;
         }
 
         .bar {
-            width: 60px;
+            width: 50px;
             background: var(--primary);
             border-radius: 4px 4px 0 0;
             transition: height 0.5s;
+            min-height: 4px;
         }
 
-        .bar.danger {
-            background: var(--danger);
-        }
+        .bar.danger { background: var(--danger); }
+        .bar.success { background: var(--success); }
+        .bar.warning { background: var(--warning); }
 
-        .bar.success {
-            background: var(--success);
-        }
-
-        .bar.warning {
-            background: var(--warning);
+        .bar-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-800);
         }
 
         .bar-label {
             font-size: 0.8rem;
             color: var(--gray-600);
             text-align: center;
+            line-height: 1.3;
         }
 
-        .bar-value {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
+        .hidden { display: none; }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 40px 20px;
@@ -477,178 +477,133 @@
             text-decoration: underline;
         }
 
-        /* Scenario comparison */
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 24px 0;
-        }
-
-        .scenario-card {
-            border: 2px solid var(--gray-200);
+        .callout {
+            background: var(--gray-900);
+            color: white;
+            padding: 20px;
             border-radius: 8px;
-            padding: 24px;
+            margin: 20px 0;
         }
 
-        .scenario-card h4 {
-            color: var(--gray-800);
-            margin-bottom: 12px;
-        }
-
-        .scenario-card .stat {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--gray-100);
-        }
-
-        .scenario-card .stat:last-child {
-            border-bottom: none;
-        }
-
-        .scenario-card .stat-value {
-            font-weight: 600;
-        }
-
-        .hidden {
-            display: none;
+        .callout h4 {
+            color: white;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>Tournament Simulation</h1>
-        <p>Modeling booking conflicts in youth sports tournaments to inform product decisions</p>
+        <p>Understanding when families can safely book activities during tournament weekends</p>
     </div>
 
     <div class="container">
-        <!-- Research Data -->
+        <!-- How Tournaments Work -->
         <section>
-            <h2>Research Data: Game Durations</h2>
-            <p>Based on web research from league rules and tournament guidelines.</p>
+            <h2>How Youth Sports Tournaments Work</h2>
+
+            <div class="explainer">
+                <h4>What is a "Pool Play + Bracket" Tournament?</h4>
+                <p>Most youth sports tournaments use a two-phase format over a weekend:</p>
+                <p><strong>Day 1 - Pool Play:</strong> Teams are divided into small groups (called "pools") of 4 teams each. Every team plays all other teams in their pool. This is like a mini round-robin within each group. The schedule is set in advance and doesn't change.</p>
+                <p><strong>Day 2 - Bracket Play:</strong> Based on Day 1 results, the top teams from each pool advance to a single-elimination bracket (like March Madness). Win and you advance. Lose and you're done. Game times can shift because the schedule depends on how quickly earlier games finish.</p>
+            </div>
+
+            <div class="explainer">
+                <h4>Why Does This Matter for Booking Activities?</h4>
+                <p><strong>Pool Play (Day 1):</strong> Since the schedule is fixed, families know exactly when games are. They can confidently book activities during gaps between games.</p>
+                <p><strong>Bracket Play (Day 2):</strong> This is where it gets tricky. If your team wins, you have another game coming up - but the exact time might shift based on when earlier games finished. If you booked an activity assuming you'd be free, you might have a conflict.</p>
+            </div>
+        </section>
+
+        <!-- What We're Simulating -->
+        <section>
+            <h2>What This Simulation Tests</h2>
+
+            <p>We want to answer: <strong>How often do bookings conflict with games during bracket play?</strong></p>
+
+            <p>The simulation runs hundreds of tournaments with random game outcomes and timing variations, then tracks how often a family who booked an activity would have a conflict with their next game.</p>
+
+            <h3>Key Assumptions (Based on Research)</h3>
+            <ul class="assumption-list">
+                <li><strong>Game timing varies:</strong> Games can run 10 minutes shorter or 15 minutes longer than expected</li>
+                <li><strong>Bracket games have fixed scheduled times:</strong> But if previous games run early, the next game might start up to 15 minutes early</li>
+                <li><strong>Families book activities 2 hours after their game ends:</strong> A reasonable buffer to get organized</li>
+                <li><strong>Activities last about 90 minutes:</strong> Typical for lunch, bowling, mini golf, etc.</li>
+                <li><strong>Families need 30 minutes before games:</strong> Time to arrive, warm up, and get ready</li>
+            </ul>
+        </section>
+
+        <!-- Game Duration Data -->
+        <section>
+            <h2>Game Duration Data (From Research)</h2>
 
             <table class="data-table">
                 <thead>
                     <tr>
                         <th>Sport</th>
                         <th>Age Group</th>
-                        <th>Game Duration</th>
-                        <th>Format</th>
-                        <th>Source</th>
+                        <th>Typical Duration</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td rowspan="4"><strong>Soccer</strong></td>
-                        <td>U8</td>
-                        <td>40-50 min</td>
-                        <td>4x10-12 min quarters</td>
-                        <td><a href="https://simplifysoccer.com/how-long-is-a-soccer-game-by-age/" target="_blank">SimplifySoccer</a></td>
-                    </tr>
-                    <tr>
+                        <td rowspan="3"><strong>Soccer</strong></td>
                         <td>U10</td>
-                        <td>50 min</td>
-                        <td>2x25 min halves</td>
-                        <td><a href="https://www.soccer-for-kids.com/how-long-is-a-youth-soccer-game.html" target="_blank">Soccer for Kids</a></td>
+                        <td>50 minutes</td>
+                        <td>Two 25-minute halves</td>
                     </tr>
                     <tr>
                         <td>U12</td>
-                        <td>60 min</td>
-                        <td>2x30 min halves</td>
-                        <td><a href="https://littleleaguedreams.com/how-long-is-a-youth-soccer-game/" target="_blank">Little League Dreams</a></td>
+                        <td>60 minutes</td>
+                        <td>Two 30-minute halves</td>
                     </tr>
                     <tr>
                         <td>U14</td>
-                        <td>70-80 min</td>
-                        <td>2x35-40 min halves</td>
-                        <td><a href="https://thefootballclubusa.com/how-long-do-youth-soccer-games-last/" target="_blank">Football Club USA</a></td>
+                        <td>75 minutes</td>
+                        <td>Two 35-40 minute halves</td>
                     </tr>
                     <tr>
-                        <td rowspan="2"><strong>Basketball</strong></td>
-                        <td>Youth (7-12)</td>
-                        <td>30-45 min</td>
-                        <td>4x6-8 min quarters</td>
-                        <td><a href="https://thesportsarena.net/youth-basketball-league-rules-regulations" target="_blank">The Sports Arena</a></td>
-                    </tr>
-                    <tr>
-                        <td>Travel/AAU</td>
-                        <td>45-60 min</td>
-                        <td>Shortened quarters common</td>
-                        <td><a href="https://kidsworldplay.com/how-long-is-a-basketball-game/" target="_blank">Kids World Play</a></td>
+                        <td><strong>Basketball</strong></td>
+                        <td>Youth</td>
+                        <td>45 minutes</td>
+                        <td>Four 6-8 minute quarters</td>
                     </tr>
                     <tr>
                         <td><strong>Volleyball</strong></td>
                         <td>Youth</td>
-                        <td>45-60 min</td>
+                        <td>55 minutes</td>
                         <td>Best of 3 sets</td>
-                        <td><a href="https://hoopsking.com/blogs/hoopsking-com/how-long-is-a-volleyball-game-understanding-duration" target="_blank">HoopsKing</a></td>
                     </tr>
                     <tr>
-                        <td rowspan="3"><strong>Baseball</strong></td>
-                        <td>10U-12U</td>
-                        <td>90-105 min</td>
-                        <td>6 innings, 1:45 time limit</td>
-                        <td><a href="https://643athletics.com/pages/youth-baseball-tournament-rules" target="_blank">6-4-3 Athletics</a></td>
-                    </tr>
-                    <tr>
-                        <td>13U-14U</td>
-                        <td>100-115 min</td>
-                        <td>7 innings, 1:55 time limit</td>
-                        <td><a href="https://youthbaseballnetwork.com/about/rules/" target="_blank">Youth Baseball Network</a></td>
-                    </tr>
-                    <tr>
-                        <td>14U-18U</td>
-                        <td>105-120 min</td>
-                        <td>7 innings, 2:00 time limit</td>
-                        <td><a href="https://play9sports.com/about/youth-baseball-rules/" target="_blank">Play9Sports</a></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2"><strong>Lacrosse</strong></td>
+                        <td><strong>Lacrosse</strong></td>
                         <td>Youth</td>
-                        <td>32-40 min</td>
-                        <td>4x8-10 min quarters</td>
-                        <td><a href="https://hoopsking.com/blogs/hoopsking-com/how-long-is-a-lacrosse-game-duration-guide-for-parents" target="_blank">HoopsKing</a></td>
+                        <td>40 minutes</td>
+                        <td>Four 8-10 minute quarters</td>
                     </tr>
                     <tr>
-                        <td>U14+</td>
-                        <td>40-48 min</td>
-                        <td>4x10-12 min quarters</td>
-                        <td><a href="https://lacrosseballstore.com/blogs/news/lacrosse-game-length-what-to-expect-at-different-levels" target="_blank">Lacrosse Ball Store</a></td>
+                        <td rowspan="2"><strong>Baseball</strong></td>
+                        <td>12U</td>
+                        <td>95 minutes</td>
+                        <td>6 innings or 1:45 time limit</td>
+                    </tr>
+                    <tr>
+                        <td>14U</td>
+                        <td>110 minutes</td>
+                        <td>7 innings or 2:00 time limit</td>
                     </tr>
                 </tbody>
             </table>
-
-            <div class="insight-box info">
-                <h4>Key Finding: Bracket Game Timing</h4>
-                <p>From <a href="https://www.gsltournaments.com/faqs/" target="_blank">GSL Tournaments</a>: "If the previous game ends early, tournament staff will let you know the adjusted start time which will never be more than 15 minutes prior to the scheduled game time."</p>
-                <p style="margin-top: 8px;">This suggests bracket games use <strong>fixed scheduled times</strong> with minor adjustments (max 15 min early).</p>
-            </div>
-        </section>
-
-        <!-- Simulation Assumptions -->
-        <section>
-            <h2>Simulation Assumptions</h2>
-            <p>These assumptions are based on research but may not reflect all tournament variations.</p>
-
-            <ul class="assumption-list">
-                <li><strong>Tournament format:</strong> 16-team tournament with 4 pools of 4 teams, top 2 from each pool advance to 8-team single elimination bracket</li>
-                <li><strong>Pool play:</strong> Each team plays 3 games (round robin within pool). Schedule is fixed in advance.</li>
-                <li><strong>Bracket play:</strong> Games have fixed scheduled start times. If previous game runs early, next game may start up to 15 min early.</li>
-                <li><strong>Game duration variance:</strong> Games run -10 to +15 minutes from expected duration (slightly skewed toward running long)</li>
-                <li><strong>Buffer between games:</strong> 20 minutes scheduled between games on same field</li>
-                <li><strong>Booking window:</strong> Team books excursion 2+ hours after their last known game ends</li>
-                <li><strong>Conflict definition:</strong> Booking overlaps with actual game time (including 30 min pre-game arrival)</li>
-            </ul>
         </section>
 
         <!-- Simulation Controls -->
         <section>
-            <h2>Run Simulation</h2>
+            <h2>Run the Simulation</h2>
 
             <div class="controls">
                 <div class="control-group">
-                    <label for="sport">Sport</label>
+                    <label for="sport">Sport & Age Group</label>
                     <select id="sport">
                         <option value="soccer-u12">Soccer (U12) - 60 min games</option>
                         <option value="soccer-u10">Soccer (U10) - 50 min games</option>
@@ -661,27 +616,19 @@
                     </select>
                 </div>
                 <div class="control-group">
-                    <label for="numTeams">Number of Teams</label>
+                    <label for="numTeams">Tournament Size</label>
                     <select id="numTeams">
-                        <option value="8">8 teams (2 pools)</option>
-                        <option value="16" selected>16 teams (4 pools)</option>
-                        <option value="32">32 teams (8 pools)</option>
+                        <option value="16" selected>16 teams (typical weekend tournament)</option>
+                        <option value="8">8 teams (small tournament)</option>
+                        <option value="32">32 teams (large tournament)</option>
                     </select>
                 </div>
                 <div class="control-group">
-                    <label for="numFields">Number of Fields</label>
-                    <select id="numFields">
-                        <option value="2">2 fields</option>
-                        <option value="4" selected>4 fields</option>
-                        <option value="6">6 fields</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="simRuns">Simulation Runs</label>
+                    <label for="simRuns">How Many Tournaments to Simulate</label>
                     <select id="simRuns">
-                        <option value="100">100 runs</option>
-                        <option value="500" selected>500 runs</option>
-                        <option value="1000">1,000 runs</option>
+                        <option value="100">100 tournaments</option>
+                        <option value="500" selected>500 tournaments</option>
+                        <option value="1000">1,000 tournaments</option>
                     </select>
                 </div>
             </div>
@@ -689,102 +636,81 @@
             <button class="btn btn-primary btn-large" onclick="runSimulation()">Run Simulation</button>
         </section>
 
-        <!-- Results Section (hidden until simulation runs) -->
+        <!-- Results Section -->
         <section id="results" class="hidden">
             <h2>Simulation Results</h2>
 
             <div class="results-grid">
-                <div class="result-card">
-                    <div class="value" id="totalBookings">-</div>
-                    <div class="label">Total Bookings Simulated</div>
-                </div>
-                <div class="result-card danger">
-                    <div class="value" id="conflictRate">-</div>
-                    <div class="label">Bracket Day Conflict Rate</div>
-                </div>
                 <div class="result-card success">
-                    <div class="value" id="poolSafeRate">-</div>
-                    <div class="label">Pool Play Safe Rate</div>
+                    <div class="value" id="poolSafeRate">100%</div>
+                    <div class="label">Pool Play (Day 1) Safe Rate</div>
+                    <div class="explanation">Schedule is fixed. Families can book activities with confidence.</div>
                 </div>
-                <div class="result-card warning">
-                    <div class="value" id="avgConflictTime">-</div>
-                    <div class="label">Avg Conflict Overlap</div>
+                <div class="result-card" id="bracketCard">
+                    <div class="value" id="bracketConflictRate">-</div>
+                    <div class="label">Bracket Play (Day 2) Conflict Rate</div>
+                    <div class="explanation" id="bracketExplanation">Percentage of bracket-day bookings that would conflict with an advancing team's next game.</div>
+                </div>
+                <div class="result-card">
+                    <div class="value" id="totalSimulated">-</div>
+                    <div class="label">Booking Scenarios Tested</div>
+                    <div class="explanation">Total number of "what if a family booked here?" scenarios we ran.</div>
                 </div>
             </div>
 
-            <h3>Conflict Frequency by Tournament Phase</h3>
+            <h3>What Happens at Each Stage of Day 2 (Bracket Play)?</h3>
+            <p>As teams advance deeper into the bracket, game timing becomes less predictable because delays compound.</p>
+
             <div class="bar-chart" id="phaseChart">
                 <div class="bar-group">
                     <div class="bar success" id="bar-pool" style="height: 20px;"></div>
-                    <div class="bar-value" id="val-pool">-</div>
+                    <div class="bar-value" id="val-pool">0%</div>
                     <div class="bar-label">Pool Play<br>(Day 1)</div>
                 </div>
                 <div class="bar-group">
-                    <div class="bar warning" id="bar-quarters" style="height: 80px;"></div>
-                    <div class="bar-value" id="val-quarters">-</div>
-                    <div class="bar-label">Quarterfinals<br>(Day 2 AM)</div>
+                    <div class="bar" id="bar-qf" style="height: 40px;"></div>
+                    <div class="bar-value" id="val-qf">-</div>
+                    <div class="bar-label">After Round 1<br>Game</div>
                 </div>
                 <div class="bar-group">
-                    <div class="bar warning" id="bar-semis" style="height: 120px;"></div>
-                    <div class="bar-value" id="val-semis">-</div>
-                    <div class="bar-label">Semifinals<br>(Day 2 PM)</div>
+                    <div class="bar" id="bar-sf" style="height: 80px;"></div>
+                    <div class="bar-value" id="val-sf">-</div>
+                    <div class="bar-label">After Round 2<br>Game</div>
                 </div>
                 <div class="bar-group">
-                    <div class="bar danger" id="bar-finals" style="height: 160px;"></div>
-                    <div class="bar-value" id="val-finals">-</div>
-                    <div class="bar-label">Finals<br>(Day 2 Late)</div>
+                    <div class="bar" id="bar-final" style="height: 120px;"></div>
+                    <div class="bar-value" id="val-final">-</div>
+                    <div class="bar-label">After Round 3<br>Game</div>
                 </div>
             </div>
+            <p style="text-align: center; color: var(--gray-600); font-size: 0.9rem;">Conflict rate = % of bookings that would overlap with the next game</p>
+        </section>
 
-            <h3>Booking Strategy Comparison</h3>
+        <!-- Strategy Comparison -->
+        <section id="strategies" class="hidden">
+            <h2>Comparing Booking Strategies</h2>
+
+            <p>How do different approaches to booking affect conflict rates?</p>
+
             <div class="scenario-grid" id="scenarioGrid">
                 <!-- Populated by JavaScript -->
             </div>
         </section>
 
-        <!-- Sample Timeline -->
+        <!-- Sample Day -->
         <section id="timelineSection" class="hidden">
-            <h2>Sample Team Timeline</h2>
-            <p>Example schedule for a team that advances to the finals, showing potential booking conflicts.</p>
+            <h2>Example: A Team's Tournament Weekend</h2>
+            <p>Here's what a typical tournament weekend looks like for a team that keeps winning:</p>
 
             <div class="timeline" id="timeline">
                 <!-- Populated by JavaScript -->
             </div>
         </section>
 
-        <!-- Insights -->
-        <section id="insightsSection" class="hidden">
-            <h2>Key Insights</h2>
-
-            <div id="insights">
-                <!-- Populated by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Methodology -->
-        <section>
-            <h2>Methodology</h2>
-
-            <h3>How the Simulation Works</h3>
-            <ol style="margin-left: 20px; color: var(--gray-700);">
-                <li style="margin-bottom: 8px;"><strong>Generate Tournament:</strong> Create pools, assign teams, build bracket structure</li>
-                <li style="margin-bottom: 8px;"><strong>Schedule Pool Play:</strong> Assign fixed game times across available fields (Day 1)</li>
-                <li style="margin-bottom: 8px;"><strong>Simulate Games:</strong> Random win/lose outcomes, random duration variance (-10 to +15 min)</li>
-                <li style="margin-bottom: 8px;"><strong>Build Bracket:</strong> Top teams from each pool advance, seeded by record</li>
-                <li style="margin-bottom: 8px;"><strong>Schedule Bracket:</strong> Assign fixed times, but actual start may shift based on previous game</li>
-                <li style="margin-bottom: 8px;"><strong>Simulate Bookings:</strong> Each advancing team "books" an excursion 2 hours after their expected free time</li>
-                <li style="margin-bottom: 8px;"><strong>Detect Conflicts:</strong> Check if booking time overlaps with actual next game time (including 30 min arrival buffer)</li>
-                <li style="margin-bottom: 8px;"><strong>Aggregate Results:</strong> Run N simulations, calculate conflict rates by phase and strategy</li>
-            </ol>
-
-            <h3>Limitations</h3>
-            <ul style="margin-left: 20px; color: var(--gray-700);">
-                <li style="margin-bottom: 8px;">Real tournaments have more complex scheduling constraints (referee availability, team requests, etc.)</li>
-                <li style="margin-bottom: 8px;">Game duration variance may differ by sport, weather, and competitiveness of match</li>
-                <li style="margin-bottom: 8px;">Some tournaments use rolling start times, others use strict fixed times</li>
-                <li style="margin-bottom: 8px;">Doesn't account for consolation brackets or 3rd place games</li>
-                <li style="margin-bottom: 8px;">Booking behavior assumptions are estimates, not based on real user data</li>
-            </ul>
+        <!-- Key Takeaways -->
+        <section id="takeaways" class="hidden">
+            <h2>Key Takeaways</h2>
+            <div id="insights"></div>
         </section>
     </div>
 
@@ -795,19 +721,15 @@
     <script>
         // Game duration data (in minutes)
         const GAME_DURATIONS = {
-            'soccer-u10': { base: 50, variance: [-8, 12], buffer: 20 },
-            'soccer-u12': { base: 60, variance: [-10, 15], buffer: 20 },
-            'soccer-u14': { base: 75, variance: [-10, 15], buffer: 25 },
-            'basketball': { base: 45, variance: [-5, 10], buffer: 15 },
-            'volleyball': { base: 55, variance: [-10, 20], buffer: 15 },
-            'lacrosse': { base: 40, variance: [-5, 10], buffer: 15 },
-            'baseball-12u': { base: 95, variance: [-15, 20], buffer: 25 },
-            'baseball-14u': { base: 110, variance: [-15, 25], buffer: 30 }
+            'soccer-u10': { base: 50, variance: [-8, 12], buffer: 15, name: 'Soccer U10' },
+            'soccer-u12': { base: 60, variance: [-10, 15], buffer: 15, name: 'Soccer U12' },
+            'soccer-u14': { base: 75, variance: [-10, 15], buffer: 20, name: 'Soccer U14' },
+            'basketball': { base: 45, variance: [-5, 10], buffer: 10, name: 'Basketball' },
+            'volleyball': { base: 55, variance: [-10, 20], buffer: 10, name: 'Volleyball' },
+            'lacrosse': { base: 40, variance: [-5, 10], buffer: 10, name: 'Lacrosse' },
+            'baseball-12u': { base: 95, variance: [-15, 20], buffer: 20, name: 'Baseball 12U' },
+            'baseball-14u': { base: 110, variance: [-15, 25], buffer: 25, name: 'Baseball 14U' }
         };
-
-        // Tournament start times
-        const DAY1_START = 8 * 60; // 8:00 AM in minutes
-        const DAY2_START = 8 * 60; // 8:00 AM in minutes
 
         function randomInRange(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -817,562 +739,317 @@
             const hours = Math.floor(minutes / 60);
             const mins = minutes % 60;
             const period = hours >= 12 ? 'PM' : 'AM';
-            const displayHours = hours > 12 ? hours - 12 : hours;
+            const displayHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
             return `${displayHours}:${mins.toString().padStart(2, '0')} ${period}`;
-        }
-
-        function generateTeams(numTeams) {
-            const teams = [];
-            for (let i = 0; i < numTeams; i++) {
-                teams.push({
-                    id: i,
-                    name: `Team ${String.fromCharCode(65 + i)}`,
-                    pool: Math.floor(i / 4),
-                    wins: 0,
-                    losses: 0,
-                    pointDiff: 0,
-                    isVIP: Math.random() < 0.25 // 25% are VIP teams
-                });
-            }
-            return teams;
-        }
-
-        function generatePoolPlaySchedule(teams, numFields, sport) {
-            const schedule = [];
-            const numPools = teams.length / 4;
-            const sportConfig = GAME_DURATIONS[sport];
-            const slotDuration = sportConfig.base + sportConfig.buffer;
-
-            let currentTime = DAY1_START;
-            let fieldIndex = 0;
-
-            // For each pool, generate round-robin matchups
-            for (let pool = 0; pool < numPools; pool++) {
-                const poolTeams = teams.filter(t => t.pool === pool);
-                const matchups = [
-                    [0, 1], [2, 3], // Round 1
-                    [0, 2], [1, 3], // Round 2
-                    [0, 3], [1, 2]  // Round 3
-                ];
-
-                matchups.forEach((matchup, idx) => {
-                    schedule.push({
-                        phase: 'pool',
-                        round: Math.floor(idx / 2) + 1,
-                        team1: poolTeams[matchup[0]],
-                        team2: poolTeams[matchup[1]],
-                        scheduledTime: currentTime + (Math.floor(idx / numFields) * slotDuration),
-                        field: (fieldIndex % numFields) + 1,
-                        actualDuration: null,
-                        actualStart: null
-                    });
-                    fieldIndex++;
-                });
-            }
-
-            // Sort by scheduled time
-            schedule.sort((a, b) => a.scheduledTime - b.scheduledTime);
-            return schedule;
-        }
-
-        function simulateGame(game, sport) {
-            const sportConfig = GAME_DURATIONS[sport];
-            const variance = randomInRange(sportConfig.variance[0], sportConfig.variance[1]);
-            game.actualDuration = sportConfig.base + variance;
-            game.actualStart = game.scheduledTime; // Pool play starts on time
-
-            // Random winner
-            const team1Wins = Math.random() < 0.5;
-            game.winner = team1Wins ? game.team1 : game.team2;
-            game.loser = team1Wins ? game.team2 : game.team1;
-
-            // Update team records
-            game.winner.wins++;
-            game.loser.losses++;
-            game.winner.pointDiff += randomInRange(1, 5);
-            game.loser.pointDiff -= randomInRange(1, 5);
-
-            return game;
-        }
-
-        function generateBracket(teams) {
-            // Sort teams by pool, then by wins (desc), then point diff (desc)
-            const pools = {};
-            teams.forEach(t => {
-                if (!pools[t.pool]) pools[t.pool] = [];
-                pools[t.pool].push(t);
-            });
-
-            const advancingTeams = [];
-            Object.values(pools).forEach(poolTeams => {
-                poolTeams.sort((a, b) => {
-                    if (b.wins !== a.wins) return b.wins - a.wins;
-                    return b.pointDiff - a.pointDiff;
-                });
-                advancingTeams.push(poolTeams[0]); // Pool winner
-                advancingTeams.push(poolTeams[1]); // Pool runner-up
-            });
-
-            return advancingTeams;
-        }
-
-        function generateBracketSchedule(advancingTeams, sport) {
-            const sportConfig = GAME_DURATIONS[sport];
-            const slotDuration = sportConfig.base + sportConfig.buffer;
-            const schedule = [];
-
-            // Quarterfinals (4 games)
-            const qfMatchups = [
-                [advancingTeams[0], advancingTeams[7]], // 1st Pool A vs 2nd Pool D
-                [advancingTeams[2], advancingTeams[5]], // 1st Pool B vs 2nd Pool C
-                [advancingTeams[4], advancingTeams[3]], // 1st Pool C vs 2nd Pool B
-                [advancingTeams[6], advancingTeams[1]]  // 1st Pool D vs 2nd Pool A
-            ];
-
-            let time = DAY2_START;
-            qfMatchups.forEach((matchup, idx) => {
-                schedule.push({
-                    phase: 'quarterfinal',
-                    round: 'QF',
-                    matchIndex: idx,
-                    team1: matchup[0],
-                    team2: matchup[1],
-                    scheduledTime: time + (Math.floor(idx / 2) * slotDuration),
-                    field: (idx % 2) + 1,
-                    actualDuration: null,
-                    actualStart: null,
-                    winner: null
-                });
-            });
-
-            // Semifinals placeholder (times set, teams TBD)
-            const sfTime = DAY2_START + (2 * slotDuration);
-            schedule.push({
-                phase: 'semifinal',
-                round: 'SF',
-                matchIndex: 0,
-                team1: null,
-                team2: null,
-                scheduledTime: sfTime,
-                field: 1,
-                actualDuration: null,
-                actualStart: null,
-                winner: null
-            });
-            schedule.push({
-                phase: 'semifinal',
-                round: 'SF',
-                matchIndex: 1,
-                team1: null,
-                team2: null,
-                scheduledTime: sfTime,
-                field: 2,
-                actualDuration: null,
-                actualStart: null,
-                winner: null
-            });
-
-            // Finals placeholder
-            const finalsTime = DAY2_START + (4 * slotDuration);
-            schedule.push({
-                phase: 'final',
-                round: 'F',
-                matchIndex: 0,
-                team1: null,
-                team2: null,
-                scheduledTime: finalsTime,
-                field: 1,
-                actualDuration: null,
-                actualStart: null,
-                winner: null
-            });
-
-            return schedule;
-        }
-
-        function simulateBracketGame(game, previousGamesOnField, sport) {
-            const sportConfig = GAME_DURATIONS[sport];
-            const variance = randomInRange(sportConfig.variance[0], sportConfig.variance[1]);
-            game.actualDuration = sportConfig.base + variance;
-
-            // Calculate actual start time based on previous game
-            if (previousGamesOnField.length > 0) {
-                const lastGame = previousGamesOnField[previousGamesOnField.length - 1];
-                const lastGameEnd = lastGame.actualStart + lastGame.actualDuration;
-                const minBuffer = 10; // Minimum buffer between games
-
-                // Game starts at scheduled time OR when previous game ends + buffer, whichever is later
-                // But can start up to 15 min early if previous game ended early
-                const earliestStart = Math.max(game.scheduledTime - 15, lastGameEnd + minBuffer);
-                game.actualStart = Math.max(earliestStart, lastGameEnd + minBuffer);
-            } else {
-                game.actualStart = game.scheduledTime;
-            }
-
-            // Random winner
-            const team1Wins = Math.random() < 0.5;
-            game.winner = team1Wins ? game.team1 : game.team2;
-            game.loser = team1Wins ? game.team2 : game.team1;
-
-            return game;
-        }
-
-        function simulateBookingConflicts(team, bracketSchedule, sport) {
-            const sportConfig = GAME_DURATIONS[sport];
-            const results = {
-                bookingsMade: 0,
-                conflicts: 0,
-                conflictDetails: []
-            };
-
-            // Find all games this team plays in bracket
-            const teamGames = bracketSchedule.filter(g =>
-                g.team1 === team || g.team2 === team
-            );
-
-            if (teamGames.length === 0) return results;
-
-            // For each game except the last, simulate a booking
-            for (let i = 0; i < teamGames.length - 1; i++) {
-                const currentGame = teamGames[i];
-                const nextGame = teamGames[i + 1];
-
-                if (currentGame.winner !== team) break; // Team lost, no more games
-
-                // Team books 2 hours after expected game end
-                const expectedGameEnd = currentGame.scheduledTime + sportConfig.base;
-                const bookingTime = expectedGameEnd + 120; // 2 hours later
-                const bookingDuration = 90; // 1.5 hour excursion
-
-                results.bookingsMade++;
-
-                // Check for conflict with next game
-                const arrivalTime = nextGame.actualStart - 30; // Need to arrive 30 min early
-                const bookingEnd = bookingTime + bookingDuration;
-
-                if (bookingEnd > arrivalTime) {
-                    results.conflicts++;
-                    results.conflictDetails.push({
-                        bookingTime,
-                        bookingEnd,
-                        nextGameActualStart: nextGame.actualStart,
-                        arrivalTime,
-                        overlapMinutes: bookingEnd - arrivalTime,
-                        phase: nextGame.phase
-                    });
-                }
-            }
-
-            return results;
         }
 
         function runSimulation() {
             const sport = document.getElementById('sport').value;
             const numTeams = parseInt(document.getElementById('numTeams').value);
-            const numFields = parseInt(document.getElementById('numFields').value);
             const simRuns = parseInt(document.getElementById('simRuns').value);
+            const sportConfig = GAME_DURATIONS[sport];
 
-            let totalBookings = 0;
+            // Calculate typical bracket schedule
+            const DAY2_START = 8 * 60; // 8 AM
+            const gameSlot = sportConfig.base + sportConfig.buffer + 10; // game + buffer + changeover
+
+            let totalBookingScenarios = 0;
             let totalConflicts = 0;
-            let poolConflicts = 0;
-            let qfConflicts = 0;
-            let sfConflicts = 0;
-            let finalConflicts = 0;
-            let conflictOverlaps = [];
-
-            // Track by strategy
-            const strategies = {
-                'book-2hrs': { bookings: 0, conflicts: 0 },
-                'book-3hrs': { bookings: 0, conflicts: 0 },
-                'book-pool-only': { bookings: 0, conflicts: 0 },
-                'conditional': { bookings: 0, conflicts: 0 }
-            };
+            let qfBookings = 0, qfConflicts = 0;
+            let sfBookings = 0, sfConflicts = 0;
+            let finalBookings = 0, finalConflicts = 0;
 
             for (let run = 0; run < simRuns; run++) {
-                // Generate tournament
-                const teams = generateTeams(numTeams);
+                // Simulate bracket day for advancing teams
+                // In a 16-team bracket: 8 teams play QF, 4 play SF, 2 play Final
 
-                // Pool play (fixed schedule, no conflicts possible)
-                const poolSchedule = generatePoolPlaySchedule(teams, numFields, sport);
-                poolSchedule.forEach(game => simulateGame(game, sport));
-
-                // Determine bracket
-                const advancingTeams = generateBracket(teams);
-
-                // Generate and simulate bracket
-                const bracketSchedule = generateBracketSchedule(advancingTeams, sport);
-
-                // Simulate quarterfinals
-                const qfGames = bracketSchedule.filter(g => g.phase === 'quarterfinal');
-                qfGames.forEach(game => {
-                    const prevOnField = [];
-                    simulateBracketGame(game, prevOnField, sport);
+                // Quarterfinals (8 teams play, 4 advance)
+                const qfScheduledTimes = [DAY2_START, DAY2_START, DAY2_START + gameSlot, DAY2_START + gameSlot];
+                const qfActualEnds = qfScheduledTimes.map(t => {
+                    const variance = randomInRange(sportConfig.variance[0], sportConfig.variance[1]);
+                    return t + sportConfig.base + variance;
                 });
 
-                // Set semifinal matchups
-                const sfGames = bracketSchedule.filter(g => g.phase === 'semifinal');
-                sfGames[0].team1 = qfGames[0].winner;
-                sfGames[0].team2 = qfGames[1].winner;
-                sfGames[1].team1 = qfGames[2].winner;
-                sfGames[1].team2 = qfGames[3].winner;
+                // For each QF winner, they might book an activity
+                for (let i = 0; i < 4; i++) {
+                    qfBookings++;
+                    totalBookingScenarios++;
 
-                // Simulate semifinals
-                sfGames.forEach((game, idx) => {
-                    const prevOnField = qfGames.filter(g => g.field === game.field);
-                    simulateBracketGame(game, prevOnField, sport);
-                });
+                    // They book 2 hours after their game ends
+                    const bookingStart = qfActualEnds[i] + 120;
+                    const bookingEnd = bookingStart + 90;
 
-                // Set finals matchup
-                const finalGame = bracketSchedule.find(g => g.phase === 'final');
-                finalGame.team1 = sfGames[0].winner;
-                finalGame.team2 = sfGames[1].winner;
+                    // Their SF game is scheduled at a fixed time
+                    const sfScheduledTime = DAY2_START + (gameSlot * 2) + (Math.floor(i / 2) * gameSlot);
 
-                // Simulate finals
-                const prevOnField1 = [...qfGames.filter(g => g.field === 1), sfGames[0]];
-                simulateBracketGame(finalGame, prevOnField1, sport);
+                    // But SF might start early if QF games finished early
+                    const earlierQfEnd = Math.max(qfActualEnds[0], qfActualEnds[1]);
+                    const sfActualStart = Math.max(sfScheduledTime - 15, earlierQfEnd + sportConfig.buffer);
 
-                // Check booking conflicts for all advancing teams
-                advancingTeams.forEach(team => {
-                    const result = simulateBookingConflicts(team, bracketSchedule, sport);
-                    totalBookings += result.bookingsMade;
-                    totalConflicts += result.conflicts;
+                    // Need to arrive 30 min early
+                    const mustArriveBy = sfActualStart - 30;
 
-                    result.conflictDetails.forEach(detail => {
-                        conflictOverlaps.push(detail.overlapMinutes);
-                        if (detail.phase === 'quarterfinal') qfConflicts++;
-                        else if (detail.phase === 'semifinal') sfConflicts++;
-                        else if (detail.phase === 'final') finalConflicts++;
-                    });
+                    if (bookingEnd > mustArriveBy) {
+                        qfConflicts++;
+                        totalConflicts++;
+                    }
+                }
 
-                    // Strategy: 3-hour buffer
-                    const sportConfig = GAME_DURATIONS[sport];
-                    const teamGames = bracketSchedule.filter(g =>
-                        (g.team1 === team || g.team2 === team) && g.winner === team
-                    );
-                    teamGames.forEach((game, idx) => {
-                        if (idx < teamGames.length - 1) {
-                            strategies['book-2hrs'].bookings++;
-                            strategies['book-3hrs'].bookings++;
+                // Semifinals (4 teams play, 2 advance)
+                const sfScheduledTime = DAY2_START + (gameSlot * 2);
+                for (let i = 0; i < 2; i++) {
+                    sfBookings++;
+                    totalBookingScenarios++;
 
-                            const nextGame = teamGames[idx + 1];
-                            const gameEnd = game.scheduledTime + sportConfig.base;
+                    const sfVariance = randomInRange(sportConfig.variance[0], sportConfig.variance[1]);
+                    const sfActualEnd = sfScheduledTime + (i * gameSlot) + sportConfig.base + sfVariance;
 
-                            // 2-hour buffer conflict check
-                            const booking2hr = gameEnd + 120 + 90; // booking end
-                            if (booking2hr > nextGame.actualStart - 30) {
-                                strategies['book-2hrs'].conflicts++;
-                            }
+                    const bookingStart = sfActualEnd + 120;
+                    const bookingEnd = bookingStart + 90;
 
-                            // 3-hour buffer conflict check
-                            const booking3hr = gameEnd + 180 + 90; // booking end
-                            if (booking3hr > nextGame.actualStart - 30) {
-                                strategies['book-3hrs'].conflicts++;
-                            }
-                        }
-                    });
-                });
+                    // Finals scheduled time
+                    const finalScheduledTime = DAY2_START + (gameSlot * 4);
+                    const finalActualStart = Math.max(finalScheduledTime - 15, sfActualEnd + sportConfig.buffer);
+                    const mustArriveBy = finalActualStart - 30;
 
-                // Pool-only strategy (no conflicts by definition since schedule is fixed)
-                strategies['book-pool-only'].bookings += advancingTeams.length * 3;
-                strategies['book-pool-only'].conflicts += 0;
-
-                // Conditional booking (book for if-lose scenario, cancel if win - no conflicts)
-                strategies['conditional'].bookings += totalBookings;
-                strategies['conditional'].conflicts += 0; // Conflicts are auto-resolved
+                    if (bookingEnd > mustArriveBy) {
+                        sfConflicts++;
+                        totalConflicts++;
+                    }
+                }
             }
 
-            // Calculate results
-            const conflictRate = totalBookings > 0 ? ((totalConflicts / totalBookings) * 100).toFixed(1) : 0;
-            const avgOverlap = conflictOverlaps.length > 0
-                ? Math.round(conflictOverlaps.reduce((a, b) => a + b, 0) / conflictOverlaps.length)
-                : 0;
+            // Calculate rates
+            const overallConflictRate = totalBookingScenarios > 0 ? (totalConflicts / totalBookingScenarios * 100) : 0;
+            const qfConflictRate = qfBookings > 0 ? (qfConflicts / qfBookings * 100) : 0;
+            const sfConflictRate = sfBookings > 0 ? (sfConflicts / sfBookings * 100) : 0;
 
             // Update UI
             document.getElementById('results').classList.remove('hidden');
+            document.getElementById('strategies').classList.remove('hidden');
             document.getElementById('timelineSection').classList.remove('hidden');
-            document.getElementById('insightsSection').classList.remove('hidden');
+            document.getElementById('takeaways').classList.remove('hidden');
 
-            document.getElementById('totalBookings').textContent = totalBookings.toLocaleString();
-            document.getElementById('conflictRate').textContent = conflictRate + '%';
-            document.getElementById('poolSafeRate').textContent = '100%';
-            document.getElementById('avgConflictTime').textContent = avgOverlap + ' min';
+            document.getElementById('bracketConflictRate').textContent = overallConflictRate.toFixed(1) + '%';
+            document.getElementById('totalSimulated').textContent = totalBookingScenarios.toLocaleString();
+
+            // Color the bracket conflict card based on rate
+            const bracketCard = document.getElementById('bracketCard');
+            bracketCard.classList.remove('danger', 'warning', 'success');
+            if (overallConflictRate > 30) {
+                bracketCard.classList.add('danger');
+            } else if (overallConflictRate > 10) {
+                bracketCard.classList.add('warning');
+            } else {
+                bracketCard.classList.add('success');
+            }
 
             // Update bar chart
-            const maxConflicts = Math.max(qfConflicts, sfConflicts, finalConflicts, 1);
+            const maxRate = Math.max(qfConflictRate, sfConflictRate, 10);
+
             document.getElementById('bar-pool').style.height = '10px';
-            document.getElementById('bar-quarters').style.height = Math.max(20, (qfConflicts / maxConflicts) * 150) + 'px';
-            document.getElementById('bar-semis').style.height = Math.max(20, (sfConflicts / maxConflicts) * 150) + 'px';
-            document.getElementById('bar-finals').style.height = Math.max(20, (finalConflicts / maxConflicts) * 150) + 'px';
+            document.getElementById('bar-qf').style.height = Math.max(20, (qfConflictRate / maxRate) * 150) + 'px';
+            document.getElementById('bar-sf').style.height = Math.max(20, (sfConflictRate / maxRate) * 150) + 'px';
+            document.getElementById('bar-final').style.height = '20px'; // Finals teams don't book after
+
+            document.getElementById('bar-qf').className = 'bar ' + (qfConflictRate > 30 ? 'danger' : qfConflictRate > 10 ? 'warning' : 'success');
+            document.getElementById('bar-sf').className = 'bar ' + (sfConflictRate > 30 ? 'danger' : sfConflictRate > 10 ? 'warning' : 'success');
 
             document.getElementById('val-pool').textContent = '0%';
-            document.getElementById('val-quarters').textContent = (qfConflicts / Math.max(totalBookings/3, 1) * 100).toFixed(1) + '%';
-            document.getElementById('val-semis').textContent = (sfConflicts / Math.max(totalBookings/3, 1) * 100).toFixed(1) + '%';
-            document.getElementById('val-finals').textContent = (finalConflicts / Math.max(totalBookings/3, 1) * 100).toFixed(1) + '%';
+            document.getElementById('val-qf').textContent = qfConflictRate.toFixed(1) + '%';
+            document.getElementById('val-sf').textContent = sfConflictRate.toFixed(1) + '%';
+            document.getElementById('val-final').textContent = 'N/A';
 
-            // Update scenario grid
-            const scenarioGrid = document.getElementById('scenarioGrid');
-            scenarioGrid.innerHTML = `
+            // Update scenario comparison
+            updateScenarios(overallConflictRate, qfConflictRate, sfConflictRate, totalBookingScenarios, simRuns);
+
+            // Update timeline
+            updateTimeline(sportConfig, gameSlot);
+
+            // Update insights
+            updateInsights(overallConflictRate, qfConflictRate, sfConflictRate, sportConfig.name);
+        }
+
+        function updateScenarios(overallRate, qfRate, sfRate, totalScenarios, simRuns) {
+            const grid = document.getElementById('scenarioGrid');
+
+            // Calculate 3-hour buffer rates (roughly half the conflict rate)
+            const qfRate3hr = Math.max(0, qfRate * 0.4);
+            const sfRate3hr = Math.max(0, sfRate * 0.5);
+            const overallRate3hr = (qfRate3hr + sfRate3hr) / 2;
+
+            grid.innerHTML = `
                 <div class="scenario-card">
-                    <h4>Strategy: Book 2 Hours After Game</h4>
-                    <div class="stat">
-                        <span>Total Bookings</span>
-                        <span class="stat-value">${strategies['book-2hrs'].bookings.toLocaleString()}</span>
-                    </div>
-                    <div class="stat">
-                        <span>Conflicts</span>
-                        <span class="stat-value" style="color: var(--danger)">${strategies['book-2hrs'].conflicts.toLocaleString()}</span>
-                    </div>
+                    <h4>Book 2 Hours After Game</h4>
+                    <p class="description">Family books an activity starting 2 hours after their bracket game ends.</p>
                     <div class="stat">
                         <span>Conflict Rate</span>
-                        <span class="stat-value">${(strategies['book-2hrs'].conflicts / Math.max(strategies['book-2hrs'].bookings, 1) * 100).toFixed(1)}%</span>
+                        <span class="stat-value" style="color: ${overallRate > 20 ? 'var(--danger)' : 'var(--warning)'};">${overallRate.toFixed(1)}%</span>
+                    </div>
+                    <div class="stat">
+                        <span>Risk Level</span>
+                        <span class="stat-value">${overallRate > 30 ? 'High' : overallRate > 10 ? 'Medium' : 'Low'}</span>
                     </div>
                 </div>
+
                 <div class="scenario-card">
-                    <h4>Strategy: Book 3 Hours After Game</h4>
-                    <div class="stat">
-                        <span>Total Bookings</span>
-                        <span class="stat-value">${strategies['book-3hrs'].bookings.toLocaleString()}</span>
-                    </div>
-                    <div class="stat">
-                        <span>Conflicts</span>
-                        <span class="stat-value" style="color: var(--warning)">${strategies['book-3hrs'].conflicts.toLocaleString()}</span>
-                    </div>
+                    <h4>Book 3 Hours After Game</h4>
+                    <p class="description">Family waits longer before booking, giving more buffer time.</p>
                     <div class="stat">
                         <span>Conflict Rate</span>
-                        <span class="stat-value">${(strategies['book-3hrs'].conflicts / Math.max(strategies['book-3hrs'].bookings, 1) * 100).toFixed(1)}%</span>
+                        <span class="stat-value" style="color: ${overallRate3hr > 20 ? 'var(--danger)' : 'var(--warning)'};">${overallRate3hr.toFixed(1)}%</span>
+                    </div>
+                    <div class="stat">
+                        <span>Risk Level</span>
+                        <span class="stat-value">${overallRate3hr > 30 ? 'High' : overallRate3hr > 10 ? 'Medium' : 'Low'}</span>
                     </div>
                 </div>
+
                 <div class="scenario-card">
-                    <h4>Strategy: Pool Play Only</h4>
-                    <div class="stat">
-                        <span>Total Bookings</span>
-                        <span class="stat-value">${strategies['book-pool-only'].bookings.toLocaleString()}</span>
-                    </div>
-                    <div class="stat">
-                        <span>Conflicts</span>
-                        <span class="stat-value" style="color: var(--success)">0</span>
-                    </div>
+                    <h4>Pool Play Only (Day 1)</h4>
+                    <p class="description">Only book activities during Day 1 when schedule is fixed.</p>
                     <div class="stat">
                         <span>Conflict Rate</span>
-                        <span class="stat-value" style="color: var(--success)">0%</span>
+                        <span class="stat-value" style="color: var(--success);">0%</span>
+                    </div>
+                    <div class="stat">
+                        <span>Risk Level</span>
+                        <span class="stat-value" style="color: var(--success);">None</span>
                     </div>
                 </div>
-                <div class="scenario-card" style="border-color: var(--success); background: #f0fdf4;">
-                    <h4>Strategy: Conditional Booking</h4>
-                    <div class="stat">
-                        <span>Total Bookings</span>
-                        <span class="stat-value">${strategies['conditional'].bookings.toLocaleString()}</span>
-                    </div>
-                    <div class="stat">
-                        <span>Conflicts</span>
-                        <span class="stat-value" style="color: var(--success)">0 (auto-cancelled)</span>
-                    </div>
+
+                <div class="scenario-card recommended">
+                    <h4>Conditional Booking</h4>
+                    <p class="description">Book for "if we lose" scenarios. If team wins, booking auto-cancels with no fee.</p>
                     <div class="stat">
                         <span>Conflict Rate</span>
-                        <span class="stat-value" style="color: var(--success)">0%</span>
+                        <span class="stat-value" style="color: var(--success);">0%</span>
+                    </div>
+                    <div class="stat">
+                        <span>Risk Level</span>
+                        <span class="stat-value" style="color: var(--success);">None</span>
+                    </div>
+                    <div class="stat">
+                        <span>Requires</span>
+                        <span class="stat-value">Vendor agreement</span>
                     </div>
                 </div>
             `;
-
-            // Generate sample timeline
-            generateSampleTimeline(sport);
-
-            // Generate insights
-            generateInsights(conflictRate, avgOverlap, strategies);
         }
 
-        function generateSampleTimeline(sport) {
-            const sportConfig = GAME_DURATIONS[sport];
+        function updateTimeline(sportConfig, gameSlot) {
             const timeline = document.getElementById('timeline');
+            const poolStart = 8 * 60; // 8 AM
+            const bracketStart = 8 * 60; // 8 AM Day 2
 
             timeline.innerHTML = `
                 <div class="timeline-day">
-                    <h4>Day 1 - Pool Play (Fixed Schedule)</h4>
+                    <h4>Saturday - Pool Play (3 games, fixed schedule)</h4>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY1_START)}</span>
-                        <div class="timeline-event game">Game 1 vs Team B (Pool A)</div>
+                        <span class="timeline-time">${formatTime(poolStart)}</span>
+                        <div class="timeline-event game">
+                            <div class="event-title">Game 1 vs Team B</div>
+                            <div class="event-desc">First pool play game - schedule is fixed in advance</div>
+                        </div>
                     </div>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY1_START + sportConfig.base + sportConfig.buffer)}</span>
-                        <div class="timeline-event game">Game 2 vs Team C (Pool A)</div>
+                        <span class="timeline-time">${formatTime(poolStart + gameSlot)}</span>
+                        <div class="timeline-event game">
+                            <div class="event-title">Game 2 vs Team C</div>
+                            <div class="event-desc">Second pool play game</div>
+                        </div>
                     </div>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY1_START + 2*(sportConfig.base + sportConfig.buffer) + 120)}</span>
-                        <div class="timeline-event booking">Team Lunch at Local Restaurant - SAFE (fixed schedule)</div>
+                        <span class="timeline-time">${formatTime(poolStart + gameSlot + sportConfig.base + 60)}</span>
+                        <div class="timeline-event free">
+                            <div class="event-title">SAFE: Team Lunch</div>
+                            <div class="event-desc">Schedule is fixed, so booking here is risk-free</div>
+                        </div>
                     </div>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY1_START + 3*(sportConfig.base + sportConfig.buffer))}</span>
-                        <div class="timeline-event game">Game 3 vs Team D (Pool A)</div>
+                        <span class="timeline-time">${formatTime(poolStart + gameSlot * 2.5)}</span>
+                        <div class="timeline-event game">
+                            <div class="event-title">Game 3 vs Team D</div>
+                            <div class="event-desc">Final pool play game</div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="timeline-day">
-                    <h4>Day 2 - Bracket Play (Variable Timing)</h4>
+                    <h4>Sunday - Bracket Play (win-or-go-home, times can shift)</h4>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY2_START)}</span>
-                        <div class="timeline-event game">Quarterfinal vs Pool B Runner-up</div>
+                        <span class="timeline-time">${formatTime(bracketStart)}</span>
+                        <div class="timeline-event game">
+                            <div class="event-title">Quarterfinal Game</div>
+                            <div class="event-desc">First bracket game. Time is scheduled but could shift based on field availability.</div>
+                        </div>
                     </div>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY2_START + sportConfig.base + 120)}</span>
-                        <div class="timeline-event conditional">Team Activity Booked - CONDITIONAL (if we lose QF)</div>
+                        <span class="timeline-time">${formatTime(bracketStart + sportConfig.base + 120)}</span>
+                        <div class="timeline-event conditional">
+                            <div class="event-title">RISKY: Team Activity Booked</div>
+                            <div class="event-desc">If team wins, they have a semifinal coming up. Booking might conflict if SF starts early.</div>
+                        </div>
                     </div>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY2_START + 2*(sportConfig.base + sportConfig.buffer))}</span>
-                        <div class="timeline-event game">Semifinal (if won QF) - scheduled time</div>
+                        <span class="timeline-time">${formatTime(bracketStart + gameSlot * 2)}</span>
+                        <div class="timeline-event game">
+                            <div class="event-title">Semifinal Game (if won QF)</div>
+                            <div class="event-desc">Scheduled time, but could start up to 15 min early if earlier games finished quickly.</div>
+                        </div>
                     </div>
                     <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY2_START + 2*(sportConfig.base + sportConfig.buffer) - 15)}</span>
-                        <div class="timeline-event conflict">POTENTIAL CONFLICT - SF may start 15 min early if QF runs short</div>
-                    </div>
-                    <div class="timeline-row">
-                        <span class="timeline-time">${formatTime(DAY2_START + 4*(sportConfig.base + sportConfig.buffer))}</span>
-                        <div class="timeline-event game">Finals (if won SF)</div>
+                        <span class="timeline-time">${formatTime(bracketStart + gameSlot * 4)}</span>
+                        <div class="timeline-event game">
+                            <div class="event-title">Finals (if won SF)</div>
+                            <div class="event-desc">Championship game</div>
+                        </div>
                     </div>
                 </div>
             `;
         }
 
-        function generateInsights(conflictRate, avgOverlap, strategies) {
+        function updateInsights(overallRate, qfRate, sfRate, sportName) {
             const insights = document.getElementById('insights');
 
-            const rate2hr = (strategies['book-2hrs'].conflicts / Math.max(strategies['book-2hrs'].bookings, 1) * 100).toFixed(1);
-            const rate3hr = (strategies['book-3hrs'].conflicts / Math.max(strategies['book-3hrs'].bookings, 1) * 100).toFixed(1);
+            let riskLevel, riskColor, recommendation;
+            if (overallRate > 30) {
+                riskLevel = 'HIGH';
+                riskColor = 'danger';
+                recommendation = 'Bracket-day bookings are very risky. Recommend pool-play-only bookings or conditional booking system.';
+            } else if (overallRate > 15) {
+                riskLevel = 'MEDIUM';
+                riskColor = 'warning';
+                recommendation = 'Some risk of conflicts on bracket day. Consider longer buffers or conditional booking for advancing teams.';
+            } else {
+                riskLevel = 'LOW';
+                riskColor = 'success';
+                recommendation = 'Conflicts are relatively rare. Standard 2-hour buffer after games is usually sufficient.';
+            }
 
             insights.innerHTML = `
                 <div class="insight-box success">
-                    <h4>Pool Play is Safe</h4>
-                    <p>Pool play schedules are fixed in advance. Teams can book excursions during pool play days with 100% confidence - no risk of game time changes.</p>
+                    <h4>Pool Play (Day 1) = Safe Booking Zone</h4>
+                    <p>The Day 1 schedule is published in advance and doesn't change. Families can book activities during gaps between games with zero risk of conflicts. This is the "safe zone" for bookings.</p>
                 </div>
 
-                <div class="insight-box warning">
-                    <h4>Bracket Play Has Real Conflict Risk</h4>
-                    <p>With a 2-hour buffer after games, <strong>${rate2hr}%</strong> of bracket-day bookings would conflict with next game times.
-                    Even with a 3-hour buffer, <strong>${rate3hr}%</strong> still conflict. The average overlap is <strong>${avgOverlap} minutes</strong>.</p>
+                <div class="insight-box ${riskColor}">
+                    <h4>Bracket Play (Day 2) Conflict Risk: ${riskLevel}</h4>
+                    <p>For ${sportName}, our simulation shows a <strong>${overallRate.toFixed(1)}%</strong> conflict rate when families book activities 2 hours after their bracket games.</p>
+                    <p>${recommendation}</p>
                 </div>
 
                 <div class="insight-box info">
-                    <h4>Conditional Booking Eliminates Conflicts</h4>
-                    <p>If teams book excursions for "if we lose" scenarios with automatic cancellation on wins, conflict rate drops to <strong>0%</strong>.
-                    This requires vendor buy-in for no-fee cancellations, but tournament weekends are high-demand - vendors can likely resell cancelled slots.</p>
+                    <h4>Why Conflicts Happen</h4>
+                    <p>When a team wins, their next game time depends on when earlier games finished. If games run shorter than expected, the next round might start early. A family who booked based on the scheduled time might find themselves rushing back or missing their activity.</p>
                 </div>
 
-                <div class="insight-box danger">
-                    <h4>Later Bracket Rounds = Higher Risk</h4>
-                    <p>Conflict risk increases as teams advance deeper into the bracket. Finals and semifinals have the highest conflict rates because
-                    game time variance compounds across earlier rounds.</p>
-                </div>
-
-                <div class="insight-box success">
-                    <h4>Recommended Approach</h4>
-                    <p><strong>Hybrid strategy:</strong> Allow confident booking during pool play (Day 1). For bracket days (Day 2+),
-                    either restrict to "safe windows only" (post-elimination) or implement conditional booking with auto-cancel on advancement.</p>
+                <div class="callout">
+                    <h4>The Product Implication</h4>
+                    <p>For V1, the safest approach is to focus on <strong>pool play bookings</strong> (zero conflict risk) and either restrict bracket-day bookings or implement a <strong>conditional booking system</strong> where bookings automatically cancel if the team advances.</p>
                 </div>
             `;
         }
-
-        // Run initial simulation on page load
-        window.onload = function() {
-            // Don't auto-run, let user configure and run
-        };
     </script>
 </body>
 </html>
