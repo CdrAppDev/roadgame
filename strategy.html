@@ -370,6 +370,16 @@
         .revenue-table td {
             padding: 16px;
             border-bottom: 1px solid var(--gray-200);
+            vertical-align: top;
+        }
+
+        .revenue-table td:first-child {
+            white-space: nowrap;
+            width: 160px;
+        }
+
+        .revenue-table td:last-child {
+            white-space: nowrap;
         }
 
         .revenue-example {
@@ -379,6 +389,8 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+            white-space: nowrap;
+            display: inline-block;
         }
 
         /* Phases Timeline */
