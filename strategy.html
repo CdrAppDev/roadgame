@@ -638,6 +638,7 @@
             <a href="#phases">Phases</a>
             <a href="#metrics">Metrics</a>
             <a href="#decisions">Go/No-Go</a>
+            <a href="#open-question" style="color: #7c3aed;">Open Question</a>
         </div>
     </nav>
 
@@ -1175,6 +1176,57 @@
                     <h4>Vendors won't accept group bookings</h4>
                     <p>Mitigation: Start with venues already group-friendly (bowling, restaurants).</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Open Question: Pool Play vs Bracket Play -->
+        <section id="open-question" style="border: 3px solid #8b5cf6; background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);">
+            <h2 style="border-color: #8b5cf6;">Open Question: Pool Play vs Bracket Play</h2>
+
+            <p>VIP scheduling works cleanly for <strong>pool play</strong>—games are fixed in advance, so teams know their exact free time windows and can book with confidence.</p>
+
+            <div class="problem-box" style="background: #fef3c7; border-color: #f59e0b;">
+                <h4 style="color: #d97706;">Bracket play introduces uncertainty</h4>
+                <p>Even with VIP scheduling, bracket game times depend on:</p>
+                <ul style="margin-left: 20px;">
+                    <li>When your opponent's previous game finishes</li>
+                    <li>Tournament progression (winners advance, losers may have consolation games)</li>
+                    <li>Field availability as brackets collapse</li>
+                </ul>
+                <p style="margin-top: 16px; margin-bottom: 0;"><strong>The conflict scenario:</strong> A team books bowling at 5pm. They win their 2pm bracket game. Their next bracket game gets scheduled for 4:30pm—now they have a conflict.</p>
+            </div>
+
+            <h3>Options to Discuss</h3>
+            <table class="feature-table">
+                <thead>
+                    <tr><th>Option</th><th>How It Works</th><th>Trade-offs</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Safe windows only</td>
+                        <td>Only allow bookings during guaranteed free time (pool play days, post-elimination)</td>
+                        <td>Conservative. Misses booking opportunities during bracket play.</td>
+                    </tr>
+                    <tr>
+                        <td>Conditional booking</td>
+                        <td>Book excursions for "if we lose" scenarios. Win = auto-cancel, no fee.</td>
+                        <td>Requires vendor buy-in on no-fee cancellation. More complex UX.</td>
+                    </tr>
+                    <tr>
+                        <td>Conflict detection + warning</td>
+                        <td>System warns: "If you win, your next game could conflict." User decides.</td>
+                        <td>Puts risk on family. May reduce booking confidence.</td>
+                    </tr>
+                    <tr>
+                        <td>Hybrid approach</td>
+                        <td>Safe booking for pool play. Conditional booking for bracket play.</td>
+                        <td>More complexity, but maps to reality.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pitch-box" style="background: #7c3aed;">
+                Decision needed: Which approach best balances booking confidence, vendor relationships, and product complexity?
             </div>
         </section>
 

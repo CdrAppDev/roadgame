@@ -395,6 +395,30 @@ Execute the pilot.
 
 ---
 
+## Open Question: Pool Play vs Bracket Play Booking
+
+VIP scheduling works cleanly for **pool play**—games are fixed in advance, so teams know their exact free time windows and can book with confidence.
+
+**Bracket play introduces uncertainty.** Even with VIP scheduling, bracket game times depend on:
+- When your opponent's previous game finishes
+- Tournament progression (winners advance, losers may have consolation games)
+- Field availability as brackets collapse
+
+**The conflict scenario:** A team books bowling at 5pm. They win their 2pm bracket game. Their next bracket game gets scheduled for 4:30pm—now they have a conflict.
+
+### Options to Discuss
+
+| Option | How It Works | Trade-offs |
+|--------|--------------|------------|
+| **Safe windows only** | Only allow bookings during guaranteed free time (pool play days, post-elimination) | Conservative. Misses booking opportunities during bracket play. |
+| **Conditional booking** | Book excursions for "if we lose" scenarios. Win = auto-cancel, no fee. Vendors accept because tournament weekends are high-demand. | Requires vendor buy-in on no-fee cancellation. More complex UX. |
+| **Conflict detection + warning** | System calculates potential bracket scenarios and warns: "If you win, your next game could conflict with this booking." User decides. | Puts risk on family. May reduce booking confidence. |
+| **Hybrid approach** | Safe booking for pool play. Conditional booking for bracket play. Clear UX distinction between "confirmed" and "conditional" reservations. | More complexity, but maps to reality. |
+
+**Decision needed:** Which approach best balances booking confidence, vendor relationships, and product complexity?
+
+---
+
 ## The Core Insight
 
 > **Players want to stay together with their teammates. Parents follow their lead. Keeping teams together is what everyone already wants—and it's also where the highest margins are.**
