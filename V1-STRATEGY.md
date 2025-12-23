@@ -52,14 +52,21 @@ But here's what traditional scheduling misses:
 
 ### Clustered Scheduling: Same Games, Different Organization
 
-RoadGame doesn't reduce games or leave fields empty. It reorganizes **who plays when** so that each team's games are clustered together—with realistic rest between games.
+RoadGame doesn't reduce games or leave fields empty. It reorganizes **who plays when** so that each team's games are clustered together.
 
-**The Reality of Youth Sports:**
-- Kids need 60-90+ minutes rest between games
-- Back-to-back games increase injury risk and reduce performance
-- Parents and coaches expect reasonable recovery time
+**The Compliance Reality:**
 
-**How RoadGame Solves This:**
+Most tournament governing bodies (USSF, USA Basketball, etc.) don't mandate minimum rest between same-day games—just changeover time (10-20 min). Tournaments are "compliant" scheduling games back-to-back.
+
+**The Health Reality:**
+
+The [American Academy of Pediatrics](https://publications.aap.org/pediatrics/article/143/6/e20190997/37135/Organized-Sports-for-Children-Preadolescents-and) recommends "rest periods during practice and games to reduce injuries." Sports science research shows that "the more an athlete plays in a fatigued state, the more vulnerable they are to injury."
+
+**RoadGame's Advantage:**
+
+By scheduling one pool per field (instead of cramming multiple pools), teams naturally alternate: play a game, sit out a game, play a game. This creates **built-in recovery time** as a side effect of the format—not because rules require it, but because it's healthier and parents prefer it.
+
+### How It Works
 
 In a 4-team pool with round-robin play, there are 6 total games. Each team plays 3 of those 6 games. By scheduling the pool on **one field**, teams naturally alternate:
 
@@ -557,20 +564,22 @@ Parents complain about wasted time at tournaments, but they assume that's just h
 
 ## The Core Insight
 
-> **The free time already exists. It's just scattered. RoadGame clusters it—with healthy rest built in.**
+> **The free time already exists. It's just scattered. RoadGame clusters it.**
 
 Traditional tournaments scatter games across 10+ hours (8am, 2pm, 6pm) with awkward gaps too long to recover properly but too unpredictable to book activities. Families waste the day waiting.
 
-RoadGame clusters each team's games into a single morning block (8am, 10:20am, 12:40pm) with 70-90 min rest between games. Every team finishes by early afternoon. The entire evening is guaranteed free.
+RoadGame clusters each team's games into a single block by running one pool per field. Teams naturally alternate playing and resting. Everyone finishes by early afternoon. The entire evening is guaranteed free.
 
 **No trade-off required:**
 - Fields stay utilized (~85%)
 - Same number of games
 - Same revenue for TDs
-- Healthy rest between games (70+ min)
-- Families get **7+ hours of guaranteed, bookable free time**
+- Built-in recovery between games (healthier than back-to-back)
+- Families get **6+ hours of guaranteed, bookable free time**
 
-**That's the RoadGame Format: Max revenue AND max experience—with player health built in.**
+**Bonus:** The format exceeds minimum compliance standards by providing natural rest periods between games—aligned with [AAP recommendations](https://publications.aap.org/pediatrics/article/143/6/e20190997/37135/Organized-Sports-for-Children-Preadolescents-and) for reducing youth athlete injuries.
+
+**That's the RoadGame Format: Max revenue AND max experience.**
 
 ---
 
