@@ -52,17 +52,44 @@ But here's what traditional scheduling misses:
 
 ### Clustered Scheduling: Same Games, Different Organization
 
-RoadGame doesn't reduce games or leave fields empty. It reorganizes **who plays when** so that each team's games are clustered together.
+RoadGame doesn't reduce games or leave fields empty. It reorganizes **who plays when** so that each team's games are clustered together—with realistic rest between games.
 
-**Traditional scheduling:**
-- Team A: Games at 8am, 2pm, 6pm (scattered across 10 hours)
-- Free time: Three 2-3 hour chunks, unpredictable, unusable
+**The Reality of Youth Sports:**
+- Kids need 60-90+ minutes rest between games
+- Back-to-back games increase injury risk and reduce performance
+- Parents and coaches expect reasonable recovery time
 
-**RoadGame scheduling:**
-- Team A: Games at 8am, 9:30am, 11am (clustered in morning)
-- Free time: 12pm - 9pm (9 continuous hours, predictable, bookable)
+**How RoadGame Solves This:**
 
-**Fields stay full** because while Team A is free in the afternoon, other teams are playing their clustered afternoon games.
+In a 4-team pool with round-robin play, there are 6 total games. Each team plays 3 of those 6 games. By scheduling the pool on **one field**, teams naturally alternate:
+
+| Slot | Time | Game | Team A1 |
+|------|------|------|---------|
+| 1 | 8:00 AM | A1 vs A2 | ⚽ Plays |
+| 2 | 9:10 AM | A3 vs A4 | 🛋️ Rests (70 min) |
+| 3 | 10:20 AM | A1 vs A3 | ⚽ Plays |
+| 4 | 11:30 AM | A2 vs A4 | 🛋️ Rests + Lunch (70 min) |
+| 5 | 12:40 PM | A1 vs A4 | ⚽ Plays |
+| 6 | 1:50 PM | A2 vs A3 | ✅ Done |
+
+**Team A1's Day:**
+- 8:00 AM → Game 1 (done ~8:50)
+- 70 min rest
+- 10:20 AM → Game 2 (done ~11:10)
+- 90 min rest + lunch
+- 12:40 PM → Game 3 (done ~1:30)
+- **1:30 PM onwards → FREE for rest of day**
+
+Every team gets 70+ min rest between games. Realistic, healthy, coach-approved.
+
+**The Comparison:**
+
+| Schedule Type | Team A1's Games | Rest Between | Free Time |
+|---------------|-----------------|--------------|-----------|
+| **Traditional (scattered)** | 8am, 2pm, 6pm | 5-6 hr gaps (too long) | Awkward, unusable |
+| **RoadGame (clustered)** | 8am, 10:20am, 12:40pm | 70-90 min (healthy) | **1:30 PM - 9:00 PM (7.5 hrs)** |
+
+**Fields stay full** because all 4 pools run simultaneously on 4 fields. Same field utilization, same revenue—but every team finishes by early afternoon with proper rest built in.
 
 ---
 
@@ -243,26 +270,28 @@ Teams per Wave × 2 = Total Tournament Size
 
 ---
 
-### Summary: Every Sport Delivers 5-9+ Hours Free Time
+### Summary: Every Sport Delivers 6-7+ Hours Free Time
 
-| Sport | Teams | Fields | Game Slot | Morning Wave Free | Afternoon Wave Free |
-|-------|-------|--------|-----------|-------------------|---------------------|
-| Soccer | 16 | 4 | 70 min | 9.5 hours | 4.5 hours |
-| Basketball | 24 | 4 | 48 min | 9 hours | 5 hours |
-| Baseball | 12 | 4 | 120 min | 8 hours | 6 hours |
-| Softball | 16 | 4 | 90 min | 8.5 hours | 5.5 hours |
-| Lacrosse | 16 | 4 | 70 min | 9.5 hours | 4.5 hours |
-| Volleyball | 16 | 4 | 70 min | 9.5 hours | 4.5 hours |
-| Ice Hockey | 12 | 2 | 60 min | 9 hours | 6 hours |
-| Flag Football | 20 | 4 | 60 min | 9 hours | 5 hours |
+With realistic rest periods (70+ min between games), all teams finish pool play by early-to-mid afternoon. Everyone has the same guaranteed free time block.
 
-**The math works. For every sport.**
+| Sport | Teams | Fields | Game Slot | Pool Play Ends | Guaranteed Free Time |
+|-------|-------|--------|-----------|----------------|---------------------|
+| Soccer | 16 | 4 | 70 min | ~2:40 PM | **6-7 hours** |
+| Basketball | 24 | 6 | 48 min | ~2:00 PM | **7 hours** |
+| Baseball | 12 | 4 | 120 min | ~4:00 PM | **5 hours** |
+| Softball | 16 | 4 | 90 min | ~3:30 PM | **5.5 hours** |
+| Lacrosse | 16 | 4 | 70 min | ~2:40 PM | **6-7 hours** |
+| Volleyball | 16 | 4 | 70 min | ~2:40 PM | **6-7 hours** |
+| Ice Hockey | 12 | 2 | 60 min | ~3:00 PM | **6 hours** |
+| Flag Football | 20 | 4 | 60 min | ~2:30 PM | **6.5 hours** |
+
+**The math works. For every sport. With healthy rest built in.**
 
 ---
 
 ## Detailed Example: Soccer Tournament
 
-Let's walk through a complete 16-team soccer tournament to show exactly how this works.
+Let's walk through a complete 16-team soccer tournament to show exactly how this works—with realistic rest periods between games.
 
 ### Tournament Parameters
 
@@ -275,32 +304,40 @@ Let's walk through a complete 16-team soccer tournament to show exactly how this
 | Pool structure | 4 pools of 4 teams |
 | Games per team | 3 pool games (round robin) |
 | Game slot | 70 min |
+| Rest between games | 70+ min (built into schedule) |
 
 ### Day 1 (Saturday): Pool Play
 
-**Morning Wave — Pools A & B (8 teams, 12 games)**
+**All 4 pools play simultaneously, one pool per field. Each pool has 6 games (round-robin of 4 teams). Teams alternate playing and resting.**
 
-| Time | Field 1 | Field 2 | Field 3 | Field 4 |
-|------|---------|---------|---------|---------|
-| 8:00 AM | A1 vs A2 | A3 vs A4 | B1 vs B2 | B3 vs B4 |
-| 9:10 AM | A1 vs A3 | A2 vs A4 | B1 vs B3 | B2 vs B4 |
-| 10:20 AM | A1 vs A4 | A2 vs A3 | B1 vs B4 | B2 vs B3 |
+| Slot | Time | Field 1 (Pool A) | Field 2 (Pool B) | Field 3 (Pool C) | Field 4 (Pool D) |
+|------|------|------------------|------------------|------------------|------------------|
+| 1 | 8:00 AM | A1 vs A2 | B1 vs B2 | C1 vs C2 | D1 vs D2 |
+| 2 | 9:10 AM | A3 vs A4 | B3 vs B4 | C3 vs C4 | D3 vs D4 |
+| 3 | 10:20 AM | A1 vs A3 | B1 vs B3 | C1 vs C3 | D1 vs D3 |
+| 4 | 11:30 AM | A2 vs A4 | B2 vs B4 | C2 vs C4 | D2 vs D4 |
+| 5 | 12:40 PM | A1 vs A4 | B1 vs B4 | C1 vs C4 | D1 vs D4 |
+| 6 | 1:50 PM | A2 vs A3 | B2 vs B3 | C2 vs C3 | D2 vs D3 |
 
-**Morning Wave done: 11:30 AM**
-**Morning teams free: 11:30 AM - 9:00 PM (9.5 hours)**
+**Pool play ends: ~2:40 PM**
 
 ---
 
-**Afternoon Wave — Pools C & D (8 teams, 12 games)**
+### What This Looks Like for Team A1
 
-| Time | Field 1 | Field 2 | Field 3 | Field 4 |
-|------|---------|---------|---------|---------|
-| 12:30 PM | C1 vs C2 | C3 vs C4 | D1 vs D2 | D3 vs D4 |
-| 1:40 PM | C1 vs C3 | C2 vs C4 | D1 vs D3 | D2 vs D4 |
-| 2:50 PM | C1 vs C4 | C2 vs C3 | D1 vs D4 | D2 vs D3 |
+| Time | Activity | Notes |
+|------|----------|-------|
+| 8:00 AM | ⚽ Game 1 vs A2 | First game of the day |
+| 8:50 AM | Game ends | |
+| 9:10 AM | 🛋️ REST | A3 vs A4 on their field |
+| 10:20 AM | ⚽ Game 2 vs A3 | 70 min rest completed |
+| 11:10 AM | Game ends | |
+| 11:30 AM | 🛋️ REST + LUNCH | A2 vs A4 on their field |
+| 12:40 PM | ⚽ Game 3 vs A4 | 90 min rest completed |
+| 1:30 PM | Game ends | |
+| **1:30 PM - 9:00 PM** | **FREE** | **7.5 hours guaranteed** |
 
-**Afternoon Wave done: 4:00 PM**
-**Afternoon teams free: 8:00 AM - 12:30 PM (4.5 hours)**
+**Every team follows this pattern:** 3 games with 70-90 min rest between each, done by early afternoon, entire evening free.
 
 ---
 
@@ -330,7 +367,8 @@ Top 2 from each pool advance → 8 teams in bracket
 | Fields | 4 | 4 |
 | Total games | 24 pool + 7 bracket | 24 pool + 7 bracket |
 | Field utilization | ~85% | ~85% |
-| Guaranteed free time | 0 hrs (scattered) | **5-9.5 hrs (continuous)** |
+| Rest between games | None guaranteed | **70+ min (healthy)** |
+| Guaranteed free time | 0 hrs (scattered) | **7.5 hrs (continuous)** |
 | Booking confidence | 0% | **100%** |
 
 ---
@@ -519,17 +557,20 @@ Parents complain about wasted time at tournaments, but they assume that's just h
 
 ## The Core Insight
 
-> **The free time already exists. It's just scattered. RoadGame clusters it.**
+> **The free time already exists. It's just scattered. RoadGame clusters it—with healthy rest built in.**
 
-Traditional tournaments create 5-9 hours of free time per team—but scatter it into unusable fragments. RoadGame Format organizes that same time into predictable, continuous blocks.
+Traditional tournaments scatter games across 10+ hours (8am, 2pm, 6pm) with awkward gaps too long to recover properly but too unpredictable to book activities. Families waste the day waiting.
+
+RoadGame clusters each team's games into a single morning block (8am, 10:20am, 12:40pm) with 70-90 min rest between games. Every team finishes by early afternoon. The entire evening is guaranteed free.
 
 **No trade-off required:**
-- Fields stay utilized
+- Fields stay utilized (~85%)
 - Same number of games
 - Same revenue for TDs
-- Families get 5-9 hours of guaranteed, bookable free time
+- Healthy rest between games (70+ min)
+- Families get **7+ hours of guaranteed, bookable free time**
 
-**That's the RoadGame Format: Max revenue AND max experience.**
+**That's the RoadGame Format: Max revenue AND max experience—with player health built in.**
 
 ---
 
