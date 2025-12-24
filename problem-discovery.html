@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - Problem Discovery</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* Global Nav */
+        .global-nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .global-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .global-nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .global-nav-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .global-nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .global-nav-links a:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .global-nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--warning) 0%, #d97706 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            font-size: 1.4rem;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--warning);
+            display: inline-block;
+        }
+
+        section h3 {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin: 24px 0 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--gray-700);
+        }
+
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            color: var(--gray-700);
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* Alert Box */
+        .alert {
+            background: #fef3c7;
+            border: 2px solid var(--warning);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .alert p {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        .alert strong {
+            color: #92400e;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-card p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+
+        .question-card .note {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            font-weight: 400;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Input fields */
+        .response-field {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            resize: vertical;
+        }
+
+        .response-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Founder Cards */
+        .founder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .founder-card {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid var(--gray-200);
+        }
+
+        .founder-card h4 {
+            font-size: 1rem;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .founder-card label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 4px;
+        }
+
+        .founder-card textarea {
+            width: 100%;
+            min-height: 60px;
+            padding: 10px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            resize: vertical;
+        }
+
+        /* Hypothesis Box */
+        .hypothesis-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .hypothesis-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .hypothesis-box p {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        /* Reality Check */
+        .reality-check {
+            background: #fef2f2;
+            border: 2px solid var(--danger);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .reality-check h4 {
+            color: var(--danger);
+            margin-bottom: 12px;
+        }
+
+        .reality-check ul {
+            margin: 0;
+        }
+
+        .reality-check li {
+            color: var(--gray-700);
+        }
+
+        /* Next Steps */
+        .next-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin: 0 0 4px 0;
+            color: var(--gray-900);
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Global Navigation -->
+    <nav class="global-nav">
+        <div class="global-nav-inner">
+            <a href="index.html" class="global-nav-brand">RoadGame</a>
+            <div class="global-nav-links">
+                <a href="index.html">Home</a>
+                <a href="strategy.html">Strategy</a>
+                <a href="sport-analysis.html">Sports</a>
+                <a href="problem-discovery.html" class="active">Discovery</a>
+                <a href="alignment.html">Alignment</a>
+                <a href="canvas.html">Canvas</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Problem Discovery</h1>
+        <p class="subtitle">
+            Before we build anything, we need to understand the problem. This page helps us align on what we're actually solving.
+        </p>
+    </div>
+
+    <div class="container">
+
+        <!-- The Uncomfortable Truth -->
+        <section>
+            <h2>The Uncomfortable Truth</h2>
+
+            <div class="alert">
+                <p><strong>We may not know what problem we're solving.</strong></p>
+                <p style="margin-top: 8px;">Our research revealed that wave scheduling already exists (some tournaments have offered morning/afternoon sessions for 30+ years). Scheduling software already handles game clustering. So what's actually the opportunity?</p>
+            </div>
+
+            <div class="reality-check">
+                <h4>What We Thought vs. What We Found</h4>
+                <ul>
+                    <li><strong>Thought:</strong> Wave scheduling is a novel innovation. <strong>Found:</strong> It already exists.</li>
+                    <li><strong>Thought:</strong> TDs don't know how to cluster games. <strong>Found:</strong> Software like Fastbreak AI already does this.</li>
+                    <li><strong>Thought:</strong> Parents complain about scattered schedules. <strong>Found:</strong> Complaints are more about burnout, travel costs, too many tournaments.</li>
+                </ul>
+            </div>
+
+            <p>This doesn't mean there's no opportunity. It means we need to go back to basics and actually understand what problem exists, for whom, and why it hasn't been solved.</p>
+        </section>
+
+        <!-- Interview: TD Founder -->
+        <section>
+            <h2>Interview Guide: TD Founder</h2>
+
+            <p>Have a conversation with your TD founder. Don't pitch—just listen. Ask these questions and write down exactly what he says.</p>
+
+            <h3>Understanding the Current State</h3>
+
+            <div class="question-card">
+                <p>"Walk me through how you schedule a typical tournament. What's the process?"</p>
+                <div class="note">Listen for: pain points, tools used, time spent, constraints</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <div class="question-card">
+                <p>"Do you ever run tournaments with morning and afternoon sessions/waves?"</p>
+                <div class="note">If yes: "Why? How does it work?" If no: "Why not? What's stopping you?"</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <div class="question-card">
+                <p>"What do families complain about most?"</p>
+                <div class="note">Listen for: is it schedules? Costs? Something else entirely?</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <div class="question-card">
+                <p>"What's the hardest part of your job as a TD?"</p>
+                <div class="note">Don't lead. Let him tell you.</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <div class="question-card">
+                <p>"If you could wave a magic wand and fix one thing about running tournaments, what would it be?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <h3>Testing Our Assumptions</h3>
+
+            <div class="question-card">
+                <p>"Do teams ever ask you for clustered game times? Like 'can we play all our games in the morning?'"</p>
+                <div class="note">If yes: "How often? What do you tell them?"</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <div class="question-card">
+                <p>"Do you think families would pay more for a tournament where they're guaranteed to be done by 2pm?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+
+            <div class="question-card">
+                <p>"What would make you want to change how you schedule tournaments?"</p>
+                <div class="note">Listen for: what would actually motivate a change?</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what he says..."></textarea>
+        </section>
+
+        <!-- Interview: Families -->
+        <section>
+            <h2>Interview Guide: Families</h2>
+
+            <p>Talk to 5 families who have attended travel tournaments in the past year. Not friends—strangers if possible. At the field, on Facebook groups, wherever.</p>
+
+            <h3>Understanding Their Experience</h3>
+
+            <div class="question-card">
+                <p>"Walk me through your last tournament weekend. What did you do?"</p>
+                <div class="note">Let them tell the story. Don't prompt.</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+
+            <div class="question-card">
+                <p>"What was frustrating about it?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+
+            <div class="question-card">
+                <p>"What did you do between games?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+
+            <div class="question-card">
+                <p>"Did you try to do anything fun with the family—restaurants, activities, sightseeing?"</p>
+                <div class="note">If yes: "How did that go?" If no: "Why not?"</div>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+
+            <div class="question-card">
+                <p>"If you could change one thing about tournament weekends, what would it be?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+
+            <h3>Testing Willingness to Pay</h3>
+
+            <div class="question-card">
+                <p>"Would you pay an extra $50-100 per tournament if you were guaranteed to be done by 2pm every day?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+
+            <div class="question-card">
+                <p>"If someone showed you a list of restaurants and activities near the tournament that could accommodate your team, would you use it?"</p>
+            </div>
+            <textarea class="response-field" placeholder="Write down what they say..."></textarea>
+        </section>
+
+        <!-- Founder Alignment -->
+        <section>
+            <h2>Founder Alignment Check</h2>
+
+            <p>Each founder should answer these questions independently. Then compare answers. If they're different, that's where you need to align.</p>
+
+            <h3>What problem are we solving?</h3>
+            <div class="founder-grid">
+                <div class="founder-card">
+                    <h4>Founder 1</h4>
+                    <label>The problem we're solving:</label>
+                    <textarea placeholder="In one sentence..."></textarea>
+                    <label>Who has this problem:</label>
+                    <textarea placeholder="Be specific..."></textarea>
+                </div>
+                <div class="founder-card">
+                    <h4>Founder 2 (TD)</h4>
+                    <label>The problem we're solving:</label>
+                    <textarea placeholder="In one sentence..."></textarea>
+                    <label>Who has this problem:</label>
+                    <textarea placeholder="Be specific..."></textarea>
+                </div>
+                <div class="founder-card">
+                    <h4>Founder 3</h4>
+                    <label>The problem we're solving:</label>
+                    <textarea placeholder="In one sentence..."></textarea>
+                    <label>Who has this problem:</label>
+                    <textarea placeholder="Be specific..."></textarea>
+                </div>
+            </div>
+
+            <h3>Why hasn't this been solved?</h3>
+            <div class="founder-grid">
+                <div class="founder-card">
+                    <h4>Founder 1</h4>
+                    <textarea placeholder="Why doesn't a solution already exist?"></textarea>
+                </div>
+                <div class="founder-card">
+                    <h4>Founder 2 (TD)</h4>
+                    <textarea placeholder="Why doesn't a solution already exist?"></textarea>
+                </div>
+                <div class="founder-card">
+                    <h4>Founder 3</h4>
+                    <textarea placeholder="Why doesn't a solution already exist?"></textarea>
+                </div>
+            </div>
+
+            <h3>What's our unfair advantage?</h3>
+            <div class="founder-grid">
+                <div class="founder-card">
+                    <h4>Founder 1</h4>
+                    <textarea placeholder="Why are we uniquely positioned to solve this?"></textarea>
+                </div>
+                <div class="founder-card">
+                    <h4>Founder 2 (TD)</h4>
+                    <textarea placeholder="Why are we uniquely positioned to solve this?"></textarea>
+                </div>
+                <div class="founder-card">
+                    <h4>Founder 3</h4>
+                    <textarea placeholder="Why are we uniquely positioned to solve this?"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Possible Problems -->
+        <section>
+            <h2>Possible Problems to Explore</h2>
+
+            <p>Based on our research, here are some problems that might actually exist. Use the interviews to validate or invalidate these.</p>
+
+            <div class="hypothesis-box">
+                <h4>Hypothesis A: The problem is discovery, not scheduling</h4>
+                <p>Families have free time but don't know what to do with it. They don't know what's nearby, what can handle groups, or how to book for 20 people. The opportunity is a curated marketplace for tournament families.</p>
+            </div>
+
+            <div class="hypothesis-box">
+                <h4>Hypothesis B: The problem is coordination, not free time</h4>
+                <p>Team moms struggle to organize group activities. Herding 12 families to dinner is chaos. The opportunity is team coordination tools—group booking, voting, communication.</p>
+            </div>
+
+            <div class="hypothesis-box">
+                <h4>Hypothesis C: The problem is TD revenue, not family experience</h4>
+                <p>TDs want new revenue streams but don't have access to local vendor relationships. The opportunity is sponsorship/vendor facilitation for TDs—we bring the vendor deals, they get a cut.</p>
+            </div>
+
+            <div class="hypothesis-box">
+                <h4>Hypothesis D: There is no problem</h4>
+                <p>Families are fine with how tournaments work. The "pain" is manufactured. If interviews reveal this, we should walk away or pivot entirely.</p>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section>
+            <h2>Next Steps</h2>
+
+            <div class="next-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Interview the TD founder</h4>
+                    <p>This week. Use the questions above. Write down exactly what he says.</p>
+                </div>
+            </div>
+
+            <div class="next-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Interview 5 tournament families</h4>
+                    <p>Within 2 weeks. Find them at tournaments, on Facebook, through your networks.</p>
+                </div>
+            </div>
+
+            <div class="next-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Complete founder alignment independently</h4>
+                    <p>Each founder fills out the alignment section alone, without discussing first.</p>
+                </div>
+            </div>
+
+            <div class="next-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Meet to compare and discuss</h4>
+                    <p>Share interview findings and alignment answers. Where do you agree? Where do you diverge?</p>
+                </div>
+            </div>
+
+            <div class="next-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Decide: proceed, pivot, or pause</h4>
+                    <p>Based on what you learn, make a clear decision about what to do next.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><a href="index.html">← Back to Home</a></p>
+    </footer>
+
+</body>
+</html>
