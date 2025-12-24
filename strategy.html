@@ -32,41 +32,6 @@
             line-height: 1.6;
         }
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            color: white;
-            max-width: 800px;
-            margin: 0 auto 24px;
-        }
-
-        .hero .insight-box {
-            background: rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 20px 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero .insight-box p {
-            color: white;
-            margin: 0;
-            font-size: 1rem;
-        }
-
         /* Global Nav */
         .global-nav {
             background: white;
@@ -127,9 +92,30 @@
             }
         }
 
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -228,29 +214,16 @@
             text-align: center;
         }
 
-        .stat-box.primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-        }
-
         .stat-value {
             font-size: 1.75rem;
             font-weight: 700;
             color: var(--primary);
         }
 
-        .stat-box.primary .stat-value {
-            color: white;
-        }
-
         .stat-label {
             font-size: 0.85rem;
             color: var(--gray-600);
             margin-top: 4px;
-        }
-
-        .stat-box.primary .stat-label {
-            color: rgba(255,255,255,0.9);
         }
 
         /* Core Insight Box */
@@ -268,67 +241,6 @@
             font-size: 1.2rem;
             margin: 0;
             font-weight: 500;
-        }
-
-        /* Sport Cards */
-        .sport-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .sport-card {
-            background: var(--gray-50);
-            border-radius: 10px;
-            padding: 20px;
-            border: 1px solid var(--gray-200);
-        }
-
-        .sport-card h4 {
-            margin: 0 0 12px 0;
-            color: var(--gray-900);
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .sport-card .sport-icon {
-            font-size: 1.3rem;
-        }
-
-        .sport-card .params {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-        }
-
-        .sport-card .param {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sport-card .param-label {
-            color: var(--gray-600);
-            font-size: 0.75rem;
-        }
-
-        .sport-card .param-value {
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-
-        .sport-card .free-time {
-            background: linear-gradient(135deg, var(--success) 0%, #15803d 100%);
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
         }
 
         /* Timeline */
@@ -357,8 +269,8 @@
             min-width: 70px;
         }
 
-        /* Wave Cards */
-        .wave-grid {
+        /* Comparison Grid */
+        .compare-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
@@ -366,77 +278,50 @@
         }
 
         @media (max-width: 600px) {
-            .wave-grid {
+            .compare-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .wave-card {
+        .compare-card {
             border-radius: 10px;
             padding: 20px;
         }
 
-        .wave-card.morning {
+        .compare-card.before {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border: 2px solid #f59e0b;
         }
 
-        .wave-card.afternoon {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            border: 2px solid #3b82f6;
+        .compare-card.after {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 2px solid #16a34a;
         }
 
-        .wave-card h4 {
-            margin: 0 0 8px 0;
+        .compare-card h4 {
+            margin: 0 0 12px 0;
             font-size: 1rem;
+            color: var(--gray-900);
         }
 
-        .wave-card .wave-time {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .wave-card .wave-free {
+        .compare-card p {
+            margin: 4px 0;
             font-size: 0.9rem;
-            padding: 6px 10px;
+        }
+
+        .compare-card .result {
+            margin-top: 12px;
+            padding: 8px 12px;
             background: rgba(255,255,255,0.7);
             border-radius: 6px;
-            display: inline-block;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
-        /* Blockquote */
-        blockquote {
-            background: var(--gray-50);
-            border-left: 4px solid var(--primary);
-            padding: 16px 20px;
-            margin: 20px 0;
-            font-style: italic;
-            color: var(--gray-700);
-        }
-
-        /* Summary Table */
-        .summary-table {
-            overflow-x: auto;
-        }
-
-        .summary-table table {
-            min-width: 700px;
-        }
-
-        .summary-table th {
-            background: var(--primary);
-            color: white;
-        }
-
-        .summary-table tr:nth-child(even) {
-            background: var(--gray-50);
-        }
-
-        /* Why Section */
+        /* Why Cards */
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
             margin: 20px 0;
         }
@@ -458,6 +343,11 @@
             margin: 0;
             font-size: 0.9rem;
             color: var(--gray-600);
+        }
+
+        /* Link */
+        a {
+            color: var(--primary);
         }
 
         /* Footer */
@@ -494,39 +384,17 @@
     <div class="hero">
         <h1>RoadGame V1 Strategy</h1>
         <p class="subtitle">
-            A smart tournament scheduling system that delivers <strong>full field utilization AND 6+ hours of guaranteed family activity time</strong>—without compromise.
+            The free time already exists. It's just scattered. We cluster it—and turn that into revenue for TDs.
         </p>
-        <div class="insight-box">
-            <p><strong>The insight:</strong> Traditional scheduling scatters games across 10+ hours with awkward gaps. RoadGame runs one pool per field—teams naturally alternate playing and resting. Everyone finishes by early afternoon. The entire evening is guaranteed free. Bonus: the format exceeds compliance minimums by providing built-in recovery aligned with AAP health guidelines.</p>
-        </div>
     </div>
-
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-inner">
-            <a href="#problem">Problem</a>
-            <a href="#solution">Solution</a>
-            <a href="#proof">Proof Points</a>
-            <a href="#example">Example</a>
-            <a href="#why-now">Why Now</a>
-            <a href="#td-incentives">TD Economics</a>
-            <a href="#stakeholders">Value Props</a>
-            <a href="#v1">V1 Scope</a>
-            <a href="index.html">← Home</a>
-        </div>
-    </nav>
 
     <div class="container">
 
         <!-- The Problem -->
         <section id="problem">
-            <h2>The Actual Problem</h2>
+            <h2>The Problem</h2>
 
-            <h3>It's Not "No Free Time"—It's Scattered Free Time</h3>
-
-            <p>Families already have free time during tournaments. The problem is that free time is <strong>scattered and unpredictable</strong>.</p>
-
-            <h4>A Typical Tournament Day</h4>
+            <p>Families have 6+ hours of free time during tournament days. But it's <strong>scattered and unpredictable</strong>—so they can't use it.</p>
 
             <div class="timeline">
                 <div class="timeline-item">
@@ -538,24 +406,16 @@
                     <span>Done. Next game at... when?</span>
                 </div>
                 <div class="timeline-item">
-                    <span class="timeline-time">10:15 AM</span>
-                    <span>"Should we do something? We have 4 hours..."</span>
-                </div>
-                <div class="timeline-item">
                     <span class="timeline-time">11:00 AM</span>
-                    <span>Find bowling alley. "But what if the game runs late?"</span>
+                    <span>"Should we go bowling? But what if the next game runs early?"</span>
                 </div>
                 <div class="timeline-item">
                     <span class="timeline-time">11:30 AM</span>
-                    <span>Decide it's too risky. Sit at the field.</span>
+                    <span>Too risky. Sit at the field.</span>
                 </div>
                 <div class="timeline-item">
                     <span class="timeline-time">2:00 PM</span>
                     <span>Game 2</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">3:30 PM</span>
-                    <span>Done. Next game is 6:00 PM. Another 2.5 hour gap.</span>
                 </div>
                 <div class="timeline-item">
                     <span class="timeline-time">6:00 PM</span>
@@ -573,774 +433,141 @@
                     <div class="stat-label">Usable Free Time</div>
                 </div>
             </div>
-
-            <div class="highlight">
-                <p><strong>The key insight:</strong> In a 16-team tournament on 4 fields, only 8 teams are playing at any moment. 8 teams are always free. The question isn't whether families have free time—it's whether that free time is <strong>clustered and predictable</strong> enough to use.</p>
-            </div>
         </section>
 
         <!-- The Solution -->
         <section id="solution">
-            <h2>The RoadGame Solution</h2>
+            <h2>The Solution</h2>
 
-            <h3>Clustered Scheduling: Same Games, Different Organization</h3>
+            <p>RoadGame clusters each team's games into a single block. Same games, same field utilization—but everyone finishes by early afternoon.</p>
 
-            <p>RoadGame doesn't reduce games or leave fields empty. It reorganizes <strong>who plays when</strong> so each team's games are clustered together.</p>
-
-            <div class="highlight">
-                <p><strong>Compliance Reality:</strong> Most governing bodies (USSF, USA Basketball, etc.) don't mandate minimum rest between same-day games—just changeover time. Tournaments are "compliant" scheduling back-to-back.</p>
-            </div>
-
-            <div class="highlight" style="border-left-color: #16a34a;">
-                <p><strong>Health Reality:</strong> The <a href="https://publications.aap.org/pediatrics/article/143/6/e20190997/37135/Organized-Sports-for-Children-Preadolescents-and" style="color: #16a34a;">American Academy of Pediatrics</a> recommends rest periods to reduce injuries. RoadGame's format naturally provides this—not because rules require it, but because it's healthier.</p>
-            </div>
-
-            <h4>How It Works</h4>
-            <p>In a 4-team pool with round-robin play, there are 6 total games. Each team plays 3 and rests 3. By scheduling the pool on <strong>one field</strong>, teams naturally alternate:</p>
-
-            <table>
-                <tr><th>Slot</th><th>Time</th><th>Game</th><th>Team A1</th></tr>
-                <tr><td>1</td><td>8:00 AM</td><td>A1 vs A2</td><td>⚽ Plays</td></tr>
-                <tr><td>2</td><td>9:10 AM</td><td>A3 vs A4</td><td>🛋️ Rests (70 min)</td></tr>
-                <tr><td>3</td><td>10:20 AM</td><td>A1 vs A3</td><td>⚽ Plays</td></tr>
-                <tr><td>4</td><td>11:30 AM</td><td>A2 vs A4</td><td>🛋️ Rests + Lunch</td></tr>
-                <tr><td>5</td><td>12:40 PM</td><td>A1 vs A4</td><td>⚽ Plays</td></tr>
-                <tr><td>6</td><td>1:50 PM</td><td>A2 vs A3</td><td>✅ Done</td></tr>
-            </table>
-
-            <div class="wave-grid">
-                <div class="wave-card morning">
+            <div class="compare-grid">
+                <div class="compare-card before">
                     <h4>Traditional Scheduling</h4>
-                    <p>Team A: Games at 8am, 2pm, 6pm</p>
+                    <p>Games at 8am, 2pm, 6pm</p>
                     <p>Scattered across 10 hours</p>
-                    <p>Awkward 5-6 hour gaps</p>
-                    <div class="wave-free" style="background: rgba(0,0,0,0.1);">Unusable, can't plan anything</div>
+                    <p>Awkward 4-5 hour gaps</p>
+                    <div class="result" style="background: rgba(0,0,0,0.1);">Can't plan anything</div>
                 </div>
-                <div class="wave-card afternoon">
+                <div class="compare-card after">
                     <h4>RoadGame Scheduling</h4>
-                    <p>Team A: Games at 8am, 10:20am, 12:40pm</p>
+                    <p>Games at 8am, 10am, 12pm</p>
                     <p>70-90 min rest between games</p>
                     <p>Done by 1:30 PM</p>
-                    <div class="wave-free"><strong>7.5 hours free (1:30-9pm)</strong></div>
+                    <div class="result">7+ hours free, guaranteed</div>
                 </div>
             </div>
 
-            <p><strong>Fields stay full</strong> because all 4 pools run simultaneously on 4 fields. Same field utilization, same revenue—but every team finishes by early afternoon with proper rest built in.</p>
-        </section>
+            <h3>How It Works</h3>
 
-        <!-- Proof Points -->
-        <section id="proof">
-            <h2>Proof: Works Across All Major Youth Sports</h2>
-
-            <p>We've validated the math for every popular youth travel sport. The wave structure works regardless of game length—you just adjust tournament size accordingly.</p>
-
-            <h3>The Universal Formula</h3>
-
-            <div class="highlight">
-                <p><strong>Wave Window ÷ Game Slot = Games per Field</strong><br>
-                Games per Field × Number of Fields = Total Games per Wave<br>
-                Total Games × 2 ÷ 3 games per team = Teams per Wave<br>
-                Teams per Wave × 2 = <strong>Total Tournament Size</strong></p>
-            </div>
-
-            <h3>Sport-by-Sport Proof Points</h3>
-
-            <div class="sport-grid">
-                <!-- Soccer -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">⚽</span> Soccer (U10-U14)</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">50-60 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">70 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">16 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Fields</span>
-                            <span class="param-value">4 fields</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~2:40 PM • 6-7 hrs free</div>
-                </div>
-
-                <!-- Basketball -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">🏀</span> Basketball</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">32-40 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">48 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">24 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Courts</span>
-                            <span class="param-value">6 courts</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~2:00 PM • 7 hrs free</div>
-                </div>
-
-                <!-- Baseball -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">⚾</span> Baseball (10U-14U)</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">90-105 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">120 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">12 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Fields</span>
-                            <span class="param-value">4 fields</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~4:00 PM • 5 hrs free</div>
-                </div>
-
-                <!-- Softball -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">🥎</span> Softball</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">60-75 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">90 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">16 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Fields</span>
-                            <span class="param-value">4 fields</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~3:30 PM • 5.5 hrs free</div>
-                </div>
-
-                <!-- Lacrosse -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">🥍</span> Lacrosse</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">48-60 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">70 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">16 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Fields</span>
-                            <span class="param-value">4 fields</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~2:40 PM • 6-7 hrs free</div>
-                </div>
-
-                <!-- Volleyball -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">🏐</span> Volleyball</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">45-60 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">70 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">16 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Courts</span>
-                            <span class="param-value">4 courts</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~2:40 PM • 6-7 hrs free</div>
-                </div>
-
-                <!-- Ice Hockey -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">🏒</span> Ice Hockey</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">36-45 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">60 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">12 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Rinks</span>
-                            <span class="param-value">2 rinks</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~3:00 PM • 6 hrs free</div>
-                </div>
-
-                <!-- Flag Football -->
-                <div class="sport-card">
-                    <h4><span class="sport-icon">🏈</span> Flag Football</h4>
-                    <div class="params">
-                        <div class="param">
-                            <span class="param-label">Game</span>
-                            <span class="param-value">40-48 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Slot</span>
-                            <span class="param-value">60 min</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Teams</span>
-                            <span class="param-value">20 teams</span>
-                        </div>
-                        <div class="param">
-                            <span class="param-label">Fields</span>
-                            <span class="param-value">4 fields</span>
-                        </div>
-                    </div>
-                    <div class="free-time">Done ~2:30 PM • 6.5 hrs free</div>
-                </div>
-            </div>
-
-            <h3>Summary: The Math Works for Every Sport</h3>
-
-            <p>With realistic rest periods (70+ min between games), all teams finish pool play by early-to-mid afternoon. Everyone has the same guaranteed free time block.</p>
-
-            <div class="summary-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Sport</th>
-                            <th>Teams</th>
-                            <th>Fields</th>
-                            <th>Game Slot</th>
-                            <th>Pool Play Ends</th>
-                            <th>Free Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Soccer</td>
-                            <td>16</td>
-                            <td>4</td>
-                            <td>70 min</td>
-                            <td>~2:40 PM</td>
-                            <td><strong>6-7 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Basketball</td>
-                            <td>24</td>
-                            <td>6</td>
-                            <td>48 min</td>
-                            <td>~2:00 PM</td>
-                            <td><strong>7 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Baseball</td>
-                            <td>12</td>
-                            <td>4</td>
-                            <td>120 min</td>
-                            <td>~4:00 PM</td>
-                            <td><strong>5 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Softball</td>
-                            <td>16</td>
-                            <td>4</td>
-                            <td>90 min</td>
-                            <td>~3:30 PM</td>
-                            <td><strong>5.5 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Lacrosse</td>
-                            <td>16</td>
-                            <td>4</td>
-                            <td>70 min</td>
-                            <td>~2:40 PM</td>
-                            <td><strong>6-7 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Volleyball</td>
-                            <td>16</td>
-                            <td>4</td>
-                            <td>70 min</td>
-                            <td>~2:40 PM</td>
-                            <td><strong>6-7 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Ice Hockey</td>
-                            <td>12</td>
-                            <td>2</td>
-                            <td>60 min</td>
-                            <td>~3:00 PM</td>
-                            <td><strong>6 hours</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Flag Football</td>
-                            <td>20</td>
-                            <td>4</td>
-                            <td>60 min</td>
-                            <td>~2:30 PM</td>
-                            <td><strong>6.5 hours</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="core-insight">
-                <p>Every major youth travel sport delivers 5-7 hours of guaranteed free time with healthy rest built in. The math works.</p>
-            </div>
-        </section>
-
-        <!-- Detailed Example -->
-        <section id="example">
-            <h2>Detailed Example: Soccer Tournament</h2>
-
-            <p>Let's walk through a complete 16-team soccer tournament to show exactly how this works—with realistic rest periods between games.</p>
-
-            <h3>Tournament Parameters</h3>
+            <p>Run one pool per field. In a 4-team pool, there are 6 games—each team plays 3 and rests 3. Teams naturally alternate:</p>
 
             <table>
-                <tr><th>Parameter</th><th>Value</th></tr>
-                <tr><td>Teams</td><td>16</td></tr>
-                <tr><td>Fields</td><td>4</td></tr>
-                <tr><td>Days</td><td>2 (Saturday-Sunday)</td></tr>
-                <tr><td>Format</td><td>Pool Play → Single Elimination</td></tr>
-                <tr><td>Pool structure</td><td>4 pools of 4 teams (round robin)</td></tr>
-                <tr><td>Game slot</td><td>70 min</td></tr>
-                <tr><td>Rest between games</td><td><strong>70+ min (built into schedule)</strong></td></tr>
+                <tr><th>Time</th><th>Game</th><th>Team A1</th></tr>
+                <tr><td>8:00 AM</td><td>A1 vs A2</td><td>⚽ Plays</td></tr>
+                <tr><td>9:10 AM</td><td>A3 vs A4</td><td>🛋️ Rests</td></tr>
+                <tr><td>10:20 AM</td><td>A1 vs A3</td><td>⚽ Plays</td></tr>
+                <tr><td>11:30 AM</td><td>A2 vs A4</td><td>🛋️ Rests</td></tr>
+                <tr><td>12:40 PM</td><td>A1 vs A4</td><td>⚽ Plays</td></tr>
+                <tr><td>1:50 PM</td><td>A2 vs A3</td><td>✅ Done for the day</td></tr>
             </table>
 
-            <h3>Day 1 (Saturday): Pool Play</h3>
+            <p>With 4 fields running 4 pools simultaneously, all 16 teams finish by ~2:30 PM. Fields stay full. Everyone gets 6+ hours of guaranteed free time.</p>
 
-            <p><strong>All 4 pools play simultaneously, one pool per field.</strong> Each pool has 6 games (round-robin of 4 teams). Teams alternate playing and resting.</p>
-
-            <h4>Full Pool Play Schedule</h4>
-
-            <table>
-                <tr>
-                    <th>Slot</th>
-                    <th>Time</th>
-                    <th>Field 1 (Pool A)</th>
-                    <th>Field 2 (Pool B)</th>
-                    <th>Field 3 (Pool C)</th>
-                    <th>Field 4 (Pool D)</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>8:00 AM</td>
-                    <td>A1 vs A2</td>
-                    <td>B1 vs B2</td>
-                    <td>C1 vs C2</td>
-                    <td>D1 vs D2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>9:10 AM</td>
-                    <td>A3 vs A4</td>
-                    <td>B3 vs B4</td>
-                    <td>C3 vs C4</td>
-                    <td>D3 vs D4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>10:20 AM</td>
-                    <td>A1 vs A3</td>
-                    <td>B1 vs B3</td>
-                    <td>C1 vs C3</td>
-                    <td>D1 vs D3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>11:30 AM</td>
-                    <td>A2 vs A4</td>
-                    <td>B2 vs B4</td>
-                    <td>C2 vs C4</td>
-                    <td>D2 vs D4</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>12:40 PM</td>
-                    <td>A1 vs A4</td>
-                    <td>B1 vs B4</td>
-                    <td>C1 vs C4</td>
-                    <td>D1 vs D4</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>1:50 PM</td>
-                    <td>A2 vs A3</td>
-                    <td>B2 vs B3</td>
-                    <td>C2 vs C3</td>
-                    <td>D2 vs D3</td>
-                </tr>
-            </table>
-
-            <p><strong>Pool play ends: ~2:40 PM</strong></p>
-
-            <h4>What This Looks Like for Team A1</h4>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="timeline-time">8:00 AM</span>
-                    <span>⚽ Game 1 vs A2</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">8:50 AM</span>
-                    <span>Game ends</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">9:10 AM</span>
-                    <span>🛋️ REST — A3 vs A4 on their field</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">10:20 AM</span>
-                    <span>⚽ Game 2 vs A3 (70 min rest completed)</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">11:10 AM</span>
-                    <span>Game ends</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">11:30 AM</span>
-                    <span>🛋️ REST + LUNCH — A2 vs A4 on their field</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">12:40 PM</span>
-                    <span>⚽ Game 3 vs A4 (90 min rest completed)</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">1:30 PM</span>
-                    <span>✅ DONE — Pool play complete</span>
-                </div>
-                <div class="timeline-item" style="background: #dcfce7; border-radius: 6px; padding: 10px;">
-                    <span class="timeline-time" style="color: #16a34a;">1:30 PM</span>
-                    <span><strong>FREE for rest of day — 7.5 hours guaranteed</strong></span>
-                </div>
-            </div>
-
-            <h3>Day 2 (Sunday): Bracket Play</h3>
-
-            <table>
-                <tr>
-                    <th>Time</th>
-                    <th>Round</th>
-                    <th>What's Happening</th>
-                </tr>
-                <tr>
-                    <td>8:00 AM</td>
-                    <td>Quarterfinals</td>
-                    <td>8 advancing teams play on 4 fields</td>
-                </tr>
-                <tr>
-                    <td>9:10 AM - 12:30 PM</td>
-                    <td><strong>Activity Window</strong></td>
-                    <td>Advancing teams: 3+ hour break. Fields run consolation games.</td>
-                </tr>
-                <tr>
-                    <td>12:30 PM</td>
-                    <td>Semifinals</td>
-                    <td>4 teams play</td>
-                </tr>
-                <tr>
-                    <td>2:30 PM</td>
-                    <td>Finals</td>
-                    <td>Championship + 3rd place games</td>
-                </tr>
-            </table>
-
-            <h3>The Result: No Trade-Offs</h3>
-
-            <div class="stats-grid">
-                <div class="stat-box primary">
-                    <div class="stat-value">16</div>
-                    <div class="stat-label">Teams</div>
-                </div>
-                <div class="stat-box primary">
-                    <div class="stat-value">31</div>
-                    <div class="stat-label">Total Games</div>
-                </div>
-                <div class="stat-box primary">
-                    <div class="stat-value">~85%</div>
-                    <div class="stat-label">Field Utilization</div>
-                </div>
-                <div class="stat-box primary">
-                    <div class="stat-value">70+ min</div>
-                    <div class="stat-label">Rest Between Games</div>
-                </div>
-                <div class="stat-box primary">
-                    <div class="stat-value">7+ hrs</div>
-                    <div class="stat-label">Guaranteed Free Time</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Now -->
-        <section id="why-now">
-            <h2>Why Hasn't This Been Done Before?</h2>
-
-            <p>If clustering games is so straightforward, why isn't everyone already doing it?</p>
-
-            <div class="why-grid">
-                <div class="why-card">
-                    <h4>1. Software optimizes for the wrong thing</h4>
-                    <p>Tournament software (TeamSnap, Fastbreak AI) optimizes for field efficiency, not family experience. "Cluster games per team" isn't even a parameter.</p>
-                </div>
-                <div class="why-card">
-                    <h4>2. TDs have no financial incentive</h4>
-                    <p>Tournament Directors get paid to fill fields, not make families happy. Clustered games = extra work with no payoff. So they say no.</p>
-                </div>
-                <div class="why-card">
-                    <h4>3. No marketplace on the other end</h4>
-                    <p>Even with clustered games, families don't know what to DO with free time. You need both: predictable time + easy booking.</p>
-                </div>
-                <div class="why-card">
-                    <h4>4. "That's just how it's done"</h4>
-                    <p>Tournament formats haven't changed in 30+ years. Scattered games are seen as inevitable, not a solvable problem.</p>
-                </div>
-                <div class="why-card">
-                    <h4>5. Families don't know to ask</h4>
-                    <p>Parents complain about wasted time, but assume that's just how tournaments work. They don't know an alternative exists.</p>
-                </div>
-                <div class="why-card">
-                    <h4>6. The connection was never made</h4>
-                    <p>"Scheduling" and "family experience" are treated as separate problems. Nobody realized scheduling IS the lever that unlocks experience.</p>
-                </div>
-            </div>
-
-            <h3>Why Now?</h3>
-
-            <table>
-                <tr><th>Factor</th><th>What Changed</th></tr>
-                <tr><td><strong>Algorithms</strong></td><td>Modern constraint-satisfaction can optimize for multiple variables including clustering</td></tr>
-                <tr><td><strong>Marketplaces</strong></td><td>Group booking platforms make coordinating 20+ people frictionless</td></tr>
-                <tr><td><strong>Post-COVID</strong></td><td>Families more intentional about quality time together</td></tr>
-                <tr><td><strong>TD competition</strong></td><td>Tournament Directors looking for differentiation and new revenue</td></tr>
-                <tr><td><strong>Mobile-first</strong></td><td>Real-time schedule updates and booking possible on phones at the field</td></tr>
-            </table>
-
-            <div class="core-insight">
-                <p>RoadGame connects scheduling to experience. That's the innovation—not the algorithm, but the insight that these two problems are actually one.</p>
-            </div>
+            <p style="font-size: 0.9rem; color: var(--gray-600);">This works across all major youth sports. <a href="sport-analysis.html">See the sport-by-sport analysis →</a></p>
         </section>
 
         <!-- Why TDs Will Switch -->
         <section id="td-incentives">
-            <h2>Why Tournament Directors Will Switch</h2>
+            <h2>Why TDs Will Switch</h2>
 
-            <p>The question isn't whether clustered scheduling is <em>possible</em>—it's why TDs would bother. Today, they have no incentive.</p>
-
-            <h3>The Current Reality: No Upside for TDs</h3>
-
-            <div class="why-grid">
-                <div class="why-card">
-                    <h4>No one pays for "family experience"</h4>
-                    <p>TDs get paid per team registered. Whether families enjoy the weekend or sit bored at the field—same revenue.</p>
-                </div>
-                <div class="why-card">
-                    <h4>Can't capture local spending</h4>
-                    <p>Even if families go to local restaurants and activities, the TD gets nothing. Why optimize for someone else's revenue?</p>
-                </div>
-                <div class="why-card">
-                    <h4>"If it ain't broke..."</h4>
-                    <p>Tournaments sell out with scattered scheduling. TDs have no reason to change a working formula.</p>
-                </div>
-                <div class="why-card">
-                    <h4>Extra work, no reward</h4>
-                    <p>Clustered scheduling is more complex. Without a payoff, TDs will always take the path of least resistance.</p>
-                </div>
-            </div>
-
-            <h3>RoadGame Changes the Economics</h3>
-
-            <p>We make TDs more money by creating new revenue streams that <strong>only exist with predictable free time</strong>.</p>
+            <p>Today, TDs have no incentive to optimize for family experience. They get paid per team—whether families enjoy the weekend or sit bored at the field.</p>
 
             <div class="highlight" style="border-left-color: #16a34a;">
-                <p><strong>The key insight:</strong> Predictable free time is an asset. Families will pay for the convenience of a better experience. Local vendors will pay for access to captive customers. RoadGame turns "family experience" into TD revenue.</p>
+                <p><strong>RoadGame changes the economics.</strong> Predictable free time becomes an asset. Families book activities, vendors pay for access, and TDs get a cut of every booking.</p>
             </div>
 
-            <h4>Revenue Stream 1: Excursion Booking Revenue Share</h4>
+            <h3>Two New Revenue Streams</h3>
 
-            <p>When families book activities through RoadGame (restaurants, attractions, team outings), the TD gets a cut.</p>
+            <h4>1. Excursion Revenue Share</h4>
+            <p>When families book activities through RoadGame, the TD gets 10-15%.</p>
 
             <table>
-                <tr><th>Booking Type</th><th>Example</th><th>TD Revenue Share</th></tr>
-                <tr><td>Group dining reservation</td><td>Team dinner at local restaurant</td><td>10-15%</td></tr>
-                <tr><td>Activity booking</td><td>Bowling, mini-golf, escape room</td><td>10-15%</td></tr>
-                <tr><td>Attraction tickets</td><td>Water park, zoo, arcade</td><td>10-15%</td></tr>
-                <tr><td>Team experiences</td><td>Private pool party, movie theater buyout</td><td>10-15%</td></tr>
+                <tr><th>Booking Type</th><th>Example</th><th>TD Share</th></tr>
+                <tr><td>Group dining</td><td>Team dinner at local restaurant</td><td>10-15%</td></tr>
+                <tr><td>Activities</td><td>Bowling, escape room, mini-golf</td><td>10-15%</td></tr>
+                <tr><td>Attractions</td><td>Water park, arcade, zoo</td><td>10-15%</td></tr>
             </table>
 
-            <p><strong>Why this works:</strong> Vendors are happy to pay 10-15% for guaranteed group bookings. Today, tournament families wander in randomly (if at all). With RoadGame, vendors get predictable traffic: "100+ people guaranteed free at 3pm, all within 5 miles of the complex."</p>
-
-            <h4>Revenue Stream 2: Premium Tournament Pricing</h4>
-
+            <h4>2. Premium Tournament Pricing</h4>
             <p>Families will pay more for a tournament that respects their time.</p>
 
             <table>
-                <tr><th>Tournament Type</th><th>Registration Fee</th><th>Why Families Pay More</th></tr>
-                <tr><td>Traditional tournament</td><td>$500/team</td><td>Standard experience, scattered games</td></tr>
-                <tr><td>RoadGame tournament</td><td>$550-600/team</td><td>Guaranteed free time, bookable activities, actual weekend experience</td></tr>
+                <tr><th>Tournament Type</th><th>Registration</th></tr>
+                <tr><td>Traditional</td><td>$500/team</td></tr>
+                <tr><td>RoadGame</td><td>$550-600/team</td></tr>
             </table>
 
-            <p><strong>Why this works:</strong> Families already spend $1,200-1,500 per tournament weekend (registration, hotel, food, gas). An extra $50-100 for a dramatically better experience is a no-brainer—especially when siblings and grandparents can actually enjoy the trip.</p>
+            <p>Families already spend $1,200-1,500 per tournament weekend. An extra $50-100 for a dramatically better experience is a no-brainer.</p>
 
-            <h4>The Math: Why TDs Make More with RoadGame</h4>
-
-            <p>Let's compare a 16-team tournament:</p>
+            <h3>The Math</h3>
 
             <table>
-                <tr><th></th><th>Traditional Tournament</th><th>RoadGame Tournament</th></tr>
+                <tr><th></th><th>Traditional</th><th>RoadGame</th></tr>
                 <tr>
-                    <td><strong>Registration revenue</strong></td>
-                    <td>16 teams × $500 = $8,000</td>
-                    <td>16 teams × $575 = $9,200</td>
+                    <td><strong>Registration</strong></td>
+                    <td>16 × $500 = $8,000</td>
+                    <td>16 × $575 = $9,200</td>
                 </tr>
                 <tr>
-                    <td><strong>Excursion revenue share</strong></td>
+                    <td><strong>Excursion share</strong></td>
                     <td>$0</td>
-                    <td>~$800-1,200*</td>
+                    <td>~$800-1,200</td>
                 </tr>
                 <tr>
-                    <td><strong>Total TD revenue</strong></td>
+                    <td><strong>Total</strong></td>
                     <td><strong>$8,000</strong></td>
                     <td><strong>$10,000-10,400</strong></td>
                 </tr>
-                <tr>
-                    <td><strong>Increase</strong></td>
-                    <td>—</td>
-                    <td><strong>+25-30%</strong></td>
-                </tr>
             </table>
 
-            <p style="font-size: 0.85rem; color: var(--gray-600);">*Assumes ~$5,000-8,000 in bookings at 15% revenue share. Conservative estimate based on 8-10 teams booking one group activity.</p>
-
             <div class="core-insight">
-                <p>TDs make 25-30% more revenue running RoadGame tournaments. That's the incentive to switch.</p>
+                <p>TDs make 25-30% more revenue with RoadGame. That's the incentive to switch.</p>
             </div>
-
-            <h3>Additional TD Benefits</h3>
-
-            <ul>
-                <li><strong>Competitive differentiation:</strong> "The tournament families actually want to attend"</li>
-                <li><strong>Higher retention:</strong> Teams come back because the experience is better</li>
-                <li><strong>Word of mouth:</strong> Happy families recruit other teams</li>
-                <li><strong>Sponsor interest:</strong> Local businesses want to partner with family-friendly events</li>
-                <li><strong>Reduced complaints:</strong> Families aren't frustrated about wasted time</li>
-            </ul>
-
-            <blockquote>"Same fields, same games—but 25% more revenue and families that actually enjoy the weekend. Why wouldn't I switch?"</blockquote>
-        </section>
-
-        <!-- Value Props -->
-        <section id="stakeholders">
-            <h2>Value Proposition by Stakeholder</h2>
-
-            <h3>Tournament Directors</h3>
-            <p><strong>Problem:</strong> Scheduling is complex. Coaches request clustered games. TDs say no because tools don't help.</p>
-            <p><strong>Solution:</strong> RoadGame generates clustered schedules automatically. Same games, same revenue—with family-friendly scheduling built in.</p>
-            <blockquote>"Same games, same fields, same revenue—but every family gets 5-9 hours of guaranteed free time. Plus teams pay extra to pick their wave."</blockquote>
-
-            <h3>Teams (Coaches & Team Moms)</h3>
-            <p><strong>Problem:</strong> Games scattered across the day. Can't coordinate group activities.</p>
-            <p><strong>Solution:</strong> Every team's games clustered. Morning or Afternoon wave, published in advance.</p>
-            <blockquote>"Your team plays 8-11:30, done. Everyone's free until 9 PM. Book the team bowling outing at 2 PM. It's guaranteed."</blockquote>
-
-            <h3>Families & Players</h3>
-            <p><strong>Problem:</strong> Kids bored between games. Too risky to book activities.</p>
-            <p><strong>Solution:</strong> Predictable free time. Know your wave, book with confidence.</p>
-            <blockquote>"Tournament weekends become actual vacations. Your kid spends the day with their best friends—at games AND at the pool."</blockquote>
-
-            <h3>Vendors</h3>
-            <p><strong>Problem:</strong> Families have unpredictable schedules, wander in randomly.</p>
-            <p><strong>Solution:</strong> Predictable waves = predictable traffic.</p>
-            <blockquote>"8 teams (100+ people) are guaranteed free at noon. Want to be the activity they book?"</blockquote>
         </section>
 
         <!-- V1 Scope -->
         <section id="v1">
             <h2>V1 Scope</h2>
 
-            <p>Single-tournament pilot to validate:</p>
+            <p>Single-tournament pilot to validate the core assumptions.</p>
+
+            <h3>What We're Testing</h3>
             <ul>
-                <li>Clustered scheduling works operationally</li>
-                <li>Families notice and value predictable free time</li>
-                <li>Teams book activities during free windows</li>
-                <li>Vendors value the predictable traffic</li>
+                <li>Do families notice and value predictable free time?</li>
+                <li>Do families actually book activities during free windows?</li>
+                <li>Does the TD see value in the format?</li>
+                <li>Can we connect families with local vendors?</li>
             </ul>
+
+            <h3>Pilot Parameters</h3>
+            <table>
+                <tr><th>Parameter</th><th>Value</th></tr>
+                <tr><td>Tournament size</td><td>16 teams, 4 fields, 2 days</td></tr>
+                <tr><td>Format</td><td>Single wave (all teams get RoadGame format)</td></tr>
+                <tr><td>Schedule</td><td>8am - 3pm pool play, everyone free 3pm onwards</td></tr>
+            </table>
 
             <h3>Success Metrics</h3>
-
             <table>
                 <tr><th>Metric</th><th>Target</th></tr>
-                <tr><td>Field utilization</td><td>Same as traditional (~85%)</td></tr>
                 <tr><td>Family satisfaction</td><td>>80% positive</td></tr>
                 <tr><td>Activity booking rate</td><td>>30% of teams book 1+ activity</td></tr>
-                <tr><td>TD satisfaction</td><td>Would use again</td></tr>
+                <tr><td>TD satisfaction</td><td>Would use RoadGame again</td></tr>
             </table>
-        </section>
 
-        <!-- Core Insight -->
-        <section>
-            <h2>The Core Insight</h2>
-
-            <div class="core-insight">
-                <p>The free time already exists. It's just scattered. RoadGame clusters it.</p>
-            </div>
-
-            <p>Traditional tournaments scatter games across 10+ hours (8am, 2pm, 6pm) with awkward gaps too unpredictable to book activities. Families waste the day waiting.</p>
-
-            <p>RoadGame clusters each team's games into a single block by running one pool per field. Teams naturally alternate playing and resting. Everyone finishes by early afternoon. The entire evening is guaranteed free.</p>
-
-            <p><strong>No trade-off required:</strong></p>
-            <ul>
-                <li>Fields stay utilized (~85%)</li>
-                <li>Same number of games played</li>
-                <li>Same revenue for TDs</li>
-                <li>Built-in recovery between games (healthier than back-to-back)</li>
-                <li>Families get <strong>6+ hours of guaranteed, bookable free time</strong></li>
-            </ul>
-
-            <p><strong>Bonus:</strong> The format exceeds minimum compliance standards by providing natural rest periods—aligned with <a href="https://publications.aap.org/pediatrics/article/143/6/e20190997/37135/Organized-Sports-for-Children-Preadolescents-and">AAP recommendations</a> for reducing youth athlete injuries.</p>
-
-            <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-top: 24px;">That's the RoadGame Format: Max revenue AND max experience.</p>
+            <h3>V2 Opportunity</h3>
+            <p>If V1 proves families will book activities, test <strong>waves</strong> to increase TD revenue—morning wave and afternoon wave, doubling tournament capacity on the same fields.</p>
         </section>
 
     </div>
