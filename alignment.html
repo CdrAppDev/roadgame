@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - Founder Alignment</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --warning: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            color: var(--gray-800);
+            margin: 24px 0 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--gray-700);
+        }
+
+        /* Two Column Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .model-card {
+            border-radius: 12px;
+            padding: 24px;
+            border: 2px solid;
+        }
+
+        .model-card.chris {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-color: var(--primary);
+        }
+
+        .model-card.karl {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: var(--warning);
+        }
+
+        .model-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .model-card .badge {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .model-card.chris .badge {
+            background: var(--primary);
+            color: white;
+        }
+
+        .model-card.karl .badge {
+            background: var(--warning);
+            color: white;
+        }
+
+        .model-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .model-card li {
+            margin-bottom: 8px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+
+        /* Highlight Box */
+        .highlight {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .highlight.success {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-left-color: var(--success);
+        }
+
+        .highlight.warning {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left-color: var(--warning);
+        }
+
+        .highlight p {
+            margin: 0;
+        }
+
+        /* Decision Box */
+        .decision-box {
+            background: var(--gray-900);
+            color: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .decision-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .decision-box p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Options */
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .option {
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            background: white;
+        }
+
+        .option.recommended {
+            border-color: var(--success);
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+        }
+
+        .option h4 {
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .option p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .option .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: var(--success);
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        /* Math Box */
+        .math-box {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: monospace;
+            margin: 16px 0;
+        }
+
+        .math-box .equation {
+            font-size: 1.1rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .math-box .result {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-600);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Founder Alignment: V1 Product Decision</h1>
+        <p>Understanding our options and making a decision we can all execute on</p>
+    </div>
+
+    <div class="container">
+
+        <!-- The Core Question -->
+        <section>
+            <h2>The Core Question</h2>
+            <p>We agree on the problem: families have unpredictable free time at tournaments, making it impossible to book activities. We agree on the solution concept: cluster games to create predictable free time.</p>
+            <p><strong>The question is: How do we handle field/court constraints?</strong></p>
+        </section>
+
+        <!-- Two Mental Models -->
+        <section>
+            <h2>Two Mental Models</h2>
+
+            <div class="comparison">
+                <div class="model-card chris">
+                    <h3>Chris's Model <span class="badge">NEW TOURNAMENT TYPE</span></h3>
+                    <p><strong>Core idea:</strong> Build the tournament around field capacity. The tournament IS the product.</p>
+                    <ul>
+                        <li>4 fields = 16-team tournament. Period.</li>
+                        <li>ALL teams get clustered scheduling</li>
+                        <li>The entire tournament is premium-priced</li>
+                        <li>TDs make same/more money (higher price per team)</li>
+                        <li>No VIP tier—everyone gets the RoadGame experience</li>
+                    </ul>
+                    <div class="highlight" style="margin-top: 16px; margin-bottom: 0;">
+                        <p><strong>Paradigm shift:</strong> "We're not fitting into existing tournaments. We're creating a new tournament type that families will pay more for."</p>
+                    </div>
+                </div>
+
+                <div class="model-card karl">
+                    <h3>Karl's Model <span class="badge">VIP TIER</span></h3>
+                    <p><strong>Core idea:</strong> Retrofit RoadGame into existing tournament structures with limited capacity.</p>
+                    <ul>
+                        <li>TD wants 24 teams but only has 4 fields</li>
+                        <li>RoadGame format only fits 16 teams</li>
+                        <li>16 teams get "VIP" clustered scheduling</li>
+                        <li>8 teams get traditional scattered scheduling</li>
+                        <li>VIP sells out because everyone wants it</li>
+                    </ul>
+                    <div class="highlight warning" style="margin-top: 16px; margin-bottom: 0;">
+                        <p><strong>Reality check:</strong> "Most tournaments have scheduling constraints. We need to work within existing structures, not replace them."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Wave Concept -->
+        <section>
+            <h2>The Wave Concept: A Middle Ground?</h2>
+
+            <p>There's a third option that might satisfy both views: <strong>Waves</strong>.</p>
+
+            <h3>How Waves Work</h3>
+            <p>Instead of one tournament cycle per day, run two complete cycles (waves) by extending the operational day:</p>
+
+            <table>
+                <tr>
+                    <th>Model</th>
+                    <th>Fields</th>
+                    <th>Teams</th>
+                    <th>Day Length</th>
+                    <th>TD Revenue</th>
+                    <th>Family Free Time</th>
+                </tr>
+                <tr>
+                    <td><strong>No Waves</strong></td>
+                    <td>4</td>
+                    <td>16</td>
+                    <td>8am - 3pm (7 hrs)</td>
+                    <td>$8,000</td>
+                    <td>6+ hours (everyone same time)</td>
+                </tr>
+                <tr>
+                    <td><strong>Two Waves</strong></td>
+                    <td>4</td>
+                    <td>32</td>
+                    <td>8am - 10pm (14 hrs)</td>
+                    <td>$16,000</td>
+                    <td>7 hours (morning OR afternoon)</td>
+                </tr>
+            </table>
+
+            <div class="math-box">
+                <div class="equation">Pool play with rest = 6 slots × 70 min = 7 hours per field</div>
+                <div class="equation">14-hour day ÷ 7 hours = 2 complete waves</div>
+                <div class="result">2 waves = 2× the teams = 2× the revenue</div>
+            </div>
+
+            <h3>Wave Schedule Example (4 fields, 32 teams)</h3>
+            <table>
+                <tr>
+                    <th>Wave</th>
+                    <th>Teams</th>
+                    <th>Play Time</th>
+                    <th>Free Time</th>
+                </tr>
+                <tr>
+                    <td><strong>Morning Wave</strong></td>
+                    <td>16 teams (Pools A-D)</td>
+                    <td>8:00 AM - 3:00 PM</td>
+                    <td>3:00 PM - 10:00 PM (7 hours)</td>
+                </tr>
+                <tr>
+                    <td><strong>Afternoon Wave</strong></td>
+                    <td>16 teams (Pools E-H)</td>
+                    <td>3:00 PM - 10:00 PM</td>
+                    <td>8:00 AM - 3:00 PM (7 hours)</td>
+                </tr>
+            </table>
+
+            <div class="highlight success">
+                <p><strong>Key insight:</strong> Waves don't compress games or remove rest. They extend the operational day to fit two complete tournament cycles. Every team still gets clustered games with rest AND 7 hours of guaranteed free time.</p>
+            </div>
+
+            <h3>What "VIP" Means with Waves</h3>
+            <p>If we use waves, VIP scheduling becomes meaningful:</p>
+            <ul>
+                <li><strong>VIP = Wave Selection</strong> — Teams pay extra to choose Morning or Afternoon wave</li>
+                <li><strong>Non-VIP</strong> — Teams are assigned a wave by the tournament</li>
+                <li><strong>Everyone gets clustered scheduling</strong> — No one gets scattered games</li>
+            </ul>
+
+            <div class="highlight warning">
+                <p><strong>Note:</strong> This is different from Karl's original VIP concept where some teams get scattered schedules. With waves, everyone gets the RoadGame experience—VIP just lets you choose WHEN.</p>
+            </div>
+        </section>
+
+        <!-- Karl's Concern: Field Constraints -->
+        <section>
+            <h2>Addressing Karl's Concern: Field Constraints</h2>
+
+            <p>Karl raised a valid point: <em>"Access to field space is the #1 barrier for TDs."</em></p>
+
+            <h3>The Scenarios</h3>
+
+            <table>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Chris's Approach</th>
+                    <th>Wave Approach</th>
+                </tr>
+                <tr>
+                    <td><strong>Plenty of fields</strong><br>(TD has 8+ fields)</td>
+                    <td>Run a 32-team tournament<br>Everyone gets RoadGame format</td>
+                    <td>Same, or run waves for 64 teams</td>
+                </tr>
+                <tr>
+                    <td><strong>Limited fields</strong><br>(TD has 4 fields)</td>
+                    <td>Run a 16-team tournament<br>Charge premium per team</td>
+                    <td>Run waves for 32 teams<br>Double capacity, same fields</td>
+                </tr>
+                <tr>
+                    <td><strong>Very limited fields</strong><br>(TD has 2 fields)</td>
+                    <td>Run an 8-team tournament<br>Boutique/premium event</td>
+                    <td>Run waves for 16 teams</td>
+                </tr>
+            </table>
+
+            <div class="highlight">
+                <p><strong>Bottom line:</strong> Waves solve the field constraint problem without creating a two-tier experience. TDs can run 2× the teams on the same fields by extending to a 14-hour day.</p>
+            </div>
+        </section>
+
+        <!-- V1 Decision -->
+        <section>
+            <h2>V1 Product Decision</h2>
+
+            <p>For V1, we need to pick ONE model to test. Here are the options:</p>
+
+            <div class="options">
+                <div class="option recommended">
+                    <span class="tag">RECOMMENDED FOR V1</span>
+                    <h4>Option A: Single Wave (Chris's Model)</h4>
+                    <p><strong>What:</strong> One tournament, all teams get RoadGame format, no VIP tier.</p>
+                    <p><strong>Why V1:</strong> Simplest to build and test. Proves the core value proposition: do families actually book activities when they have predictable free time?</p>
+                    <p><strong>Test:</strong> 16-team tournament, 4 fields, everyone done by 3pm.</p>
+                </div>
+
+                <div class="option">
+                    <h4>Option B: Two Waves (Hybrid)</h4>
+                    <p><strong>What:</strong> Morning + Afternoon waves, VIP = wave selection.</p>
+                    <p><strong>Why V2:</strong> More complex scheduling. Requires proving V1 works first. Adds revenue upside but also operational complexity.</p>
+                    <p><strong>Test after V1:</strong> 32-team tournament, 4 fields, two waves.</p>
+                </div>
+
+                <div class="option">
+                    <h4>Option C: VIP Tier (Karl's Model)</h4>
+                    <p><strong>What:</strong> Some teams get clustered, some get scattered.</p>
+                    <p><strong>Concern:</strong> Creates two-tier experience in same tournament. Harder to test—which tier caused the results?</p>
+                    <p><strong>Recommendation:</strong> Avoid for V1. Muddies the data.</p>
+                </div>
+            </div>
+
+            <div class="decision-box">
+                <h3>Proposed V1 Scope</h3>
+                <p><strong>Model:</strong> Option A (Single Wave, all teams get RoadGame format)</p>
+                <p><strong>Tournament size:</strong> 16 teams, 4 fields, 2 days</p>
+                <p><strong>Format:</strong> One pool per field, teams alternate play/rest</p>
+                <p><strong>Schedule:</strong> 8am - 3pm pool play, everyone free 3pm onwards</p>
+                <p><strong>What we're testing:</strong></p>
+                <ul style="color: rgba(255,255,255,0.9); margin-top: 8px;">
+                    <li>Do families notice and value the predictable free time?</li>
+                    <li>Do families actually book activities during free windows?</li>
+                    <li>Does the TD see value in the format?</li>
+                    <li>Can we connect families with local vendors?</li>
+                </ul>
+                <p style="margin-top: 16px;"><strong>V2 opportunity:</strong> If V1 proves families will book activities, then test waves to increase TD revenue.</p>
+            </div>
+        </section>
+
+        <!-- What We Agree On -->
+        <section>
+            <h2>What We All Agree On</h2>
+            <ul>
+                <li><strong>The problem is real:</strong> Scattered free time prevents families from booking activities</li>
+                <li><strong>The solution concept works:</strong> Clustered scheduling creates predictable free time</li>
+                <li><strong>There's revenue opportunity:</strong> Both for TDs (premium pricing) and RoadGame (booking commissions)</li>
+                <li><strong>Field constraints are real:</strong> We need solutions that work within facility limits</li>
+                <li><strong>We need to test:</strong> The only way to know if this works is to run a real tournament</li>
+            </ul>
+        </section>
+
+        <!-- Next Steps -->
+        <section>
+            <h2>Next Steps</h2>
+            <ol>
+                <li><strong>Align on V1 model</strong> — Single wave or two waves?</li>
+                <li><strong>Find a pilot TD</strong> — Someone willing to run a RoadGame-format tournament</li>
+                <li><strong>Build minimum tooling</strong> — Schedule generator, family communication, vendor directory</li>
+                <li><strong>Run the pilot</strong> — Measure family engagement and booking behavior</li>
+                <li><strong>Decide on V2</strong> — Based on pilot results, add waves/VIP if warranted</li>
+            </ol>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><a href="index.html">Back to Home</a> · <a href="strategy.html">V1 Strategy</a></p>
+    </footer>
+
+</body>
+</html>
