@@ -516,9 +516,76 @@
             color: var(--gray-700);
             margin: 0;
         }
+        /* Global Nav */
+        .global-nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .global-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .global-nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .global-nav-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .global-nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .global-nav-links a:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+        .global-nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .global-nav-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .global-nav-links {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Global Navigation -->
+    <nav class="global-nav">
+        <div class="global-nav-inner">
+            <a href="index.html" class="global-nav-brand">RoadGame</a>
+            <div class="global-nav-links">
+                <a href="index.html">Home</a>
+                <a href="strategy.html">Strategy</a>
+                <a href="sport-analysis.html">Sports</a>
+                <a href="alignment.html">Alignment</a>
+                <a href="research-dashboard.html">Research</a>
+                <a href="canvas.html">Canvas</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="hero">
         <h1>RoadGame Format Specification</h1>
         <p>A tournament structure designed from the ground up to guarantee families can book activities with 100% confidence</p>

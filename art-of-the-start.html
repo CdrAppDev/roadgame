@@ -6,8 +6,77 @@
   <title>RoadGame - Art of the Start</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="art-of-the-start.css">
+  <style>
+    /* Global Nav */
+    .global-nav {
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 12px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .global-nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .global-nav-brand {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #2563eb;
+        text-decoration: none;
+    }
+    .global-nav-links {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+    .global-nav-links a {
+        color: #4b5563;
+        text-decoration: none;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 6px;
+        transition: all 0.2s;
+    }
+    .global-nav-links a:hover {
+        background: #f3f4f6;
+        color: #2563eb;
+    }
+    .global-nav-links a.active {
+        background: #2563eb;
+        color: white;
+    }
+    @media (max-width: 768px) {
+        .global-nav-inner {
+            flex-direction: column;
+            gap: 12px;
+        }
+        .global-nav-links {
+            justify-content: center;
+        }
+    }
+  </style>
 </head>
 <body>
+  <!-- Global Navigation -->
+  <nav class="global-nav">
+    <div class="global-nav-inner">
+      <a href="index.html" class="global-nav-brand">RoadGame</a>
+      <div class="global-nav-links">
+        <a href="index.html">Home</a>
+        <a href="strategy.html">Strategy</a>
+        <a href="sport-analysis.html">Sports</a>
+        <a href="alignment.html">Alignment</a>
+        <a href="research-dashboard.html">Research</a>
+        <a href="canvas.html">Canvas</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Password Protection Overlay -->
   <div id="authOverlay" class="auth-overlay">
     <div class="auth-modal">

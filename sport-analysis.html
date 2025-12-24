@@ -34,6 +34,66 @@
             line-height: 1.6;
         }
 
+        /* Global Nav */
+        .global-nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .global-nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .global-nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .global-nav-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .global-nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .global-nav-links a:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .global-nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .global-nav-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .global-nav-links {
+                justify-content: center;
+            }
+        }
+
         /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -54,26 +114,6 @@
         .header .subtitle {
             font-size: 1.25rem;
             opacity: 0.9;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 20px;
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        .nav a:hover {
-            opacity: 1;
         }
 
         /* Main */
@@ -431,13 +471,22 @@
     </style>
 </head>
 <body>
+    <!-- Global Navigation -->
+    <nav class="global-nav">
+        <div class="global-nav-inner">
+            <a href="index.html" class="global-nav-brand">RoadGame</a>
+            <div class="global-nav-links">
+                <a href="index.html">Home</a>
+                <a href="strategy.html">Strategy</a>
+                <a href="sport-analysis.html" class="active">Sports</a>
+                <a href="alignment.html">Alignment</a>
+                <a href="research-dashboard.html">Research</a>
+                <a href="canvas.html">Canvas</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="header">
-        <nav class="nav">
-            <a href="index.html">Home</a>
-            <a href="strategy.html">V1 Strategy</a>
-            <a href="alignment.html">Founder Alignment</a>
-            <a href="research-dashboard.html">Research</a>
-        </nav>
         <div class="header-content">
             <h1>Sport-by-Sport Analysis</h1>
             <p class="subtitle">Deep dive into scheduling dynamics, wave viability, and revenue potential for each major youth travel sport</p>
@@ -455,24 +504,24 @@
             </p>
             <div class="summary-grid">
                 <div class="summary-card">
-                    <div class="label">Best for V1 Pilot</div>
-                    <div class="value">Soccer</div>
-                    <div class="detail">2-3 waves/day, huge market, outdoor</div>
+                    <div class="label">Tier 1 Sports (2-4 waves)</div>
+                    <div class="value">6 sports</div>
+                    <div class="detail">Soccer, Basketball, Lacrosse, Flag Football, Volleyball, Hockey</div>
                 </div>
                 <div class="summary-card">
-                    <div class="label">Highest Wave Potential</div>
-                    <div class="value">Basketball</div>
-                    <div class="detail">3-4 waves/day, fully indoor</div>
+                    <div class="label">Tier 2 Sports (1-2 waves)</div>
+                    <div class="value">2 sports</div>
+                    <div class="detail">Baseball, Softball (with time limits)</div>
                 </div>
                 <div class="summary-card">
-                    <div class="label">Most Constrained</div>
-                    <div class="value">Baseball/Softball</div>
-                    <div class="detail">1 wave max, unpredictable length</div>
+                    <div class="label">Different Model</div>
+                    <div class="value">Swimming</div>
+                    <div class="detail">Individual events, not team pools</div>
                 </div>
                 <div class="summary-card">
                     <div class="label">Total TAM (Travel)</div>
                     <div class="value">$19.2B</div>
-                    <div class="detail">Lodging + food + activities</div>
+                    <div class="detail">20M+ youth athletes</div>
                 </div>
             </div>
         </div>
@@ -1449,7 +1498,7 @@
                     <h2>Baseball</h2>
                     <span class="market-size">4.5M+ youth players | $3.5B travel market</span>
                 </div>
-                <span class="tier-badge tier-3">Tier 3 - Challenging</span>
+                <span class="tier-badge tier-2">Tier 2 - Good</span>
             </div>
 
             <div class="data-grid">
@@ -1465,11 +1514,11 @@
                     </div>
                     <div class="data-row">
                         <span class="data-label">Game Length (12U)</span>
-                        <span class="data-value">90-120 min</span>
+                        <span class="data-value">90-105 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Game Length (14U+)</span>
-                        <span class="data-value">120-180 min</span>
+                        <span class="data-value">100-120 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Warmup + Changeover</span>
@@ -1477,35 +1526,63 @@
                     </div>
                     <div class="data-row">
                         <span class="data-label">Typical Slot Duration</span>
-                        <span class="data-value poor">90-180 min</span>
+                        <span class="data-value medium">2-2.5 hours</span>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <h3>Tournament Time Rules</h3>
+                    <div class="data-row">
+                        <span class="data-label">Time Limits</span>
+                        <span class="data-value good">Common (1:45-2:00)</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Inning Limits</span>
+                        <span class="data-value">5-6 innings (not 9)</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Mercy Rules</span>
+                        <span class="data-value good">10+ run lead ends game</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Drop-Dead Rules</span>
+                        <span class="data-value good">Hard cap at 2 hrs common</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Schedule Predictability</span>
+                        <span class="data-value medium">Good with time limits</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Weather Risk</span>
+                        <span class="data-value poor">High (rain delays)</span>
                     </div>
                 </div>
 
                 <div class="data-card">
                     <h3>Wave Viability</h3>
                     <div class="data-row">
-                        <span class="data-label">Wave Duration</span>
-                        <span class="data-value poor">8-12 hours</span>
+                        <span class="data-label">Wave Duration (w/ time limits)</span>
+                        <span class="data-value">6-8 hours</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Max Waves per Day</span>
-                        <span class="data-value poor">1 wave only</span>
+                        <span class="data-value medium">1-2 waves</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Teams per Field per Day</span>
-                        <span class="data-value poor">4-6 teams</span>
+                        <span class="data-value medium">4-8 teams</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Duration Predictability</span>
-                        <span class="data-value poor">Very Low</span>
+                        <span class="data-label">Games per Field per Day</span>
+                        <span class="data-value">5-6 games</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Weather Risk</span>
-                        <span class="data-value poor">High (rain delays)</span>
+                        <span class="data-label">14-Hour Day Capacity</span>
+                        <span class="data-value medium">2 waves possible</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Extra Innings Risk</span>
-                        <span class="data-value poor">High</span>
+                        <span class="data-label">Wave Revenue Uplift</span>
+                        <span class="data-value medium">+50-75%</span>
                     </div>
                 </div>
 
@@ -1531,37 +1608,33 @@
                         <span class="data-label">Umpire Cost per Game</span>
                         <span class="data-value">$80-$150</span>
                     </div>
-                    <div class="data-row">
-                        <span class="data-label">Wave Revenue Uplift</span>
-                        <span class="data-value poor">Not viable</span>
-                    </div>
                 </div>
 
                 <div class="data-card">
                     <h3>Family Experience</h3>
                     <div class="data-row">
                         <span class="data-label">Games per Team (typical)</span>
-                        <span class="data-value">3-5 games</span>
+                        <span class="data-value">3-4 games</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Time at Fields</span>
-                        <span class="data-value poor">8-12 hours/day</span>
+                        <span class="data-label">Time at Fields (per wave)</span>
+                        <span class="data-value">6-8 hours</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Free Time (Traditional)</span>
-                        <span class="data-value poor">Unpredictable</span>
+                        <span class="data-label">Free Time (RoadGame)</span>
+                        <span class="data-value medium">4-6 hours/day</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Can Book Activities?</span>
-                        <span class="data-value poor">Very difficult</span>
+                        <span class="data-value medium">Yes (with time limits)</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Wait Time at Complex</span>
-                        <span class="data-value poor">3-6 hours between games</span>
+                        <span class="data-label">Schedule Predictability</span>
+                        <span class="data-value medium">Good if time limits enforced</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Schedule Changes</span>
-                        <span class="data-value poor">Very frequent</span>
+                        <span class="data-label">Weather Contingency</span>
+                        <span class="data-value">Larger buffers needed</span>
                     </div>
                 </div>
             </div>
@@ -1569,22 +1642,22 @@
             <div class="analysis-box">
                 <h4>RoadGame Fit Analysis</h4>
                 <ul>
-                    <li><strong>Wave viability: Not viable.</strong> Games are too long and too unpredictable. A single pool can take 8-12 hours.</li>
-                    <li><strong>Fundamental problem:</strong> Baseball is an untimed sport. Games end when they end. No clock = no schedule certainty.</li>
-                    <li><strong>Weather compounding:</strong> Rain delays push entire schedules. One delay cascades through the day. Common to cancel/reschedule.</li>
-                    <li><strong>The core pain point exists:</strong> Families hate waiting 4 hours between games. But RoadGame's solution (waves) doesn't work.</li>
-                    <li><strong>Alternative approach:</strong> RoadGame could still help with hotel booking, restaurant recs, etc. Just can't promise clustered schedules.</li>
-                    <li><strong>Recommendation:</strong> <span style="color: var(--red); font-weight: 600;">Not recommended for V1.</span> Game dynamics don't support the core product thesis. Defer until demand side is proven.</li>
+                    <li><strong>Wave viability: Good with time limits.</strong> Most youth tournaments enforce 1:45-2:00 time limits, making scheduling predictable.</li>
+                    <li><strong>Tournament rules help:</strong> Inning limits (5-6), mercy rules (10+ run lead), and drop-dead time limits bound game length.</li>
+                    <li><strong>Fewer waves than timed sports:</strong> 2.5-hour slots mean 1-2 waves per day vs 2-3 for soccer. Still workable.</li>
+                    <li><strong>Weather is the main risk:</strong> Rain delays can still cascade. Outdoor sport with no indoor alternative.</li>
+                    <li><strong>Large market:</strong> 4.5M players, strong travel culture, families already spending heavily on tournaments.</li>
+                    <li><strong>Recommendation:</strong> <span style="color: var(--yellow); font-weight: 600;">Good fit with constraints.</span> Works if tournament enforces time limits. Fewer waves but still viable.</li>
                 </ul>
             </div>
 
             <div class="viability-meter">
                 <div class="viability-header">
                     <h4>RoadGame Viability Score</h4>
-                    <span class="viability-score" style="color: var(--red);">35/100</span>
+                    <span class="viability-score" style="color: var(--yellow);">70/100</span>
                 </div>
                 <div class="viability-bar">
-                    <div class="viability-fill low" style="width: 35%"></div>
+                    <div class="viability-fill medium" style="width: 70%"></div>
                 </div>
             </div>
         </div>
@@ -1597,7 +1670,7 @@
                     <h2>Softball</h2>
                     <span class="market-size">1.5M+ youth players | $1.2B travel market</span>
                 </div>
-                <span class="tier-badge tier-3">Tier 3 - Challenging</span>
+                <span class="tier-badge tier-2">Tier 2 - Good</span>
             </div>
 
             <div class="data-grid">
@@ -1605,55 +1678,83 @@
                     <h3>Game Timing</h3>
                     <div class="data-row">
                         <span class="data-label">Game Length (8U)</span>
-                        <span class="data-value">60-75 min</span>
+                        <span class="data-value">50-60 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Game Length (10U)</span>
-                        <span class="data-value">75-90 min</span>
+                        <span class="data-value">60-75 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Game Length (12U)</span>
-                        <span class="data-value">90-105 min</span>
+                        <span class="data-value">70-90 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Game Length (14U+)</span>
-                        <span class="data-value">90-120 min</span>
+                        <span class="data-value">75-100 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Warmup + Changeover</span>
-                        <span class="data-value">20-30 min</span>
+                        <span class="data-value">15-20 min</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Typical Slot Duration</span>
-                        <span class="data-value poor">90-150 min</span>
+                        <span class="data-value medium">1.5-2 hours</span>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <h3>Tournament Time Rules</h3>
+                    <div class="data-row">
+                        <span class="data-label">Time Limits</span>
+                        <span class="data-value good">Standard (1:15-1:30)</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Inning Limits</span>
+                        <span class="data-value">5-6 innings</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Mercy Rules</span>
+                        <span class="data-value good">8-12 run lead ends game</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Tiebreaker Rules</span>
+                        <span class="data-value good">International tiebreaker common</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Schedule Predictability</span>
+                        <span class="data-value good">Good with time limits</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Weather Risk</span>
+                        <span class="data-value poor">High (rain delays)</span>
                     </div>
                 </div>
 
                 <div class="data-card">
                     <h3>Wave Viability</h3>
                     <div class="data-row">
-                        <span class="data-label">Wave Duration</span>
-                        <span class="data-value poor">7-10 hours</span>
+                        <span class="data-label">Wave Duration (w/ time limits)</span>
+                        <span class="data-value">5-6 hours</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Max Waves per Day</span>
-                        <span class="data-value poor">1 wave only</span>
+                        <span class="data-value good">2 waves</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Teams per Field per Day</span>
-                        <span class="data-value poor">4-6 teams</span>
+                        <span class="data-value medium">6-8 teams</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Duration Predictability</span>
-                        <span class="data-value poor">Low</span>
+                        <span class="data-label">Games per Field per Day</span>
+                        <span class="data-value">6-7 games</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Weather Risk</span>
-                        <span class="data-value poor">High (rain delays)</span>
+                        <span class="data-label">14-Hour Day Capacity</span>
+                        <span class="data-value good">2 waves comfortable</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Extra Innings Risk</span>
-                        <span class="data-value medium">Moderate (tiebreaker rules)</span>
+                        <span class="data-label">Wave Revenue Uplift</span>
+                        <span class="data-value good">+75-100%</span>
                     </div>
                 </div>
 
@@ -1679,10 +1780,6 @@
                         <span class="data-label">Umpire Cost per Game</span>
                         <span class="data-value">$60-$120</span>
                     </div>
-                    <div class="data-row">
-                        <span class="data-label">Wave Revenue Uplift</span>
-                        <span class="data-value poor">Not viable</span>
-                    </div>
                 </div>
 
                 <div class="data-card">
@@ -1692,20 +1789,20 @@
                         <span class="data-value">3-5 games</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Time at Fields</span>
-                        <span class="data-value poor">7-10 hours/day</span>
+                        <span class="data-label">Time at Fields (per wave)</span>
+                        <span class="data-value">5-6 hours</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Free Time (Traditional)</span>
-                        <span class="data-value poor">Unpredictable</span>
+                        <span class="data-label">Free Time (RoadGame)</span>
+                        <span class="data-value good">5-7 hours/day</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Gender Split</span>
                         <span class="data-value">95%+ female</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Schedule Changes</span>
-                        <span class="data-value poor">Frequent</span>
+                        <span class="data-label">Can Book Activities?</span>
+                        <span class="data-value good">Yes (with time limits)</span>
                     </div>
                     <div class="data-row">
                         <span class="data-label">Parent Engagement</span>
@@ -1717,22 +1814,22 @@
             <div class="analysis-box">
                 <h4>RoadGame Fit Analysis</h4>
                 <ul>
-                    <li><strong>Wave viability: Not viable.</strong> Same fundamental issues as baseball. Untimed games = unpredictable schedules.</li>
-                    <li><strong>Slightly better than baseball:</strong> Games are generally shorter, and some formats use time limits (75-90 min max).</li>
-                    <li><strong>Time-limit formats:</strong> Some tournaments use "drop dead" time limits. If this becomes standard, viability improves.</li>
-                    <li><strong>Strong parent community:</strong> Softball parents are highly engaged and would value the family experience improvement.</li>
-                    <li><strong>Market opportunity:</strong> If time-limit formats become standard, softball could move to Tier 2.</li>
-                    <li><strong>Recommendation:</strong> <span style="color: var(--red); font-weight: 600;">Not recommended for V1.</span> Similar issues to baseball. Monitor for time-limit format adoption.</li>
+                    <li><strong>Wave viability: Good.</strong> Shorter games than baseball + standard time limits = 2 waves per day achievable.</li>
+                    <li><strong>Time limits are standard:</strong> Most softball tournaments already enforce 1:15-1:30 time limits with drop-dead rules.</li>
+                    <li><strong>Better than baseball:</strong> Games are 20-30 min shorter on average, more predictable scheduling.</li>
+                    <li><strong>Strong parent community:</strong> Softball parents are highly engaged and travel-committed. Would value family experience improvement.</li>
+                    <li><strong>Weather is the main risk:</strong> Same outdoor exposure as baseball. Rain delays can cascade.</li>
+                    <li><strong>Recommendation:</strong> <span style="color: var(--yellow); font-weight: 600;">Good fit.</span> Time limits + shorter games = viable for RoadGame model.</li>
                 </ul>
             </div>
 
             <div class="viability-meter">
                 <div class="viability-header">
                     <h4>RoadGame Viability Score</h4>
-                    <span class="viability-score" style="color: var(--red);">40/100</span>
+                    <span class="viability-score" style="color: var(--yellow);">75/100</span>
                 </div>
                 <div class="viability-bar">
-                    <div class="viability-fill low" style="width: 40%"></div>
+                    <div class="viability-fill medium" style="width: 75%"></div>
                 </div>
             </div>
         </div>
@@ -1954,21 +2051,21 @@
                 </tr>
                 <tr>
                     <td class="sport-cell">&#129358; Softball</td>
-                    <td>60-120 min</td>
-                    <td>90-150 min</td>
-                    <td style="color: var(--red);">1</td>
-                    <td style="color: var(--red);">4-6</td>
+                    <td>50-100 min</td>
+                    <td>1.5-2 hrs</td>
+                    <td style="color: var(--yellow);">2</td>
+                    <td style="color: var(--yellow);">6-8</td>
                     <td style="color: var(--red);">High</td>
-                    <td><span class="tier-badge tier-3">40</span></td>
+                    <td><span class="tier-badge tier-2">75</span></td>
                 </tr>
                 <tr>
                     <td class="sport-cell">&#9918; Baseball</td>
-                    <td>60-180 min</td>
-                    <td>90-180 min</td>
-                    <td style="color: var(--red);">1</td>
-                    <td style="color: var(--red);">4-6</td>
+                    <td>60-120 min</td>
+                    <td>2-2.5 hrs</td>
+                    <td style="color: var(--yellow);">1-2</td>
+                    <td style="color: var(--yellow);">4-8</td>
                     <td style="color: var(--red);">High</td>
-                    <td><span class="tier-badge tier-3">35</span></td>
+                    <td><span class="tier-badge tier-2">70</span></td>
                 </tr>
                 <tr>
                     <td class="sport-cell">&#127946; Swimming</td>
@@ -1984,37 +2081,37 @@
 
         <!-- V1 RECOMMENDATION -->
         <div class="recommendation">
-            <h2>V1 Pilot Recommendation</h2>
+            <h2>Key Insight: RoadGame Works Across Sports</h2>
             <p>
-                Based on this analysis, <strong>Soccer</strong> is the recommended sport for the V1 pilot.
-                It offers the optimal combination of market size, wave viability, predictable scheduling, and manageable weather risk.
-                The sport has established tournament infrastructure and a large, travel-committed family base.
+                With tournament time limits, mercy rules, and inning caps, <strong>all major team sports</strong> can support
+                the RoadGame model. The difference is capacity—how many waves per day each sport can support.
             </p>
             <p>
-                <strong>Basketball</strong> scores highest on pure viability metrics (indoor + short games = most waves),
-                but soccer's larger market size and outdoor venue simplicity make it a better starting point for proving the model.
+                <strong>Tier 1 (3+ waves):</strong> Basketball, Soccer, Flag Football, Lacrosse — highest TD revenue upside<br>
+                <strong>Tier 2 (1-2 waves):</strong> Volleyball, Ice Hockey, Softball, Baseball — viable with time limits<br>
+                <strong>Tier 3 (Different model):</strong> Swimming — individual events, not team pools
             </p>
             <p>
-                <strong>Flag Football</strong> is the "sleeper" opportunity - fastest growing sport, short games, wave-friendly,
-                and the tournament infrastructure is still being established. Early mover advantage is significant.
+                The product works across sports. Weather risk (outdoor sports) is the main differentiator,
+                not game length or predictability.
             </p>
 
             <div class="rec-grid">
                 <div class="rec-item">
-                    <h4>Primary V1</h4>
-                    <p>Soccer</p>
+                    <h4>Highest Wave Potential</h4>
+                    <p>Basketball (3-4/day)</p>
                 </div>
                 <div class="rec-item">
-                    <h4>V1.1 Expansion</h4>
-                    <p>Basketball or Lacrosse</p>
+                    <h4>Largest Market</h4>
+                    <p>Soccer (3.5M players)</p>
                 </div>
                 <div class="rec-item">
-                    <h4>Growth Opportunity</h4>
+                    <h4>Fastest Growing</h4>
                     <p>Flag Football</p>
                 </div>
                 <div class="rec-item">
-                    <h4>Defer</h4>
-                    <p>Baseball, Softball, Swimming</p>
+                    <h4>Different Model</h4>
+                    <p>Swimming only</p>
                 </div>
             </div>
         </div>
