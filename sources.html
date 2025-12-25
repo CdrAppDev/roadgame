@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - Research Sources</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .step-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--gray-900);
+            margin: 48px 0 20px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin: 24px 0 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--gray-700);
+            font-size: 1rem;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        /* Confidence Legend */
+        .legend {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .legend h3 {
+            margin-top: 0;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .confidence-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .confidence-high {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .confidence-medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .confidence-low {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Claim Cards */
+        .claim-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .claim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .claim-text {
+            font-weight: 600;
+            color: var(--gray-900);
+            font-size: 1.05rem;
+        }
+
+        .sources-list {
+            margin: 16px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sources-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.9rem;
+        }
+
+        .sources-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sources-list a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .sources-list a:hover {
+            text-decoration: underline;
+        }
+
+        .source-type {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            margin-left: 8px;
+        }
+
+        .quote-box {
+            background: var(--gray-50);
+            border-left: 3px solid var(--gray-300);
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-style: italic;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .needs-validation {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .needs-validation h4 {
+            color: #854d0e;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .needs-validation p {
+            color: #a16207;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 48px 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 32px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="research.html">← Back to Research</a>
+            <span style="color: var(--gray-600); font-size: 0.85rem;">Reference Material</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="step-label">Supporting Evidence</p>
+        <h1>Research Sources</h1>
+
+        <p class="lead">This page documents the evidence behind our research findings. Each claim is rated by confidence level based on the quality and quantity of supporting sources.</p>
+
+        <div class="legend">
+            <h3>Confidence Levels</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <span class="confidence-badge confidence-high">High</span>
+                    <span>Multiple credible sources, direct quotes, quantitative data</span>
+                </div>
+                <div class="legend-item">
+                    <span class="confidence-badge confidence-medium">Medium</span>
+                    <span>Some sources, but limited or anecdotal</span>
+                </div>
+                <div class="legend-item">
+                    <span class="confidence-badge confidence-low">Needs Research</span>
+                    <span>Assumed or inferred, needs validation</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Market Size & Economics</h2>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Youth sports travel is a $19.2 billion market</span>
+                <span class="confidence-badge confidence-high">High</span>
+            </div>
+            <ul class="sources-list">
+                <li><a href="https://www.samford.edu/sports-analytics/fans/2017/Data-Shows-Travel-Teams-Killing-Youth-Sports" target="_blank">Samford University Sports Analytics</a> <span class="source-type">Academic</span></li>
+                <li><a href="https://evokad.com/family-vacation-travel-around-youth-sports/" target="_blank">Evok Advertising - Family Vacations & Youth Sports</a> <span class="source-type">Industry</span></li>
+            </ul>
+        </div>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Families spend $1,200-1,500 per tournament weekend</span>
+                <span class="confidence-badge confidence-high">High</span>
+            </div>
+            <ul class="sources-list">
+                <li><a href="https://projectplay.org/news/2025/2/24/project-play-survey-family-spending-on-youth-sports-rises-46-over-five-years" target="_blank">Project Play Survey - Family Spending</a> <span class="source-type">Survey</span></li>
+                <li><a href="https://dailyjournal.net/2024/08/23/travel-sports-require-big-commitment-financially-and-time-wise/" target="_blank">Daily Journal - Travel Sports Costs</a> <span class="source-type">News</span></li>
+            </ul>
+        </div>
+
+        <h2>Parent Pain Points</h2>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Families feel "hostage to the schedule" at tournaments</span>
+                <span class="confidence-badge confidence-medium">Medium</span>
+            </div>
+            <ul class="sources-list">
+                <li><a href="https://www.reddit.com/r/youthsoccer/comments/1mp8qsy/unpopular_opinion_and_rant_weekend_tournaments/" target="_blank">r/youthsoccer - Weekend Tournaments Rant</a> <span class="source-type">Reddit</span></li>
+                <li><a href="https://www.reddit.com/r/Parenting/comments/1diq5cs/anyone_on_here_regret_having_their_kid_play_on_a/" target="_blank">r/Parenting - Regret travel teams</a> <span class="source-type">Reddit</span></li>
+            </ul>
+            <div class="quote-box">
+                "Younger kids... are technically supposed to get at least 9 hours of sleep, bc now you've given them basically a 12 hour turnaround... You could see it on their faces. They were absolutely OVER IT!"
+            </div>
+            <div class="needs-validation">
+                <h4>Needs More Research</h4>
+                <p>While parents complain about burnout and costs, "scattered schedules" specifically may not be a top complaint. We need to validate this is a real pain point, not an assumed one.</p>
+            </div>
+        </div>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Primary complaints are burnout, cost, and politics - not schedules</span>
+                <span class="confidence-badge confidence-high">High</span>
+            </div>
+            <ul class="sources-list">
+                <li><a href="https://www.reddit.com/r/Parenting/comments/1pbxyg9/travel_sports_and_a_burnt_out_mom/" target="_blank">r/Parenting - Burnt out mom</a> <span class="source-type">Reddit</span></li>
+                <li><a href="https://www.reddit.com/r/Parenting/comments/1p0wugn/does_anyone_secretly_wish_their_kid_would_want_to/" target="_blank">r/Parenting - Wish kid would stop</a> <span class="source-type">Reddit</span></li>
+                <li><a href="https://www.reddit.com/r/Homeplate/comments/1e0tlm8/folks_that_started_a_travel_program_where_did_you/" target="_blank">r/Homeplate - Travel program problems</a> <span class="source-type">Reddit</span></li>
+            </ul>
+            <div class="quote-box">
+                "It's a ruthless, blood-sucking money-game and parents are the victims because we want so badly for our kids to be successful."
+            </div>
+        </div>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">"Dead time" gaps (8-10 hours at venue, 3 hours of games) frustrate families</span>
+                <span class="confidence-badge confidence-medium">Medium</span>
+            </div>
+            <ul class="sources-list">
+                <li><a href="https://www.fastbreak.ai/blog/what-makes-a-good-youth-sports-tournament-schedule" target="_blank">Fastbreak AI - Good Tournament Schedule</a> <span class="source-type">Industry</span></li>
+                <li><a href="https://www.reddit.com/r/youthsoccer/comments/1k3zecs/why_are_some_tournaments_so_bad_with_scheduling/" target="_blank">r/youthsoccer - Bad scheduling</a> <span class="source-type">Reddit</span></li>
+            </ul>
+            <div class="needs-validation">
+                <h4>Needs More Research</h4>
+                <p>Sources mention scheduling issues, but focus on uneven rest between games, not "scattered schedules throughout the day." Need to validate families articulate this specific problem.</p>
+            </div>
+        </div>
+
+        <h2>Wave Scheduling</h2>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Wave scheduling (morning/afternoon sessions) already exists</span>
+                <span class="confidence-badge confidence-high">High</span>
+            </div>
+            <ul class="sources-list">
+                <li>Poughkeepsie Columbus Day Tournament - Morning (8am-12:30pm) and afternoon (1pm-5:30pm) sessions since 1988 <span class="source-type">Direct Knowledge</span></li>
+                <li><a href="https://www.fastbreak.ai/blog/what-makes-a-good-youth-sports-tournament-schedule" target="_blank">Fastbreak AI - Scheduling best practices</a> <span class="source-type">Industry</span></li>
+            </ul>
+        </div>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Why don't more tournaments use wave scheduling?</span>
+                <span class="confidence-badge confidence-low">Needs Research</span>
+            </div>
+            <div class="needs-validation">
+                <h4>Unknown</h4>
+                <p>We don't know why wave scheduling isn't standard. Possible reasons: wave preference conflicts (everyone wants morning), no financial incentive, complexity, or inertia. Need TD perspective.</p>
+            </div>
+        </div>
+
+        <h2>Activity Booking Opportunity</h2>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Families would book activities if they had predictable free time</span>
+                <span class="confidence-badge confidence-low">Needs Research</span>
+            </div>
+            <div class="needs-validation">
+                <h4>Assumed - Not Validated</h4>
+                <p>This is our core thesis, but we haven't validated it. Families might be too tired, activities might be too expensive, or they may prefer resting at the hotel.</p>
+            </div>
+        </div>
+
+        <div class="claim-card">
+            <div class="claim-header">
+                <span class="claim-text">Team moms struggle to coordinate group activities</span>
+                <span class="confidence-badge confidence-medium">Medium</span>
+            </div>
+            <ul class="sources-list">
+                <li><a href="https://www.youth.inc/learn/the-ultimate-youth-sports-tournament-travel-guide" target="_blank">Youth.inc - Tournament Travel Guide</a> <span class="source-type">Industry</span></li>
+                <li><a href="https://www.reddit.com/r/TalesFromYourServer/comments/9sr0cr/teamhockey_parents_were_not_babysitters_why_are/" target="_blank">r/TalesFromYourServer - Hockey parents</a> <span class="source-type">Reddit</span></li>
+            </ul>
+            <div class="quote-box">
+                Finding a restaurant that can seat a large group without a reservation is increasingly difficult... servers describe groups of "14 adults and 10 of their little hockey brats" walking in unexpectedly.
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>Research Methodology</h2>
+        <p>Our research included:</p>
+        <ul style="margin-left: 24px; margin-bottom: 16px;">
+            <li>Academic sources (Samford University, Project Play)</li>
+            <li>Industry publications (Fastbreak AI, Youth.inc, Evok)</li>
+            <li>Reddit forums (r/youthsoccer, r/Homeplate, r/Parenting, r/hockeyparents)</li>
+            <li>News articles (Daily Journal, CT Mirror)</li>
+            <li>37 total sources documented in our research files</li>
+        </ul>
+
+        <p><strong>Limitations:</strong> Much of our evidence is anecdotal (Reddit, forums). We have strong data on market size and costs, but weaker validation on our specific thesis about scattered schedules and activity booking.</p>
+
+        <a href="research.html" class="back-link">← Back to Research Findings</a>
+    </div>
+</body>
+</html>
