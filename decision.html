@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - Decision Point</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav .step {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .step-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--gray-900);
+            margin: 48px 0 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-700);
+            font-size: 1.05rem;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        /* Decision Cards */
+        .decision-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .decision-card h3 {
+            font-size: 1.15rem;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .decision-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+
+        /* Conversation Prompts */
+        .prompt-section {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            margin: 24px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .prompt-section h3 {
+            font-size: 1.2rem;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .prompt {
+            background: var(--gray-50);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 1rem;
+            color: var(--gray-800);
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Outcomes */
+        .outcomes {
+            display: grid;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .outcome {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .outcome.go {
+            border: 2px solid var(--success);
+        }
+
+        .outcome.pivot {
+            border: 2px solid #f59e0b;
+        }
+
+        .outcome.pause {
+            border: 2px solid #dc2626;
+        }
+
+        .outcome h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .outcome.go h4 { color: var(--success); }
+        .outcome.pivot h4 { color: #d97706; }
+        .outcome.pause h4 { color: #dc2626; }
+
+        .outcome p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 48px 0;
+        }
+
+        .final-note {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .final-note p {
+            color: white;
+            font-size: 1.15rem;
+            margin: 0;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            padding: 14px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 32px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html">← Home</a>
+            <span class="step">Step 5 of 5</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="step-label">Step 5</p>
+        <h1>Decision Point</h1>
+
+        <p class="lead">We've laid out what we believed, what we found, what we don't know, and the possible paths forward. Now we need to make some decisions as a founding team.</p>
+
+        <h2>What We Need to Align On</h2>
+
+        <div class="decision-card">
+            <h3>1. Do we agree on the problem?</h3>
+            <p>Each founder should be able to articulate the problem we're solving in one sentence. If we have three different answers, that's a red flag we need to address.</p>
+        </div>
+
+        <div class="decision-card">
+            <h3>2. Which path do we want to pursue?</h3>
+            <p>Path A (Discovery), Path B (Coordination), Path C (TD Revenue), or Path D (Walk Away). We can test multiple hypotheses, but we need a starting point.</p>
+        </div>
+
+        <div class="decision-card">
+            <h3>3. What's our first validation step?</h3>
+            <p>Before building anything, what conversations or experiments do we need to run? Who talks to whom? What are we trying to learn?</p>
+        </div>
+
+        <div class="decision-card">
+            <h3>4. What would make us stop?</h3>
+            <p>What evidence would convince us this isn't worth pursuing? Being clear about our "kill criteria" helps us avoid sunk cost thinking.</p>
+        </div>
+
+        <h2>Conversation Starters</h2>
+
+        <div class="prompt-section">
+            <h3>For the TD founder</h3>
+            <div class="prompt">"You've run tournaments for years. Why don't you use wave scheduling—morning session, afternoon session? What's the real blocker?"</div>
+            <div class="prompt">"What do families actually complain about? Not what we assume—what do they literally say to you?"</div>
+            <div class="prompt">"If I could bring you local sponsors and vendors who'd pay to reach your families, would that be valuable? Why or why not?"</div>
+        </div>
+
+        <div class="prompt-section">
+            <h3>For all founders</h3>
+            <div class="prompt">"In one sentence, what problem are we solving? Write it down before discussing."</div>
+            <div class="prompt">"If we learned tomorrow that wave scheduling is easy and TDs just don't care, what would we do? Is there still a business?"</div>
+            <div class="prompt">"What do we know that others don't? What's our actual unfair advantage here?"</div>
+        </div>
+
+        <h2>Possible Outcomes</h2>
+
+        <div class="outcomes">
+            <div class="outcome go">
+                <h4>Proceed with conviction</h4>
+                <p>We align on the problem, pick a path, and define a concrete first step to validate. We have a clear hypothesis and know what would prove us wrong.</p>
+            </div>
+
+            <div class="outcome pivot">
+                <h4>Pivot the focus</h4>
+                <p>We realize the original thesis was wrong, but we see a different opportunity in this space. We reframe and restart the validation process.</p>
+            </div>
+
+            <div class="outcome pause">
+                <h4>Pause or walk away</h4>
+                <p>We can't align on the problem, or the evidence suggests the opportunity isn't real. Better to learn this now than after building something no one wants.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="final-note">
+            <p>The goal isn't to be right about our original thesis. The goal is to find something real—a problem worth solving, for people who will pay, that we're uniquely positioned to address. If that's here, great. If not, we'll find it somewhere else.</p>
+        </div>
+
+        <a href="index.html" class="home-link">← Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - Possible Paths</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav .step {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .step-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-700);
+            font-size: 1.05rem;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        /* Path Cards */
+        .path-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            margin: 24px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 2px solid var(--gray-200);
+        }
+
+        .path-card .path-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .path-card .path-letter {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .path-card h2 {
+            font-size: 1.3rem;
+            color: var(--gray-900);
+            margin: 0;
+        }
+
+        .path-card .assumption {
+            background: #eff6ff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+
+        .path-card .assumption strong {
+            color: var(--primary);
+        }
+
+        .path-card h3 {
+            font-size: 1rem;
+            color: var(--gray-800);
+            margin: 20px 0 8px;
+        }
+
+        .path-card p {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .path-card ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .path-card li {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .path-card .test {
+            background: var(--gray-50);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .path-card .test strong {
+            color: var(--gray-800);
+        }
+
+        /* Path D special styling */
+        .path-card.walk-away {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .path-card.walk-away .path-letter {
+            background: #dc2626;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 48px 0;
+        }
+
+        .next-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 32px;
+            transition: background 0.2s;
+        }
+
+        .next-link:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html">← Home</a>
+            <span class="step">Step 4 of 5</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="step-label">Step 4</p>
+        <h1>Possible Paths</h1>
+
+        <p class="lead">Given what we've learned, here are four directions we could take. Each assumes a different problem is the "real" one. We need to align on which path—if any—we want to pursue.</p>
+
+        <div class="path-card">
+            <div class="path-header">
+                <div class="path-letter">A</div>
+                <h2>The Discovery Problem</h2>
+            </div>
+
+            <div class="assumption">
+                <strong>Core assumption:</strong> Families have free time but don't know what to do with it. They don't know what's nearby, what can handle groups, or how to book for 20 people.
+            </div>
+
+            <h3>What we'd build</h3>
+            <p>A curated marketplace for tournament families. "Here's what's near your tournament, what's good for groups, and how to book it."</p>
+
+            <h3>How we'd make money</h3>
+            <ul>
+                <li>Commission on bookings (10-15%)</li>
+                <li>Featured listings from vendors</li>
+                <li>Premium features for team organizers</li>
+            </ul>
+
+            <div class="test">
+                <strong>How to validate:</strong> Talk to team moms. Do they struggle to find group-friendly venues? Have they tried to organize team dinners? What was hard about it?
+            </div>
+        </div>
+
+        <div class="path-card">
+            <div class="path-header">
+                <div class="path-letter">B</div>
+                <h2>The Coordination Problem</h2>
+            </div>
+
+            <div class="assumption">
+                <strong>Core assumption:</strong> Team moms struggle to organize group activities. Herding 12 families to dinner is chaos. The problem isn't finding things—it's coordinating people.
+            </div>
+
+            <h3>What we'd build</h3>
+            <p>Team coordination tools: group voting on activities, RSVP tracking, payment splitting, communication. "Teamsnap for off-field activities."</p>
+
+            <h3>How we'd make money</h3>
+            <ul>
+                <li>Subscription for team organizers</li>
+                <li>Transaction fees on group bookings</li>
+                <li>Upsell to clubs/leagues</li>
+            </ul>
+
+            <div class="test">
+                <strong>How to validate:</strong> Shadow a team mom during a tournament. Watch how she organizes team activities. What tools does she use? What's frustrating?
+            </div>
+        </div>
+
+        <div class="path-card">
+            <div class="path-header">
+                <div class="path-letter">C</div>
+                <h2>The TD Revenue Problem</h2>
+            </div>
+
+            <div class="assumption">
+                <strong>Core assumption:</strong> TDs want new revenue streams but don't have access to local vendor relationships or the tools to monetize family experience.
+            </div>
+
+            <h3>What we'd build</h3>
+            <p>A platform that connects TDs with local sponsors and vendors. We do the sales work, bring the deals, TDs get a cut. "Sponsorship-as-a-service for tournaments."</p>
+
+            <h3>How we'd make money</h3>
+            <ul>
+                <li>Percentage of sponsorship deals we facilitate</li>
+                <li>Platform fee for vendor matching</li>
+                <li>Premium TD tools for larger operators</li>
+            </ul>
+
+            <div class="test">
+                <strong>How to validate:</strong> Ask our TD founder: Would you pay for someone to bring you sponsor deals? Have you tried to get local sponsors? What happened?
+            </div>
+        </div>
+
+        <div class="path-card walk-away">
+            <div class="path-header">
+                <div class="path-letter">D</div>
+                <h2>No Real Problem</h2>
+            </div>
+
+            <div class="assumption">
+                <strong>Core assumption:</strong> Families are fine with how tournaments work. The "pain" is manufactured or too small to support a business. Wave scheduling exists and people aren't demanding it.
+            </div>
+
+            <h3>What we'd do</h3>
+            <p>Walk away. Redirect our energy to a different opportunity. This is a valid outcome if the evidence points here.</p>
+
+            <h3>Signs this is true</h3>
+            <ul>
+                <li>TD founder says families don't complain about schedules</li>
+                <li>Team moms say organizing activities is easy enough</li>
+                <li>Wave scheduling exists but hasn't taken over—suggesting limited demand</li>
+                <li>No one is willing to pay more for "better" tournament experience</li>
+            </ul>
+
+            <div class="test">
+                <strong>How to validate:</strong> If our conversations reveal that the problems are smaller than we thought, or that existing solutions are "good enough," we should be honest about it.
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p>These paths aren't mutually exclusive—we might find that A and B are both true, for example. But we need to start somewhere. The next step is to decide what we believe and what we want to test first.</p>
+
+        <a href="decision.html" class="next-link">
+            Next: Decision Point →
+        </a>
+    </div>
+</body>
+</html>

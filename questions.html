@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - Open Questions</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --warning: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav .step {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .step-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--gray-900);
+            margin: 48px 0 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-700);
+            font-size: 1.05rem;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--warning);
+        }
+
+        .question-card h3 {
+            font-size: 1.15rem;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .question-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+
+        .question-card .context {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .question-card .context strong {
+            color: var(--gray-700);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 48px 0;
+        }
+
+        .next-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 32px;
+            transition: background 0.2s;
+        }
+
+        .next-link:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html">← Home</a>
+            <span class="step">Step 3 of 5</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="step-label">Step 3</p>
+        <h1>Open Questions</h1>
+
+        <p class="lead">These are the things we don't know. The gaps in our understanding that need to be filled before we can move forward with confidence.</p>
+
+        <h2>About the Problem</h2>
+
+        <div class="question-card">
+            <h3>What problem are we actually solving?</h3>
+            <p>We assumed "scattered schedules" was the problem. But wave scheduling already exists. If TDs can do this today, what's stopping them?</p>
+            <div class="context">
+                <strong>What we need:</strong> Honest conversation with our TD founder about why he doesn't use wave scheduling.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>Do families actually want predictable free time?</h3>
+            <p>We assumed families would value this. But parent complaints focus on burnout, cost, and politics—not scattered schedules. Is this a real pain point or an assumed one?</p>
+            <div class="context">
+                <strong>What we need:</strong> Conversations with actual tournament families about their experience.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>Why don't more TDs use wave scheduling?</h3>
+            <p>Possible reasons: wave preference creates conflict (everyone wants morning), no financial incentive, complexity, or just inertia. We don't know the real answer.</p>
+            <div class="context">
+                <strong>What we need:</strong> Our TD founder's perspective on this specific question.
+            </div>
+        </div>
+
+        <h2>About the Solution</h2>
+
+        <div class="question-card">
+            <h3>Would families book activities if free time was predictable?</h3>
+            <p>Even with guaranteed free time, would families actually book team dinners, activities, or excursions? Or would they just rest at the hotel?</p>
+            <div class="context">
+                <strong>What we need:</strong> Evidence of demand. Do team moms already organize group activities? How hard is it?
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>Would TDs participate in revenue share?</h3>
+            <p>Our model assumes TDs want a cut of activity bookings. But maybe they just want their tournament to run smoothly and don't want the complexity.</p>
+            <div class="context">
+                <strong>What we need:</strong> Our TD founder's honest reaction to this model.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>Is the scheduling the innovation—or something else?</h3>
+            <p>If wave scheduling is solvable by existing software, what's our actual value add? Maybe it's the marketplace. Maybe it's the TD relationship. Maybe it's the brand. We need to be clear.</p>
+            <div class="context">
+                <strong>What we need:</strong> Founder alignment on what we're actually building.
+            </div>
+        </div>
+
+        <h2>About Us</h2>
+
+        <div class="question-card">
+            <h3>Do we agree on what problem we're solving?</h3>
+            <p>Each founder may have a different view of the opportunity. If we're not aligned on the problem, we'll build the wrong solution.</p>
+            <div class="context">
+                <strong>What we need:</strong> Each founder to articulate the problem independently, then compare.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>What's our unfair advantage?</h3>
+            <p>We have a TD on the team. Is that enough? What do we know or have access to that others don't?</p>
+            <div class="context">
+                <strong>What we need:</strong> Honest assessment of our competitive position.
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p>These questions don't have to stop us. But we need to be honest that we're making assumptions—and be willing to change direction if the answers surprise us.</p>
+
+        <a href="paths.html" class="next-link">
+            Next: Possible Paths →
+        </a>
+    </div>
+</body>
+</html>

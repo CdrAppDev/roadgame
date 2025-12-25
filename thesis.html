@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - The Thesis</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav .step {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .step-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--gray-900);
+            margin: 48px 0 16px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-700);
+            font-size: 1.1rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        .thesis-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 32px 0;
+        }
+
+        .thesis-box p {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .insight-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box p {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        ul {
+            margin: 20px 0;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: var(--gray-700);
+            font-size: 1.05rem;
+        }
+
+        .next-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 32px;
+            transition: background 0.2s;
+        }
+
+        .next-link:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html">← Home</a>
+            <span class="step">Step 1 of 5</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="step-label">Step 1</p>
+        <h1>The Thesis</h1>
+
+        <p class="lead">This is what we originally believed. The opportunity we saw, the problem we thought we were solving, and the solution we imagined.</p>
+
+        <h2>The Observation</h2>
+
+        <p>Youth sports families spend 10-15 weekends per year at travel tournaments. A typical weekend costs $1,200-1,500 (registration, hotel, food, gas). That's $15,000-20,000 per year, per family.</p>
+
+        <p>But here's the thing: most of that time is wasted. Families sit at the field for 10+ hours, watching 3 games that total maybe 3 hours of action. The rest is waiting.</p>
+
+        <div class="insight-box">
+            <p><strong>The gap:</strong> Families have 6+ hours of "free time" during tournament days, but it's scattered and unpredictable—so they can't use it.</p>
+        </div>
+
+        <h2>The Original Thesis</h2>
+
+        <div class="thesis-box">
+            <p>If we could cluster each team's games into a predictable block, families would have guaranteed free time. If we connected them to local activities during that time, we could monetize the experience—and share revenue with Tournament Directors.</p>
+        </div>
+
+        <h2>The Two-Part Solution</h2>
+
+        <p><strong>Part 1: Clustered Scheduling</strong></p>
+        <ul>
+            <li>Instead of games scattered across 10 hours (8am, 2pm, 6pm), cluster them into a single block (8am, 10am, 12pm)</li>
+            <li>Everyone finishes by early afternoon</li>
+            <li>The entire evening is guaranteed free</li>
+        </ul>
+
+        <p><strong>Part 2: Activity Marketplace</strong></p>
+        <ul>
+            <li>Connect families to local restaurants, activities, and attractions</li>
+            <li>Enable group booking (teams of 15-20 families)</li>
+            <li>Take a cut of bookings, share with Tournament Directors</li>
+        </ul>
+
+        <h2>The Business Model</h2>
+
+        <p>Tournament Directors make 25-30% more revenue by:</p>
+        <ul>
+            <li>Charging premium pricing for "RoadGame" format ($50-100 more per team)</li>
+            <li>Receiving 10-15% revenue share on all activity bookings</li>
+        </ul>
+
+        <p>Families get a dramatically better experience: predictable schedules, team bonding activities, and tournament weekends that feel like actual trips—not just waiting at fields.</p>
+
+        <div class="insight-box">
+            <p><strong>The core belief:</strong> The free time already exists. It's just scattered. We cluster it—and monetize it.</p>
+        </div>
+
+        <a href="research.html" class="next-link">
+            Next: What We Found →
+        </a>
+    </div>
+</body>
+</html>

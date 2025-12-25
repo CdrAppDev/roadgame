@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadGame - What We Found</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav .step {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .step-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--gray-900);
+            margin: 48px 0 16px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin: 24px 0 12px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-700);
+            font-size: 1.05rem;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--gray-800);
+            margin-bottom: 32px;
+        }
+
+        /* Finding Cards */
+        .finding {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .finding.good {
+            border-left: 4px solid var(--success);
+        }
+
+        .finding.bad {
+            border-left: 4px solid var(--danger);
+        }
+
+        .finding.neutral {
+            border-left: 4px solid var(--warning);
+        }
+
+        .finding h3 {
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .finding h3 .icon {
+            font-size: 1.2rem;
+        }
+
+        .finding p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .finding .source {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Alert Box */
+        .alert {
+            background: #fef2f2;
+            border: 2px solid var(--danger);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+
+        .alert h3 {
+            color: var(--danger);
+            margin: 0 0 12px 0;
+        }
+
+        .alert p {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        .quote {
+            background: var(--gray-100);
+            border-left: 4px solid var(--gray-600);
+            padding: 16px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--gray-700);
+        }
+
+        ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--gray-700);
+        }
+
+        .next-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 32px;
+            transition: background 0.2s;
+        }
+
+        .next-link:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html">← Home</a>
+            <span class="step">Step 2 of 5</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="step-label">Step 2</p>
+        <h1>What We Found</h1>
+
+        <p class="lead">We did the research. Some of it validated our thesis. Some of it challenged it. Here's what we learned.</p>
+
+        <h2>The Good News</h2>
+
+        <div class="finding good">
+            <h3><span class="icon">✓</span> The market is huge</h3>
+            <p>Youth sports travel is a $19.2 billion market (pre-COVID), projected to grow to $52+ billion. 35+ million kids participate in organized youth sports. Families spend $1,200-1,500 per tournament weekend.</p>
+        </div>
+
+        <div class="finding good">
+            <h3><span class="icon">✓</span> The math works across sports</h3>
+            <p>We validated clustered scheduling for soccer, basketball, baseball, softball, lacrosse, volleyball, hockey, and flag football. With proper time limits and rest periods, all major sports can support the format.</p>
+            <p class="source">See: <a href="sport-analysis.html">Sport-by-Sport Analysis</a></p>
+        </div>
+
+        <div class="finding good">
+            <h3><span class="icon">✓</span> Families do complain about wasted time</h3>
+            <p>Tournament weekends are exhausting. Families report feeling like they're "hostage to the schedule" and that the experience is more stressful than enjoyable.</p>
+        </div>
+
+        <h2>The Uncomfortable Discoveries</h2>
+
+        <div class="alert">
+            <h3>Wave scheduling already exists</h3>
+            <p>Some tournaments have offered morning/afternoon sessions for 30+ years. Example: The Poughkeepsie Columbus Day Tournament (running since 1988) offers a morning session (8am-12:30pm) and afternoon session (1pm-5:30pm). This isn't new.</p>
+        </div>
+
+        <div class="finding bad">
+            <h3><span class="icon">✗</span> Scheduling software already handles this</h3>
+            <p>Platforms like Fastbreak AI already group games by division, handle rest periods, and optimize field usage. "Cluster games per team" is a solvable scheduling problem—it's not an innovation.</p>
+        </div>
+
+        <div class="finding bad">
+            <h3><span class="icon">✗</span> Parent complaints aren't about scattered schedules</h3>
+            <p>When we looked at what parents actually complain about, it's: burnout from too many tournaments, travel costs, politics and playing time, and coach behavior. "Scattered schedule" doesn't rank highly.</p>
+        </div>
+
+        <div class="finding neutral">
+            <h3><span class="icon">?</span> TDs don't currently use wave scheduling—but why?</h3>
+            <p>If wave scheduling is easy and beneficial, why don't more TDs do it? We don't actually know. Possible reasons: wave preference creates conflict (everyone wants morning), no financial incentive, or simply inertia.</p>
+        </div>
+
+        <h2>What This Means</h2>
+
+        <p>Our thesis had two parts:</p>
+
+        <p><strong>Part 1: Clustered scheduling is novel and valuable.</strong></p>
+        <p>→ Finding: It's not novel. It exists. Software can do it.</p>
+
+        <p><strong>Part 2: Monetizing the free time through an activity marketplace.</strong></p>
+        <p>→ Finding: We haven't validated this. We don't know if families would book activities, or if TDs would participate in revenue share.</p>
+
+        <div class="quote">
+            "If wave scheduling is so easy, what's actually the opportunity? Is the scheduling the innovation—or is it something else?"
+        </div>
+
+        <a href="questions.html" class="next-link">
+            Next: Open Questions →
+        </a>
+    </div>
+</body>
+</html>

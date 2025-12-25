@@ -36,13 +36,10 @@
             background: white;
             border-bottom: 1px solid var(--gray-200);
             padding: 12px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .global-nav-inner {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -56,41 +53,6 @@
             text-decoration: none;
         }
 
-        .global-nav-links {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-
-        .global-nav-links a {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .global-nav-links a:hover {
-            background: var(--gray-100);
-            color: var(--primary);
-        }
-
-        .global-nav-links a.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .global-nav-inner {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .global-nav-links {
-                justify-content: center;
-            }
-        }
-
         /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -100,252 +62,234 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 16px;
         }
 
         .hero .tagline {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             opacity: 0.9;
-            margin-bottom: 32px;
-        }
-
-        .hero .thesis {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
-            font-size: 1.1rem;
-            opacity: 0.85;
-            line-height: 1.7;
         }
 
         /* Main Content */
         .container {
-            max-width: 900px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
-        .narrative-section {
-            margin-bottom: 60px;
+        .intro {
+            font-size: 1.15rem;
+            color: var(--gray-700);
+            margin-bottom: 48px;
+            text-align: center;
         }
 
-        .section-label {
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: var(--primary);
-            margin-bottom: 8px;
+        /* Journey Steps */
+        .journey {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .section-title {
-            font-size: 2rem;
-            color: var(--gray-900);
-            margin-bottom: 16px;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--gray-600);
-            margin-bottom: 24px;
-            max-width: 600px;
-        }
-
-        /* Cards */
-        .card-link {
-            display: block;
-            background: white;
-            border-radius: 12px;
-            padding: 32px;
+        .journey-step {
+            display: flex;
+            align-items: stretch;
             text-decoration: none;
             color: inherit;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 2px solid transparent;
             transition: all 0.2s;
         }
 
-        .card-link:hover {
+        .journey-step:hover {
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
-            transform: translateY(-2px);
+            transform: translateX(4px);
         }
 
-        .card-link h3 {
-            font-size: 1.25rem;
-            color: var(--gray-900);
-            margin-bottom: 8px;
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 60px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
         }
 
-        .card-link h3::after {
-            content: "→";
-            color: var(--primary);
-            font-weight: normal;
+        .step-content {
+            padding: 20px 24px;
+            flex: 1;
         }
 
-        .card-link p {
+        .step-content h3 {
+            font-size: 1.1rem;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
             color: var(--gray-600);
+            font-size: 0.95rem;
             margin: 0;
         }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .step-arrow {
+            display: flex;
+            align-items: center;
+            padding-right: 20px;
+            color: var(--primary);
+            font-size: 1.2rem;
         }
 
-        @media (max-width: 600px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        /* Status indicator */
+        .status {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .status.current {
+            background: #fef3c7;
+            color: #92400e;
         }
 
         /* Divider */
         .divider {
             height: 1px;
             background: var(--gray-200);
-            margin: 60px 0;
+            margin: 48px 0;
         }
 
-        /* Internal Tools Section */
-        .internal-section {
-            background: var(--gray-100);
-            border-radius: 12px;
-            padding: 32px;
-        }
-
-        .internal-section h2 {
+        /* Reference Section */
+        .reference-section h2 {
             font-size: 1rem;
             color: var(--gray-600);
-            margin-bottom: 20px;
-            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .internal-links {
+        .reference-links {
             display: flex;
-            gap: 16px;
             flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .internal-link {
+        .reference-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
+            gap: 6px;
+            padding: 10px 16px;
             background: white;
             border-radius: 8px;
             text-decoration: none;
             color: var(--gray-700);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border: 1px solid var(--gray-200);
             transition: all 0.2s;
         }
 
-        .internal-link:hover {
+        .reference-link:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
 
-        .internal-link .icon {
-            font-size: 1.1rem;
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .step-number {
+                width: 48px;
+                font-size: 1.2rem;
+            }
         }
-
     </style>
 </head>
 <body>
-    <!-- Global Navigation -->
     <nav class="global-nav">
         <div class="global-nav-inner">
             <a href="index.html" class="global-nav-brand">RoadGame</a>
-            <div class="global-nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="problem-discovery.html">Discovery</a>
-                <a href="strategy.html">Strategy</a>
-                <a href="sport-analysis.html">Sports</a>
-                <a href="alignment.html">Alignment</a>
-                <a href="canvas.html">Canvas</a>
-            </div>
         </div>
     </nav>
 
-    <!-- Hero -->
     <div class="hero">
         <h1>RoadGame</h1>
-        <p class="tagline">The Tournament Weekend Companion</p>
-        <p class="thesis">
-            Youth sports families spend 10-15 weekends per year at tournaments,
-            but no one helps them with the 16 hours they spend <em>away</em> from the field.
-            We're building the platform that owns that experience.
-        </p>
+        <p class="tagline">A founder conversation about youth sports, tournament weekends, and whether there's a business here.</p>
     </div>
 
     <div class="container">
-        <!-- The Opportunity -->
-        <div class="narrative-section">
-            <p class="section-label">Step 1</p>
-            <h2 class="section-title">The Opportunity</h2>
-            <p class="section-description">
-                A $52 billion market where families are captive, frustrated, and underserved.
-                Here's what the research shows.
-            </p>
-            <div class="card-grid">
-                <a href="research-dashboard.html" class="card-link">
-                    <h3>Market Research Dashboard</h3>
-                    <p>Market size, pain points, spending data, and bootstrap strategies from successful marketplaces.</p>
-                </a>
-                <a href="sport-analysis.html" class="card-link">
-                    <h3>Sport-by-Sport Analysis</h3>
-                    <p>Deep dive into scheduling dynamics, wave viability, and revenue potential for each major youth sport.</p>
-                </a>
-            </div>
-        </div>
+        <p class="intro">
+            We've been exploring an opportunity in youth sports travel. This site documents our thinking—what we believed, what we learned, and what we need to decide together.
+        </p>
 
-        <!-- The Plan -->
-        <div class="narrative-section">
-            <p class="section-label">Step 2</p>
-            <h2 class="section-title">The Plan</h2>
-            <p class="section-description">
-                A single-tournament pilot to validate whether families will engage with local recommendations
-                in the context of their schedule.
-            </p>
-            <a href="strategy.html" class="card-link">
-                <h3>V1 Strategy</h3>
-                <p>Thesis, scope, success metrics, go/no-go criteria, and the asks for the founding team.</p>
+        <div class="journey">
+            <a href="thesis.html" class="journey-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>The Thesis</h3>
+                    <p>What we originally believed: clustered scheduling + activity marketplace = opportunity.</p>
+                </div>
+                <div class="step-arrow">→</div>
+            </a>
+
+            <a href="research.html" class="journey-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>What We Found</h3>
+                    <p>The research—including some uncomfortable discoveries about what already exists.</p>
+                </div>
+                <div class="step-arrow">→</div>
+            </a>
+
+            <a href="questions.html" class="journey-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Open Questions</h3>
+                    <p>What we're not sure about. The gaps in our understanding.</p>
+                </div>
+                <div class="step-arrow">→</div>
+            </a>
+
+            <a href="paths.html" class="journey-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Possible Paths</h3>
+                    <p>Four different directions we could take—each with different assumptions about the problem.</p>
+                </div>
+                <div class="step-arrow">→</div>
+            </a>
+
+            <a href="decision.html" class="journey-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Decision Point <span class="status current">We are here</span></h3>
+                    <p>What we need to align on before moving forward.</p>
+                </div>
+                <div class="step-arrow">→</div>
             </a>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Internal Tools -->
-        <div class="internal-section">
-            <h2>Internal Working Documents</h2>
-            <div class="internal-links">
-                <a href="alignment.html" class="internal-link">
-                    <span class="icon">🤝</span>
-                    Founder Alignment
-                </a>
-                <a href="canvas.html" class="internal-link">
-                    <span class="icon">📋</span>
-                    Business Canvas
-                </a>
-                <a href="art-of-the-start.html" class="internal-link">
-                    <span class="icon">🎯</span>
-                    Art of the Start
-                </a>
-                <a href="simulation.html" class="internal-link">
-                    <span class="icon">📋</span>
-                    Format Specification
-                </a>
-                <a href="sport-analysis.html" class="internal-link">
-                    <span class="icon">🏆</span>
-                    Sport Analysis
-                </a>
+        <div class="reference-section">
+            <h2>Reference Materials</h2>
+            <div class="reference-links">
+                <a href="sport-analysis.html" class="reference-link">Sport Analysis</a>
+                <a href="strategy.html" class="reference-link">V1 Strategy (Draft)</a>
+                <a href="canvas.html" class="reference-link">Business Canvas</a>
+                <a href="research-dashboard.html" class="reference-link">Market Data</a>
             </div>
         </div>
     </div>
