@@ -50,46 +50,10 @@
             align-items: center;
         }
 
-        .global-nav-brand {
-            font-weight: 700;
-            font-size: 1.1rem;
+        .global-nav a {
             color: var(--primary);
             text-decoration: none;
-        }
-
-        .global-nav-links {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-
-        .global-nav-links a {
-            color: var(--gray-600);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .global-nav-links a:hover {
-            background: var(--gray-100);
-            color: var(--primary);
-        }
-
-        .global-nav-links a.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .global-nav-inner {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .global-nav-links {
-                justify-content: center;
-            }
+            font-size: 0.9rem;
         }
 
         /* Hero */
@@ -368,15 +332,8 @@
     <!-- Global Navigation -->
     <nav class="global-nav">
         <div class="global-nav-inner">
-            <a href="index.html" class="global-nav-brand">RoadGame</a>
-            <div class="global-nav-links">
-                <a href="index.html">Home</a>
-                <a href="strategy.html" class="active">Strategy</a>
-                <a href="sport-analysis.html">Sports</a>
-                <a href="alignment.html">Alignment</a>
-                <a href="research-dashboard.html">Research</a>
-                <a href="canvas.html">Canvas</a>
-            </div>
+            <a href="index.html">← Home</a>
+            <span style="color: var(--gray-600); font-size: 0.85rem;">Reference Material</span>
         </div>
     </nav>
 
