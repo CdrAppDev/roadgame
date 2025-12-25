@@ -123,6 +123,10 @@
             border-left: 4px solid var(--warning);
         }
 
+        .finding.complicated {
+            border-left: 4px solid #6366f1;
+        }
+
         .finding h3 {
             margin: 0 0 12px 0;
             display: flex;
@@ -137,6 +141,10 @@
         .finding p {
             margin: 0;
             font-size: 1rem;
+        }
+
+        .finding p + p {
+            margin-top: 12px;
         }
 
         .finding .source {
@@ -161,6 +169,24 @@
         }
 
         .alert p {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        .insight-box {
+            background: #eef2ff;
+            border: 2px solid #6366f1;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+
+        .insight-box h3 {
+            color: #4338ca;
+            margin: 0 0 12px 0;
+        }
+
+        .insight-box p {
             margin: 0;
             color: var(--gray-800);
         }
@@ -206,7 +232,7 @@
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="index.html">← Home</a>
+            <a href="index.html">&larr; Home</a>
             <span class="step">Step 2 of 5</span>
         </div>
     </nav>
@@ -215,66 +241,89 @@
         <p class="step-label">Step 2</p>
         <h1>What We Found</h1>
 
-        <p class="lead">We did the research. Some of it validated our thesis. Some of it challenged it. Here's what we learned.</p>
+        <p class="lead">We did deep research across academic sources, industry publications, Reddit forums, and tournament director perspectives. Here's what we learned.</p>
 
-        <p style="font-size: 0.9rem; color: var(--gray-600);">Each finding is backed by sources. <a href="sources.html" style="color: var(--primary);">View our research sources and confidence levels →</a></p>
+        <p style="font-size: 0.9rem; color: var(--gray-600);">Each finding is backed by sources. <a href="sources.html" style="color: var(--primary);">View our research sources and confidence levels &rarr;</a></p>
 
-        <h2>The Good News</h2>
+        <h2>Validated: The Problem is Real</h2>
 
         <div class="finding good">
-            <h3><span class="icon">✓</span> The market is huge</h3>
+            <h3><span class="icon">&#10003;</span> The market is huge</h3>
             <p>Youth sports travel is a $19.2 billion market (pre-COVID), projected to grow to $52+ billion. 35+ million kids participate in organized youth sports. Families spend $1,200-1,500 per tournament weekend.</p>
         </div>
 
         <div class="finding good">
-            <h3><span class="icon">✓</span> The math works across sports</h3>
-            <p>We validated clustered scheduling for soccer, basketball, baseball, softball, lacrosse, volleyball, hockey, and flag football. With proper time limits and rest periods, all major sports can support the format.</p>
-            <p class="source">See: <a href="sport-analysis.html">Sport-by-Sport Analysis</a></p>
+            <h3><span class="icon">&#10003;</span> The "hostage" experience is real</h3>
+            <p>Families spend 60-70% of tournament day NOT watching games. A typical 10-12 hour day includes only 2-3 hours of actual game time. The rest is waiting, driving between fields, and "liminal gaps" of dead time.</p>
+            <p>The "parking anchor" effect is real: once you find a spot at a crowded complex, leaving feels risky. Families stay and wait rather than risk losing their spot.</p>
         </div>
 
-        <div class="finding neutral">
-            <h3><span class="icon">?</span> Families do complain—but about what exactly?</h3>
-            <p>Tournament weekends are exhausting. Families report feeling like they're "hostage to the schedule" and that the experience is more stressful than enjoyable. <em>But: their top complaints are burnout, costs, and politics—not specifically "scattered schedules." This needs more validation.</em></p>
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Families DO want "tourn-acations"</h3>
+            <p>59% of families try to combine tournaments with family activities. The demand exists. But there are major blockers to actually booking anything (see below).</p>
         </div>
 
-        <h2>The Uncomfortable Discoveries</h2>
+        <h2>Validated: Wave Scheduling Exists</h2>
 
         <div class="alert">
-            <h3>Wave scheduling already exists</h3>
-            <p>Some tournaments have offered morning/afternoon sessions for 30+ years. Example: The Poughkeepsie Columbus Day Tournament (running since 1988) offers a morning session (8am-12:30pm) and afternoon session (1pm-5:30pm). This isn't new.</p>
+            <h3>Wave scheduling isn't new</h3>
+            <p>The Poughkeepsie Columbus Day Tournament has offered morning/afternoon sessions since 1988. Volleyball uses wave scheduling universally. This isn't an innovation we need to invent.</p>
+        </div>
+
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> We now know why it's not universal</h3>
+            <p><strong>1. Coaching Conflicts:</strong> One coach managing multiple age groups can't be at morning AND afternoon games. This is the #1 blocker.</p>
+            <p><strong>2. Stay-to-Play Economics:</strong> TDs get 10-20% of hotel revenue. Longer stays = more money. No incentive to compress schedules.</p>
+            <p><strong>3. Parking Logistics:</strong> Wave handoffs require coordinated parking turnover most venues can't handle.</p>
+            <p><strong>4. Inertia:</strong> "We've always done it this way" + fear of the "ripple effect" from schedule changes.</p>
+        </div>
+
+        <h2>Complicated: Activity Booking</h2>
+
+        <div class="finding complicated">
+            <h3><span class="icon">~</span> Families would book activities... but it's complicated</h3>
+            <p><strong>Blockers to activity booking:</strong></p>
+            <ul style="margin-top: 8px;">
+                <li><strong>Bracket unpredictability:</strong> "You don't know if you're playing at 10am or 4pm until midnight."</li>
+                <li><strong>Fatigue:</strong> Parents are too exhausted to organize activities</li>
+                <li><strong>Cost compression:</strong> Already spent $1,500; reluctant to spend more</li>
+                <li><strong>Social gravity:</strong> Families want GROUP activities with the team, not individual bookings</li>
+            </ul>
+        </div>
+
+        <div class="insight-box">
+            <h3>Key Insight: The customer might be "team mom"</h3>
+            <p>Research suggests families want GROUP activities with the team. The person coordinating this is typically the "team mom"—texting 20 parents trying to find a restaurant that can seat everyone. She might be the real customer.</p>
+        </div>
+
+        <h2>What This Challenges</h2>
+
+        <div class="finding bad">
+            <h3><span class="icon">&#10007;</span> Original thesis: Sell wave scheduling to TDs</h3>
+            <p>TDs don't receive schedule complaints as a top issue. Their pain points are refs, weather, and parent behavior. They're motivated by competence, autonomy, and belonging—not ROI pitches. And the coaching conflict problem means wave scheduling often isn't possible regardless of software.</p>
         </div>
 
         <div class="finding bad">
-            <h3><span class="icon">✗</span> Scheduling software already handles this</h3>
-            <p>Platforms like Fastbreak AI already group games by division, handle rest periods, and optimize field usage. "Cluster games per team" is a solvable scheduling problem—it's not an innovation.</p>
-        </div>
-
-        <div class="finding bad">
-            <h3><span class="icon">✗</span> Parent complaints aren't about scattered schedules</h3>
-            <p>When we looked at what parents actually complain about, it's: burnout from too many tournaments, travel costs, politics and playing time, and coach behavior. "Scattered schedule" doesn't rank highly.</p>
-        </div>
-
-        <div class="finding neutral">
-            <h3><span class="icon">?</span> TDs don't currently use wave scheduling—but why?</h3>
-            <p>If wave scheduling is easy and beneficial, why don't more TDs do it? We don't actually know. Possible reasons: wave preference creates conflict (everyone wants morning), no financial incentive, or simply inertia.</p>
+            <h3><span class="icon">&#10007;</span> Original thesis: Individual activity marketplace</h3>
+            <p>Families don't want individual bookings. They want GROUP experiences. Bracket unpredictability makes advance booking nearly impossible. And fatigue + cost compression reduce willingness to book anything.</p>
         </div>
 
         <h2>What This Means</h2>
 
-        <p>Our thesis had two parts:</p>
-
-        <p><strong>Part 1: Clustered scheduling is novel and valuable.</strong></p>
-        <p>→ Finding: It's not novel. It exists. Software can do it.</p>
-
-        <p><strong>Part 2: Monetizing the free time through an activity marketplace.</strong></p>
-        <p>→ Finding: We haven't validated this. We don't know if families would book activities, or if TDs would participate in revenue share.</p>
-
         <div class="quote">
-            "If wave scheduling is so easy, what's actually the opportunity? Is the scheduling the innovation—or is it something else?"
+            "The real blocker isn't scheduling software—it's coaching conflicts. And the real customer might not be the TD—it might be the team mom."
         </div>
 
+        <p>Our research suggests a potential pivot in framing:</p>
+
+        <ul>
+            <li><strong>From:</strong> "Fix scattered schedules" &rarr; <strong>To:</strong> "Enable tourn-acations despite bracket chaos"</li>
+            <li><strong>From:</strong> Target tournament directors &rarr; <strong>To:</strong> Target team moms / group coordinators</li>
+            <li><strong>From:</strong> Individual activity booking &rarr; <strong>To:</strong> Group booking + last-minute flexibility</li>
+        </ul>
+
         <a href="questions.html" class="next-link">
-            Next: Open Questions →
+            Next: Open Questions &rarr;
         </a>
     </div>
 </body>

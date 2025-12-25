@@ -8,6 +8,7 @@
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
+            --success: #16a34a;
             --warning: #f59e0b;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
@@ -104,6 +105,11 @@
             border-left: 4px solid var(--warning);
         }
 
+        .question-card.answered {
+            border-left-color: var(--success);
+            background: #f0fdf4;
+        }
+
         .question-card h3 {
             font-size: 1.15rem;
             color: var(--gray-900);
@@ -126,6 +132,19 @@
 
         .question-card .context strong {
             color: var(--gray-700);
+        }
+
+        .question-card .answer {
+            margin-top: 12px;
+            padding: 12px;
+            background: #dcfce7;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #166534;
+        }
+
+        .question-card .answer strong {
+            color: #15803d;
         }
 
         .divider {
@@ -156,7 +175,7 @@
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="index.html">← Home</a>
+            <a href="index.html">&larr; Home</a>
             <span class="step">Step 3 of 5</span>
         </div>
     </nav>
@@ -165,84 +184,100 @@
         <p class="step-label">Step 3</p>
         <h1>Open Questions</h1>
 
-        <p class="lead">These are the things we don't know. The gaps in our understanding that need to be filled before we can move forward with confidence.</p>
+        <p class="lead">Our research answered some questions and raised new ones. Here's what we now know and what we still need to learn.</p>
 
-        <h2>About the Problem</h2>
+        <h2>Questions We've Answered</h2>
 
-        <div class="question-card">
-            <h3>What problem are we actually solving?</h3>
-            <p>We assumed "scattered schedules" was the problem. But wave scheduling already exists. If TDs can do this today, what's stopping them?</p>
-            <div class="context">
-                <strong>What we need:</strong> Honest conversation with our TD founder about why he doesn't use wave scheduling.
-            </div>
-        </div>
-
-        <div class="question-card">
-            <h3>Do families actually want predictable free time?</h3>
-            <p>We assumed families would value this. But parent complaints focus on burnout, cost, and politics—not scattered schedules. Is this a real pain point or an assumed one?</p>
-            <div class="context">
-                <strong>What we need:</strong> Conversations with actual tournament families about their experience.
-            </div>
-        </div>
-
-        <div class="question-card">
+        <div class="question-card answered">
             <h3>Why don't more TDs use wave scheduling?</h3>
-            <p>Possible reasons: wave preference creates conflict (everyone wants morning), no financial incentive, complexity, or just inertia. We don't know the real answer.</p>
-            <div class="context">
-                <strong>What we need:</strong> Our TD founder's perspective on this specific question.
+            <p>We now know the key blockers.</p>
+            <div class="answer">
+                <strong>Answer:</strong> Four main blockers: (1) Coaching conflicts—one coach managing multiple age groups can't be at both morning AND afternoon games; (2) Stay-to-play economics—TDs get 10-20% of hotel revenue, so longer stays = more money; (3) Parking logistics—wave handoffs require coordinated turnover most venues can't handle; (4) Inertia and fear of "ripple effects."
             </div>
         </div>
 
-        <h2>About the Solution</h2>
-
-        <div class="question-card">
-            <h3>Would families book activities if free time was predictable?</h3>
-            <p>Even with guaranteed free time, would families actually book team dinners, activities, or excursions? Or would they just rest at the hotel?</p>
-            <div class="context">
-                <strong>What we need:</strong> Evidence of demand. Do team moms already organize group activities? How hard is it?
+        <div class="question-card answered">
+            <h3>Do families actually want predictable free time?</h3>
+            <p>Yes—but it's more nuanced than we thought.</p>
+            <div class="answer">
+                <strong>Answer:</strong> 59% of families try to combine tournaments with activities. They DO want this. But: (1) They want GROUP activities with the team, not individual bookings; (2) Bracket unpredictability makes advance booking nearly impossible; (3) Fatigue and cost compression reduce willingness to book; (4) The "parking anchor" keeps them stuck at the venue.
             </div>
         </div>
 
-        <div class="question-card">
-            <h3>Would TDs participate in revenue share?</h3>
-            <p>Our model assumes TDs want a cut of activity bookings. But maybe they just want their tournament to run smoothly and don't want the complexity.</p>
-            <div class="context">
-                <strong>What we need:</strong> Our TD founder's honest reaction to this model.
+        <div class="question-card answered">
+            <h3>Is the "hostage experience" real?</h3>
+            <p>We validated this with hour-by-hour research.</p>
+            <div class="answer">
+                <strong>Answer:</strong> Yes. Families spend 60-70% of tournament day NOT watching games. A typical 10-12 hour day includes only 2-3 hours of actual game time. The rest is waiting, driving between fields, and "liminal gaps" of dead time.
             </div>
         </div>
 
-        <div class="question-card">
-            <h3>Is the scheduling the innovation—or something else?</h3>
-            <p>If wave scheduling is solvable by existing software, what's our actual value add? Maybe it's the marketplace. Maybe it's the TD relationship. Maybe it's the brand. We need to be clear.</p>
-            <div class="context">
-                <strong>What we need:</strong> Founder alignment on what we're actually building.
-            </div>
-        </div>
-
-        <h2>About Us</h2>
+        <h2>New Questions From Research</h2>
 
         <div class="question-card">
-            <h3>Do we agree on what problem we're solving?</h3>
-            <p>Each founder may have a different view of the opportunity. If we're not aligned on the problem, we'll build the wrong solution.</p>
+            <h3>Is "team mom" the right customer?</h3>
+            <p>Research suggests families want GROUP activities. The team mom is the one coordinating these. But we haven't validated she'd pay for a tool.</p>
             <div class="context">
-                <strong>What we need:</strong> Each founder to articulate the problem independently, then compare.
+                <strong>What we need:</strong> Interviews with team moms. What's their biggest coordination pain? Would they pay for group booking help? How much?
             </div>
         </div>
 
         <div class="question-card">
-            <h3>What's our unfair advantage?</h3>
-            <p>We have a TD on the team. Is that enough? What do we know or have access to that others don't?</p>
+            <h3>Can we work with tournaments that already use wave scheduling?</h3>
+            <p>Volleyball, some soccer tournaments already do this. Could we target these tournaments specifically for the activity marketplace?</p>
             <div class="context">
-                <strong>What we need:</strong> Honest assessment of our competitive position.
+                <strong>What we need:</strong> List of tournaments that already use wave scheduling. Do families at these tournaments book more activities?
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>What kind of "last-minute flexibility" would make activity booking work?</h3>
+            <p>Bracket unpredictability is a major blocker. Could we partner with venues that offer flexible cancellation? On-demand booking? Group holds?</p>
+            <div class="context">
+                <strong>What we need:</strong> Conversations with activity providers (escape rooms, restaurants, mini golf) about flexibility options.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>Is solving the coaching conflict possible?</h3>
+            <p>The #1 blocker to wave scheduling is coaching conflicts. Could technology help here—or is this a structural problem we can't solve?</p>
+            <div class="context">
+                <strong>What we need:</strong> Understanding of club coaching models. Are there clubs that DON'T have one coach managing multiple teams?
+            </div>
+        </div>
+
+        <h2>Strategic Questions</h2>
+
+        <div class="question-card">
+            <h3>Should we pivot from TD to team mom?</h3>
+            <p>Our original thesis targeted TDs. Research suggests the team mom might be a better customer. But that's a fundamentally different business.</p>
+            <div class="context">
+                <strong>What we need:</strong> Founder discussion on whether we want to pursue this pivot.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>What's our unfair advantage now?</h3>
+            <p>We have a TD on the team. But if TDs aren't the customer, is that still valuable? What do we know that others don't?</p>
+            <div class="context">
+                <strong>What we need:</strong> Honest reassessment of our competitive position given new research.
+            </div>
+        </div>
+
+        <div class="question-card">
+            <h3>Accept chaos or try to fix it?</h3>
+            <p>Two possible strategies: (1) Accept that schedules will remain chaotic and help families cope, or (2) Try to influence scheduling by targeting the right tournaments. Which is more achievable?</p>
+            <div class="context">
+                <strong>What we need:</strong> Founder alignment on which strategy to pursue.
             </div>
         </div>
 
         <div class="divider"></div>
 
-        <p>These questions don't have to stop us. But we need to be honest that we're making assumptions—and be willing to change direction if the answers surprise us.</p>
+        <p>We've made progress—we know more than we did. But each answer has raised new questions. The path forward requires choosing which questions to answer next.</p>
 
         <a href="paths.html" class="next-link">
-            Next: Possible Paths →
+            Next: Possible Paths &rarr;
         </a>
     </div>
 </body>
