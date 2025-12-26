@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoadGame V1 Strategy</title>
+    <title>RoadGame V2 Strategy</title>
     <style>
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
             --success: #16a34a;
-            --warning: #ea580c;
+            --warning: #f59e0b;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
@@ -19,11 +19,7 @@
             --gray-900: #111827;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -32,7 +28,6 @@
             line-height: 1.6;
         }
 
-        /* Global Nav */
         .global-nav {
             background: white;
             border-bottom: 1px solid var(--gray-200);
@@ -43,7 +38,7 @@
         }
 
         .global-nav-inner {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -56,9 +51,8 @@
             font-size: 0.9rem;
         }
 
-        /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--success) 0%, #15803d 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -72,19 +66,17 @@
 
         .hero .subtitle {
             font-size: 1.2rem;
-            color: white;
             max-width: 700px;
             margin: 0 auto;
+            opacity: 0.95;
         }
 
-        /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* Sections */
         section {
             background: white;
             border-radius: 12px;
@@ -98,7 +90,7 @@
             color: var(--gray-900);
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid var(--success);
             display: inline-block;
         }
 
@@ -106,12 +98,6 @@
             font-size: 1.15rem;
             color: var(--gray-800);
             margin: 24px 0 12px;
-        }
-
-        section h4 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin: 20px 0 10px;
         }
 
         p {
@@ -129,7 +115,6 @@
             margin-bottom: 8px;
         }
 
-        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -138,7 +123,7 @@
         }
 
         th, td {
-            padding: 10px 12px;
+            padding: 12px 16px;
             text-align: left;
             border-bottom: 1px solid var(--gray-200);
         }
@@ -149,10 +134,9 @@
             color: var(--gray-800);
         }
 
-        /* Highlight Box */
         .highlight {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border-left: 4px solid var(--primary);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid var(--success);
             padding: 16px 20px;
             border-radius: 0 8px 8px 0;
             margin: 20px 0;
@@ -163,25 +147,41 @@
             color: var(--gray-800);
         }
 
-        /* Stats Grid */
+        .proof-box {
+            background: #f0fdf4;
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .proof-box h3 {
+            color: var(--success);
+            margin: 0 0 16px 0;
+        }
+
+        .proof-box p {
+            margin: 0;
+        }
+
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
         }
 
         .stat-box {
             background: var(--gray-50);
             border-radius: 8px;
-            padding: 16px;
+            padding: 20px;
             text-align: center;
         }
 
         .stat-value {
             font-size: 1.75rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--success);
         }
 
         .stat-label {
@@ -190,9 +190,8 @@
             margin-top: 4px;
         }
 
-        /* Core Insight Box */
         .core-insight {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--success) 0%, #15803d 100%);
             color: white;
             border-radius: 12px;
             padding: 24px;
@@ -207,33 +206,6 @@
             font-weight: 500;
         }
 
-        /* Timeline */
-        .timeline {
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 16px 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 12px;
-            padding: 6px 0;
-            border-bottom: 1px solid var(--gray-200);
-            font-size: 0.9rem;
-        }
-
-        .timeline-item:last-child {
-            border-bottom: none;
-        }
-
-        .timeline-time {
-            font-weight: 600;
-            color: var(--primary);
-            min-width: 70px;
-        }
-
-        /* Comparison Grid */
         .compare-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -282,39 +254,60 @@
             font-size: 0.9rem;
         }
 
-        /* Why Cards */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .why-card {
+        .segment-card {
             background: var(--gray-50);
             border-radius: 8px;
-            padding: 16px;
-            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 12px 0;
+            border-left: 4px solid var(--success);
         }
 
-        .why-card h4 {
-            margin: 0 0 8px 0;
-            font-size: 0.95rem;
+        .segment-card h4 {
             color: var(--gray-900);
+            margin: 0 0 8px 0;
+            font-size: 1rem;
         }
 
-        .why-card p {
+        .segment-card p {
             margin: 0;
             font-size: 0.9rem;
             color: var(--gray-600);
         }
 
-        /* Link */
-        a {
-            color: var(--primary);
+        .model-step {
+            display: flex;
+            gap: 16px;
+            margin: 16px 0;
+            align-items: flex-start;
         }
 
-        /* Footer */
+        .model-step .number {
+            background: var(--success);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .model-step .content {
+            flex: 1;
+        }
+
+        .model-step .content strong {
+            color: var(--gray-900);
+        }
+
+        .model-step .content p {
+            margin: 4px 0 0 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -329,208 +322,236 @@
     </style>
 </head>
 <body>
-    <!-- Global Navigation -->
     <nav class="global-nav">
         <div class="global-nav-inner">
-            <a href="index.html">← Home</a>
-            <span style="color: var(--gray-600); font-size: 0.85rem;">Reference Material</span>
+            <a href="index.html">&larr; Home</a>
+            <span style="color: var(--gray-600); font-size: 0.85rem;">V2 Strategy</span>
         </div>
     </nav>
 
-    <!-- Hero -->
     <div class="hero">
-        <h1>RoadGame V1 Strategy</h1>
+        <h1>RoadGame V2 Strategy</h1>
         <p class="subtitle">
-            The free time already exists. It's just scattered. We cluster it—and turn that into revenue for TDs.
+            Create family-first destination tournaments that compete with the status quo. The model is proven. The opportunity is validated.
         </p>
     </div>
 
     <div class="container">
 
-        <!-- The Problem -->
-        <section id="problem">
-            <h2>The Problem</h2>
+        <!-- The Opportunity -->
+        <section>
+            <h2>The Opportunity</h2>
 
-            <p>Families have 6+ hours of free time during tournament days. But it's <strong>scattered and unpredictable</strong>—so they can't use it.</p>
+            <p>The status quo exists because there's no family-first alternative—not because families prefer it. Traditional tournaments optimize for field utilization and hotel rebates. Families are treated as captive audiences, not vacation customers.</p>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="timeline-time">8:00 AM</span>
-                    <span>Game 1</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">9:30 AM</span>
-                    <span>Done. Next game at... when?</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">11:00 AM</span>
-                    <span>"Should we go bowling? But what if the next game runs early?"</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">11:30 AM</span>
-                    <span>Too risky. Sit at the field.</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">2:00 PM</span>
-                    <span>Game 2</span>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-time">6:00 PM</span>
-                    <span>Game 3. Finally done at 7:30 PM.</span>
-                </div>
+            <div class="highlight">
+                <p><strong>The opportunity:</strong> Create destination tournaments that put families first. Compete with the status quo by offering something better—and charge premium pricing for it.</p>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-value">6+ hrs</div>
-                    <div class="stat-label">Total Free Time</div>
+                    <div class="stat-value">$52B</div>
+                    <div class="stat-label">Youth Sports Travel Market</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">0 hrs</div>
-                    <div class="stat-label">Usable Free Time</div>
+                    <div class="stat-value">2-3x</div>
+                    <div class="stat-label">Premium Families Pay</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">60-70%</div>
+                    <div class="stat-label">Day NOT Watching Games</div>
                 </div>
             </div>
         </section>
 
-        <!-- The Solution -->
-        <section id="solution">
-            <h2>The Solution</h2>
+        <!-- Proof It Works -->
+        <section>
+            <h2>Proof It Works</h2>
 
-            <p>RoadGame clusters each team's games into a single block. Same games, same field utilization—but everyone finishes by early afternoon.</p>
+            <p>This isn't theoretical. Family-first destination tournaments already work at scale—and command premium pricing.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Model</th>
+                        <th>Proof Point</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cooperstown</strong></td>
+                        <td>Week-long, destination baseball</td>
+                        <td>Sold 80% stake for <strong>$116 million</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ripken Experience</strong></td>
+                        <td>Week-long, NO stay-to-play</td>
+                        <td>350,000+ guests/year, expanding to 4 locations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Surf Cup</strong></td>
+                        <td>1 game/day, elite soccer</td>
+                        <td>$120M annual economic impact</td>
+                    </tr>
+                    <tr>
+                        <td><strong>i9 Sports</strong></td>
+                        <td>Family-first convenience</td>
+                        <td>$100M+ exit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="proof-box">
+                <h3>Research Validation</h3>
+                <p><strong>No documented failures.</strong> Volleyball universally adopted wave scheduling with no reversions. No documented cases of family-first tournaments failing because of the model. The barrier is economic structure preference, not proven failure.</p>
+            </div>
+        </section>
+
+        <!-- The Model -->
+        <section>
+            <h2>The Model</h2>
+
+            <p>Create "tourn-acation" tournaments that families choose because the experience is worth the trip.</p>
+
+            <div class="model-step">
+                <div class="number">1</div>
+                <div class="content">
+                    <strong>Destination appeal</strong>
+                    <p>Beach, mountains, theme parks—places families would vacation anyway. The tournament is the organizing principle for travel.</p>
+                </div>
+            </div>
+
+            <div class="model-step">
+                <div class="number">2</div>
+                <div class="content">
+                    <strong>Week-long format</strong>
+                    <p>5-6 nights instead of 2-3. More hotel nights, more family time, more value for the trip.</p>
+                </div>
+            </div>
+
+            <div class="model-step">
+                <div class="number">3</div>
+                <div class="content">
+                    <strong>Wave scheduling</strong>
+                    <p>AM/PM blocks like volleyball. Teams know their windows weeks in advance. Predictable free time, guaranteed.</p>
+                </div>
+            </div>
+
+            <div class="model-step">
+                <div class="number">4</div>
+                <div class="content">
+                    <strong>No stay-to-play</strong>
+                    <p>"This is your family vacation—stay where you're comfortable." Differentiator that builds trust.</p>
+                </div>
+            </div>
+
+            <div class="model-step">
+                <div class="number">5</div>
+                <div class="content">
+                    <strong>Premium pricing</strong>
+                    <p>$1,500-3,000/team (vs $400-700 standard). Families pay for the experience. Revenue from registration, not hotel kickbacks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economics -->
+        <section>
+            <h2>The Economics</h2>
+
+            <p>Traditional tournaments maximize field utilization. Family-first tournaments maximize per-family value and willingness to pay.</p>
 
             <div class="compare-grid">
                 <div class="compare-card before">
-                    <h4>Traditional Scheduling</h4>
-                    <p>Games at 8am, 2pm, 6pm</p>
-                    <p>Scattered across 10 hours</p>
-                    <p>Awkward 4-5 hour gaps</p>
-                    <div class="result" style="background: rgba(0,0,0,0.1);">Can't plan anything</div>
+                    <h4>Traditional Model</h4>
+                    <p>$400-700/team registration</p>
+                    <p>Weekend format (2-3 nights)</p>
+                    <p>8-10 games/field/day</p>
+                    <p>Revenue from hotel rebates</p>
+                    <div class="result" style="background: rgba(0,0,0,0.1);">Families as captive audience</div>
                 </div>
                 <div class="compare-card after">
-                    <h4>RoadGame Scheduling</h4>
-                    <p>Games at 8am, 10am, 12pm</p>
-                    <p>70-90 min rest between games</p>
-                    <p>Done by 1:30 PM</p>
-                    <div class="result">7+ hours free, guaranteed</div>
+                    <h4>Family-First Model</h4>
+                    <p>$1,500-3,000/team registration</p>
+                    <p>Week-long format (5-6 nights)</p>
+                    <p>4-5 games/field/day</p>
+                    <p>Revenue from premium registration</p>
+                    <div class="result">Families as vacation customers</div>
                 </div>
             </div>
 
-            <h3>How It Works</h3>
-
-            <p>Run one pool per field. In a 4-team pool, there are 6 games—each team plays 3 and rests 3. Teams naturally alternate:</p>
-
-            <table>
-                <tr><th>Time</th><th>Game</th><th>Team A1</th></tr>
-                <tr><td>8:00 AM</td><td>A1 vs A2</td><td>⚽ Plays</td></tr>
-                <tr><td>9:10 AM</td><td>A3 vs A4</td><td>🛋️ Rests</td></tr>
-                <tr><td>10:20 AM</td><td>A1 vs A3</td><td>⚽ Plays</td></tr>
-                <tr><td>11:30 AM</td><td>A2 vs A4</td><td>🛋️ Rests</td></tr>
-                <tr><td>12:40 PM</td><td>A1 vs A4</td><td>⚽ Plays</td></tr>
-                <tr><td>1:50 PM</td><td>A2 vs A3</td><td>✅ Done for the day</td></tr>
-            </table>
-
-            <p>With 4 fields running 4 pools simultaneously, all 16 teams finish by ~2:30 PM. Fields stay full. Everyone gets 6+ hours of guaranteed free time.</p>
-
-            <p style="font-size: 0.9rem; color: var(--gray-600);">This works across all major youth sports. <a href="sport-analysis.html">See the sport-by-sport analysis →</a></p>
-        </section>
-
-        <!-- Why TDs Will Switch -->
-        <section id="td-incentives">
-            <h2>Why TDs Will Switch</h2>
-
-            <p>Today, TDs have no incentive to optimize for family experience. They get paid per team—whether families enjoy the weekend or sit bored at the field.</p>
-
-            <div class="highlight" style="border-left-color: #16a34a;">
-                <p><strong>RoadGame changes the economics.</strong> Predictable free time becomes an asset. Families book activities, vendors pay for access, and TDs get a cut of every booking.</p>
-            </div>
-
-            <h3>Two New Revenue Streams</h3>
-
-            <h4>1. Excursion Revenue Share</h4>
-            <p>When families book activities through RoadGame, the TD gets 10-15%.</p>
-
-            <table>
-                <tr><th>Booking Type</th><th>Example</th><th>TD Share</th></tr>
-                <tr><td>Group dining</td><td>Team dinner at local restaurant</td><td>10-15%</td></tr>
-                <tr><td>Activities</td><td>Bowling, escape room, mini-golf</td><td>10-15%</td></tr>
-                <tr><td>Attractions</td><td>Water park, arcade, zoo</td><td>10-15%</td></tr>
-            </table>
-
-            <h4>2. Premium Tournament Pricing</h4>
-            <p>Families will pay more for a tournament that respects their time.</p>
-
-            <table>
-                <tr><th>Tournament Type</th><th>Registration</th></tr>
-                <tr><td>Traditional</td><td>$500/team</td></tr>
-                <tr><td>RoadGame</td><td>$550-600/team</td></tr>
-            </table>
-
-            <p>Families already spend $1,200-1,500 per tournament weekend. An extra $50-100 for a dramatically better experience is a no-brainer.</p>
-
-            <h3>The Math</h3>
-
-            <table>
-                <tr><th></th><th>Traditional</th><th>RoadGame</th></tr>
-                <tr>
-                    <td><strong>Registration</strong></td>
-                    <td>16 × $500 = $8,000</td>
-                    <td>16 × $575 = $9,200</td>
-                </tr>
-                <tr>
-                    <td><strong>Excursion share</strong></td>
-                    <td>$0</td>
-                    <td>~$800-1,200</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>$8,000</strong></td>
-                    <td><strong>$10,000-10,400</strong></td>
-                </tr>
-            </table>
-
             <div class="core-insight">
-                <p>TDs make 25-30% more revenue with RoadGame. That's the incentive to switch.</p>
+                <p>Lower field utilization, higher per-team revenue, better family experience. The math works—Cooperstown, Ripken, and Surf Cup prove it.</p>
             </div>
         </section>
 
-        <!-- V1 Scope -->
-        <section id="v1">
-            <h2>V1 Scope</h2>
+        <!-- Target Segments -->
+        <section>
+            <h2>Target Segments</h2>
 
-            <p>Single-tournament pilot to validate the core assumptions.</p>
+            <p>We don't need to change under-staffed clubs. Three segments already have dedicated coaching and would <em>prefer</em> wave scheduling:</p>
 
-            <h3>What We're Testing</h3>
+            <div class="segment-card">
+                <h4>Premium Clubs (ECNL, MLS NEXT)</h4>
+                <p>Already mandate dedicated coaches per team. Would prefer wave scheduling. Use tournament quality as a recruitment differentiator.</p>
+            </div>
+
+            <div class="segment-card">
+                <h4>Volleyball (All Levels)</h4>
+                <p>Built-in dual-coach model. Wave scheduling already universal. Proven that the model works with no reversions.</p>
+            </div>
+
+            <div class="segment-card">
+                <h4>Small Volunteer Clubs</h4>
+                <p>Natural 1:1 parent-coach ratios. Don't need accommodation scheduling. Often priced out of premium tournaments.</p>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Key insight:</strong> We're not trying to change existing tournaments. TDs won't adopt wave scheduling because they need to accommodate under-staffed clubs. We're creating a new option for families who want something better.</p>
+            </div>
+        </section>
+
+        <!-- Why This Works -->
+        <section>
+            <h2>Why This Works When Others Haven't Changed</h2>
+
+            <p>Traditional TDs won't change because:</p>
             <ul>
-                <li>Do families notice and value predictable free time?</li>
-                <li>Do families actually book activities during free windows?</li>
-                <li>Does the TD see value in the format?</li>
-                <li>Can we connect families with local vendors?</li>
+                <li>Large clubs send 15 teams with only 6 coaches—staggered schedules are <em>intentional accommodation</em></li>
+                <li>Hotel rebates (10-20%) are a significant revenue stream</li>
+                <li>Field utilization metrics drive their economics</li>
             </ul>
 
-            <h3>Pilot Parameters</h3>
-            <table>
-                <tr><th>Parameter</th><th>Value</th></tr>
-                <tr><td>Tournament size</td><td>16 teams, 4 fields, 2 days</td></tr>
-                <tr><td>Format</td><td>Single wave (all teams get RoadGame format)</td></tr>
-                <tr><td>Schedule</td><td>8am - 3pm pool play, everyone free 3pm onwards</td></tr>
-            </table>
+            <p><strong>We're not asking them to change.</strong> We're creating a competing option that serves families who want a better experience—and are willing to pay for it.</p>
 
-            <h3>Success Metrics</h3>
-            <table>
-                <tr><th>Metric</th><th>Target</th></tr>
-                <tr><td>Family satisfaction</td><td>>80% positive</td></tr>
-                <tr><td>Activity booking rate</td><td>>30% of teams book 1+ activity</td></tr>
-                <tr><td>TD satisfaction</td><td>Would use RoadGame again</td></tr>
-            </table>
+            <div class="proof-box">
+                <h3>Adjacent Market Proof</h3>
+                <p>Dance and cheer competitions now <strong>compete on scheduling reliability</strong>. "Runs on time" is a loyalty driver. Studios explicitly choose competitions based on predictability. The same dynamic applies to youth sports—when given the option, families choose better experiences.</p>
+            </div>
+        </section>
 
-            <h3>V2 Opportunity</h3>
-            <p>If V1 proves families will book activities, test <strong>waves</strong> to increase TD revenue—morning wave and afternoon wave, doubling tournament capacity on the same fields.</p>
+        <!-- Next Steps -->
+        <section>
+            <h2>Next Steps</h2>
+
+            <p>To move forward, we need:</p>
+
+            <ol>
+                <li><strong>Identify underserved destination markets.</strong> Where is there unmet demand? Which sports/regions lack family-first options?</li>
+                <li><strong>Talk to 5-10 premium clubs.</strong> Validate interest in family-first tournaments. Understand what would make them register.</li>
+                <li><strong>Explore build vs partner.</strong> Create tournaments from scratch, or partner with existing operators who want to adopt the model?</li>
+                <li><strong>Identify destination + facility.</strong> Beach, mountains, or entertainment hub? Owned facility or partnership?</li>
+            </ol>
+
+            <div class="core-insight">
+                <p>The opportunity is validated. Family-first tournaments work at scale. The question isn't whether the model works—it's whether we're the team to execute it.</p>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p><a href="index.html">← Back to Home</a></p>
+        <p><a href="index.html">&larr; Back to Home</a> &nbsp;|&nbsp; <a href="decision.html">See the Proposal &rarr;</a></p>
     </footer>
 
 </body>
