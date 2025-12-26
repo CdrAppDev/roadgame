@@ -39,12 +39,22 @@ Accept that schedules will remain chaotic. Help families cope by making group bo
 
 ---
 
+## GitHub Issues
+
+**Current Issues (V1 Proposal):**
+- #35 - Founder Alignment on V1 Proposal
+- #36 - Customer Discovery: Team Mom Interviews
+- #37 - Customer Discovery: Activity Provider Interviews
+- #38 - Research: Wave Scheduling Tournaments
+
+**Closed Issues:**
+- Issues #14-34 were closed - they described the old tournament management system approach (invalidated by research)
+
 ## Outdated Files
 
 These files reflect the OLD thesis and should be considered historical:
 
 - `V1-STRATEGY.md` - Describes wave scheduling approach (invalidated)
-- `GitHub Issues #14-34` - Describe building a tournament management system (not the current direction)
 - `research/00-research-synthesis.md` - May be outdated
 
 ## Current Files
