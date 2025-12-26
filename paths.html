@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoadGame - Possible Paths</title>
+    <title>RoadGame - Strategic Options</title>
     <style>
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
+            --success: #16a34a;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
@@ -97,6 +98,11 @@
             border: 2px solid var(--gray-200);
         }
 
+        .path-card.recommended {
+            border-color: var(--success);
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+
         .path-card .path-header {
             display: flex;
             align-items: center;
@@ -117,10 +123,25 @@
             font-size: 1.1rem;
         }
 
+        .path-card.recommended .path-letter {
+            background: var(--success);
+        }
+
         .path-card h2 {
             font-size: 1.3rem;
             color: var(--gray-900);
             margin: 0;
+        }
+
+        .path-card .badge {
+            background: var(--success);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-left: auto;
         }
 
         .path-card .assumption {
@@ -131,8 +152,16 @@
             font-size: 0.95rem;
         }
 
+        .path-card.recommended .assumption {
+            background: #dcfce7;
+        }
+
         .path-card .assumption strong {
             color: var(--primary);
+        }
+
+        .path-card.recommended .assumption strong {
+            color: var(--success);
         }
 
         .path-card h3 {
@@ -170,14 +199,24 @@
             color: var(--gray-800);
         }
 
-        /* Path D special styling */
-        .path-card.walk-away {
-            border-color: #dc2626;
-            background: #fef2f2;
+        .evidence-box {
+            background: #dcfce7;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
         }
 
-        .path-card.walk-away .path-letter {
-            background: #dc2626;
+        .evidence-box h4 {
+            color: var(--success);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .evidence-box p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #166534;
         }
 
         .divider {
@@ -208,123 +247,126 @@
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="index.html">← Home</a>
+            <a href="index.html">&larr; Home</a>
             <span class="step">Step 4 of 5</span>
         </div>
     </nav>
 
     <div class="container">
         <p class="step-label">Step 4</p>
-        <h1>Possible Paths</h1>
+        <h1>Strategic Options</h1>
 
-        <p class="lead">Given what we've learned, here are four directions we could take. Each assumes a different problem is the "real" one. We need to align on which path—if any—we want to pursue.</p>
+        <p class="lead">Research has validated the disruption opportunity. Now we need to decide how to execute. Here are three strategic options.</p>
 
-        <div class="path-card">
+        <div class="path-card recommended">
             <div class="path-header">
                 <div class="path-letter">A</div>
-                <h2>The Discovery Problem</h2>
+                <h2>Create Family-First Tournaments</h2>
+                <span class="badge">Recommended</span>
             </div>
 
             <div class="assumption">
-                <strong>Core assumption:</strong> Families have free time but don't know what to do with it. They don't know what's nearby, what can handle groups, or how to book for 20 people.
+                <strong>Core thesis:</strong> The status quo exists because there's no family-first alternative—not because families prefer it. Create the option and capture market share.
+            </div>
+
+            <div class="evidence-box">
+                <h4>Why This Is Validated</h4>
+                <p>Cooperstown ($116M valuation), Ripken (350K+ guests), Surf Cup ($120M impact). Family-first tournaments work at scale. Premium clubs and volleyball have dedicated coaching. Families pay 2-3x premiums.</p>
             </div>
 
             <h3>What we'd build</h3>
-            <p>A curated marketplace for tournament families. "Here's what's near your tournament, what's good for groups, and how to book it."</p>
-
-            <h3>How we'd make money</h3>
+            <p>Destination "tourn-acation" tournaments with:</p>
             <ul>
-                <li>Commission on bookings (10-15%)</li>
-                <li>Featured listings from vendors</li>
-                <li>Premium features for team organizers</li>
+                <li>Genuine vacation destinations (beach, mountains, theme parks)</li>
+                <li>Week-long format with guaranteed free time</li>
+                <li>Wave scheduling (predictable game windows)</li>
+                <li>No stay-to-play (families choose lodging)</li>
+                <li>Premium pricing ($1,500-3,000/team)</li>
+            </ul>
+
+            <h3>Target segments</h3>
+            <ul>
+                <li><strong>Premium clubs (ECNL, MLS NEXT):</strong> Already have dedicated coaches</li>
+                <li><strong>Volleyball:</strong> Wave scheduling is already universal</li>
+                <li><strong>Small volunteer clubs:</strong> Natural 1:1 coach ratios</li>
             </ul>
 
             <div class="test">
-                <strong>How to validate:</strong> Talk to team moms. Do they struggle to find group-friendly venues? Have they tried to organize team dinners? What was hard about it?
+                <strong>Next steps:</strong> Identify underserved destination markets. Talk to 5-10 premium clubs about interest. Explore partnership vs build options.
             </div>
         </div>
 
         <div class="path-card">
             <div class="path-header">
                 <div class="path-letter">B</div>
-                <h2>The Coordination Problem</h2>
+                <h2>Group Booking Platform</h2>
             </div>
 
             <div class="assumption">
-                <strong>Core assumption:</strong> Team moms struggle to organize group activities. Herding 12 families to dinner is chaos. The problem isn't finding things—it's coordinating people.
+                <strong>Core thesis:</strong> Accept that schedules will remain chaotic. Help team moms book group activities despite unpredictability.
             </div>
 
             <h3>What we'd build</h3>
-            <p>Team coordination tools: group voting on activities, RSVP tracking, payment splitting, communication. "Teamsnap for off-field activities."</p>
-
-            <h3>How we'd make money</h3>
+            <p>A group booking platform for tournament team activities:</p>
             <ul>
-                <li>Subscription for team organizers</li>
-                <li>Transaction fees on group bookings</li>
-                <li>Upsell to clubs/leagues</li>
+                <li>Find group-friendly venues near tournaments</li>
+                <li>Last-minute availability ("What's open NOW for 30?")</li>
+                <li>Team coordination tools</li>
+                <li>Activity providers pay for leads</li>
+            </ul>
+
+            <h3>Risks</h3>
+            <ul>
+                <li>Research shows families want predictable time, not just help coping</li>
+                <li>Smaller opportunity than tournament creation</li>
+                <li>Marketplace cold-start problem</li>
             </ul>
 
             <div class="test">
-                <strong>How to validate:</strong> Shadow a team mom during a tournament. Watch how she organizes team activities. What tools does she use? What's frustrating?
+                <strong>To validate:</strong> Would activity providers pay for leads? Would team moms use a centralized tool? Can venues offer tournament-friendly flexibility?
             </div>
         </div>
 
         <div class="path-card">
             <div class="path-header">
                 <div class="path-letter">C</div>
-                <h2>The TD Revenue Problem</h2>
+                <h2>Hybrid Approach</h2>
             </div>
 
             <div class="assumption">
-                <strong>Core assumption:</strong> TDs want new revenue streams but don't have access to local vendor relationships or the tools to monetize family experience.
+                <strong>Core thesis:</strong> Start with group booking (faster to validate), then expand to tournament partnerships or creation.
             </div>
 
-            <h3>What we'd build</h3>
-            <p>A platform that connects TDs with local sponsors and vendors. We do the sales work, bring the deals, TDs get a cut. "Sponsorship-as-a-service for tournaments."</p>
-
-            <h3>How we'd make money</h3>
+            <h3>Sequencing</h3>
             <ul>
-                <li>Percentage of sponsorship deals we facilitate</li>
-                <li>Platform fee for vendor matching</li>
-                <li>Premium TD tools for larger operators</li>
+                <li><strong>Phase 1:</strong> Launch group booking platform (3-6 months)</li>
+                <li><strong>Phase 2:</strong> Partner with existing operators who want family-first model</li>
+                <li><strong>Phase 3:</strong> Create owned tournaments in underserved markets</li>
+            </ul>
+
+            <h3>Pros</h3>
+            <ul>
+                <li>Lower initial capital requirement</li>
+                <li>Build relationships with teams before tournament creation</li>
+                <li>Learn market dynamics before bigger bet</li>
+            </ul>
+
+            <h3>Cons</h3>
+            <ul>
+                <li>May slow down capture of larger opportunity</li>
+                <li>Group booking may not be compelling enough standalone</li>
             </ul>
 
             <div class="test">
-                <strong>How to validate:</strong> Ask our TD founder: Would you pay for someone to bring you sponsor deals? Have you tried to get local sponsors? What happened?
-            </div>
-        </div>
-
-        <div class="path-card walk-away">
-            <div class="path-header">
-                <div class="path-letter">D</div>
-                <h2>No Real Problem</h2>
-            </div>
-
-            <div class="assumption">
-                <strong>Core assumption:</strong> Families are fine with how tournaments work. The "pain" is manufactured or too small to support a business. Wave scheduling exists and people aren't demanding it.
-            </div>
-
-            <h3>What we'd do</h3>
-            <p>Walk away. Redirect our energy to a different opportunity. This is a valid outcome if the evidence points here.</p>
-
-            <h3>Signs this is true</h3>
-            <ul>
-                <li>TD founder says families don't complain about schedules</li>
-                <li>Team moms say organizing activities is easy enough</li>
-                <li>Wave scheduling exists but hasn't taken over—suggesting limited demand</li>
-                <li>No one is willing to pay more for "better" tournament experience</li>
-            </ul>
-
-            <div class="test">
-                <strong>How to validate:</strong> If our conversations reveal that the problems are smaller than we thought, or that existing solutions are "good enough," we should be honest about it.
+                <strong>To validate:</strong> Can group booking generate enough value to justify Phase 1 investment? Are there operators interested in partnership?
             </div>
         </div>
 
         <div class="divider"></div>
 
-        <p>These paths aren't mutually exclusive—we might find that A and B are both true, for example. But we need to start somewhere.</p>
+        <p>Based on the research, <strong>Option A (Create Family-First Tournaments)</strong> represents the biggest validated opportunity. The model is proven. The question is execution.</p>
 
-        <p><strong>Update:</strong> Based on our research, we're proposing a specific direction that combines elements of Path A and B. See the proposal for details.</p>
+        <p>See our proposal for a concrete recommendation.</p>
 
         <a href="decision.html" class="next-link">
             Next: The Proposal &rarr;

@@ -191,6 +191,24 @@
             color: var(--gray-800);
         }
 
+        .success-box {
+            background: #f0fdf4;
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+
+        .success-box h3 {
+            color: var(--success);
+            margin: 0 0 12px 0;
+        }
+
+        .success-box p {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
         .quote {
             background: var(--gray-100);
             border-left: 4px solid var(--gray-600);
@@ -208,6 +226,36 @@
         li {
             margin-bottom: 8px;
             color: var(--gray-700);
+        }
+
+        .proof-table {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .proof-table th, .proof-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .proof-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+        }
+
+        .proof-table td {
+            font-size: 0.95rem;
+        }
+
+        .proof-table tr:last-child td {
+            border-bottom: none;
         }
 
         .next-link {
@@ -241,89 +289,176 @@
         <p class="step-label">Step 2</p>
         <h1>What We Found</h1>
 
-        <p class="lead">We did deep research across academic sources, industry publications, Reddit forums, and tournament director perspectives. Here's what we learned.</p>
+        <p class="lead">We did deep research across academic sources, industry publications, parent forums, tournament operators, and adjacent markets. Here's what we learned.</p>
 
         <p style="font-size: 0.9rem; color: var(--gray-600);">Each finding is backed by sources. <a href="sources.html" style="color: var(--primary);">View our research sources and confidence levels &rarr;</a></p>
 
-        <h2>Validated: The Problem is Real</h2>
+        <h2>Phase 1: The Problem is Real</h2>
 
         <div class="finding good">
             <h3><span class="icon">&#10003;</span> The market is huge</h3>
-            <p>Youth sports travel is a $19.2 billion market (pre-COVID), projected to grow to $52+ billion. 35+ million kids participate in organized youth sports. Families spend $1,200-1,500 per tournament weekend.</p>
+            <p>Youth sports travel is a <strong>$52 billion market</strong> (2024). 35+ million kids participate in organized youth sports. Families spend $1,200-1,500 per tournament weekend. Private equity is consolidating aggressively.</p>
         </div>
 
         <div class="finding good">
             <h3><span class="icon">&#10003;</span> The "hostage" experience is real</h3>
             <p>Families spend 60-70% of tournament day NOT watching games. A typical 10-12 hour day includes only 2-3 hours of actual game time. The rest is waiting, driving between fields, and "liminal gaps" of dead time.</p>
-            <p>The "parking anchor" effect is real: once you find a spot at a crowded complex, leaving feels risky. Families stay and wait rather than risk losing their spot.</p>
         </div>
 
         <div class="finding good">
-            <h3><span class="icon">&#10003;</span> Families DO want "tourn-acations"</h3>
-            <p>59% of families try to combine tournaments with family activities. The demand exists. But there are major blockers to actually booking anything (see below).</p>
+            <h3><span class="icon">&#10003;</span> Scheduling chaos is the #1 parent complaint</h3>
+            <p>Across all forums and research, unpredictable scheduling ranked as parents' most consistent frustration. Yet they've normalized it: "Over time, it's become less of a nuisance because that's just how these tournaments are run."</p>
         </div>
 
-        <h2>Validated: Wave Scheduling Exists</h2>
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Families want GROUP experiences</h3>
+            <p>59% of families try to combine tournaments with activities. But they don't want solo tourism—they want team experiences. The team IS the social unit.</p>
+        </div>
+
+        <h2>Phase 1: What Didn't Work</h2>
 
         <div class="alert">
             <h3>Wave scheduling isn't new</h3>
             <p>The Poughkeepsie Columbus Day Tournament has offered morning/afternoon sessions since 1988. Volleyball uses wave scheduling universally. This isn't an innovation we need to invent.</p>
         </div>
 
-        <div class="finding good">
-            <h3><span class="icon">&#10003;</span> We now know why it's not universal</h3>
-            <p><strong>1. Club Coaching Model:</strong> Large clubs send 15 teams with only 6 coaches. TDs stagger games throughout the day (U11 at 9am, U12 at 11am, U13 at 2pm) so one coach can cover multiple teams sequentially. Wave scheduling would put all those games in the same 4-hour block—creating overlaps one coach can't handle. TDs prioritize big clubs over family convenience.</p>
-            <p><strong>2. Stay-to-Play Economics:</strong> TDs get 10-20% of hotel revenue. Staggered schedules with 12-hour footprints force hotel stays even for nearby teams.</p>
-            <p><strong>3. Parking Logistics:</strong> Wave handoffs require 200 teams leaving while 200 arrive—a "parking fiasco" that can get facility permits revoked.</p>
-            <p><strong>4. Inertia:</strong> "We've always done it this way" + fear of the "ripple effect" from schedule changes.</p>
+        <div class="finding bad">
+            <h3><span class="icon">&#10007;</span> TDs won't adopt wave scheduling</h3>
+            <p><strong>Why:</strong> Large clubs send 15 teams with only 6 coaches. TDs stagger games so one coach can cover multiple teams sequentially. Wave scheduling would create overlaps coaches can't handle. TDs prioritize big clubs (their customers) over family convenience.</p>
+            <p><strong>Key insight:</strong> "Staggered schedules aren't bad scheduling—they're <em>intentional accommodation</em> of under-staffed clubs."</p>
         </div>
 
-        <h2>Complicated: Activity Booking</h2>
+        <h2>Phase 2: The Disruption Research</h2>
 
-        <div class="finding complicated">
-            <h3><span class="icon">~</span> Families would book activities... but it's complicated</h3>
-            <p><strong>Blockers to activity booking:</strong></p>
+        <p>We then asked: what if we don't try to change existing tournaments—what if we CREATE family-first tournaments that compete with the status quo?</p>
+
+        <div class="success-box">
+            <h3>Major Finding: Family-first tournaments already work at scale</h3>
+            <p>This isn't theoretical. Destination tournaments have proven the model works—and commands premium pricing.</p>
+        </div>
+
+        <table class="proof-table">
+            <thead>
+                <tr>
+                    <th>Operator</th>
+                    <th>Model</th>
+                    <th>Proof Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Cooperstown</strong></td>
+                    <td>Week-long, destination</td>
+                    <td>Sold 80% stake for <strong>$116 million</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Ripken Experience</strong></td>
+                    <td>Week-long, NO stay-to-play</td>
+                    <td>350,000+ guests/year, expanding</td>
+                </tr>
+                <tr>
+                    <td><strong>Surf Cup</strong></td>
+                    <td>1 game/day, elite soccer</td>
+                    <td>$120M annual economic impact</td>
+                </tr>
+                <tr>
+                    <td><strong>Youth Baseball Nationals</strong></td>
+                    <td>Guaranteed day off + theme parks</td>
+                    <td>Free theme park passes for players</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Families pay 2-3x premiums for predictable experiences</h3>
+            <p>Cooperstown charges <strong>$10,000/team</strong> (vs $400-700 standard). Ripken charges <strong>$3,000+/week</strong>. Families pay because the experience justifies it.</p>
+        </div>
+
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Wave scheduling works with no reversions</h3>
+            <p>Volleyball has universally adopted wave scheduling (AM/PM blocks). Teams know exact windows weeks in advance. <strong>No documented cases of tournaments trying wave scheduling and reverting.</strong></p>
+        </div>
+
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Early adopter clubs exist</h3>
+            <p>Three segments have dedicated coaching and would prefer wave scheduling:</p>
             <ul style="margin-top: 8px;">
-                <li><strong>Bracket unpredictability:</strong> "You don't know if you're playing at 10am or 4pm until midnight."</li>
-                <li><strong>Fatigue:</strong> Parents are too exhausted to organize activities</li>
-                <li><strong>Cost compression:</strong> Already spent $1,500; reluctant to spend more</li>
-                <li><strong>Social gravity:</strong> Families want GROUP activities with the team, not individual bookings</li>
+                <li><strong>Premium clubs (ECNL, MLS NEXT):</strong> Mandate dedicated coaches per team</li>
+                <li><strong>Volleyball (all levels):</strong> Built-in dual-coach model</li>
+                <li><strong>Small volunteer clubs:</strong> Natural 1:1 parent-coach ratio</li>
             </ul>
         </div>
 
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> "No stay-to-play" is a competitive differentiator</h3>
+            <p>Ripken explicitly markets: "This is your family vacation, so you choose to stay where you're most comfortable—no restrictions." Families resent mandatory hotel bookings. Abandoning stay-to-play builds trust.</p>
+        </div>
+
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Adjacent markets prove the model</h3>
+            <p>Dance and cheer competitions now <strong>compete on scheduling reliability</strong>. "Runs on time" is a loyalty driver. i9 Sports built a <strong>$100M+ business</strong> entirely on family-first convenience.</p>
+        </div>
+
+        <h2>The Economics Work</h2>
+
+        <div class="finding good">
+            <h3><span class="icon">&#10003;</span> Family-first requires different economics—but they're proven</h3>
+            <p>Traditional tournaments maximize field utilization. Family-first tournaments maximize per-family revenue:</p>
+        </div>
+
+        <table class="proof-table">
+            <thead>
+                <tr>
+                    <th>Traditional Model</th>
+                    <th>Family-First Model</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$400-700/team</td>
+                    <td>$1,500-3,000/team</td>
+                </tr>
+                <tr>
+                    <td>Weekend (2-3 nights)</td>
+                    <td>Week-long (5-6 nights)</td>
+                </tr>
+                <tr>
+                    <td>8-10 games/field/day</td>
+                    <td>4-5 games/field/day</td>
+                </tr>
+                <tr>
+                    <td>Extract hotel rebates</td>
+                    <td>Premium registration</td>
+                </tr>
+                <tr>
+                    <td>Families as captive audience</td>
+                    <td>Families as vacation customers</td>
+                </tr>
+            </tbody>
+        </table>
+
         <div class="insight-box">
-            <h3>Key Insight: The customer might be "team mom"</h3>
-            <p>Research suggests families want GROUP activities with the team. The person coordinating this is typically the "team mom"—texting 20 parents trying to find a restaurant that can seat everyone. She might be the real customer.</p>
-        </div>
-
-        <h2>What This Challenges</h2>
-
-        <div class="finding bad">
-            <h3><span class="icon">&#10007;</span> Original thesis: Sell wave scheduling to TDs</h3>
-            <p>TDs don't receive schedule complaints as a top issue. Their pain points are refs, weather, and parent behavior. More importantly: staggered schedules aren't "bad scheduling"—they're <em>intentional accommodation</em> of the club coaching model. TDs won't adopt wave scheduling because it would break their relationship with the big clubs that fill their registrations.</p>
-        </div>
-
-        <div class="finding bad">
-            <h3><span class="icon">&#10007;</span> Original thesis: Individual activity marketplace</h3>
-            <p>Families don't want individual bookings. They want GROUP experiences. Bracket unpredictability makes advance booking nearly impossible. And fatigue + cost compression reduce willingness to book anything.</p>
+            <h3>Key Insight: The opportunity is to apply a proven model, not invent something new</h3>
+            <p>Family-first destination tournaments work at scale. The question isn't whether the model works—it's whether we can execute it in underserved markets and sports.</p>
         </div>
 
         <h2>What This Means</h2>
 
         <div class="quote">
-            "Staggered schedules aren't bad scheduling—they're intentional accommodation of under-staffed clubs. The real customer might not be the TD—it might be the team mom."
+            "The opportunity exists precisely because traditional operators optimize for the wrong metrics. Field utilization and hotel rebates matter to operators—but families increasingly resent experiences that feel extractive rather than memorable."
         </div>
 
-        <p>Our research suggests a potential pivot in framing:</p>
+        <p>The research validates a disruption opportunity:</p>
 
         <ul>
-            <li><strong>From:</strong> "Fix scattered schedules" &rarr; <strong>To:</strong> "Enable tourn-acations despite bracket chaos"</li>
-            <li><strong>From:</strong> Target tournament directors &rarr; <strong>To:</strong> Target team moms / group coordinators</li>
-            <li><strong>From:</strong> Individual activity booking &rarr; <strong>To:</strong> Group booking + last-minute flexibility</li>
+            <li><strong>Demand exists:</strong> Families pay 2-3x premiums for predictable, vacation-integrated experiences</li>
+            <li><strong>Supply exists:</strong> Premium clubs, volleyball, and small clubs have dedicated coaching</li>
+            <li><strong>Model is proven:</strong> Ripken, Cooperstown, Surf Cup demonstrate success at scale</li>
+            <li><strong>No failures documented:</strong> No evidence of wave scheduling being tried and abandoned</li>
         </ul>
 
         <a href="questions.html" class="next-link">
-            Next: Open Questions &rarr;
+            Next: Questions Answered &rarr;
         </a>
     </div>
 </body>

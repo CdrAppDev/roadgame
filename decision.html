@@ -96,8 +96,8 @@
 
         /* Proposal Box */
         .proposal-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-            border: 2px solid var(--primary);
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 2px solid var(--success);
             border-radius: 16px;
             padding: 32px;
             margin: 32px 0;
@@ -105,7 +105,7 @@
 
         .proposal-box h2 {
             margin-top: 0;
-            color: var(--primary-dark);
+            color: var(--success);
             font-size: 1.5rem;
         }
 
@@ -138,6 +138,37 @@
             font-size: 0.95rem;
         }
 
+        /* Proof Table */
+        .proof-table {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .proof-table th, .proof-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .proof-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+        }
+
+        .proof-table td {
+            font-size: 0.95rem;
+        }
+
+        .proof-table tr:last-child td {
+            border-bottom: none;
+        }
+
         /* How It Works */
         .how-it-works {
             background: white;
@@ -161,7 +192,7 @@
         }
 
         .flow-step .number {
-            background: var(--primary);
+            background: var(--success);
             color: white;
             width: 28px;
             height: 28px;
@@ -208,8 +239,8 @@
             color: #92400e;
         }
 
-        /* Validation Section */
-        .validation-section {
+        /* Next Steps Section */
+        .next-steps-section {
             background: white;
             border-radius: 12px;
             padding: 28px;
@@ -217,24 +248,24 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .validation-section h3 {
+        .next-steps-section h3 {
             font-size: 1.1rem;
             color: var(--gray-900);
             margin-bottom: 16px;
         }
 
-        .validation-item {
+        .next-step-item {
             display: flex;
             gap: 12px;
             margin: 12px 0;
             align-items: flex-start;
         }
 
-        .validation-item .icon {
+        .next-step-item .icon {
             font-size: 1.2rem;
         }
 
-        .validation-item p {
+        .next-step-item p {
             margin: 0;
             font-size: 0.95rem;
         }
@@ -300,7 +331,7 @@
         }
 
         .final-note {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--success) 0%, #15803d 100%);
             color: white;
             padding: 32px;
             border-radius: 12px;
@@ -337,96 +368,146 @@
         <p class="step-label">Step 5</p>
         <h1>The Proposal</h1>
 
-        <p class="lead">Based on everything we've learned, here's a concrete proposal for what we should build. This isn't a discussion of options—it's a stake in the ground for other founders to react to.</p>
+        <p class="lead">Based on extensive research, here's a concrete proposal for what we should build. The disruption opportunity is validated. Now we need to execute.</p>
 
         <div class="proposal-box">
-            <h2>V1 Proposal</h2>
-            <p class="tagline">A group booking platform for tournament team activities</p>
+            <h2>V2 Proposal</h2>
+            <p class="tagline">Create family-first "tourn-acation" tournaments</p>
 
-            <p>Help team moms book group activities (restaurants, escape rooms, bowling, attractions) during tournament weekends. Activity providers pay for group leads. Team moms use it for free.</p>
+            <p>Build destination tournaments that put families first: predictable scheduling, guaranteed free time, vacation-integrated experiences. Compete with the status quo by offering something better.</p>
         </div>
 
-        <h2>Why We Believe This</h2>
+        <h2>Why This Is Validated</h2>
+
+        <table class="proof-table">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Evidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Would families pay?</td>
+                    <td><strong>YES</strong></td>
+                    <td>2-3x premiums (Cooperstown $10K/team)</td>
+                </tr>
+                <tr>
+                    <td>Would clubs participate?</td>
+                    <td><strong>YES</strong></td>
+                    <td>Premium clubs, volleyball, small clubs have dedicated coaches</td>
+                </tr>
+                <tr>
+                    <td>Do economics work?</td>
+                    <td><strong>YES</strong></td>
+                    <td>Cooperstown $116M valuation, Ripken expanding</td>
+                </tr>
+                <tr>
+                    <td>Has anyone failed?</td>
+                    <td><strong>NO</strong></td>
+                    <td>No documented failures; volleyball adopted universally</td>
+                </tr>
+            </tbody>
+        </table>
 
         <div class="evidence-card">
-            <h4>Validated: Demand Exists</h4>
-            <p>59% of families try to combine tournaments with activities. They want "tourn-acations." The demand is real.</p>
-        </div>
-
-        <div class="evidence-card">
-            <h4>Validated: They Want Group Experiences</h4>
-            <p>Families don't want individual bookings. They want to do things together as a team. The social experience matters.</p>
-        </div>
-
-        <div class="evidence-card">
-            <h4>Validated: Team Moms Struggle</h4>
-            <p>Coordinating 12+ families for dinner is chaos. Finding restaurants that can seat 25 people on short notice is hard. This is a real pain point.</p>
-        </div>
-
-        <div class="evidence-card">
-            <h4>Likely: Providers Want Group Business</h4>
-            <p>Groups spend more. A team dinner is $500-800. An escape room booking for 20 is $400+. Providers should be willing to pay for these leads. (Needs validation.)</p>
+            <h4>Proof Points</h4>
+            <p><strong>Cooperstown:</strong> Sold 80% stake for $116 million. Week-long destination baseball tournaments.</p>
+            <p style="margin-top: 8px;"><strong>Ripken Experience:</strong> 350,000+ guests/year. Expanding to 4 locations. Explicitly markets "no stay-to-play."</p>
+            <p style="margin-top: 8px;"><strong>Surf Cup:</strong> $120M annual economic impact. 1 game/day format for elite soccer.</p>
+            <p style="margin-top: 8px;"><strong>i9 Sports:</strong> $100M+ exit built entirely on family-first convenience.</p>
         </div>
 
         <div class="how-it-works">
-            <h3>How It Works</h3>
+            <h3>The Model</h3>
 
             <div class="flow-step">
                 <div class="number">1</div>
                 <div class="content">
-                    <strong>Team mom opens the app</strong>
-                    <p>"We're in Orlando this weekend for a tournament. What can we do with 15 kids and 20 adults?"</p>
+                    <strong>Destination appeal</strong>
+                    <p>Beach, mountains, theme parks—places families would vacation anyway. The tournament is the organizing principle for travel.</p>
                 </div>
             </div>
 
             <div class="flow-step">
                 <div class="number">2</div>
                 <div class="content">
-                    <strong>See group-friendly options nearby</strong>
-                    <p>Restaurants, escape rooms, bowling, attractions—filtered for group size and availability.</p>
+                    <strong>Week-long format</strong>
+                    <p>5-6 nights instead of 2-3. More hotel nights, more family time, more value for the trip.</p>
                 </div>
             </div>
 
             <div class="flow-step">
                 <div class="number">3</div>
                 <div class="content">
-                    <strong>Book with flexibility</strong>
-                    <p>Last-minute friendly. "We just found out we're free from 5-8pm. What's available NOW?"</p>
+                    <strong>Wave scheduling</strong>
+                    <p>AM/PM blocks like volleyball. Teams know their windows weeks in advance. Predictable free time.</p>
                 </div>
             </div>
 
             <div class="flow-step">
                 <div class="number">4</div>
                 <div class="content">
-                    <strong>Activity provider pays us</strong>
-                    <p>Commission on booking, lead fee, or featured placement. Team mom pays nothing.</p>
+                    <strong>No stay-to-play</strong>
+                    <p>"This is your family vacation—stay where you're comfortable." Differentiator that builds trust.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="number">5</div>
+                <div class="content">
+                    <strong>Premium pricing</strong>
+                    <p>$1,500-3,000/team (vs $400-700 standard). Families pay for the experience. Revenue from registration, not hotel kickbacks.</p>
                 </div>
             </div>
         </div>
 
         <div class="differentiator">
-            <h3>What Makes This Different From Yelp?</h3>
-            <p><strong>Built for bracket chaos.</strong> Tournament schedules change constantly. You don't know if you're free until the last minute. Regular booking platforms assume you know your schedule. We don't. We're built for "what's available RIGHT NOW for a group of 30?"</p>
+            <h3>Why This Works When Others Haven't Changed</h3>
+            <p><strong>We're not trying to change existing tournaments.</strong> TDs won't adopt wave scheduling because they need to accommodate under-staffed clubs. We're creating a new option for families who want something better—and targeting clubs that already have dedicated coaching.</p>
         </div>
 
-        <h2>What We Need to Validate</h2>
+        <h2>Target Segments</h2>
 
-        <div class="validation-section">
-            <h3>Before building anything:</h3>
+        <div class="evidence-card">
+            <h4>Premium Clubs (ECNL, MLS NEXT)</h4>
+            <p>Already mandate dedicated coaches per team. Would PREFER wave scheduling. Use tournament quality as a recruitment differentiator.</p>
+        </div>
 
-            <div class="validation-item">
-                <span class="icon">?</span>
-                <p><strong>Would activity providers pay for group leads?</strong> Talk to 5-10 restaurants/venues near tournament hotspots. Would they pay $20-50 for a qualified group booking lead?</p>
+        <div class="evidence-card">
+            <h4>Volleyball (All Levels)</h4>
+            <p>Built-in dual-coach model. Wave scheduling already universal. Proven that the model works with no reversions.</p>
+        </div>
+
+        <div class="evidence-card">
+            <h4>Small Volunteer Clubs</h4>
+            <p>Natural 1:1 parent-coach ratios. Don't need accommodation scheduling. Often priced out of premium tournaments.</p>
+        </div>
+
+        <h2>Next Steps</h2>
+
+        <div class="next-steps-section">
+            <h3>To move forward, we need:</h3>
+
+            <div class="next-step-item">
+                <span class="icon">1.</span>
+                <p><strong>Identify underserved destination markets.</strong> Where is there unmet demand? Which sports/regions lack family-first options?</p>
             </div>
 
-            <div class="validation-item">
-                <span class="icon">?</span>
-                <p><strong>Would team moms use a centralized tool?</strong> Talk to 5-10 team moms. How do they currently coordinate? Would they use an app? What would make it worth switching from group text?</p>
+            <div class="next-step-item">
+                <span class="icon">2.</span>
+                <p><strong>Talk to 5-10 premium clubs.</strong> Validate interest in family-first tournaments. Understand what would make them register.</p>
             </div>
 
-            <div class="validation-item">
-                <span class="icon">?</span>
-                <p><strong>Can we get tournament-friendly flexibility?</strong> Would venues offer flexible cancellation for tournament groups? Last-minute availability? Group holds?</p>
+            <div class="next-step-item">
+                <span class="icon">3.</span>
+                <p><strong>Explore build vs partner.</strong> Create tournaments from scratch, or partner with existing operators who want to adopt the model?</p>
+            </div>
+
+            <div class="next-step-item">
+                <span class="icon">4.</span>
+                <p><strong>Identify destination + facility.</strong> Beach, mountains, or entertainment hub? Owned facility or partnership?</p>
             </div>
         </div>
 
@@ -434,22 +515,22 @@
 
         <div class="response-section">
             <h3>Founders: What's Your Response?</h3>
-            <p>This is a proposal, not a decision. I'm putting a stake in the ground so we have something concrete to react to. Where do you stand?</p>
+            <p>The research validates the opportunity. This proposal puts a stake in the ground for how to capture it. Where do you stand?</p>
 
             <div class="response-options">
                 <div class="response-option agree">
-                    <h4>Agree - Let's test this</h4>
-                    <p>This makes sense based on the research. Let's validate the assumptions and move forward.</p>
+                    <h4>Agree - Let's pursue this</h4>
+                    <p>The research is compelling. Let's move to execution planning and start the next steps.</p>
                 </div>
 
                 <div class="response-option concerns">
                     <h4>Concerns - Need to discuss</h4>
-                    <p>I see the logic, but I have questions or concerns we should talk through before committing.</p>
+                    <p>I see the opportunity, but have questions about execution, capital, or go-to-market before committing.</p>
                 </div>
 
                 <div class="response-option disagree">
-                    <h4>Disagree - Wrong direction</h4>
-                    <p>I don't think this is the right path. Here's what I think we should do instead...</p>
+                    <h4>Disagree - Different direction</h4>
+                    <p>I think we should pursue group booking platform instead, or I see a different opportunity in the research.</p>
                 </div>
             </div>
         </div>
@@ -457,7 +538,7 @@
         <div class="divider"></div>
 
         <div class="final-note">
-            <p>The goal isn't to be right. The goal is to have something concrete to test. If this is wrong, the validation conversations will tell us. But we need to start somewhere.</p>
+            <p>The opportunity is validated. Family-first tournaments work at scale. The question isn't whether the model works—it's whether we're the team to execute it.</p>
         </div>
 
         <a href="index.html" class="home-link">&larr; Back to Home</a>
