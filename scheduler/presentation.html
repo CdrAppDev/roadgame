@@ -538,16 +538,20 @@
     </div>
   </section>
 
-  <!-- Wave Assignments -->
+  <!-- Tiered Pricing Model -->
   <section>
-    <h2>Wave Assignments</h2>
+    <h2>Tiered Experience Model</h2>
     <p style="color: var(--gray-600); margin-bottom: 1rem;">
-      Teams are divided into two waves. Each wave plays during their assigned time block and has guaranteed free time during the other block.
+      Like airline seating, everyone gets to the same destination. Choose the experience that fits your team's priorities and budget.
     </p>
     <div class="waves">
       <div class="wave morning">
-        <h3>Morning Wave</h3>
+        <h3>✈️ First Class</h3>
+        <div class="times" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">$1,500 per team</div>
         <div class="times">Play: 8:00 AM - 12:30 PM | Free: 1:30 PM onwards</div>
+        <div style="margin: 1rem 0; padding: 0.75rem; background: white; border-radius: 6px; font-size: 0.9rem;">
+          <strong>The pitch:</strong> "Done by noon. Beach by 1pm. Full afternoons and evenings for team adventures."
+        </div>
         <div class="pools">
           <div class="pool-box">
             <div class="pool-name">Pool A</div>
@@ -560,8 +564,12 @@
         </div>
       </div>
       <div class="wave afternoon">
-        <h3>Afternoon Wave</h3>
+        <h3>💺 Economy</h3>
+        <div class="times" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">$1,000 per team</div>
         <div class="times">Free: Until 1:30 PM | Play: 1:30 PM - 6:00 PM</div>
+        <div style="margin: 1rem 0; padding: 0.75rem; background: white; border-radius: 6px; font-size: 0.9rem;">
+          <strong>The pitch:</strong> "Sleep in. No 6am wake-up calls. Relaxed mornings, team brunch, then compete."
+        </div>
         <div class="pools">
           <div class="pool-box">
             <div class="pool-name">Pool C</div>
@@ -570,6 +578,62 @@
           <div class="pool-box">
             <div class="pool-name">Pool D</div>
             <div class="teams">Teams 16-20</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Revenue Projections -->
+  <section>
+    <h2>Revenue Model</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+      <div>
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--gray-700);">Per Tournament</h3>
+        <table class="schedule-table" style="font-size: 0.9rem;">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Tier</th>
+              <th>Teams</th>
+              <th>Price</th>
+              <th>Revenue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left;">First Class</td>
+              <td>10</td>
+              <td>$1,500</td>
+              <td style="font-weight: 600;">$15,000</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;">Economy</td>
+              <td>10</td>
+              <td>$1,000</td>
+              <td style="font-weight: 600;">$10,000</td>
+            </tr>
+            <tr style="background: var(--gray-100);">
+              <td style="text-align: left; font-weight: 600;">Total</td>
+              <td style="font-weight: 600;">20</td>
+              <td>—</td>
+              <td style="font-weight: 700; color: var(--primary);">$25,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--gray-700);">Comparison</h3>
+        <div style="background: var(--gray-50); padding: 1rem; border-radius: 8px; font-size: 0.9rem;">
+          <div style="margin-bottom: 0.75rem;">
+            <strong>Traditional tournament:</strong><br>
+            20 teams × $800 = <span style="color: var(--gray-600);">$16,000</span>
+          </div>
+          <div style="margin-bottom: 0.75rem;">
+            <strong>Tiered model:</strong><br>
+            10 × $1,500 + 10 × $1,000 = <span style="color: var(--primary); font-weight: 600;">$25,000</span>
+          </div>
+          <div style="padding-top: 0.75rem; border-top: 1px solid var(--gray-200); color: var(--success); font-weight: 600;">
+            +56% revenue increase
           </div>
         </div>
       </div>
@@ -585,8 +649,8 @@
 
       <div class="session">
         <div class="session-header">
-          <span class="session-title morning">Morning Session (Pools A & B)</span>
-          <span class="session-free">Pools C & D FREE</span>
+          <span class="session-title morning">First Class Session ✈️ (Pools A & B)</span>
+          <span class="session-free">Economy teams FREE</span>
         </div>
         <table class="schedule-table">
           <thead>
@@ -626,8 +690,8 @@
 
       <div class="session">
         <div class="session-header">
-          <span class="session-title afternoon">Afternoon Session (Pools C & D)</span>
-          <span class="session-free">Pools A & B FREE</span>
+          <span class="session-title afternoon">Economy Session 💺 (Pools C & D)</span>
+          <span class="session-free">First Class teams FREE</span>
         </div>
         <table class="schedule-table">
           <thead>
@@ -671,8 +735,8 @@
 
       <div class="session">
         <div class="session-header">
-          <span class="session-title morning">Morning Session (Pools A & B)</span>
-          <span class="session-free">Pools C & D FREE</span>
+          <span class="session-title morning">First Class Session ✈️ (Pools A & B)</span>
+          <span class="session-free">Economy teams FREE</span>
         </div>
         <table class="schedule-table">
           <thead>
@@ -712,8 +776,8 @@
 
       <div class="session">
         <div class="session-header">
-          <span class="session-title afternoon">Afternoon Session (Pools C & D)</span>
-          <span class="session-free">Pools A & B FREE</span>
+          <span class="session-title afternoon">Economy Session 💺 (Pools C & D)</span>
+          <span class="session-free">First Class teams FREE</span>
         </div>
         <table class="schedule-table">
           <thead>
@@ -766,7 +830,7 @@
       <div class="team-card">
         <div class="team-card-header morning">
           <span>Team 1</span>
-          <span class="pool-badge">Pool A - Morning Wave</span>
+          <span class="pool-badge">Pool A - First Class ✈️</span>
         </div>
         <div class="team-card-body">
           <div class="team-day">
@@ -827,7 +891,7 @@
       <div class="team-card">
         <div class="team-card-header morning">
           <span>Team 8</span>
-          <span class="pool-badge">Pool B - Morning Wave</span>
+          <span class="pool-badge">Pool B - First Class ✈️</span>
         </div>
         <div class="team-card-body">
           <div class="team-day">
@@ -888,7 +952,7 @@
       <div class="team-card">
         <div class="team-card-header afternoon">
           <span>Team 14</span>
-          <span class="pool-badge">Pool C - Afternoon Wave</span>
+          <span class="pool-badge">Pool C - Economy 💺</span>
         </div>
         <div class="team-card-body">
           <div class="team-day">
@@ -949,7 +1013,7 @@
       <div class="team-card">
         <div class="team-card-header afternoon">
           <span>Team 19</span>
-          <span class="pool-badge">Pool D - Afternoon Wave</span>
+          <span class="pool-badge">Pool D - Economy 💺</span>
         </div>
         <div class="team-card-body">
           <div class="team-day">
@@ -1039,8 +1103,15 @@
       <div class="value-prop">
         <div class="icon">&#10003;</div>
         <div class="text">
-          <h4>Predictable</h4>
-          <p>Wave assignments known weeks in advance. No last-minute schedule changes.</p>
+          <h4>Transparent Pricing</h4>
+          <p>Like airlines: everyone reaches the destination, you choose your experience level.</p>
+        </div>
+      </div>
+      <div class="value-prop">
+        <div class="icon">&#10003;</div>
+        <div class="text">
+          <h4>No Fairness Complaints</h4>
+          <p>Teams pick their tier upfront. No one feels cheated—you get what you paid for.</p>
         </div>
       </div>
       <div class="value-prop">
@@ -1054,21 +1125,14 @@
         <div class="icon">&#10003;</div>
         <div class="text">
           <h4>Guaranteed Downtime</h4>
-          <p>4+ hours of uninterrupted free time every single day of the tournament.</p>
+          <p>Both tiers get 4+ hours free time daily. Just different times of day.</p>
         </div>
       </div>
       <div class="value-prop">
         <div class="icon">&#10003;</div>
         <div class="text">
-          <h4>Group-Friendly</h4>
-          <p>Entire team off together. No staggered schedules splitting families apart.</p>
-        </div>
-      </div>
-      <div class="value-prop">
-        <div class="icon">&#10003;</div>
-        <div class="text">
-          <h4>Bookable</h4>
-          <p>Excursion providers can plan around wave schedules. Group activities actually work.</p>
+          <h4>Revenue Upside</h4>
+          <p>56% more revenue than flat pricing. Premium experience commands premium price.</p>
         </div>
       </div>
     </div>
