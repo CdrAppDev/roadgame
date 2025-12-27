@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tourny-Cation Tournament Schedule</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --morning: #f59e0b;
+      --morning-light: #fef3c7;
+      --afternoon: #8b5cf6;
+      --afternoon-light: #ede9fe;
+      --success: #10b981;
+      --success-light: #d1fae5;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    header .subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    header .tagline {
+      margin-top: 1rem;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Section styling */
+    section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      color: var(--gray-900);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    /* Config Grid */
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .config-item {
+      background: var(--gray-50);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .config-item .label {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .config-item .value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .config-item .unit {
+      font-size: 1rem;
+      color: var(--gray-600);
+      font-weight: 400;
+    }
+
+    /* Wave assignments */
+    .waves {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .wave {
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .wave.morning {
+      background: var(--morning-light);
+      border-left: 4px solid var(--morning);
+    }
+
+    .wave.afternoon {
+      background: var(--afternoon-light);
+      border-left: 4px solid var(--afternoon);
+    }
+
+    .wave h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .wave.morning h3 { color: #b45309; }
+    .wave.afternoon h3 { color: #6d28d9; }
+
+    .wave .times {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+    }
+
+    .wave .pools {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .pool-box {
+      background: white;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      flex: 1;
+    }
+
+    .pool-box .pool-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .pool-box .teams {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+
+    /* Schedule grid */
+    .day-schedule {
+      margin-bottom: 2rem;
+    }
+
+    .day-schedule:last-child {
+      margin-bottom: 0;
+    }
+
+    .day-schedule h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--gray-900);
+    }
+
+    .session {
+      margin-bottom: 1.5rem;
+    }
+
+    .session-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .session-title {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .session-title.morning { color: #b45309; }
+    .session-title.afternoon { color: #6d28d9; }
+
+    .session-free {
+      font-size: 0.875rem;
+      color: var(--success);
+      background: var(--success-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      padding: 0.75rem;
+      text-align: center;
+      border: 1px solid var(--gray-200);
+    }
+
+    .schedule-table th {
+      background: var(--gray-100);
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .schedule-table th:first-child {
+      text-align: left;
+      width: 100px;
+    }
+
+    .schedule-table td:first-child {
+      text-align: left;
+      font-weight: 500;
+      background: var(--gray-50);
+    }
+
+    .game-cell {
+      background: var(--primary-light);
+      font-weight: 500;
+    }
+
+    .empty-cell {
+      color: var(--gray-300);
+    }
+
+    /* Team schedule cards */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .team-card-header {
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .team-card-header.morning {
+      background: var(--morning-light);
+      color: #b45309;
+    }
+
+    .team-card-header.afternoon {
+      background: var(--afternoon-light);
+      color: #6d28d9;
+    }
+
+    .team-card-header .pool-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .team-card-body {
+      padding: 1rem 1.25rem;
+    }
+
+    .team-day {
+      margin-bottom: 1rem;
+    }
+
+    .team-day:last-child {
+      margin-bottom: 0;
+    }
+
+    .team-day h4 {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .schedule-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .play-block {
+      flex: 1;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+
+    .play-block.playing {
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+    }
+
+    .play-block.free {
+      background: var(--success-light);
+      border-left: 3px solid var(--success);
+    }
+
+    .play-block .time {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .play-block .detail {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+
+    .play-block.free .detail {
+      color: #047857;
+    }
+
+    /* Downtime visualization */
+    .downtime-viz {
+      margin-top: 1rem;
+    }
+
+    .timeline {
+      display: flex;
+      height: 40px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: white;
+    }
+
+    .timeline-segment.playing {
+      background: var(--primary);
+    }
+
+    .timeline-segment.free {
+      background: var(--success);
+    }
+
+    .timeline-segment.break {
+      background: var(--gray-300);
+      color: var(--gray-600);
+    }
+
+    .timeline-labels {
+      display: flex;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    .timeline-labels span {
+      flex: 1;
+    }
+
+    /* Value props */
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .value-prop {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+    }
+
+    .value-prop .icon {
+      width: 24px;
+      height: 24px;
+      background: var(--success);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    .value-prop .text h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .value-prop .text p {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+
+    /* Metrics */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .metric {
+      text-align: center;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+    }
+
+    .metric .number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .metric .label {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: white; }
+      .container { padding: 0; }
+      section { box-shadow: none; border: 1px solid var(--gray-200); }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .waves { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Tourny-Cation</h1>
+  <div class="subtitle">Basketball Tournament Schedule</div>
+  <div class="tagline">Play hard. Vacation harder.</div>
+</header>
+
+<div class="container">
+
+  <!-- Tournament Configuration -->
+  <section>
+    <h2>Tournament Configuration</h2>
+    <div class="config-grid">
+      <div class="config-item">
+        <div class="label">Sport</div>
+        <div class="value">Basketball</div>
+      </div>
+      <div class="config-item">
+        <div class="label">Teams</div>
+        <div class="value">20</div>
+      </div>
+      <div class="config-item">
+        <div class="label">Courts</div>
+        <div class="value">4</div>
+      </div>
+      <div class="config-item">
+        <div class="label">Days</div>
+        <div class="value">2 <span class="unit">Sat-Sun</span></div>
+      </div>
+      <div class="config-item">
+        <div class="label">Games per Team</div>
+        <div class="value">4</div>
+      </div>
+      <div class="config-item">
+        <div class="label">Game Slot</div>
+        <div class="value">90 <span class="unit">min</span></div>
+      </div>
+      <div class="config-item">
+        <div class="label">Min Rest Time</div>
+        <div class="value">30 <span class="unit">min</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave Assignments -->
+  <section>
+    <h2>Wave Assignments</h2>
+    <p style="color: var(--gray-600); margin-bottom: 1rem;">
+      Teams are divided into two waves. Each wave plays during their assigned time block and has guaranteed free time during the other block.
+    </p>
+    <div class="waves">
+      <div class="wave morning">
+        <h3>Morning Wave</h3>
+        <div class="times">Play: 8:00 AM - 12:30 PM | Free: 1:30 PM onwards</div>
+        <div class="pools">
+          <div class="pool-box">
+            <div class="pool-name">Pool A</div>
+            <div class="teams">Teams 1-5</div>
+          </div>
+          <div class="pool-box">
+            <div class="pool-name">Pool B</div>
+            <div class="teams">Teams 6-10</div>
+          </div>
+        </div>
+      </div>
+      <div class="wave afternoon">
+        <h3>Afternoon Wave</h3>
+        <div class="times">Free: Until 1:30 PM | Play: 1:30 PM - 6:00 PM</div>
+        <div class="pools">
+          <div class="pool-box">
+            <div class="pool-name">Pool C</div>
+            <div class="teams">Teams 11-15</div>
+          </div>
+          <div class="pool-box">
+            <div class="pool-name">Pool D</div>
+            <div class="teams">Teams 16-20</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Master Schedule -->
+  <section>
+    <h2>Master Game Schedule</h2>
+
+    <div class="day-schedule">
+      <h3>Saturday</h3>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-title morning">Morning Session (Pools A & B)</span>
+          <span class="session-free">Pools C & D FREE</span>
+        </div>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Court 1</th>
+              <th>Court 2</th>
+              <th>Court 3</th>
+              <th>Court 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8:00 AM</td>
+              <td class="game-cell">T1 v T2</td>
+              <td class="game-cell">T4 v T5</td>
+              <td class="game-cell">T6 v T7</td>
+              <td class="game-cell">T9 v T10</td>
+            </tr>
+            <tr>
+              <td>9:30 AM</td>
+              <td class="game-cell">T1 v T3</td>
+              <td class="game-cell">T2 v T5</td>
+              <td class="game-cell">T6 v T8</td>
+              <td class="game-cell">T7 v T10</td>
+            </tr>
+            <tr>
+              <td>11:00 AM</td>
+              <td class="game-cell">T3 v T4</td>
+              <td class="game-cell">T8 v T9</td>
+              <td class="empty-cell">--</td>
+              <td class="empty-cell">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-title afternoon">Afternoon Session (Pools C & D)</span>
+          <span class="session-free">Pools A & B FREE</span>
+        </div>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Court 1</th>
+              <th>Court 2</th>
+              <th>Court 3</th>
+              <th>Court 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1:30 PM</td>
+              <td class="game-cell">T11 v T12</td>
+              <td class="game-cell">T14 v T15</td>
+              <td class="game-cell">T16 v T17</td>
+              <td class="game-cell">T19 v T20</td>
+            </tr>
+            <tr>
+              <td>3:00 PM</td>
+              <td class="game-cell">T11 v T13</td>
+              <td class="game-cell">T12 v T15</td>
+              <td class="game-cell">T16 v T18</td>
+              <td class="game-cell">T17 v T20</td>
+            </tr>
+            <tr>
+              <td>4:30 PM</td>
+              <td class="game-cell">T13 v T14</td>
+              <td class="game-cell">T18 v T19</td>
+              <td class="empty-cell">--</td>
+              <td class="empty-cell">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="day-schedule">
+      <h3>Sunday</h3>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-title morning">Morning Session (Pools A & B)</span>
+          <span class="session-free">Pools C & D FREE</span>
+        </div>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Court 1</th>
+              <th>Court 2</th>
+              <th>Court 3</th>
+              <th>Court 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8:00 AM</td>
+              <td class="game-cell">T1 v T4</td>
+              <td class="game-cell">T2 v T3</td>
+              <td class="game-cell">T6 v T9</td>
+              <td class="game-cell">T7 v T8</td>
+            </tr>
+            <tr>
+              <td>9:30 AM</td>
+              <td class="game-cell">T1 v T5</td>
+              <td class="game-cell">T2 v T4</td>
+              <td class="game-cell">T6 v T10</td>
+              <td class="game-cell">T7 v T9</td>
+            </tr>
+            <tr>
+              <td>11:00 AM</td>
+              <td class="game-cell">T3 v T5</td>
+              <td class="game-cell">T8 v T10</td>
+              <td class="empty-cell">--</td>
+              <td class="empty-cell">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-title afternoon">Afternoon Session (Pools C & D)</span>
+          <span class="session-free">Pools A & B FREE</span>
+        </div>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Court 1</th>
+              <th>Court 2</th>
+              <th>Court 3</th>
+              <th>Court 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1:30 PM</td>
+              <td class="game-cell">T11 v T14</td>
+              <td class="game-cell">T12 v T13</td>
+              <td class="game-cell">T16 v T19</td>
+              <td class="game-cell">T17 v T18</td>
+            </tr>
+            <tr>
+              <td>3:00 PM</td>
+              <td class="game-cell">T11 v T15</td>
+              <td class="game-cell">T12 v T14</td>
+              <td class="game-cell">T16 v T20</td>
+              <td class="game-cell">T17 v T19</td>
+            </tr>
+            <tr>
+              <td>4:30 PM</td>
+              <td class="game-cell">T13 v T15</td>
+              <td class="game-cell">T18 v T20</td>
+              <td class="empty-cell">--</td>
+              <td class="empty-cell">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Schedules with Downtime -->
+  <section>
+    <h2>Sample Team Schedules</h2>
+    <p style="color: var(--gray-600); margin-bottom: 1.5rem;">
+      Each team gets a complete schedule showing both game times AND guaranteed free time.
+    </p>
+
+    <div class="team-grid">
+
+      <!-- Team 1 - Morning Wave -->
+      <div class="team-card">
+        <div class="team-card-header morning">
+          <span>Team 1</span>
+          <span class="pool-badge">Pool A - Morning Wave</span>
+        </div>
+        <div class="team-card-body">
+          <div class="team-day">
+            <h4>Saturday</h4>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">8:00 AM</div>
+                <div class="detail">vs Team 2 (Court 1)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">9:30 AM</div>
+                <div class="detail">vs Team 3 (Court 1)</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">1:30 PM - 6:00 PM+</div>
+                <div class="detail">FREE - Beach, pool, shopping</div>
+              </div>
+            </div>
+          </div>
+          <div class="team-day">
+            <h4>Sunday</h4>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">8:00 AM</div>
+                <div class="detail">vs Team 4 (Court 1)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">9:30 AM</div>
+                <div class="detail">vs Team 5 (Court 1)</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">1:30 PM - 6:00 PM+</div>
+                <div class="detail">FREE - Boat tour, team dinner</div>
+              </div>
+            </div>
+          </div>
+          <div class="downtime-viz">
+            <div style="font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.25rem;">Daily Timeline</div>
+            <div class="timeline">
+              <div class="timeline-segment playing" style="flex: 4;">Games</div>
+              <div class="timeline-segment break" style="flex: 1;">Lunch</div>
+              <div class="timeline-segment free" style="flex: 5;">FREE TIME</div>
+            </div>
+            <div class="timeline-labels">
+              <span>8am</span>
+              <span style="text-align: center;">12pm</span>
+              <span style="text-align: right;">6pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team 8 - Morning Wave -->
+      <div class="team-card">
+        <div class="team-card-header morning">
+          <span>Team 8</span>
+          <span class="pool-badge">Pool B - Morning Wave</span>
+        </div>
+        <div class="team-card-body">
+          <div class="team-day">
+            <h4>Saturday</h4>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">9:30 AM</div>
+                <div class="detail">vs Team 6 (Court 3)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">11:00 AM</div>
+                <div class="detail">vs Team 9 (Court 2)</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">1:30 PM - 6:00 PM+</div>
+                <div class="detail">FREE - Theme park, mini golf</div>
+              </div>
+            </div>
+          </div>
+          <div class="team-day">
+            <h4>Sunday</h4>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">8:00 AM</div>
+                <div class="detail">vs Team 7 (Court 4)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">11:00 AM</div>
+                <div class="detail">vs Team 10 (Court 2)</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">1:30 PM - 6:00 PM+</div>
+                <div class="detail">FREE - Water park, arcade</div>
+              </div>
+            </div>
+          </div>
+          <div class="downtime-viz">
+            <div style="font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.25rem;">Daily Timeline</div>
+            <div class="timeline">
+              <div class="timeline-segment playing" style="flex: 4;">Games</div>
+              <div class="timeline-segment break" style="flex: 1;">Lunch</div>
+              <div class="timeline-segment free" style="flex: 5;">FREE TIME</div>
+            </div>
+            <div class="timeline-labels">
+              <span>8am</span>
+              <span style="text-align: center;">12pm</span>
+              <span style="text-align: right;">6pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team 14 - Afternoon Wave -->
+      <div class="team-card">
+        <div class="team-card-header afternoon">
+          <span>Team 14</span>
+          <span class="pool-badge">Pool C - Afternoon Wave</span>
+        </div>
+        <div class="team-card-body">
+          <div class="team-day">
+            <h4>Saturday</h4>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">8:00 AM - 1:00 PM</div>
+                <div class="detail">FREE - Kayaking, brunch</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">1:30 PM</div>
+                <div class="detail">vs Team 15 (Court 2)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">4:30 PM</div>
+                <div class="detail">vs Team 13 (Court 1)</div>
+              </div>
+            </div>
+          </div>
+          <div class="team-day">
+            <h4>Sunday</h4>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">8:00 AM - 1:00 PM</div>
+                <div class="detail">FREE - Farmers market, spa</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">1:30 PM</div>
+                <div class="detail">vs Team 11 (Court 1)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">3:00 PM</div>
+                <div class="detail">vs Team 12 (Court 2)</div>
+              </div>
+            </div>
+          </div>
+          <div class="downtime-viz">
+            <div style="font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.25rem;">Daily Timeline</div>
+            <div class="timeline">
+              <div class="timeline-segment free" style="flex: 4;">FREE TIME</div>
+              <div class="timeline-segment break" style="flex: 1;">Lunch</div>
+              <div class="timeline-segment playing" style="flex: 5;">Games</div>
+            </div>
+            <div class="timeline-labels">
+              <span>8am</span>
+              <span style="text-align: center;">12pm</span>
+              <span style="text-align: right;">6pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team 19 - Afternoon Wave -->
+      <div class="team-card">
+        <div class="team-card-header afternoon">
+          <span>Team 19</span>
+          <span class="pool-badge">Pool D - Afternoon Wave</span>
+        </div>
+        <div class="team-card-body">
+          <div class="team-day">
+            <h4>Saturday</h4>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">8:00 AM - 1:00 PM</div>
+                <div class="detail">FREE - Golf, hiking</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">1:30 PM</div>
+                <div class="detail">vs Team 20 (Court 4)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">4:30 PM</div>
+                <div class="detail">vs Team 18 (Court 2)</div>
+              </div>
+            </div>
+          </div>
+          <div class="team-day">
+            <h4>Sunday</h4>
+            <div class="schedule-row">
+              <div class="play-block free">
+                <div class="time">8:00 AM - 1:00 PM</div>
+                <div class="detail">FREE - Beach morning, breakfast</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="play-block playing">
+                <div class="time">1:30 PM</div>
+                <div class="detail">vs Team 16 (Court 3)</div>
+              </div>
+              <div class="play-block playing">
+                <div class="time">3:00 PM</div>
+                <div class="detail">vs Team 17 (Court 4)</div>
+              </div>
+            </div>
+          </div>
+          <div class="downtime-viz">
+            <div style="font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.25rem;">Daily Timeline</div>
+            <div class="timeline">
+              <div class="timeline-segment free" style="flex: 4;">FREE TIME</div>
+              <div class="timeline-segment break" style="flex: 1;">Lunch</div>
+              <div class="timeline-segment playing" style="flex: 5;">Games</div>
+            </div>
+            <div class="timeline-labels">
+              <span>8am</span>
+              <span style="text-align: center;">12pm</span>
+              <span style="text-align: right;">6pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section>
+    <h2>Tournament Metrics</h2>
+    <div class="metrics-row">
+      <div class="metric">
+        <div class="number">40</div>
+        <div class="label">Total Games</div>
+      </div>
+      <div class="metric">
+        <div class="number">83%</div>
+        <div class="label">Court Utilization</div>
+      </div>
+      <div class="metric">
+        <div class="number">30+</div>
+        <div class="label">Min Rest Between Games</div>
+      </div>
+      <div class="metric">
+        <div class="number">4+</div>
+        <div class="label">Hours Free / Day</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section>
+    <h2>The Tourny-Cation Difference</h2>
+    <div class="value-props">
+      <div class="value-prop">
+        <div class="icon">&#10003;</div>
+        <div class="text">
+          <h4>Predictable</h4>
+          <p>Wave assignments known weeks in advance. No last-minute schedule changes.</p>
+        </div>
+      </div>
+      <div class="value-prop">
+        <div class="icon">&#10003;</div>
+        <div class="text">
+          <h4>Player Safety</h4>
+          <p>Minimum 30 minutes rest between games. Aligned with youth sports best practices.</p>
+        </div>
+      </div>
+      <div class="value-prop">
+        <div class="icon">&#10003;</div>
+        <div class="text">
+          <h4>Guaranteed Downtime</h4>
+          <p>4+ hours of uninterrupted free time every single day of the tournament.</p>
+        </div>
+      </div>
+      <div class="value-prop">
+        <div class="icon">&#10003;</div>
+        <div class="text">
+          <h4>Group-Friendly</h4>
+          <p>Entire team off together. No staggered schedules splitting families apart.</p>
+        </div>
+      </div>
+      <div class="value-prop">
+        <div class="icon">&#10003;</div>
+        <div class="text">
+          <h4>Bookable</h4>
+          <p>Excursion providers can plan around wave schedules. Group activities actually work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Tourny-Cation &bull; Play hard. Vacation harder.
+</footer>
+
+</body>
+</html>
